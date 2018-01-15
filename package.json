@@ -1,0 +1,24 @@
+{
+  "name": "websitename",
+  "version": "1.0.0",
+  "description": "first version of liu^3 6.148 website",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mit6148/nanxiliu-sabrinaliu-cynliu98-2018.git"
+  },
+  "author": "Cynthia, Nanxi, Sabrina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mit6148/nanxiliu-sabrinaliu-cynliu98-2018/issues"
+  },
+  "homepage": "https://github.com/mit6148/nanxiliu-sabrinaliu-cynliu98-2018#readme",
+  "devDependencies": {
+    "express": "^4.16.2",
+    "http": "0.0.0",
+    "nodemon": "^1.14.11"
+  }
+}
