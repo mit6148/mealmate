@@ -7,16 +7,16 @@ const app = express();
 const db = require('./db');
 
 app.get('/', function(req, res) {
-  res.sendFile('index.html', { root: 'views' });
+  res.sendFile('index.html', { root: 'src/views' });
 });
 
 // route to profile
 app.get('/profile', function(req, res) {
-  res.sendFile('profile.html', { root: 'views' });
+  res.sendFile('profile.html', { root: 'src/views' });
 });
 
 app.get('/matches', function(req, res) {
-  res.sendFile('matches.html', { root: 'views' });
+  res.sendFile('matches.html', { root: 'src/views' });
 });
 
 const port = 3000;
