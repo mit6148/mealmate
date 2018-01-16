@@ -6,3 +6,10 @@ function newNavbarItem(text, url) {
 
 	return itemLink;
 }
+
+function renderNavbar(user){
+	const navbarDiv = document.getElementById('nav-item-container');
+
+	navbarDiv.appendChild(newNavbarItem('Home', '/'));
+
+}

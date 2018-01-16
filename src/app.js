@@ -3,6 +3,9 @@ const express = require('express');
 
 const app = express();
 
+//local dependencies
+const db = require('./db');
+
 app.get('/', function(req, res) {
   res.sendFile('index.html', { root: 'views' });
 });

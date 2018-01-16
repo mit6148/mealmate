@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/mit6148/nanxiliu-sabrinaliu-cynliu98-2018#readme",
   "devDependencies": {
+    "mongoose": "^4.12.2",
     "express": "^4.16.2",
     "http": "0.0.0",
     "nodemon": "^1.14.11"
