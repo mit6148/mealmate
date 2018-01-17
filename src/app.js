@@ -5,7 +5,12 @@ const app = express();
 
 //local dependencies
 const db = require('./db');
+const views = require('./routes/views');
 
+app.use('/', views);
+app.use('/static', express.static('public'));
+
+/*
 app.get('/', function(req, res) {
   res.sendFile('index.html', { root: 'views' });
 });
@@ -17,6 +22,23 @@ app.get('/profile', function(req, res) {
 
 app.get('/matches', function(req, res) {
   res.sendFile('matches.html', { root: 'views' });
+});
+*/
+
+//404 error handler
+app.use(function(req, res, next){
+	const err = new Error('Not Found');
+	err.status = 404;
+	next(err);
+});
+
+//route error handler
+app.use(function(err, req, res, next){
+	res.status(err.status || 500);
+	res.send({
+		status: err.status,
+		message: err.message,
+	});
 });
 
 const port = 3000;
