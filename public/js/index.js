@@ -1,4 +1,10 @@
 function main() {
+  get('/api/whoami', {}, function(user) {
+    console.log(user);
+    renderNavbar(user);
+  });
+
+  /*
   	const user = { // fill out more properties later
     	_id: 'anonid',
     	name: 'Anonymous',
@@ -10,6 +16,7 @@ function main() {
     	aboutme: "Hi I'm anonymous",
   	};
   	renderNavbar(user);
+    */
  }
 
  main();

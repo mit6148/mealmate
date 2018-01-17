@@ -3,6 +3,7 @@ const express = require('express');
 const connect = require('connect-ensure-login');
 
 // models
+const User = require('../models/user');
 /*
 const Story = require('../models/story');
 const Comment = require('../models/comment');
@@ -20,9 +21,8 @@ router.get('/whoami', function(req, res) {
 });
 
 router.get('/user', function(req, res) {
-  res.send({
-    _id: 'anonid',
-    name: 'Anonymous',
+  User.findOne({ _id: req.query._id}, function(err, user){
+  res.send(user);
   });
 });
 

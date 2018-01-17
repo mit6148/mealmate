@@ -11,7 +11,6 @@ passport.use(new fbp.Strategy({
 }, function(accessToken, BrefreshToken, profile, done) {
   User.findOne({'fbid': profile.id }, function(err, user) {
     if (err){
-    	console.log("hi");
     	return done(err);
     } 
 

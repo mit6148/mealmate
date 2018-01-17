@@ -8,11 +8,11 @@ router.get('/', function(req, res) {
 });
 
 // route to profile
-router.get('/profile', function(req, res) {
+router.get('/u/profile', function(req, res) {
   res.sendFile('profile.html', { root: 'src/views' });
 });
 
-router.get('/matches', function(req, res) {
+router.get('/u/matches', function(req, res) {
   res.sendFile('matches.html', { root: 'src/views' });
 });
 

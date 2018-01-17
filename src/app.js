@@ -3,13 +3,13 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const session = require('express-session');
 
-const app = express();
-
 //local dependencies
 const db = require('./db');
 const passport = require('./passport');
 const views = require('./routes/views');
 const api = require('./routes/api');
+
+const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());

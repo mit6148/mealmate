@@ -1,8 +1,12 @@
 function main() {
-    // const profileId = window.location.search.substring(1);
-    /* get('/api/user', {'_id': profileId}, function(profileUser) {
+    const profileId = window.location.search.substring(1);
+    get('/api/user', {'_id': profileId}, function(profileUser) {
         renderUserData(profileUser);
-    }); */
+    });
+    get('/api/whoami', {}, function(user){
+        renderNavbar(user);
+    });
+    /*
     const user = {
         _id: 'anonid',
         name: 'Anonymous',
@@ -15,6 +19,7 @@ function main() {
     };
     renderNavbar(user);
     renderUserData(user);
+    */
 }
 
 function renderUserData(user) {
