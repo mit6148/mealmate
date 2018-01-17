@@ -1,30 +1,51 @@
 const http = require('http');
+const bodyParser = require('body-parser');
 const express = require('express');
+const session = require('express-session');
 
 const app = express();
 
 //local dependencies
 const db = require('./db');
+const passport = require('./passport');
 const views = require('./routes/views');
+const api = require('./routes/api');
+
+app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.json());
+
+app.use(session({
+	secret: 'session-secret',
+	resave: 'false',
+	saveUninitialized: 'true',
+}));
+
+//set up passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+//authentification routes
+app.get('/auth/facebook', passport.authenticate('facebook'));
+
+app.get(
+  '/auth/facebook/callback',
+  passport.authenticate(
+    'facebook',
+    { failureRedirect: '/' }
+  ),
+  function(req, res) {
+    res.redirect('/');
+  }
+);
+
+app.get('/logout', function(req, res){
+	req.logout();
+	res.redirect('/');
+});
 
 app.use('/', views);
-// app.use('/api', api); // for when we're ready
+app.use('/api', api); // for when we're ready
 app.use('/static', express.static('public'));
-
-/*
-app.get('/', function(req, res) {
-  res.sendFile('index.html', { root: 'src/views' });
-});
-
-// route to profile
-app.get('/profile', function(req, res) {
-  res.sendFile('profile.html', { root: 'src/views' });
-});
-
-app.get('/matches', function(req, res) {
-  res.sendFile('matches.html', { root: 'src/views' });
-});
-*/
 
 //404 error handler
 app.use(function(req, res, next){

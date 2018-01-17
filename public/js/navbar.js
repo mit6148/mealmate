@@ -12,12 +12,12 @@ function renderNavbar(user){
 
 	navbarDiv.appendChild(newNavbarItem('Home', '/'));
 	if (user._id === 'anonid') {
-		// navbarDiv.appendChild(newNavbarItem('Login', 'auth/facebook')); // add this when FB authentication happens
+		navbarDiv.appendChild(newNavbarItem('Login', 'auth/facebook')); // add this when FB authentication happens
 	} else {
-		// navbarDiv.appendChild(newNavbarItem('Profile', '/u/profile?'+user._id)); // the real one. How to get it to work?
-		// navbarDiv.appendChild(newNavbarItem('Matches', '/u/matches?'+user._id));
-		navbarDiv.appendChild(newNavbarItem('Profile', '/profile'));
-		navbarDiv.appendChild(newNavbarItem('Matches', '/matches'));
+		navbarDiv.appendChild(newNavbarItem('Profile', '/u/profile?'+user._id)); // the real one. How to get it to work?
+		navbarDiv.appendChild(newNavbarItem('Matches', '/u/matches?'+user._id));
+		//navbarDiv.appendChild(newNavbarItem('Profile', '/profile'));
+		//navbarDiv.appendChild(newNavbarItem('Matches', '/matches'));
 		navbarDiv.appendChild(newNavbarItem('Logout', '/logout'));
 	}
 	
