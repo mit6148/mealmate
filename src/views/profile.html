@@ -10,40 +10,45 @@
 		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 			<div class="navbar-brand">mealmate</div>
 			<div class="navbar-nav" id="nav-item-container">
-			<!-- navbar items are inserted here -->
+				<!-- navbar items are inserted here -->
 			</div>
 		</nav>
 
 		<div class='container-fluid'>
-			<h1 id='userName'>Anonymous</h1>
+			<div id='userName'>
+				<!-- insert the username via js here -->
+			</div>
 
 			<div class='row'>
-				<div class='col-sm-4'>
-				<img id='userImage' src='#' alt='user image'>
+				<div class='col-sm-4' id="userImage">
+					<!-- insert the user image via js here -->
 				</div>
 				<div class='col-sm-6'>
 					<h2>About Me</h2>
-					<p id='userAbout'>Anonymous user info</p>
+					<p id='userAbout'>
+						<!-- insert about me via js here -->
+					</p>
 				</div>
 				<div class='col-sm-2'>
 					<button id='findBuddyButton'>Find Dining Buddy!</button>
 				</div>
 			</div>
 
-			<div class='row' id='userCourseClass'>Course 0, 2000</div>
-			<div class='row' id='userLivingGroup'>Living Group: Maseeh</div> 
-			<div class='row' id='userInterests'>Interests: temp</div>
+			<div class='row' id='userCourseClass'>
+				<!-- Course 0, 2000, or the actual course and class -->
+			</div>
+			<div class='row' id='userLivingGroup'>
+				<!-- User's living group -->
+			</div> 
+			<div class='row' id='userInterests'>Interests: temp</div> <!-- not changing this yet -->
 
 			<div class='row'>
 				<div class='col-sm-4'>Preferred Dining Hall:</div>
 				<div class='col-sm-8'>
 <!-- Will make dynamic later, JS templates online-->
+<!-- right now just display the user's current preferences. Above comment still needs to happen -->
 					<ol id='userDiningPreferences'>
-						<li>Baker</li>
-						<li>Maseeh</li>
-						<li>McCormick</li>
-						<li>Next</li>
-						<li>Simmons</li>
+						<!-- js-powered preferences here -->
 					</ol>
 				</div>
 			</div>
@@ -67,4 +72,5 @@
 
 	</body>
 	<script src="/static/js/navbar.js"></script>
+	<script src="/static/js/profile.js"></script>
 </html>
