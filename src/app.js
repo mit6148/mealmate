@@ -8,6 +8,7 @@ const db = require('./db');
 const views = require('./routes/views');
 
 app.use('/', views);
+// app.use('/api', api); // for when we're ready
 app.use('/static', express.static('public'));
 
 /*
@@ -41,6 +42,7 @@ app.use(function(err, req, res, next){
 	});
 });
 
+// port config
 const port = 3000;
 const server = http.Server(app);
 server.listen(port, function() {
