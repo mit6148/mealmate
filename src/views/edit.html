@@ -23,22 +23,27 @@
 				<div class='col-sm-4' id="userImage">
 					<!-- insert the user image via js here -->
 				</div>
-				<div class='col-sm-6'>
+				<div class='col-sm-8'>
 					<h2>About Me</h2>
 					<p id='userAbout'>
 						<!-- insert about me via js here -->
 					</p>
 				</div>
-				<div class='col-sm-2'>
-					<button id='findBuddyButton'>Find Dining Buddy!</button>
-				</div>
 			</div>
 
-			<div class='row' id='editProfile'> <!-- edit profile button -->
-				<!-- insert the button via javascript -->
+			<div class='row' id='submitProfileImage'>
+				<!-- right now this link just returns to the user's page -->
 			</div>
 			<div class='row' id='userCourseClass'>
-				<!-- Course 0, 2000, or the actual course and class -->
+				<div id='editUserCourse'>
+					<p> Course: </p>
+					<!-- insert a course input box via js -->
+				</div>
+				<div id='editUserClass'>
+					<p> Year: </p>
+					<!-- insert a class year input box via js -->
+				</div>
+				<!-- link for submission goes here --> 
 			</div>
 			<div class='row' id='userLivingGroup'>
 				<!-- User's living group -->
@@ -76,5 +81,6 @@
 	</body>
 	<script src="/static/js/api.js"></script>
 	<script src="/static/js/navbar.js"></script>
-	<script src="/static/js/profile.js"></script>
+	<script src="/static/js/submit.js"></script>
+	<script src="/static/js/edit.js"></script>
 </html>

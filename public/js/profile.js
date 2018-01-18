@@ -2,24 +2,26 @@ function main() {
     const profileId = window.location.search.substring(1);
     get('/api/user', {'_id': profileId}, function(profileUser) {
         renderUserData(profileUser);
+
+        // Find buddy event listener
+        const matchButton = document.getElementById('findBuddyButton');
+        matchButton.addEventListener('click', function() {
+            const match = getMatch(profileUser);
+            // post match to the user
+            document.location.href = '/u/matches?'+profileUser._id; // does this work lol
+        });
+        
+        // render the correct edit link
+        const editLinkDiv = document.getElementById('editProfile');
+        const editLink = document.createElement('a');
+        editLink.setAttribute('href', '/u/edit?'+profileUser._id);
+        editLink.innerHTML = 'Edit Profile';
+        editLinkDiv.appendChild(editLink);
     });
     get('/api/whoami', {}, function(user){
         renderNavbar(user);
     });
-    /*
-    const user = {
-        _id: 'anonid',
-        name: 'Anonymous',
-        course: '0',
-        year: '2000',
-        residence: 'Maseeh',
-        times: { 01012016: 0 }, // date: time dictionary (times are the indices of boxes you checked off)
-        halls: ['Next', 'Maseeh'], // in order of preference
-        about: "Hi I'm anonymous",
-    };
-    renderNavbar(user);
-    renderUserData(user);
-    */
+        
 }
 
 function renderUserData(user) {
@@ -27,6 +29,8 @@ function renderUserData(user) {
     const nameContainer = document.getElementById('userName');
     const nameHeader = document.createElement('h1');
     nameHeader.innerHTML = user.name;
+    console.log(nameContainer);
+    console.log(nameHeader);
     nameContainer.appendChild(nameHeader);
 
     // rendering profile image
@@ -49,13 +53,25 @@ function renderUserData(user) {
 
     // rendering dining preferences
     const hallPrefs = document.getElementById('userDiningPreferences');
-    for (let i=0; i<user.halls.length; i++) {
+    if (user.halls) {
+        // print the hall choices if they exist
+        for (let i=0; i<user.halls.length; i++) {
+            const hallItem = document.createElement('li');
+            hallItem.innerHTML = user.halls[i];
+            hallPrefs.appendChild(hallItem);
+        }
+    } else {
         const hallItem = document.createElement('li');
-        hallItem.innerHTML = user.halls[i];
+        hallItem.innerHTML = 'No preferences listed';
         hallPrefs.appendChild(hallItem);
-    }
+    } 
 
     // PARTS NOT DONE: INTERESTS, MAKING ALL OF THIS EDITABLE, TIME/DATE
+}
+
+function getMatch(user) {
+    console.log("Hi fam");
+    return undefined;
 }
 
 main();

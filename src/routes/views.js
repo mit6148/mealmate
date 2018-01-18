@@ -4,16 +4,20 @@ const router = express.Router();
 
 //public endpoints
 router.get('/', function(req, res) {
-  res.sendFile('index.html', { root: 'src/views' });
+  	res.sendFile('index.html', { root: 'src/views' });
 });
 
 // route to profile
 router.get('/u/profile', function(req, res) {
-  res.sendFile('profile.html', { root: 'src/views' });
+  	res.sendFile('profile.html', { root: 'src/views' });
 });
 
 router.get('/u/matches', function(req, res) {
-  res.sendFile('matches.html', { root: 'src/views' });
+  	res.sendFile('matches.html', { root: 'src/views' });
+});
+
+router.get('/u/edit', function(req, res) {
+	res.sendFile('edit.html', { root: 'src/views'});
 });
 
 module.exports = router;

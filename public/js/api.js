@@ -16,8 +16,10 @@ function get(endpoint, params, successCallback, failureCallback) {
   xhr.onload = function(err) {
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
-        if (successCallback)
+        if (successCallback) {
+          console.log(xhr.responseText);
           successCallback(JSON.parse(xhr.responseText));
+        }
       } else {
         if (failureCallback)
         failureCallback(xhr.statusText);

@@ -10,7 +10,7 @@ function main() {
     	name: 'Anonymous',
     	course: '0',
     	year: '2000',
-    	livinggroup: 'Maseeh',
+    	residence: 'Maseeh',
     	times: { 01012016: 0 }, // date: time dictionary
     	halls: ['Next', 'Maseeh'],
     	aboutme: "Hi I'm anonymous",
