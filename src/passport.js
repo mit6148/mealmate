@@ -15,9 +15,13 @@ passport.use(new fbp.Strategy({
     } 
 
     if (!user) {
-       user = new User({
-        name: profile.displayName,
-        fbid: profile.id
+      user = new User({
+      name: profile.displayName,
+      fbid: profile.id,
+      course: "",
+      year: "",
+      about: "",
+      residence: "",
       });
 
       user.save(function(err) {
