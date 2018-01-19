@@ -30,32 +30,69 @@
               color: #FFF;
               background-color: #66A25C;
           }
+            
           .navbar-inverse .navbar-nav li a{
               color: #D5D5D5;
           }
             
-          }
+          
           .carousel-caption {
               top: 50%;
               transform: translateY(-50%);
-              text-transform: uppercase;
           }
             
           .btn {
               font-size: 18px;
               color: #FFF;
               padding: 12px 22px;
-              background: #5E4485;
+              background: #66A25C;
               border: 2px solid #FFF;
           }
             
           .container {
               margin: 4% auto;
           }
+            
+          footer {
+              width: 100%;
+              background-color: #66A25C;
+              padding: 5%;
+              color: #FFF;
+          }
+
+          .fa {
+              padding: 15px;
+              font-size: 25px;
+              color: #FFF;
+          }
+
+          .fa:hover {
+              color: #D5D5D5;
+              text-decoration: none;
+          }
+
+          @media (max-width: 900px) {
+              .fa{
+                  font-size: 20px;
+                  padding: 10px;
+              }
+          }
+
+          @media (max-width: 600px) {
+              .carousel-caption {
+                  display: none;
+              }
+              #icon {
+                  max-width: 150px;
+              }
+              h2 {
+                  font-size: 1.7em;
+              }
+          }
         </style>
     </head>
     <body>
-        <nav class="navbar navbar-inverse">
+        <nav class="navbar navbar-inverse"> <!-- navbar -->
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -77,7 +114,7 @@
         </div>
         </nav>
         
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel"> <!-- photos and slider -->
             <ol class="carousel-indicators">
                 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                 <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -87,9 +124,10 @@
                 <div class="item active">
                 <img src="../../public/img/food.jpg">
                 <div class="carousel-caption">
-                    <h1>mealmate</h1>
+                    <h1>Looking for some new friends?</h1>
+                    <h2>Join us in mealmate, where you'll discover new students through dining together!</h2>
                     <br>
-                    <button type="button" class="btn btn-default">Get Started</button>
+                    <button type="button" class="btn btn-default">Get Started</button> <!-- login button if not logged in, otherwise goes to your profile -->
                 </div>
             </div> <!--- End Active-->
             <div class="item">
@@ -107,62 +145,59 @@
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
             </a>
-        </div> <!--- End slider-->    
-        </div>
-            
+            </div>   
+        </div> <!--- End slider-->  
         
-                        
-        <div> <!-- The first section: a large image, on which there is some text -->  
-            <div> <!-- div containing text inside the large image -->
-                <h1>Looking for some new friends?</h1>
-                <h2>Join us in mealmate, where you'll discover new students through dining together!</h2>
-            </div> <!-- end text -->
-        </div> <!-- end first section -->
-        <div> <!-- The second section: "About Us" -->
-            <div> <!-- text inside the second section -->
-                <div> <!-- title of About Us Section (should we be this extra) -->
-                    <h2>About mealmate</h2>
-                </div> <!-- end title -->
-                <div> <!-- about Website Name paragraph -->
-                    <p>Do you want to meet new people, but are shy or aren't sure how? Do you barely have time to eat with the people you know, or do you usually eat alone? If you answered yes to either of these questions, then Website Name can help you resolve both of those things! Input your availability, interests, and preferred dining halls, and we'll suggest some other students with whom you could eat.</p>
-                </div>
-                <div> <!-- a div that separates the button from the paragraph to put more attention on the button -->
-                    <button>Let's Get Started</button> <!-- login button if not logged in, otherwise goes to your profile -->
-                </div> 
+        <div class= "container text-center"> <!-- about us section -->
+            <h2>About mealmate</h2>
+            <div class="row">
+            <h4>Do you want to meet new people, but are shy or aren't sure how? Do you barely have time to eat with the people you know, or do you usually eat alone? If you answered yes to either of these questions, then Website Name can help you resolve both of those things! Input your availability, interests, and preferred dining halls, and we'll suggest some other students with whom you could eat.</h4>
             </div>
         </div>
-        <div> <!-- last section, about the creators -->
-            <div> <!-- people inside last section -->
-                <h2>About the Creators</h2>
-                <div> <!-- 1st subsection, one person's image + about -->
+        
+        <div class= "container text-center"> <!-- last section, about the creators -->
+            <h2>About the Creators</h2>
+            <div class="row">
+                <div class="col-sm-4">
                     <h3>Cynthia Liu</h3>
-                    <div> <!-- image 1 -->
-                        <img src="">
-                    </div>
-                    <div> <!-- name 1  -->
-                        <p>Cynthia is a course 6-3/18 sophmore with bad vision, despite being a member of the class of 2020. She likes optimization, and wants to make people's lives easier through research and programming. In her free time, she plays clarinet and osu!</p>
-                    </div>
+                    <img src="../../public/img/cynthia.jpg" class="img-responsive">
+                    <h4>Cynthia is a course 6-3/18 sophmore with bad vision, despite being a member of the class of 2020. She likes optimization, and wants to make people's lives easier through research and programming. In her free time, she plays clarinet and osu!</h4>
                 </div>
-                <div> <!-- 2nd subsection -->
+                <div class="col-sm-4">
                     <h3>Nanxi Liu</h3>
-                    <div> <!-- image 2 -->
-                        <img src="">
-                    </div>
-                    <div> <!-- name 2 -->
-                        <p>Nanxi is a Course 6-3 sophomore from Southern California. She wants to solve problems and improve peoples' lives through programming. She loves being happy, eating yummy food, self-improvement, napping, and listening to music. </p>
-                    </div>
+                    <img src="../../public/img/nanxi.jpg" class="img-responsive">
+                    <h4>Nanxi is a Course 6-3 sophomore from Southern California. She wants to solve problems and improve peoples' lives through programming. She loves being happy, eating yummy food, self-improvement, napping, and listening to music.</h4>
                 </div>
-                <div> <!-- 3rd subsection -->
+                <div class="col-sm-4">
                     <h3>Sabrina Liu</h3>
-                    <div> <!-- image 3 -->
-                        <img src="">
-                    </div>
-                    <div> <!-- name 3 -->
-                        <p>Sabrina is a Course 6-2 freshman. While not completely clear on future plans, she enjoys finding applications of CS in interdisciplinary fields. Other than that, she likes playing with cards and watching Youtube.</p>
-                    </div>
+                    <img src="../../public/img/sabrina.jpg" class="img-responsive">
+                    <h4>Sabrina is a Course 6-2 freshman. While not completely clear on future plans, she enjoys finding applications of CS in interdisciplinary fields. Other than that, she likes playing with cards and watching Youtube.</h4>
                 </div>
             </div>
-        </body>
+        </div>
+        
+        <footer class="container-fluid text-center">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h3>Contact Us</h3>
+                    <br>
+                    <h4>cynliu98@mit.edu</h4>
+                    <h4>nanxi@mit.edu</h4>
+                    <h4>sabliu@mit.edu</h4>
+                </div>
+                <div class="col-sm-4">
+                    <h3>Connect</h3>
+                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="#" class="fa fa-twitter"></a>
+                    <a href="#" class="fa fa-google"></a>
+                    <a href="#" class="fa fa-linkedin"></a>
+                    <a href="#" class="fa fa-youtube"></a>
+                </div>
+                <div class="col-sm-4">
+                    <img src="../../public/img/logo.png" class="icon">
+                </div>
+            </div>
+        </footer>
     </body>
     <script src="/static/js/api.js"></script>
     <script src="/static/js/navbar.js"></script>
