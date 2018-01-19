@@ -9,18 +9,15 @@ function renderUserData(user) {
     // rendering profile image
     const profileImage = document.getElementById('userImage');
     profileImage.style = 'background-image:url(https://coubsecure-s.akamaihd.net/get/b69/p/coub/simple/cw_timeline_pic/3171e07ffd1/647c464aad3a26608293d/med_1487878540_image.jpg';
-    // idk how to resize
+    submitProfileLink(user); // submission link
 
-    // render course and class inputs
+    // render textual information
     renderCourseClassInput(user);
-
-    // rendering aboutme
-    const userAbout = document.getElementById('userAbout');
-    userAbout.innerHTML = user.about;
-
-    // rednering living group
-    const livingGroup = document.getElementById('userLivingGroup');
-    livingGroup.innerHTML = 'Living Group: ' + user.residence;
+    renderAboutMe(user);
+    renderRes(user);
+    submitCourseClassLink(user);
+    submitAboutLink(user);
+    submitResidenceLink(user);
 
     // rendering dining preferences
     const hallPrefs = document.getElementById('userDiningPreferences');
@@ -57,7 +54,29 @@ function renderCourseClassInput(user) {
 
     course.appendChild(newCourse);
     year.appendChild(newClass);
+}
 
+// edit about me
+function renderAboutMe(user) {
+
+	const userAbout = document.getElementById('userAbout');
+    const newAbout = document.createElement('input');
+    newAbout.setAttribute('type', 'text');
+    newAbout.setAttribute('placeholder', user.about);
+    newAbout.setAttribute('id', 'new-about-input');
+
+    userAbout.appendChild(newAbout)
+}
+
+// edit residence
+function renderRes(user) {
+	const userRes = document.getElementById('userLivingGroup');
+    const newRes = document.createElement('input');
+    newRes.setAttribute('type', 'text');
+    newRes.setAttribute('placeholder', user.residence);
+    newRes.setAttribute('id', 'new-res-input');
+
+    userRes.appendChild(newRes)
 }
 
 /* ------------------ SUBMISSION LINK CODE BELOW!!!!! ------------------ */
@@ -78,34 +97,82 @@ function submitCourseClassLink(user) {
     submitLink.className = 'btn btn-outline-primary';
     submitLink.innerHTML = 'Submit New Course and Class Year';
     submitLink.addEventListener('click', function callbackPasser() {
-    	submitCourseClassHandler(user);
+    	submitCourseClassHandler(user); // submit the new info
+    	document.location.href = '/u/profile?'+user._id // return to the profile page
+    }); // we need to pass a parameter to submitCourseClassHandler
+    submitLinkDiv.appendChild(submitLink);
+}
+
+function submitAboutLink(user) {
+	const submitLinkDiv = document.getElementById('userAbout');
+    const submitLink = document.createElement('button');
+    submitLink.innerHTML = 'Submit About Me';
+    submitLink.addEventListener('click', function callbackPasser() {
+    	submitAboutHandler(user); // submit the new info
+    	document.location.href = '/u/profile?'+user._id // return to the profile page
+    }); // we need to pass a parameter to submitCourseClassHandler
+    submitLinkDiv.appendChild(submitLink);
+}
+
+function submitResidenceLink(user) {
+	const submitLinkDiv = document.getElementById('userLivingGroup');
+    const submitLink = document.createElement('button');
+    submitLink.innerHTML = 'Submit Living Group';
+    submitLink.addEventListener('click', function callbackPasser() {
+    	submitResHandler(user); // submit the new info
+    	document.location.href = '/u/profile?'+user._id // return to the profile page
     }); // we need to pass a parameter to submitCourseClassHandler
     submitLinkDiv.appendChild(submitLink);
 }
 
 /* -------------------- SUBMISSION HANDLERS BELOW!!!!! ------------------- */
 
+// submit course and class
 function submitCourseClassHandler (user) {
 
-	const newCourse = document.getElementById('editUserCourse');
-	const newClass = document.getElementById('editUserClass');
+	const newCourse = document.getElementById('new-course-input');
+	const newClass = document.getElementById('new-class-input');
 
 	const data = { // set everything to current value if nothing inputted
+		_id: user._id,
 		dataType: "course-year",
 		course: user.course,
 		year: user.year,
 	};
 
-	if (newCourse) {
-		data.course = newCourse;
-	}
+	if (newCourse)
+		data.course = newCourse.value;
 
-	if (newClass) {
-		data.year = newClass;
-	}
+	if (newClass)
+		data.year = newClass.value;
 
-	put('/api/editProfile/'+user._id, data);
+	post('/api/editProfile', data); // endpoint, params, no successCallBack or failureCallBack
 	newCourse.value = '';
 	newClass.value = '';
+}
 
+// submit about me
+function submitAboutHandler (user) {
+	const newAbout = document.getElementById('new-about-input');
+	const data = {
+		_id: user._id,
+		dataType: "about",
+		about: newAbout.value
+	}
+
+	post('/api/editProfile', data);
+	newAbout.value = '';
+}
+
+// submit dining
+function submitResHandler (user) {
+	const newRes = document.getElementById('new-res-input');
+	const data = {
+		_id: user._id,
+		dataType: "residence",
+		residence: newRes.value
+	}
+
+	post('/api/editProfile', data);
+	newRes.value = '';
 }

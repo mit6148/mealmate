@@ -24,13 +24,15 @@ router.get('/user', function(req, res) {
 
 // edit different aspects of a user's profile
 // source: https://scotch.io/tutorials/build-a-restful-api-using-node-and-express-4
-router.put('/editProfile/:user_id',
+router.post('/editProfile/',
   connect.ensureLoggedIn(),
   function(req,res) {
     // req.dataType contains the parameters of the changed things
-    User.findOne(req.params._id, function(err, user) {
-      if (err)
+    User.findOne({ _id: req.body._id}, function(err, user) {
+      if (err) {
         res.send(err);
+        return;
+      }
 
       switch(req.body.dataType) {
         case "course-year": // change course and class year
@@ -40,15 +42,22 @@ router.put('/editProfile/:user_id',
         case "about": // change about me
           user.about = req.body.about;
           break;
+        case "residence": // change residence
+          user.residence = req.body.residence;
+          break;
         default:
           break; // no changes
       }
 
+      console.log(user)
       // save the user
       user.save(function(err) {
-        if (err)
+        if (err) {// if error 
+          console.log(err)
           res.send(err);
-
+          return;
+        }
+        console.log("about to respond")
         res.json({ message: 'User updated!' });
       });
 
