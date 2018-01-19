@@ -104,70 +104,50 @@
         </div>
         </nav>
         
-		<div class='container-fluid'>
-			<div id='userName'>
-				<!-- insert the username via js here -->
-			</div>
-
-			<div class='row'>
-				<div class='col-sm-4 imageBox' id="userImage">
-					<!-- insert the user image via js here -->
-				</div>
-				<div class='col-sm-6'>
-					<h2>About Me</h2>
-					<p id='userAbout'>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4 id='userName'>
+                        <!-- insert the username via js here -->
+                    </h4>
+                    <div class='imageBox img-responsive' id="userImage">
+                        <!-- insert the user image via js here -->
+                    </div>
+                    <h3>About Me</h3>
+					<div id='userAbout'>
 						<!-- insert about me via js here -->
-					</p>
-				</div>
-				<div class='col-sm-2'>
-					<button id='findBuddyButton'>Find Dining Buddy!</button>
-				</div>
-			</div>
-
-			<div class='row' id='editProfile'> <!-- edit profile button -->
-				<!-- insert the button via javascript -->
-			</div>
-			<div class='row' id='userCourseClass'>
-				<!-- Course 0, 2000, or the actual course and class -->
-			</div>
-			<div class='row' id='userLivingGroup'>
-				<!-- User's living group -->
-			</div> 
-			<div class='row' id='userInterests'>Interests: temp</div> <!-- not changing this yet -->
-
-			<div class='row'>
-				<div class='col-sm-4'>Preferred Dining Hall:</div>
-				<div class='col-sm-8'>
-<!-- Will make dynamic later, JS templates online-->
-<!-- right now just display the user's current preferences. Above comment still needs to happen -->
-					<ol id='userDiningPreferences'>
+					</div>
+                    <div id='editProfile'> <!-- edit profile button -->
+                        <!-- insert the button via javascript -->
+                    </div>
+                    <div id='userCourseClass'>
+                        <!-- Course 0, 2000, or the actual course and class -->
+                    </div>
+                    <div id='userLivingGroup'>
+                        <!-- User's living group -->
+                    </div> 
+                    <div id='userInterests'>
+                        Interests: temp
+                    </div> <!-- not changing this yet -->
+                </div>
+                <div class="col-md-8">
+                    <br>
+                    <h4>Preferred Dining Hall:</h4>
+                    <ol id='userDiningPreferences'>
 						<!-- js-powered preferences here -->
 					</ol>
-				</div>
-			</div>
-
-			<div class='row' id='userAvailability'>
-				<div class='col-sm-4'>Availability:</div>
-				<div class='col-sm-8'>
-<!-- Bootstrap Datepicker examples also online -->
-					<div class="input-group date datepicker">
-					    <input type="text" class="form-control">
-					    <div class="input-group-addon">
-					        <span class="glyphicon glyphicon-th"></span>
-					    </div>
-					</div>
-
-<!-- will make into either dynamic drag and drop or checklist-->
-					<ul id='userTimePreferences'>
-						<li>5-6</li>
-						<li>6-7</li>
-						<li>7-8</li>
-						<li>8-9</li>
-					</ul>
-				</div>
-			</div>
-
-		</div>
+                    <div id ='userAvailability'>Availability:</div>
+                    <!-- Bootstrap Datepicker examples also online -->
+                        <div class="input-group date datepicker">
+                            <input type="text" class="form-control">
+                            <div class="input-group-addon">
+                                <span class="glyphicon glyphicon-th"></span>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
         
         <footer class="container-fluid text-center">
             <div class="row">

@@ -98,71 +98,67 @@
             </div>
         </div>
         </nav>
-
-		<div class='container-fluid'>
-			<div id='userName'>
-				<!-- insert the username via js here -->
-			</div>
-
-			<div class='row'>
-				<div class='col-sm-4' id="userImage">
-					<!-- insert the user image via js here -->
-				</div>
-				<div class='col-sm-8'>
-					<h2>About Me</h2>
-					<p id='userAbout'>
-						<!-- edit user's about me here -->
-					</p>
-				</div>
-			</div>
-
-			<div class='row' id='submitProfileImage'>
-				<!-- right now this link just returns to the user's page -->
-			</div>
-			<div class='row' id='userCourseClass'>
-				<div id='editUserCourse'>
-					<p> Course: </p>
-					<!-- insert a course input box via js -->
-				</div>
-				<div id='editUserClass'>
-					<p> Year: </p>
-					<!-- insert a class year input box via js -->
-				</div>
-				<!-- link for submission goes here --> 
-			</div>
-			<div class='row' id='userLivingGroup'>
-				<p> Living Group: </p>
-				<!-- Edit user's living group -->
-			</div> 
-			<div class='row' id='userInterests'>Interests: temp</div> <!-- not changing this yet -->
-
-			<div class='row'>
-				<div class='col-sm-4'>Preferred Dining Hall:</div>
-				<div class='col-sm-8'>
-<!-- Will make dynamic later, JS templates online-->
-<!-- right now just display the user's current preferences. Above comment still needs to happen -->
-					<ol id='userDiningPreferences'>
+        
+        
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4 id='userName'>
+                        <!-- insert the username via js here -->
+                    </h4>
+                    <div class='imageBox img-responsive' id="userImage">
+                        <!-- insert the user image via js here -->
+                    </div>
+                    <h3>About Me</h3>
+					<div id='userAbout'>
+						<!-- insert about me via js here -->
+					</div>
+                    <div id='submitProfileImage'>
+                        <!-- right now this link just returns to the user's page -->
+                    </div>
+                    <br>
+                    <div id='userCourseClass'>
+                        <div id='editUserCourse'>
+                            <p> Course: </p>
+                            <!-- insert a course input box via js -->
+                        </div>
+                        <div id='editUserClass'>
+                            <p> Year: </p>
+                            <!-- insert a class year input box via js -->
+                        </div>
+                        <!-- link for submission goes here --> 
+                    </div>
+                    <br>
+                    <div id='userLivingGroup'>
+                        <!-- User's living group -->
+                    </div> 
+                    <div id='userLivingGroup'>
+                        <p> Living Group: </p>
+                        <!-- Edit user's living group -->
+                    </div> 
+                    <div id='userInterests'>
+                        Interests: temp
+                    </div> <!-- not changing this yet -->
+                </div>
+                <div class="col-md-8">
+                    <br>
+                    <h4>Preferred Dining Hall:</h4>
+                    <ol id='userDiningPreferences'>
 						<!-- js-powered preferences here -->
 					</ol>
-				</div>
-			</div>
-
-			<div class='row' id='userAvailability'>
-				<div class='col-sm-4'>Availability:</div>
-				<div class='col-sm-8'>
-<!-- Bootstrap Datepicker examples also online -->
-					<div id='userDate'>DATEPICKER</div>
-<!-- will make into either dynamic drag and drop or checklist-->
-					<ul id='userTimePreferences'>
-						<li>5-6</li>
-						<li>6-7</li>
-						<li>7-8</li>
-						<li>8-9</li>
-					</ul>
-				</div>
-			</div>
-
-		</div>
+                    <h4 id ='userAvailability'>Availability:</h4>
+                    <!-- Bootstrap Datepicker examples also online -->
+                        <div class="input-group date datepicker">
+                            <input type="text" class="form-control">
+                            <div class="input-group-addon">
+                                <span class="glyphicon glyphicon-th"></span>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+        
         <footer class="container-fluid text-center">
             <div class="row">
                 <div class="col-sm-4">
