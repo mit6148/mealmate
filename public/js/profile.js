@@ -34,9 +34,9 @@ function renderUserData(user) {
     nameContainer.appendChild(nameHeader);
 
     // rendering profile image
-    const profileImage = document.getElementById('userImage');
-    profileImage.style = 'background-image:url(https://coubsecure-s.akamaihd.net/get/b69/p/coub/simple/cw_timeline_pic/3171e07ffd1/647c464aad3a26608293d/med_1487878540_image.jpg';
-    // idk how to resize
+    const profileImage = document.createElement('img');
+    document.getElementById('userImage').appendChild(profileImage);
+    profileImage.src = 'https://graph.facebook.com/'+user.fbid+'/picture?type=large';
 
     // rendering aboutme
     const userAbout = document.getElementById('userAbout');
