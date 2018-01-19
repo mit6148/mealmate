@@ -1,24 +1,35 @@
-function newNavbarItem(text, url) {
+function newNavbarItem(text, url, currentPath) {
+	const itemBox = document.createElement('li');
 	const itemLink = document.createElement('a');
-	itemLink.className = 'nav-item nav-link';
+	// itemLink.className = 'nav-item nav-link';
 	itemLink.innerHTML = text;
 	itemLink.href = url;
+	if (url == currentPath) {
+		itemLink.className = "active";
+	}
+	itemBox.appendChild(itemLink);
 
-	return itemLink;
+	return itemBox;
 }
 
 function renderNavbar(user){
-	const navbarDiv = document.getElementById('nav-item-container');
+	const navbarDiv = document.getElementById('myNavbar');
+	const navbarObjects = document.createElement('ul');
+	navbarObjects.className = "nav navbar-nav navbar-right";
 
-	navbarDiv.appendChild(newNavbarItem('Home', '/'));
+	const currentPath = window.location.pathname; // get the current page
+	
+	navbarObjects.appendChild(newNavbarItem('Home', '/', currentPath));
 	if (user._id !== undefined) {
-		navbarDiv.appendChild(newNavbarItem('Profile', '/u/profile?'+user._id)); // the real one. How to get it to work?
-		navbarDiv.appendChild(newNavbarItem('Matches', '/u/matches?'+user._id));
+		navbarObjects.appendChild(newNavbarItem('Profile', '/u/profile?'+user._id, currentPath)); // the real one. How to get it to work?
+		navbarObjects.appendChild(newNavbarItem('Matches', '/u/matches?'+user._id, currentPath));
 		//navbarDiv.appendChild(newNavbarItem('Profile', '/profile'));
 		//navbarDiv.appendChild(newNavbarItem('Matches', '/matches'));
-		navbarDiv.appendChild(newNavbarItem('Logout', '/logout'));
+		navbarObjects.appendChild(newNavbarItem('Logout', '/logout', currentPath));
 	} else {
-		navbarDiv.appendChild(newNavbarItem('Login', 'auth/facebook')); // add this when FB authentication happens
+		navbarObjects.appendChild(newNavbarItem('Login', 'auth/facebook', currentPath)); // add this when FB authentication happens
 	}
+	
+	navbarDiv.appendChild(navbarObjects);
 	
 }
