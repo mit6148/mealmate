@@ -1,78 +1,190 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Matches</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="author" content="Liu^3 - Cynthia Liu, Nanxi Liu, and Sabrina Liu" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous"> <!-- bootstrap added -->
-    <style>
-        table {
-            width:100%;
-        }
-        table, th, td {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 5px;
-            text-align: left;
-        }
-        table#t01 tr:nth-child(even) {
-            background-color: #eee;
-        }
-        table#t01 tr:nth-child(odd) {
-           background-color:#fff;
-        }
-        table#t01 th {
-            background-color: black;
-            color: white;
-        }
-        </style>
+    <title>Matches - mealmate</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <meta name="author" content="Liu^3 - Cynthia Liu, Nanxi Liu, and Sabrina Liu">
+        <meta name="description" content="Join us in mealmate, where you'll discover new students through dining together!">
+        <meta name="keywords" content="college students meal, dining hall, mealmate, MIT, eat, new friends">    
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="shortcut icon" type="image/x-icon" href="../../public/img/favicon.png"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <style>
+        .navbar {
+              margin-bottom: 0;
+              border-radius: 0;
+              background-color: #66A25C;
+              color: #FFF;
+              padding: 1% 0;
+              font-size: 1.2em;
+              border: 0;
+          }
+            
+          .navbar-brand {
+              float: left;
+              min-height: 55px;
+              padding: 0 15px 5px;
+          }
+            
+          .navbar-inverse .navbar-nav .active a, .navbar-inverse .navbar-nav .active a:focus, .navbar-inverse .navbar-nav .active a:hover {
+              color: #FFF;
+              background-color: #66A25C;
+          }
+            
+          .navbar-inverse .navbar-nav li a{
+              color: #D5D5D5;
+          }
+        
+          .container {
+              margin: 4% auto;
+          }
+            
+          footer {
+              width: 100%;
+              background-color: #66A25C;
+              padding: 5%;
+              color: #FFF;
+          }
+
+          .fa {
+              padding: 15px;
+              font-size: 25px;
+              color: #D5D5D5;
+          }
+
+          .fa:hover {
+              color: #FFF;
+              text-decoration: none;
+          }
+
+          @media (max-width: 900px) {
+              .fa{
+                  font-size: 20px;
+                  padding: 10px;
+              }
+          }
+
+          @media (max-width: 600px) {
+              .carousel-caption {
+                  display: none;
+              }
+              #icon {
+                  max-width: 150px;
+              }
+              h2 {
+                  font-size: 1.7em;
+              }
+          }
+            
+          table {
+              width:100%;
+          }
+          table, th, td {
+              border: 1px solid black;
+              border-collapse: collapse;
+          }
+          th, td {
+              padding: 5px;
+              text-align: left;
+          }
+          table#t01 tr:nth-child(even) {
+              background-color: #eee;
+          }
+          table#t01 tr:nth-child(odd) {
+              background-color:#fff;
+          }
+          table#t01 th {
+              background-color: #66A25C;
+              color: white;
+          }
+            </style>
     </head>
     <body>
-    
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary"> <!-- navbar -->
-        <div class="navbar-brand" href="#">mealmate</div> <!-- website name on the navbar -->
-        <div class="navbar-nav" id="nav-item-container">
-                <!-- navbar items are inserted here --> <!-- dependent on login -->
+    <nav class="navbar navbar-inverse"> <!-- navbar -->
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img src="../../public/img/logo.png"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="edit.html">Edit Profile</a></li>
+                    <li><a href="matches.html">Matches</a></li>
+                    <li><a href="#">Login</a></li>
+                </ul>
+            </div>
         </div>
-    </nav>
+        </nav>
+   
+    <div class= "container text-center"> <!-- about us section -->
+            <h2>Matches</h2>
+            <br>
+            <div id="matchTable"> <!-- table of matches, or indication of no matches, goes here -->
+                <table id="t01">
+                  <tr>
+                    <th>Profile Picture</th>
+                    <th>Name</th> 
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Dining Hall</th>
+                  </tr>
+                  <tr>
+                    <td>:D</td>
+                    <td>Sabrina Liu</td>
+                    <td>Monday, January 15</td>
+                    <td>5:30 PM</td>
+                    <td>Next</td>
+                  </tr>
+                  <tr>
+                    <td>:D</td>
+                    <td>Cynthia Liu</td>
+                    <td>Wednesday, January 17</td>
+                    <td>6:30 PM</td>
+                    <td>Mccormick</td>
+                  </tr>
+                  <tr>
+                    <td>:D</td>
+                    <td>Nanxi Liu</td>
+                    <td>Thursday, January 18</td>
+                    <td>7:30 PM</td>
+                    <td>Maseeh</td>
+                  </tr>
+                </table>
+            </div>
+        </div>
 
-    <h1>Matches</h1> <!-- moved this so the navbar is above the title -->
-    <div id="matchTable"> <!-- table of matches, or indication of no matches, goes here -->
-        <table id="t01">
-          <tr>
-            <th>Profile Picture</th>
-            <th>Name</th> 
-            <th>Date</th>
-            <th>Time</th>
-            <th>Dining Hall</th>
-          </tr>
-          <tr>
-            <td>:D</td>
-            <td>Sabrina Liu</td>
-            <td>Monday, January 15</td>
-            <td>5:30 PM</td>
-            <td>Next</td>
-          </tr>
-          <tr>
-            <td>:D</td>
-            <td>Cynthia Liu</td>
-            <td>Wednesday, January 17</td>
-            <td>6:30 PM</td>
-            <td>Mccormick</td>
-          </tr>
-          <tr>
-            <td>:D</td>
-            <td>Nanxi Liu</td>
-            <td>Thursday, January 18</td>
-            <td>7:30 PM</td>
-            <td>Maseeh</td>
-          </tr>
-        </table>
-    </div>
+        <footer class="container-fluid text-center">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h3>Contact Us</h3>
+                    <br>
+                    <h4>cynliu98@mit.edu</h4>
+                    <h4>nanxi@mit.edu</h4>
+                    <h4>sabliu@mit.edu</h4>
+                </div>
+                <div class="col-sm-4">
+                    <h3>Connect</h3>
+                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="#" class="fa fa-twitter"></a>
+                    <a href="#" class="fa fa-google"></a>
+                    <a href="#" class="fa fa-linkedin"></a>
+                    <a href="#" class="fa fa-youtube"></a>
+                </div>
+                <div class="col-sm-4">
+                    <img src="../../public/img/logo.png" class="icon">
+                </div>
+            </div>
+        </footer>
+        
     </body>
     <script src="/static/js/api.js"></script>
     <script src="/static/js/navbar.js"></script>
