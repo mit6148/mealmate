@@ -4,6 +4,7 @@ const connect = require('connect-ensure-login');
 
 // models
 const User = require('../models/user');
+const MatchRequest = require('../models/matchRequest');
 
 const router = express.Router();
 
@@ -19,6 +20,12 @@ router.get('/whoami', function(req, res) {
 router.get('/user', function(req, res) {
   User.findOne({ _id: req.query._id}, function(err, user){
     res.send(user);
+  });
+});
+
+router.get('/matchRequest', function(req, res) {
+  MatchRequest.findOne({ _id: req.query._id}, function(err, matchRequest) {
+    res.send(matchRequest);
   });
 });
 
