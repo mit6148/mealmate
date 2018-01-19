@@ -3,8 +3,6 @@ function main() {
     get('/api/user', {'_id': profileId}, function(profileUser) {
         // all of these functions are now in submit.js
         renderUserData(profileUser);
-        submitProfileLink(profileUser);
-        submitCourseClassLink(profileUser);
     });
     get('/api/whoami', {}, function(user){
         renderNavbar(user);

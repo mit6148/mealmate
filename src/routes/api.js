@@ -42,6 +42,9 @@ router.post('/editProfile/',
         case "about": // change about me
           user.about = req.body.about;
           break;
+        case "residence": // change residence
+          user.residence = req.body.residence;
+          break;
         default:
           break; // no changes
       }
