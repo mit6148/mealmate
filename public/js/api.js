@@ -49,7 +49,29 @@ function post(endpoint, params, successCallback, failureCallback) {
     }
   };
   xhr.onerror = function(err) {
-    reject(xhr.statusText);
+    console.log(xhr.statusText);
   };
   xhr.send(JSON.stringify(params));
 }
+
+// dude I have no hecking clue
+/* function put(endpoint, params, successCallback, failureCallback) {
+  const xhr = new XMLHttpRequest();
+  xhr.open('PUT', endpoint, true);
+  xhr.setRequestHeader('Content-type', 'application/json');
+  xhr.withCredentials = true;
+  xhr.onload = function(err) {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+        if (successCallback) {
+          successCallback(JSON.parse(xhr.responseText));
+        }
+    } else {
+        if (failureCallback)
+          failureCallback(xhr.statusText);
+    }
+  };
+  xhr.onerror = function(err) {
+    reject(xhr.statusText);
+  };
+  xhr.send(JSON.stringify(params));
+} */

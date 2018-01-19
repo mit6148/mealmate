@@ -7,9 +7,9 @@ const UserModelSchema = new mongoose.Schema ({
 	course: String,
 	year: String,
 	about: String,
-	halls: { type: Array, required: true, default: [] },
+	halls: Array,
 	residence: String,
-	matches: { type : Array, required: true, default: [] }, // an array of other users' ids
+	matches: Array,
 });
 
 module.exports = mongoose.model('UserModel', UserModelSchema);

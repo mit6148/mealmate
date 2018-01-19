@@ -57,7 +57,6 @@ function renderCourseClassInput(user) {
 
     course.appendChild(newCourse);
     year.appendChild(newClass);
-
 }
 
 /* ------------------ SUBMISSION LINK CODE BELOW!!!!! ------------------ */
@@ -87,25 +86,23 @@ function submitCourseClassLink(user) {
 
 function submitCourseClassHandler (user) {
 
-	const newCourse = document.getElementById('editUserCourse');
-	const newClass = document.getElementById('editUserClass');
+	const newCourse = document.getElementById('new-course-input');
+	const newClass = document.getElementById('new-class-input');
 
 	const data = { // set everything to current value if nothing inputted
+		_id: user._id,
 		dataType: "course-year",
 		course: user.course,
 		year: user.year,
 	};
 
-	if (newCourse) {
-		data.course = newCourse;
-	}
+	if (newCourse)
+		data.course = newCourse.value;
 
-	if (newClass) {
-		data.year = newClass;
-	}
+	if (newClass)
+		data.year = newClass.value;
 
-	put('/api/editProfile/'+user._id, data);
+	post('/api/editProfile', data); // endpoint, params, no successCallBack or failureCallBack
 	newCourse.value = '';
 	newClass.value = '';
-
 }
