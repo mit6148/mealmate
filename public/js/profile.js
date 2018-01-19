@@ -4,24 +4,32 @@ function main() {
         renderUserData(profileUser);
 
         // Find buddy event listener
+        /*
         const matchButton = document.getElementById('findBuddyButton');
         matchButton.addEventListener('click', function() {
             const match = getMatch(profileUser);
             // post match to the user
             document.location.href = '/u/matches?'+profileUser._id; // does this work lol
         });
-        
+        */
+
         // render the correct edit link
         const editLinkDiv = document.getElementById('editProfile');
         const editLink = document.createElement('a');
         editLink.setAttribute('href', '/u/edit?'+profileUser._id);
         editLink.innerHTML = 'Edit Profile';
         editLinkDiv.appendChild(editLink);
+
+        $('.datepicker').datepicker();
+        $('#findBuddyButton').click(function(){
+            console.log($('.datepicker').datepicker('getDate')); //ex output String: Thu Jan 18 2018 00:00:00 GMT-0500 (EST)
+        });
     });
     get('/api/whoami', {}, function(user){
         renderNavbar(user);
     });
-        
+
+
 }
 
 function renderUserData(user) {
@@ -65,7 +73,6 @@ function renderUserData(user) {
         hallItem.innerHTML = 'No preferences listed';
         hallPrefs.appendChild(hallItem);
     } 
-
     // PARTS NOT DONE: INTERESTS, MAKING ALL OF THIS EDITABLE, TIME/DATE
 }
 
