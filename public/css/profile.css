@@ -1,3 +1,75 @@
 .imageBox{
-	text-align: center;
+     text-align: center;
+}
+ .navbar {
+     margin-bottom: 0;
+     border-radius: 0;
+     background-color: #66A25C;
+     color: #FFF;
+     padding: 1% 0;
+     font-size: 1.2em;
+     border: 0;
+}
+ .navbar-brand {
+     float: left;
+     min-height: 55px;
+     padding: 0 15px 5px;
+}
+ .navbar-inverse .navbar-nav .active a, .navbar-inverse .navbar-nav .active a:focus, .navbar-inverse .navbar-nav .active a:hover {
+     color: #FFF;
+     background-color: #66A25C;
+}
+ .navbar-inverse .navbar-nav li a{
+     color: #D5D5D5;
+}
+ .container {
+     margin: 4% auto;
+}
+ .btn {
+     font-size: 18px;
+     color: #FFF;
+     padding: 12px 22px;
+     background: #66A25C;
+     border: 2px solid #FFF;
+}
+ footer {
+     width: 100%;
+     background-color: #66A25C;
+     padding: 5%;
+     color: #FFF;
+}
+ .fa {
+     padding: 15px;
+     font-size: 25px;
+     color: #D5D5D5;
+}
+ .fa:hover {
+     color: #FFF;
+     text-decoration: none;
+}
+ #datepicker{
+     width: 180px;
+}
+ #datepicker > span:hover{
+     cursor: pointer;
+}
+ #sortable {
+     list-style-type: none;
+     margin: 0;
+     padding: 0;
+     width: 60%;
+}
+ #sortable li {
+     font-size: 1.4em;
+     height: 18px;
+}
+ #sortable li span {
+     position: absolute;
+     margin-left: -1.3em;
+}
+ @media (max-width: 900px) {
+     .fa{
+         font-size: 20px;
+         padding: 10px;
+    }
 }

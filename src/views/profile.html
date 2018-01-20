@@ -7,7 +7,7 @@
         <meta name="author" content="Liu^3 - Cynthia Liu, Nanxi Liu, and Sabrina Liu">
         <meta name="description" content="Join us in mealmate, where you'll discover new students through dining together!">
         <meta name="keywords" content="college students meal, dining hall, mealmate, MIT, eat, new friends"> 
-
+        
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="/static/css/navbar.css">
@@ -15,93 +15,22 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css">
 		<link rel="stylesheet" href="/static/css/profile.css">
 
-        <link rel="shortcut icon" type="image/x-icon" href="../../public/img/favicon.png"/>
+        <link rel="shortcut icon" type="image/x-icon" href="../../static/img/favicon.png"/>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-        <style>
-        .navbar {
-              margin-bottom: 0;
-              border-radius: 0;
-              background-color: #66A25C;
-              color: #FFF;
-              padding: 1% 0;
-              font-size: 1.2em;
-              border: 0;
-          }
-            
-          .navbar-brand {
-              float: left;
-              min-height: 55px;
-              padding: 0 15px 5px;
-          }
-            
-          .navbar-inverse .navbar-nav .active a, .navbar-inverse .navbar-nav .active a:focus, .navbar-inverse .navbar-nav .active a:hover {
-              color: #FFF;
-              background-color: #66A25C;
-          }
-            
-          .navbar-inverse .navbar-nav li a{
-              color: #D5D5D5;
-          }
-        
-          .container {
-              margin: 4% auto;
-          }
-            
-          .btn {
-              font-size: 18px;
-              color: #FFF;
-              padding: 12px 22px;
-              background: #66A25C;
-              border: 2px solid #FFF;
-          }
-            
-          footer {
-              width: 100%;
-              background-color: #66A25C;
-              padding: 5%;
-              color: #FFF;
-          }
-
-          .fa {
-              padding: 15px;
-              font-size: 25px;
-              color: #D5D5D5;
-          }
-
-          .fa:hover {
-              color: #FFF;
-              text-decoration: none;
-          }
-
-          @media (max-width: 900px) {
-              .fa{
-                  font-size: 20px;
-                  padding: 10px;
-              }
-          }
-
-          @media (max-width: 600px) {
-              .carousel-caption {
-                  display: none;
-              }
-              #icon {
-                  max-width: 150px;
-              }
-              h2 {
-                  font-size: 1.7em;
-              }
-          }
-        </style>
-
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script src="/static/js/api.js"></script>
 		<script src="/static/js/navbar.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
 		<script src="/static/js/profile.js"></script>
-
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script>
+        $( function() {
+            $( "#sortable" ).sortable();
+            $( "#sortable" ).disableSelection();
+        } );
+        </script>
 
     </head>
 	<body>
@@ -152,19 +81,54 @@
                     <br>
                     <h4>Preferred Dining Hall:</h4>
                     <ol id='userDiningPreferences'>
-						<!-- js-powered preferences here -->
-					</ol>
-                    <div id ='userAvailability'>Availability:</div>
-                    <!-- Bootstrap Datepicker examples also online -->
-                        <div class="input-group date datepicker">
-                            <input type="text" class="form-control">
-                            <div class="input-group-addon">
-                                <span class="glyphicon glyphicon-th"></span>
-                            </div>
-                        </div>
-                    <button type="button" class="btn btn-default" id="find-mealmate-button">Find a mealmate!</button>
+
+						<ul id="sortable">
+                            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Baker</li>
+                            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Maseeh</li>
+                            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Mccormick</li>
+                            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Simmons</li>
+                            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Next</li>
+                        </ul>
+					</ol> 
+                    <br>
+                    
+                    <h4 id ='userAvailability'>Date Availability</h4>
+                    <p>Put in the date you want to have your meal!</p>
+                    <div id="datepicker" class="input-group date" data-date-formate="yyyy-mm-dd">
+                        <input type="text" name="">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                    </div>
+                    
+                    <br>
+                    
+                    <h4>Time Availability</h4>
+                    <p>Check off all the times when you are availabile for a meal!</p>
+                    <div class="form-check">
+                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> 9 am - 9:30 am</label><br>
+                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> 9:30 am - 10 am</label><br>
+                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> 10 am - 10:30 am</label><br>
+                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> 10:30 am - 11 am</label><br> 
+                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> 11 am - 11:30 am</label><br>
+                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> 11:30 am - 12 pm</label><br>
+                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> 12 pm - 12:30 pm</label><br>
+                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> 12:30 pm - 1 pm</label><br>
+                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> 1 pm - 1:30 pm</label><br>
+                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> 1:30 pm - 2 pm</label><br>
+                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> 2 pm - 2:30 pm</label><br>
+                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> 2:30 pm - 3 pm</label><br>
+                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> 5 pm - 5:30 pm</label><br>
+                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> 5:30 pm - 6 pm</label><br>
+                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> 6 pm - 6:30 pm</label><br>
+                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> 6:30 pm - 7 pm</label><br>
+                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> 7 pm - 7:30 pm</label><br>
+                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> 7:30 pm - 8 pm</label><br>
+                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> 8 pm - 8:30 pm</label><br>
+                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> 8:30 pm - 9 pm</label><br><br>
+                    
+                      <button type="button" class="btn btn-default" >Find a mealmate!</button><br><br>
                 </div>
             </div>
+        </div>
         </div>
         
         <footer class="container-fluid text-center">
@@ -194,5 +158,4 @@
             </div>
         </footer>
 	</body>
-
 </html>
