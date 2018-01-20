@@ -11,9 +11,8 @@ function main() {
         const matchButton = document.getElementById('find-mealmate-button');
         matchButton.addEventListener('click', function() {
             const date = $('#datepicker').datepicker('getDate'); //ex output String: Thu Jan 18 2018 00:00:00 GMT-0500 (EST)
-            const match = getMatch(profileUser, date);
-            // console.log("heyyyyyy: " + match);
-            document.location.href = '/u/matches?'+profileUser._id; // does this work lol
+            getMatch(profileUser, date);
+            // document.location.href = '/u/matches?'+profileUser._id; // does this work lol
         });
 
         // render the correct edit link
@@ -72,7 +71,6 @@ function renderUserData(user) {
 }
 
 function getMatch(user, d) {
-    // Thu Jan 18 2018
     // currently hardcoded date, halls, and times
     // halls are just the user's top 3
 
@@ -87,12 +85,20 @@ function getMatch(user, d) {
 
     // first post your request to the database
     // then get a match
-    post('/api/matchPost', data);
-    // console.log("Something should have been posted!")
-    get('/api/matchRequest', {'userid': user._id, 'date': d, 'times': t, 'halls': h}, function (match) {
-        yourMatch = match;
+    post('/api/matchPost', data, function () {
+        get('/api/matchRequest', {'userid': user._id, 'date': d, 'times': t, 'halls': h}, function (match) {
+            yourMatch = match;
+            const matchData = {
+                _id: user._id,
+                dataType: "matches",
+                m: match
+            }
+            // update the user with the match
+            post('/api/editProfile', matchData);
+        });
     });
-    // console.log("A match should have been gotten!")
+    
+    console.log("Your match, or lack thereof: " + yourMatch);
     return yourMatch;
 }
 
