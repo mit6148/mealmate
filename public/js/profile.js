@@ -1,11 +1,14 @@
 function main() {
     const profileId = window.location.search.substring(1);
+    $('#datepicker').datepicker({
+        autoclose: true,
+        todayHighlight: true
+    }).datepicker('update', new Date()); // nice jQuery
+
     get('/api/user', {'_id': profileId}, function(profileUser) {
         renderUserData(profileUser);
 
-// HACKY: needed to put this inside get request since took time for jquery to load
-        $('.datepicker').datepicker(); // nice jQuery
-
+        
         const matchButton = document.getElementById('find-mealmate-button');
         matchButton.addEventListener('click', function() {
             const date = $('.datepicker').datepicker('getDate'); //ex output String: Thu Jan 18 2018 00:00:00 GMT-0500 (EST)

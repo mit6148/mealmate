@@ -17,22 +17,6 @@
 
         <link rel="shortcut icon" type="image/x-icon" href="../../static/img/favicon.png"/>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<script src="/static/js/api.js"></script>
-		<script src="/static/js/navbar.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
-		<script src="/static/js/profile.js"></script>
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        
-        <script>
-        $( function() {
-            $( "#sortable" ).sortable();
-            $( "#sortable" ).disableSelection();
-        } );
-        </script>
-
     </head>
 	<body>
         <nav class="navbar navbar-inverse"> <!-- navbar -->
@@ -80,17 +64,15 @@
                 </div>
                 <div class="col-md-8">
                     <br>
-                    <h4>Preferred Dining Hall:</h4>
-                    <ol id='userDiningPreferences'>
-
-						<ul id="sortable">
+                    <h4>Preferred Dining Hall</h4>
+                    <p>Drag the dining halls around and rank your preferences!</p>
+						<ol id="userDiningPreferences">
                             <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Baker</li>
                             <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Maseeh</li>
                             <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Mccormick</li>
                             <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Simmons</li>
                             <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Next</li>
-                        </ul>
-					</ol> 
+                        </ol> 
                     <br>
                     
                     <h4 id ='userAvailability'>Date Availability</h4>
@@ -126,7 +108,7 @@
                       <label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> 8 pm - 8:30 pm</label><br>
                       <label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> 8:30 pm - 9 pm</label><br><br>
                     
-                      <button type="button" class="btn btn-default" >Find a mealmate!</button><br><br>
+                      <button type="button" class="btn btn-default" id="find-mealmate-button">Find a mealmate!</button><br><br>
                 </div>
             </div>
         </div>
@@ -154,9 +136,24 @@
                 </div>
                 <div class="col-sm-4">
                     <br>
-                    <img src="../../static/img/logo.png" class="icon">
+                    <img src="/static/img/logo.png" class="icon">
                 </div>
             </div>
         </footer>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
+		<script src="/static/js/api.js"></script>
+		<script src="/static/js/navbar.js"></script>
+		<script src="/static/js/profile.js"></script>
+        
+        <script>
+        $( function() {
+            $( "#userDiningPreferences" ).sortable();
+            $( "#userDiningPreferences" ).disableSelection();
+        } );
+        </script>
 	</body>
 </html>
