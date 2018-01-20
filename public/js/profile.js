@@ -74,20 +74,21 @@ function getMatch(user, d) {
     // currently hardcoded date, halls, and times
     // halls are just the user's top 3
 
-    let yourMatch;
     const t = [9,9.5,12,12.5,13,13.5,17.5,18,18.5,19,19.5];
     const h = ["Next", "Maseeh", "Baker"];
     const data = {
         date: d,
         times: t,
         halls: h
-    }
+    };
+
+    // console.log(data);
+    // console.log(JSON.stringify(data))
 
     // first post your request to the database
     // then get a match
     post('/api/matchPost', data, function () {
         get('/api/matchRequest', {'userid': user._id, 'date': d, 'times': t, 'halls': h}, function (match) {
-            yourMatch = match;
             const matchData = {
                 _id: user._id,
                 dataType: "matches",
@@ -95,11 +96,9 @@ function getMatch(user, d) {
             }
             // update the user with the match
             post('/api/editProfile', matchData);
+            console.log("Your match, or lack thereof: " + match);
         });
     });
-    
-    console.log("Your match, or lack thereof: " + yourMatch);
-    return yourMatch;
 }
 
 main();

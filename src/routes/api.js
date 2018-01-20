@@ -26,22 +26,32 @@ router.get('/user', function(req, res) {
 // match step 2: get matching requests
 router.get('/matchRequest', function(req, res) {
     // first: the match must eat on the same day
-    console.log("This is req.query.date: " + req.query.date);
     MatchRequest.find({ date: req.query.date }, function(err, matches) {
         if (err) { // log error
             console.log("Error " + err);
-            res.send({message: "Sorry! No matches yet. Check back soon!"}); // error
+            res.send({message: "There was an error!"}); // error
         }
-        // if there are matches, filter them by 
-        // time, and requests NOT made by user (real awk to match with yourself)
+        // if there are matches, filter them
         if (matches && matches.length) {
+            let idMatches = [];
+            // filter by user id
+            for (let i=0; i<matches.length; i++) {
+                if (req.query.userid != matches[i].userid) {
+                    console.log("hey it isn't yourself");
+                    idMatches.push(matches[i]); // add that match
+                }
+            }
             /* const uTimes = req.query.times; // the user's times
             let timeMatches = [];
             for (let i=0; i<matches.length; i++) {
 
             } <--- write this later!! */
-            console.log("meowmeow! " + matches);
-            res.send(matches[0]); // return the first match
+            console.log("meowmeow! " + idMatches);
+            if (idMatches.length) {
+                res.send(idMatches[0]); // return the first match
+            } else {
+                res.send({message: "Sorry! No matches yet. Check back soon!"})
+            }
         } else {
             res.send({message: "Sorry! No matches yet. Check back soon!"});
         }
@@ -93,7 +103,10 @@ router.post('/editProfile/',
           user.residence = req.body.residence;
           break;
         case "matches":
-          user.matches.push(req.body.m);
+          if (req.body.hasOwnProperty('date')) {
+            user.matches.push(req.body.m); // append a date
+          } 
+          break;
         default:
           break; // no changes
       }
