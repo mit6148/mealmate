@@ -4,7 +4,7 @@
      background-color: #66A25C;
      color: #FFF;
      padding: 1% 0;
-     font-size: 1.2em;
+     font-size: 1em;
      border: 0;
 }
  .btn {
@@ -30,8 +30,8 @@
      margin: 4% auto;
 }
  .carousel-caption {
-     top: 50%;
-     transform: translateY(-50%);
+     top: 38%;
+     transform: translateY(-40%);
 }
  footer {
      width: 100%;
@@ -73,4 +73,28 @@
          font-size: 1.7em;
     }
 }
- 
+
+#welcome {
+    font-family: 'Mr Dafoe';
+    font-weight: normal;
+    font-size: 90px;
+    
+}
+
+#mealmate {
+    font-family: 'Chewy';
+    font-size: 60px;
+}
+
+#title-description {
+    font-size: 30px;
+}
+
+body {
+    font-family: 'Open Sans Condensed';
+    font-size: 22px;
+}
+
+h1, h2 {
+   font-weight: bold; 
+}

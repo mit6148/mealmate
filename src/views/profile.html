@@ -15,7 +15,8 @@
 		<link rel="stylesheet" href="/static/css/profile.css">
         <link rel="stylesheet" href="/static/css/style.css">
         <link rel="shortcut icon" type="image/x-icon" href="../../static/img/favicon.png"/>
-
+        <link href='https://fonts.googleapis.com/css?family=Open Sans Condensed:300' rel='stylesheet'>
+        
     </head>
 	<body>
         <nav class="navbar navbar-inverse"> <!-- navbar -->
@@ -44,13 +45,10 @@
                     <div class='imageBox img-responsive' id="userImage">
                         <!-- insert the user image via js here -->
                     </div>
-                    <h3>About Me</h3>
+                    <h2>About Me</h2>
 					<div id='userAbout'>
 						<!-- insert about me via js here -->
 					</div>
-                    <div id='editProfile'> <!-- edit profile button -->
-                        <!-- insert the button via javascript -->
-                    </div>
                     <div id='userCourseClass'>
                         <!-- Course 0, 2000, or the actual course and class -->
                     </div>
@@ -60,10 +58,16 @@
                     <div id='userInterests'>
                         Interests: temp
                     </div> <!-- not changing this yet -->
+                    <br>
+                    <div id='editProfile'> <!-- edit profile button -->
+                        <!-- insert the button via javascript -->
+                    </div>
+                    <button type="button" class="btn btn-default" id='editProfile'>Edit Profile</button> <!-- edit profile button -->
+                        <!-- insert the button via javascript -->
                 </div>
                 <div class="col-md-8">
                     <br>
-                    <h4>Preferred Dining Hall</h4>
+                    <h2>Preferred Dining Hall</h2>
                     <p>Drag the dining halls around and rank your preferences!</p>
 						<ol id="userDiningPreferences">
                             <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Baker</li>
@@ -74,7 +78,7 @@
                         </ol> 
                     <br>
                     
-                    <h4 id ='userAvailability'>Date Availability</h4>
+                    <h2 id ='userAvailability'>Date Availability</h2>
                     <p>Put in the date you want to have your meal!</p>
                     <div id="datepicker" class="input-group date" data-date-formate="yyyy-mm-dd">
                         <input type="text" name="">
@@ -83,7 +87,7 @@
                     
                     <br>
                     
-                    <h4>Time Availability</h4>
+                    <h2>Time Availability</h2>
                     <p>Check off all the times when you are availabile for a meal!</p>
                     <div class="form-check">
                       <label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> 9 am - 9:30 am</label><br>
