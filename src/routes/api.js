@@ -10,24 +10,63 @@ const router = express.Router();
 
 // api endpoints
 router.get('/whoami', function(req, res) {
-  if (req.isAuthenticated()){
-    res.send(req.user);
-  } else{
-    res.send({});
-  }
+    if (req.isAuthenticated()){
+        res.send(req.user);
+    } else {
+        res.send({});
+    }
 });
 
 router.get('/user', function(req, res) {
-  User.findOne({ _id: req.query._id}, function(err, user){
-    res.send(user);
-  });
+    User.findOne({ _id: req.query._id}, function(err, user){
+        res.send(user);
+    });
 });
 
+// match step 2: get matching requests
 router.get('/matchRequest', function(req, res) {
-  MatchRequest.findOne({ _id: req.query._id}, function(err, matchRequest) {
-    res.send(matchRequest);
-  });
+    // first: the match must eat on the same day
+    console.log("This is req.query.date: " + req.query.date);
+    MatchRequest.find({ date: req.query.date }, function(err, matches) {
+        if (err) { // log error
+            console.log("Error " + err);
+            res.send({message: "Sorry! No matches yet. Check back soon!"}); // error
+        }
+        // if there are matches, filter them by 
+        // time, and requests NOT made by user (real awk to match with yourself)
+        console.log(matches);
+        if (matches.length) {
+            /* const uTimes = req.query.times; // the user's times
+            let timeMatches = [];
+            for (let i=0; i<matches.length; i++) {
+
+            } <--- write this later!! */
+            // console.log("meowmeow! " + matches);
+            res.send(matches[0]); // return the first match
+        } else {
+            res.send({message: "Sorry! No matches yet. Check back soon!"});
+        }
+    });
 });
+
+// match step 1: post your request
+router.post('/matchPost', 
+    connect.ensureLoggedIn(),
+    function(req, res) {
+        const newMatchRequest = new MatchRequest({
+            'userid': req.user._id,
+            'date': req.body.date,
+            'halls': req.body.halls,
+            'times': req.body.times,
+        });
+
+        newMatchRequest.save(function(err,mr) {
+            if (err) console.log(err);
+        });
+
+        res.send({});       
+    }
+);
 
 // edit different aspects of a user's profile
 // source: https://scotch.io/tutorials/build-a-restful-api-using-node-and-express-4

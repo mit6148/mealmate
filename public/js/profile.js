@@ -3,15 +3,16 @@ function main() {
     get('/api/user', {'_id': profileId}, function(profileUser) {
         renderUserData(profileUser);
 
-        // Find buddy event listener
-        /*
-        const matchButton = document.getElementById('findBuddyButton');
+// HACKY: needed to put this inside get request since took time for jquery to load
+        $('.datepicker').datepicker(); // nice jQuery
+
+        const matchButton = document.getElementById('find-mealmate-button');
         matchButton.addEventListener('click', function() {
-            const match = getMatch(profileUser);
-            // post match to the user
+            const date = $('.datepicker').datepicker('getDate'); //ex output String: Thu Jan 18 2018 00:00:00 GMT-0500 (EST)
+            const match = getMatch(profileUser, date);
+            // console.log("heyyyyyy: " + match);
             document.location.href = '/u/matches?'+profileUser._id; // does this work lol
         });
-        */
 
         // render the correct edit link
         const editLinkDiv = document.getElementById('editProfile');
@@ -20,17 +21,10 @@ function main() {
         editLink.innerHTML = 'Edit Profile';
         editLinkDiv.appendChild(editLink);
 
-// HACKY: needed to put this inside get request since took time for jquery to load
-        $('#datepicker').datepicker();
-        $('#findBuddyButton').click(function(){
-            console.log($('#datepicker').datepicker('getDate')); //ex output String: Thu Jan 18 2018 00:00:00 GMT-0500 (EST)
-        });
     });
     get('/api/whoami', {}, function(user){
         renderNavbar(user);
     });
-
-
 }
 
 function renderUserData(user) {
@@ -38,8 +32,6 @@ function renderUserData(user) {
     const nameContainer = document.getElementById('userName');
     const nameHeader = document.createElement('h1');
     nameHeader.innerHTML = user.name;
-    console.log(nameContainer);
-    console.log(nameHeader);
     nameContainer.appendChild(nameHeader);
 
     // rendering profile image
@@ -78,9 +70,29 @@ function renderUserData(user) {
     // PARTS NOT DONE: INTERESTS, MAKING ALL OF THIS EDITABLE, TIME/DATE
 }
 
-function getMatch(user) {
-    console.log("Hi fam");
-    return undefined;
+function getMatch(user, d) {
+    // Thu Jan 18 2018
+    // currently hardcoded date, halls, and times
+    // halls are just the user's top 3
+
+    let yourMatch;
+    const t = [9,9.5,12,12.5,13,13.5,17.5,18,18.5,19,19.5];
+    const h = ["Next", "Maseeh", "Baker"];
+    const data = {
+        date: d,
+        times: t,
+        halls: h
+    }
+
+    // first post your request to the database
+    // then get a match
+    post('/api/matchPost', data);
+    // console.log("Something should have been posted!")
+    get('/api/matchRequest', {'userid': user._id, 'date': d, 'times': t, 'halls': h}, function (match) {
+        yourMatch = match;
+    });
+    // console.log("A match should have been gotten!")
+    return yourMatch;
 }
 
 main();

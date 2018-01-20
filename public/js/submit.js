@@ -140,10 +140,10 @@ function submitCourseClassHandler (user) {
 		year: user.year,
 	};
 
-	if (newCourse)
+	if (newCourse.value)
 		data.course = newCourse.value;
 
-	if (newClass)
+	if (newClass.value)
 		data.year = newClass.value;
 
 	post('/api/editProfile', data); // endpoint, params, no successCallBack or failureCallBack
