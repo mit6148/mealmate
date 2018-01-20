@@ -20,6 +20,7 @@ function main() {
         editLink.innerHTML = 'Edit Profile';
         editLinkDiv.appendChild(editLink);
 
+// HACKY: needed to put this inside get request since took time for jquery to load
         $('.datepicker').datepicker();
         $('#findBuddyButton').click(function(){
             console.log($('.datepicker').datepicker('getDate')); //ex output String: Thu Jan 18 2018 00:00:00 GMT-0500 (EST)
@@ -44,6 +45,7 @@ function renderUserData(user) {
     // rendering profile image
     const profileImage = document.createElement('img');
     document.getElementById('userImage').appendChild(profileImage);
+//    profileImage.src = 'https://graph.facebook.com/2015862172072286/picture?type=large'
     profileImage.src = 'https://graph.facebook.com/'+user.fbid+'/picture?type=large';
 
     // rendering aboutme
