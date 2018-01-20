@@ -9,17 +9,4 @@ function main() {
     });     
 }
 
-function renderUserData(user) {
-	// rendering about
-	$('#editUserAbout').val(user.about);
-	$('#editUserCourse').val(user.course);
-	$('#editUserYear').val(user.year);
-	$('editUserLivingGroup').val(user.residence);
-
-// User interests not currently implemented	
-//	$('editUserInterests').val(user.interests);
-
-
-}
-
 main();
