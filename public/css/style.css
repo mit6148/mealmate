@@ -74,6 +74,7 @@
     }
 }
 
+<<<<<<< HEAD
 #welcome {
     font-family: 'Mr Dafoe';
     font-weight: normal;
@@ -98,3 +99,8 @@ body {
 h1, h2 {
    font-weight: bold; 
 }
+=======
+.profPicBox{
+    text-align: center;
+ }
+>>>>>>> d59153ee999dcc9dd3585aa84baae9fcc1f0a24e

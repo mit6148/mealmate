@@ -34,14 +34,13 @@ router.get('/matchRequest', function(req, res) {
         }
         // if there are matches, filter them by 
         // time, and requests NOT made by user (real awk to match with yourself)
-        console.log(matches);
-        if (matches.length) {
+        if (matches && matches.length) {
             /* const uTimes = req.query.times; // the user's times
             let timeMatches = [];
             for (let i=0; i<matches.length; i++) {
 
             } <--- write this later!! */
-            // console.log("meowmeow! " + matches);
+            console.log("meowmeow! " + matches);
             res.send(matches[0]); // return the first match
         } else {
             res.send({message: "Sorry! No matches yet. Check back soon!"});
@@ -91,6 +90,8 @@ router.post('/editProfile/',
         case "residence": // change residence
           user.residence = req.body.residence;
           break;
+        case "matches":
+          user.matches.push(req.body.m);
         default:
           break; // no changes
       }
