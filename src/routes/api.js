@@ -40,7 +40,7 @@ router.get('/matchRequest', function(req, res) {
             for (let i=0; i<matches.length; i++) {
 
             } <--- write this later!! */
-            // console.log("meowmeow! " + matches);
+            console.log("meowmeow! " + matches);
             res.send(matches[0]); // return the first match
         } else {
             res.send({message: "Sorry! No matches yet. Check back soon!"});
@@ -90,6 +90,8 @@ router.post('/editProfile/',
         case "residence": // change residence
           user.residence = req.body.residence;
           break;
+        case "matches":
+          user.matches.push(req.body.m);
         default:
           break; // no changes
       }
