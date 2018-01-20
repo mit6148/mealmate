@@ -80,8 +80,10 @@ router.post('/editProfile/',
       }
 
       switch(req.body.dataType) {
-        case "course-year": // change course and class year
+        case "course": // change course and class year
           user.course = req.body.course;
+          break;
+        case "year":
           user.year = req.body.year;
           break;
         case "about": // change about me

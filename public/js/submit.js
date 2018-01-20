@@ -95,7 +95,7 @@ function submitCourseClassHandler (user) {
 
 	const data = { // set everything to current value if nothing inputted
 		_id: user._id,
-		dataType: "course-year",
+		dataType: "course-year-about",
 		course: user.course,
 		year: user.year,
 	};
