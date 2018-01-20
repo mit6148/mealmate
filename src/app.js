@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const http = require('http');
 const bodyParser = require('body-parser');
 const express = require('express');
@@ -15,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
 app.use(session({
-	secret: 'session-secret',
+	secret: process.env.SESSION_SECRET,
 	resave: 'false',
 	saveUninitialized: 'true',
 }));

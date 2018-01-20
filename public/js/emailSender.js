@@ -1,10 +1,11 @@
 var nodemailer = require('nodemailer');
 
+//HAS NOT BEEN TESTED W ENV VARIABLES, CHECK AFTER IMPLEMENTED!
 var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'LIU CUBED EMAIL HERE',
-    pass: 'LIU CUBED PASSWORD HERE',
+    user: process.env.EMAIL_ADDRESS,
+    pass: process.env.EMAIL_PASSWORD,
   }
 });
 
@@ -16,7 +17,7 @@ parameters: String receiverEmail: email of receiver,
 */
 function sendEmail(receiverEmail, subjectText, bodyText){
 	var mailOptions = {
-	  from: 'LIU CUBED EMAIL HERE',
+	  from: process.env.EMAIL_ADDRESS,
 	  to: receiverEmail,
 	  subject: subjectText,
 	  text: bodyText
