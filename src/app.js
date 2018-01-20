@@ -25,7 +25,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //authentification routes
-app.get('/auth/facebook', passport.authenticate('facebook'));
+app.get('/auth/facebook', passport.authenticate('facebook', {
+	scope: ['public_profile', 'email']
+}));
 
 app.get(
   '/auth/facebook/callback',
