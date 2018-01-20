@@ -7,17 +7,20 @@ function renderUserData(user) {
     nameContainer.appendChild(nameHeader);
 
     // rendering profile image
-    const profileImage = document.getElementById('userImage');
-    profileImage.style = 'background-image:url(https://coubsecure-s.akamaihd.net/get/b69/p/coub/simple/cw_timeline_pic/3171e07ffd1/647c464aad3a26608293d/med_1487878540_image.jpg';
+    const profileImage = document.createElement('img');
+    document.getElementById('userImage').appendChild(profileImage);
+    profileImage.src = 'https://graph.facebook.com/'+user.fbid+'/picture?type=large';
     submitProfileLink(user); // submission link
 
-    // render textual information
-    renderCourseClassInput(user);
-    renderAboutMe(user);
-    renderRes(user);
-    submitCourseClassLink(user);
-    submitAboutLink(user);
-    submitResidenceLink(user);
+
+    // rendering default values in input elements
+    $('#editUserAbout').val(user.about);
+    $('#editUserCourse').val(user.course);
+    $('#editUserYear').val(user.year);
+    $('#editUserLivingGroup').val(user.residence);
+
+    // User interests not currently implemented 
+//  $('editUserInterests').val(user.interests);
 
     // rendering dining preferences
     const hallPrefs = document.getElementById('userDiningPreferences');
@@ -34,49 +37,6 @@ function renderUserData(user) {
         hallPrefs.appendChild(hallItem);
     } 
     // currently nearly identical to profile.js, but with a matches button
-}
-
-// edit course and class
-function renderCourseClassInput(user) {
-
-    const course = document.getElementById('editUserCourse');
-    const year = document.getElementById('editUserClass');
-
-    const newCourse = document.createElement('input');
-    newCourse.setAttribute('type', 'text');
-    newCourse.setAttribute('placeholder', user.course);
-    newCourse.setAttribute('id', 'new-course-input');
-
-    const newClass = document.createElement('input');
-    newClass.setAttribute('type', 'text');
-    newClass.setAttribute('placeholder', user.year);
-    newClass.setAttribute('id', 'new-class-input');
-
-    course.appendChild(newCourse);
-    year.appendChild(newClass);
-}
-
-// edit about me
-function renderAboutMe(user) {
-
-	const userAbout = document.getElementById('userAbout');
-    const newAbout = document.createElement('input');
-    newAbout.setAttribute('type', 'text');
-    newAbout.setAttribute('placeholder', user.about);
-    newAbout.setAttribute('id', 'new-about-input');
-
-    userAbout.appendChild(newAbout)
-}
-
-// edit residence
-function renderRes(user) {
-	const userRes = document.getElementById('userLivingGroup');
-    const newRes = document.createElement('input');
-    newRes.setAttribute('type', 'text');
-    newRes.setAttribute('placeholder', user.residence);
-    newRes.setAttribute('id', 'new-res-input');
-
-    userRes.appendChild(newRes)
 }
 
 /* ------------------ SUBMISSION LINK CODE BELOW!!!!! ------------------ */

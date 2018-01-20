@@ -39,7 +39,6 @@ function renderUserData(user) {
     // rendering profile image
     const profileImage = document.createElement('img');
     document.getElementById('userImage').appendChild(profileImage);
-//    profileImage.src = 'https://graph.facebook.com/2015862172072286/picture?type=large'
     profileImage.src = 'https://graph.facebook.com/'+user.fbid+'/picture?type=large';
 
     // rendering aboutme
