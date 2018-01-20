@@ -8,10 +8,9 @@ function main() {
     get('/api/user', {'_id': profileId}, function(profileUser) {
         renderUserData(profileUser);
 
-        
         const matchButton = document.getElementById('find-mealmate-button');
         matchButton.addEventListener('click', function() {
-            const date = $('.datepicker').datepicker('getDate'); //ex output String: Thu Jan 18 2018 00:00:00 GMT-0500 (EST)
+            const date = $('#datepicker').datepicker('getDate'); //ex output String: Thu Jan 18 2018 00:00:00 GMT-0500 (EST)
             const match = getMatch(profileUser, date);
             // console.log("heyyyyyy: " + match);
             document.location.href = '/u/matches?'+profileUser._id; // does this work lol

@@ -34,8 +34,7 @@ router.get('/matchRequest', function(req, res) {
         }
         // if there are matches, filter them by 
         // time, and requests NOT made by user (real awk to match with yourself)
-        console.log(matches);
-        if (matches.length) {
+        if (matches && matches.length) {
             /* const uTimes = req.query.times; // the user's times
             let timeMatches = [];
             for (let i=0; i<matches.length; i++) {
