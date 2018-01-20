@@ -74,7 +74,6 @@
     }
 }
 
-<<<<<<< HEAD
 #welcome {
     font-family: 'Mr Dafoe';
     font-weight: normal;
@@ -91,6 +90,10 @@
     font-size: 30px;
 }
 
+.bold {
+    font-weight: bold;
+}
+
 body {
     font-family: 'Open Sans Condensed';
     font-size: 22px;
@@ -99,8 +102,8 @@ body {
 h1, h2 {
    font-weight: bold; 
 }
-=======
+
 .profPicBox{
     text-align: center;
  }
->>>>>>> d59153ee999dcc9dd3585aa84baae9fcc1f0a24e
+
