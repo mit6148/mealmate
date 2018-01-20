@@ -7,6 +7,13 @@
      font-size: 1.2em;
      border: 0;
 }
+ .btn {
+     font-size: 18px;
+     color: #FFF;
+     padding: 12px 22px;
+     background: #66A25C;
+     border: 2px solid #FFF;
+}
  .navbar-brand {
      float: left;
      min-height: 55px;
@@ -21,6 +28,10 @@
 }
  .container {
      margin: 4% auto;
+}
+ .carousel-caption {
+     top: 50%;
+     transform: translateY(-50%);
 }
  footer {
      width: 100%;
@@ -38,6 +49,13 @@
      text-decoration: none;
 }
  @media (max-width: 900px) {
+     .carousel-caption {
+         display: none;
+    }
+     #profile-pic {
+         max-width: 300px;
+         margin: 1% auto;
+    }
      .fa{
          font-size: 20px;
          padding: 10px;
@@ -47,10 +65,12 @@
      .carousel-caption {
          display: none;
     }
-     #icon {
-         max-width: 150px;
+     #profile-pic {
+         max-width: 300px;
+         margin: 1% auto;
     }
      h2 {
          font-size: 1.7em;
     }
 }
+ 
