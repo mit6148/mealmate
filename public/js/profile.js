@@ -21,9 +21,9 @@ function main() {
         editLinkDiv.appendChild(editLink);
 
 // HACKY: needed to put this inside get request since took time for jquery to load
-        $('.datepicker').datepicker();
+        $('#datepicker').datepicker();
         $('#findBuddyButton').click(function(){
-            console.log($('.datepicker').datepicker('getDate')); //ex output String: Thu Jan 18 2018 00:00:00 GMT-0500 (EST)
+            console.log($('#datepicker').datepicker('getDate')); //ex output String: Thu Jan 18 2018 00:00:00 GMT-0500 (EST)
         });
     });
     get('/api/whoami', {}, function(user){

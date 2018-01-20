@@ -20,6 +20,87 @@
         <script src="/static/js/navbar.js"></script>
         <script src="/static/js/submit.js"></script>
         <script src="/static/js/edit.js"></script>
+        
+        <style>
+        .navbar {
+              margin-bottom: 0;
+              border-radius: 0;
+              background-color: #66A25C;
+              color: #FFF;
+              padding: 1% 0;
+              font-size: 1.2em;
+              border: 0;
+          }
+            
+          .navbar-brand {
+              float: left;
+              min-height: 55px;
+              padding: 0 15px 5px;
+          }
+            
+          .navbar-inverse .navbar-nav .active a, .navbar-inverse .navbar-nav .active a:focus, .navbar-inverse .navbar-nav .active a:hover {
+              color: #FFF;
+              background-color: #66A25C;
+          }
+            
+          .navbar-inverse .navbar-nav li a{
+              color: #D5D5D5;
+          }
+        
+          .container {
+              margin: 4% auto;
+          }
+            
+          .btn {
+              font-size: 18px;
+              color: #FFF;
+              padding: 12px 22px;
+              background: #66A25C;
+              border: 2px solid #FFF;
+          }
+            
+          footer {
+              width: 100%;
+              background-color: #66A25C;
+              padding: 5%;
+              color: #FFF;
+          }
+
+          .fa {
+              padding: 15px;
+              font-size: 25px;
+              color: #D5D5D5;
+          }
+
+          .fa:hover {
+              color: #FFF;
+              text-decoration: none;
+          }
+
+          @media (max-width: 900px) {
+              .fa{
+                  font-size: 20px;
+                  padding: 10px;
+              }
+          }
+
+          @media (max-width: 600px) {
+              .carousel-caption {
+                  display: none;
+              }
+              #icon {
+                  max-width: 150px;
+              }
+              h2 {
+                  font-size: 1.7em;
+              }
+          }
+        </style>
+        
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="/static/js/api.js"></script>
+		<script src="/static/js/navbar.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
 
 	</head>
 	<body>
@@ -44,87 +125,48 @@
         
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
-                    <h4 id='userName'>
+                <div class="col">
+                    <h4 id='userName' class="text-center">
                         <!-- insert the username via js here -->
                     </h4>
-                    <div class='imageBox img-responsive' id="userImage">
+                    <div class='imageBox img-responsive center-block' id="userImage">
                         <!-- insert the user image via js here -->
                     </div>
-                    <h3>About Me</h3>
-					<div id='userAbout'>
-						<!-- insert about me via js here -->
-					</div>
-                    <div id='submitProfileImage'>
+                    <div id='submitProfileImage' class="text-center">
                         <!-- right now this link just returns to the user's page -->
                     </div>
                     <br>
-                    <div id='userCourseClass'>
-                        <div id='editUserCourse'>
-                            <p> Course: </p>
-                            <!-- insert a course input box via js -->
-                        </div>
-                        <div id='editUserClass'>
-                            <p> Year: </p>
-                            <!-- insert a class year input box via js -->
-                        </div>
-                        <!-- link for submission goes here --> 
+                    <div class="form-group row">
+                        <label for="userAbout" class="col-2 col-form-label">Edit About Me</label>
+                        <div class="col-10">
+                            <input class="form-control" type="text" value="" id="userAbout">
                     </div>
-                    <br>
-                    <div id='userLivingGroup'>
-                        <!-- User's living group -->
-                    </div> 
-                    <div id='userLivingGroup'>
-                        <p> Living Group: </p>
-                        <!-- Edit user's living group -->
-                    </div> 
-                    <div id='userInterests'>
-                        Interests: temp
-                    </div> <!-- not changing this yet -->
-                </div>
-                <div class="col-md-8">
-                    <br>
-                    <h4>Preferred Dining Hall:</h4>
-                    <ol id='userDiningPreferences'>
-						<!-- js-powered preferences here -->
-					</ol> 
-                    <br>
-                    
-                    <h4 id ='userAvailability'>Date Availability</h4>
-                    <p>Put in the date you want to have your meal!</p>
-                    <!-- Bootstrap Datepicker examples also online -->
-                        <div class="input-group date datepicker">
-                            <input type="text" class="form-control">
-                            <div class="input-group-addon">
-                                <span class="glyphicon glyphicon-th"></span>
-                            </div>
-                        </div>
-                    <br>
-                    
-                    <h4>Time Availability</h4>
-                    <p>Check off all the times when you are availabile for a meal!</p>
-                    <div class="form-check">
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value="">9 am - 9:30 am</label><br>
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value="">9:30 am - 10 am</label><br>
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value="">10 am - 10:30 am</label><br>
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value="">10:30 am - 11 am</label><br> 
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value="">11 am - 11:30 am</label><br>
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value="">11:30 am - 12 pm</label><br>
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value="">12 pm - 12:30 pm</label><br>
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value="">12:30 pm - 1 pm</label><br>
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value="">1 pm - 1:30 pm</label><br>
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value="">1:30 pm - 2 pm</label><br>
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value="">2 pm - 2:30 pm</label><br>
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value="">2:30 pm - 3 pm</label><br>
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value="">5 pm - 5:30 pm</label><br>
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value="">5:30 pm - 6 pm</label><br>
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value="">6 pm - 6:30 pm</label><br>
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value="">6:30 pm - 7 pm</label><br>
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value="">7 pm - 7:30 pm</label><br>
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value="">7:30 pm - 8 pm</label><br>
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value="">8 pm - 8:30 pm</label><br>
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" value="">8:30 pm - 9 pm</label><br>
                     </div>
+                    <div class="form-group row">
+                        <label for="editUserCourse" class="col-2 col-form-label">Edit Course</label>
+                        <div class="col-10">
+                            <input class="form-control" type="text" value="" id="editUserCourse">
+                    </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="editUserCourse" class="col-2 col-form-label">Edit Class Year</label>
+                        <div class="col-10">
+                            <input class="form-control" type="text" value="" id="editUserCourse">
+                    </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="editUserCourse" class="col-2 col-form-label">Edit Living Group</label>
+                        <div class="col-10">
+                            <input class="form-control" type="text" value="" id="editUserCourse">
+                    </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="editUserCourse" class="col-2 col-form-label">Edit Interests</label>
+                        <div class="col-10">
+                            <input class="form-control" type="text" value="" id="editUserCourse">
+                    </div>
+                    </div>
+                    <button type="button" class="btn btn-default center-block" >Edit Profile</button>
                 </div>
             </div>
         </div>
