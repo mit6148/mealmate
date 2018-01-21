@@ -1,17 +1,10 @@
 /* the equivalent of feed.js (catbook-workshop-4) for edit.js */
-function renderUserData(user) {
+function renderUserText(user) {
     // rendering name
     const nameContainer = document.getElementById('userName');
     const nameHeader = document.createElement('h1');
     nameHeader.innerHTML = user.name;
     nameContainer.appendChild(nameHeader);
-
-    // rendering profile image
-    const profileImage = document.createElement('img');
-    document.getElementById('userImage').appendChild(profileImage);
-    profileImage.src = 'https://graph.facebook.com/'+user.fbid+'/picture?type=large';
-    submitProfileLink(user); // submission link
-
 
     // rendering default values in input elements
     $('#editUserAbout').val(user.about);
@@ -37,6 +30,14 @@ function renderUserData(user) {
         hallPrefs.appendChild(hallItem);
     } 
     // currently nearly identical to profile.js, but with a matches button
+}
+
+function renderUserPicture(user){
+    // rendering profile image
+    //$('#userImage').attr('src', '');
+    console.log('hello redner user');
+
+    $('#userImage').attr('src', user.piclink);        
 }
 
 /* ------------------ SUBMISSION LINK CODE BELOW!!!!! ------------------ */

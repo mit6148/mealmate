@@ -106,7 +106,15 @@ router.post('/editProfile/',
       }
 
       switch(req.body.dataType) {
-        case "course": // change course and class year
+        // newUser = {
+        //   pickLink: 'link',
+        //   year: 'freshman'
+        // }
+        // user  = Object.assign(user, newUser);
+        case "piclink":
+          user.piclink = req.body.piclink;
+          break;
+        case "course":
           user.course = req.body.course;
           break;
         case "year":

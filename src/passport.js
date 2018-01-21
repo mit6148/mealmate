@@ -16,8 +16,8 @@ passport.use(new fbp.Strategy({
     	return done(err);
     } 
 
-    var newEmail = "";
     if (!user) {
+      var newEmail = "";
       if (profile.emails != null){
         newEmail = profile.emails[0].value;
       }
@@ -25,6 +25,7 @@ passport.use(new fbp.Strategy({
       name: profile.displayName,
       fbid: profile.id,
       email: newEmail,
+      piclink: "https://graph.facebook.com/"+profile.id+"/picture?type=large",
       course: "",
       year: "",
       about: "",

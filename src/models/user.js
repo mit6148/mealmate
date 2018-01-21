@@ -4,6 +4,7 @@ const UserModelSchema = new mongoose.Schema ({
 	name: String,
 	fbid: String,
 	email: String,
+	piclink: String,
 	about: String,
 	course: String,
 	year: String,

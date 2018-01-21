@@ -2,11 +2,29 @@ function main() {
     const profileId = window.location.search.substring(1);
     get('/api/user', {'_id': profileId}, function(profileUser) {
         // all of these functions are now in submit.js
-        renderUserData(profileUser);
+        renderUserText(profileUser);
+        renderUserPicture(profileUser);
     });
     get('/api/whoami', {}, function(user){
         renderNavbar(user);
         var data;
+        $('#addPhoto').click(function() {
+        	console.log('boop');
+        	
+        	user.piclink='https://s3.us-east-2.amazonaws.com/mealmate/'+user._id;
+        	addPhoto(user, function() {
+        		console.log('jdd');
+        		renderUserPicture(user);
+        	});
+        	data = {
+        		_id: user._id,
+        		dataType: "piclink",
+        		piclink: 'https://s3.us-east-2.amazonaws.com/mealmate/'+user._id
+        	}
+        	post('/api/editProfile', data);
+
+        });
+
         $('#submitBtn').click(function() {
 	    	if ($('#editUserAbout').val() !== user.about){
 	    		data = {
