@@ -93,6 +93,7 @@ function getMatch(user, d, ts) {
 
     const h = ["Next", "Maseeh", "Baker"];
     const data = {
+        userid: user._id,
         date: d,
         times: ts,
         halls: h
@@ -103,18 +104,33 @@ function getMatch(user, d, ts) {
 
     // first post your request to the database
     // then get a match
-    post('/api/matchPost', data, function () {
+    post('/api/matchPost', data, function (theMatch) { // return the posted match
+        console.log("Your posted match request");
+        console.log(theMatch);
         get('/api/matchRequest', {'userid': user._id, 'date': d, 'times': ts, 'halls': h}, function (match) {
             if (match.hasOwnProperty('times')) {
-                const matchData = {
+                console.log("Your match, or lack thereof: ")
+                console.log(match);
+                const matchData = { // to be posted to the user
                     _id: user._id,
                     dataType: "matches",
                     m: match
                 }
 
-                // update the user with the match
+                console.log("the match you got. Their userid:");
+                console.log(match.userid);
+                console.log("Your user _id");
+                console.log(user._id);
+
+                const matchData2 = { // to be posted to the match
+                    _id: match.userid,
+                    dataType: "matches",
+                    m: theMatch
+                }
+
+                // update the user and match with the match
                 post('/api/editProfile', matchData);
-                console.log("Your match, or lack thereof: " + match);
+                post('/api/editProfile', matchData2);
             }
         });
     });

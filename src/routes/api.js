@@ -44,19 +44,16 @@ router.get('/matchRequest', function(req, res) {
                 }
             }
 
-            console.log("meowmeow! " + idMatches);
             if (idMatches.length) {
                 // filter by times
-                const uTimes = req.query.times;
-                console.log("Here is req.query.times: " + req.query.times);
+                const uTimes = req.query.times.split(",");
                 let timeMatches = [];
                 for (let i=0; i<idMatches.length; i++) { // for each match
                     for (let j=0; j<uTimes.length; j++) { // for each of user's times
                         // if that time is inside the times for idMatches[i]
+                        // console.log("Here's a time you indicated you were available");
+                        console.log(uTimes[j]);
                         if (idMatches[i].times.includes(uTimes[j])) {
-                            console.log("Here is an overlapping time: " + uTimes[j]);
-                            console.log("This time was found in: ");
-                            console.log(idMatches[i].times);
                             timeMatches.push(idMatches[i]);
                             break; // do not add duplicates
                         }
@@ -71,7 +68,6 @@ router.get('/matchRequest', function(req, res) {
             } else {
                 res.send({message: "Sorry! No matches yet. Check back soon!"})
             }
-
         } else {
             res.send({message: "Sorry! No matches yet. Check back soon!"});
         }
@@ -83,7 +79,7 @@ router.post('/matchPost',
     connect.ensureLoggedIn(),
     function(req, res) {
         const newMatchRequest = new MatchRequest({
-            'userid': req.user._id,
+            'userid': req.body.userid,
             'date': req.body.date,
             'halls': req.body.halls,
             'times': req.body.times,
@@ -93,7 +89,7 @@ router.post('/matchPost',
             if (err) console.log(err);
         });
 
-        res.send({});       
+        res.send(newMatchRequest);       
     }
 );
 
@@ -104,6 +100,8 @@ router.post('/editProfile/',
   function(req,res) {
     // req.dataType contains the parameters of the changed things
     User.findOne({ _id: req.body._id}, function(err, user) {
+      console.log("Inside /editProfile/ post");
+      console.log(user);
       if (err) {
         res.send(err);
         return;
