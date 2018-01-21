@@ -46,6 +46,7 @@ function renderMatches(user) {
         }
 
     } else { // don't display a table if no matches
+        const matchTableDiv = document.getElementById('matchTable')
         const noMatch = document.createElement('p');
         noMatch.innerHTML = 'No matches yet! Check back soon.';
         matchTableDiv.appendChild(noMatch);

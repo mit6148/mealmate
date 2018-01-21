@@ -1,3 +1,6 @@
+const t = ['9','9.5','10','10.5','11','11.5','12','12.5','13','13.5','14','14.5',
+           '17','17.5','18','18.5','19','19.5','20','20.5'];
+
 function main() {
     const profileId = window.location.search.substring(1);
     $('#datepicker').datepicker({
@@ -11,7 +14,8 @@ function main() {
         const matchButton = document.getElementById('find-mealmate-button');
         matchButton.addEventListener('click', function() {
             const date = $('#datepicker').datepicker('getDate'); //ex output String: Thu Jan 18 2018 00:00:00 GMT-0500 (EST)
-            getMatch(profileUser, date);
+            const selectedTimes = getSelectedTimes();
+            getMatch(profileUser, date, selectedTimes);
             // document.location.href = '/u/matches?'+profileUser._id; // does this work lol
         });
 
@@ -70,15 +74,27 @@ function renderUserData(user) {
     // PARTS NOT DONE: INTERESTS, MAKING ALL OF THIS EDITABLE, TIME/DATE
 }
 
-function getMatch(user, d) {
+function getSelectedTimes() {
+    // check every checkbox dom object for whether it is checked
+    let selectedTimes = [];
+    for (let i=0; i<t.length; i++) {
+        const checkBox = document.getElementById("check"+t[i]);
+        if (checkBox.checked) {
+            selectedTimes.push(t[i]);
+        };
+    }
+
+    return selectedTimes;
+}
+
+function getMatch(user, d, ts) {
     // currently hardcoded date, halls, and times
     // halls are just the user's top 3
 
-    const t = [9,9.5,12,12.5,13,13.5,17.5,18,18.5,19,19.5];
     const h = ["Next", "Maseeh", "Baker"];
     const data = {
         date: d,
-        times: t,
+        times: ts,
         halls: h
     };
 
@@ -88,7 +104,7 @@ function getMatch(user, d) {
     // first post your request to the database
     // then get a match
     post('/api/matchPost', data, function () {
-        get('/api/matchRequest', {'userid': user._id, 'date': d, 'times': t, 'halls': h}, function (match) {
+        get('/api/matchRequest', {'userid': user._id, 'date': d, 'times': ts, 'halls': h}, function (match) {
             const matchData = {
                 _id: user._id,
                 dataType: "matches",
