@@ -105,14 +105,17 @@ function getMatch(user, d, ts) {
     // then get a match
     post('/api/matchPost', data, function () {
         get('/api/matchRequest', {'userid': user._id, 'date': d, 'times': ts, 'halls': h}, function (match) {
-            const matchData = {
-                _id: user._id,
-                dataType: "matches",
-                m: match
+            if (match.hasOwnProperty('times')) {
+                const matchData = {
+                    _id: user._id,
+                    dataType: "matches",
+                    m: match
+                }
+
+                // update the user with the match
+                post('/api/editProfile', matchData);
+                console.log("Your match, or lack thereof: " + match);
             }
-            // update the user with the match
-            post('/api/editProfile', matchData);
-            console.log("Your match, or lack thereof: " + match);
         });
     });
 }
