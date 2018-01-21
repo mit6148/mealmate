@@ -7,70 +7,59 @@ function main() {
     });
     get('/api/whoami', {}, function(user){
         renderNavbar(user);
-        var data;
+        //var data;
         $('#addPhoto').click(function() {
-        	console.log('boop');
-        	
+        	//previewPic(user);
         	user.piclink='https://s3.us-east-2.amazonaws.com/mealmate/'+user._id;
-        	addPhoto(user, function() {
-        		console.log('jdd');
-        		renderUserPicture(user);
-        	});
-        	data = {
+
+        	const data = {
         		_id: user._id,
-        		dataType: "piclink",
         		piclink: 'https://s3.us-east-2.amazonaws.com/mealmate/'+user._id
         	}
-        	post('/api/editProfile', data);
+        	post('/api/editProfile', { data });
 
         });
 
         $('#submitBtn').click(function() {
-	    	if ($('#editUserAbout').val() !== user.about){
-	    		data = {
-					_id: user._id,
-					dataType: "about",
-					about: $('#editUserAbout').val()
-				}
+        	const data = {
+        		_id: user._id,
+        		about: $('#editUserAbout').val(),
+        		course: $('#editUserCourse').val(),
+        		year: $('#editUserYear').val(),
+        		residence: $('#editUserLivingGroup').val()
+        	}
+        	post('/api/editProfile', { data }, () => alert("Your profile has been updated!"),
+        	 () => console.log('error'));
 
-				post('/api/editProfile', data);	
-	    	}
-
-	    	if ($('#editUserCourse').val() !== user.course){
-	    		data = {
-					_id: user._id,
-					dataType: "course",
-					course: $('#editUserCourse').val()
-				}
-
-				post('/api/editProfile', data);
-	    	}
-
-	    	if ($('#editUserYear').val() !== user.year){
-	    		data = {
-					_id: user._id,
-					dataType: "year",
-					year: $('#editUserYear').val()
-				}
-
-				post('/api/editProfile', data);
-	    	}
-
-	    	if ($('#editUserLivingGroup').val() !== user.residence){
-	    		data = {
-					_id: user._id,
-					dataType: "residence",
-					residence: $('#editUserLivingGroup').val()
-				}
-
-				post('/api/editProfile', data);
-	    	}
-
-	    	alert("Your profile has been updated!");
     	});
 
 
     });
 }
 
+//Source: https://stackoverflow.com/questions/12368910/html-display-image-after-selecting-filename
+function previewPic(user) {
+	//get the file out of the upload widget
+	const files = document.getElementById('photoupload').files;
+	if (!files.length) {
+	console.log('no image');
+	return alert('Please choose a file to upload first.');
+	}
+	const file = files[0];
+	console.log(file);
+
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+        $('#userImage')
+            .attr('src', e.target.result)
+            .width(150)
+            .height(150);
+    };
+
+    reader.readAsDataURL(file);
+    console.log(file);
+    //post('/api/uploadImage', {data: {user, file}})
+
+}
 main();

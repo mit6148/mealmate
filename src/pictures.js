@@ -32,20 +32,22 @@ function viewAlbum() {
 
 
 //adds a photo to our S3 database
-function addPhoto(req, res) {
-  const user = req.body.data.user;
+function addPhoto(photokey, profpic, callback){
+  //console.log(data.file);
+  //const user = data.user;
   // data {user, file}
   console.log('addPhoto');
-  var photoKey = user._id;
+  //var photoKey = user._id;
   //TODO: upload the file to s3
-
-  var params = {Key: photoKey, Body: file, ACL: 'public-read'};
+  console.log("tag", profpic);
+  var params = {Key: photokey, Body: profpic.data, ACL: 'public-read'};
   s3.upload(params, function(err, data){
     if (err){
       console.log('err', err);
-      return alert('There was an error uploading photo' + err.message);
+      return err;
     }
-    console.log('Successfully uploaded photo.');
+    console.log('Successfully uploaded photo.', data);
+    callback();
   });
 
 }

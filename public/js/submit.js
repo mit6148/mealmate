@@ -7,6 +7,7 @@ function renderUserText(user) {
     nameContainer.appendChild(nameHeader);
 
     // rendering default values in input elements
+    $('#photokey').val(user._id);
     $('#editUserAbout').val(user.about);
     $('#editUserCourse').val(user.course);
     $('#editUserYear').val(user.year);
@@ -37,7 +38,7 @@ function renderUserPicture(user){
     //$('#userImage').attr('src', '');
     console.log('hello redner user');
 
-    $('#userImage').attr('src', user.piclink);        
+    $('#userImage').attr('src', user.piclink + "?" + new Date().getTime());        
 }
 
 /* ------------------ SUBMISSION LINK CODE BELOW!!!!! ------------------ */
