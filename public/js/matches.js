@@ -16,20 +16,22 @@ function renderMatches(user) {
         const matchTable = document.getElementById('t01')
 
         // render matches in table
+        console.log("Here's matches: ")
+        console.log(user.matches);
         for (let i=0; i<user.matches.length; i++) {
-            // console.log("Here's the userid of matches[i]: " + user.matches[i].userid);
-            get('/api/user', { '_id': user.matches[i].userid }, function (user) {
+            get('/api/user', { '_id': user.matches[i].userid }, function (matchedUser) {
                 const tabrow = document.createElement('tr');
 
                 const matchPic = document.createElement('th');
                 const profileImage = document.createElement('img');
-                profileImage.src = 'https://graph.facebook.com/'+user.fbid+'/picture?type=large';
+                profileImage.src = 'https://graph.facebook.com/'+matchedUser.fbid+'/picture?type=large';
                 matchPic.appendChild(profileImage);
 
                 const matchName = document.createElement('th');
-                matchName.innerHTML = user.name;
+                matchName.innerHTML = matchedUser.name;
                 const matchDate = document.createElement('th');
-                // tbh this date formatting is hacky 
+                // tbh this date formatting is hacky
+                console.log("This is the ith user match: ");
                 matchDate.innerHTML = user.matches[i].date.substring(0,10);
                 const matchTime = document.createElement('th');
                 matchTime.innerHTML = user.matches[i].times[0]; // just choose the first available time for now

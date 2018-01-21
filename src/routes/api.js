@@ -33,7 +33,9 @@ router.get('/matchRequest', function(req, res) {
         }
         // if there are matches, filter them
         if (matches && matches.length) {
+            console.log("Here are matches " + matches);
             let idMatches = [];
+            let timeMatches = [];
             // filter by user id
             for (let i=0; i<matches.length; i++) {
                 if (req.query.userid != matches[i].userid) {
@@ -41,17 +43,31 @@ router.get('/matchRequest', function(req, res) {
                     idMatches.push(matches[i]); // add that match
                 }
             }
-            /* const uTimes = req.query.times; // the user's times
-            let timeMatches = [];
-            for (let i=0; i<matches.length; i++) {
 
-            } <--- write this later!! */
             console.log("meowmeow! " + idMatches);
             if (idMatches.length) {
-                res.send(idMatches[0]); // return the first match
+                // filter by times
+                const uTimes = req.query.times;
+                console.log("Here is req.query.times: " + req.query.times);
+                let timeMatches = [];
+                for (let i=0; i<idMatches.length; i++) { // for each match
+                    for (let j=0; j<uTimes.length; j++) { // for each of user's times
+                        // if that time is inside the times for idMatches[i]
+                        if (idMatches[i].times.includes(uTimes[j])) {
+                            console.log("Here is an overlapping time: " + uTimes[j]);
+                            timeMatches.push(idMatches[i]);
+                            break; // do not add duplicates
+                        }
+                    }
+                }
+                if (timeMatches.length) {
+                    console.log("Here's a match request that works!")
+                    res.send(timeMatches[0]);
+                }
             } else {
                 res.send({message: "Sorry! No matches yet. Check back soon!"})
             }
+
         } else {
             res.send({message: "Sorry! No matches yet. Check back soon!"});
         }
@@ -103,8 +119,8 @@ router.post('/editProfile/',
           user.residence = req.body.residence;
           break;
         case "matches":
-          if (req.body.hasOwnProperty('date')) {
-            user.matches.push(req.body.m); // append a date
+          if (req.body.hasOwnProperty('m')) {
+            user.matches.push(req.body.m); // append a match
           } 
           break;
         default:
