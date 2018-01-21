@@ -4,8 +4,6 @@ const http = require('http');
 const bodyParser = require('body-parser');
 const express = require('express');
 const session = require('express-session');
-const multer = require('multer');
-const multerS3 = require('multer-s3');
 const fileUpload = require('express-fileupload')
 
 //local dependencies
