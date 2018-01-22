@@ -42,19 +42,22 @@
                         <!-- insert the username via js here -->
                     </h4>
                     <div class='profPicBox img-responsive center-block'>
-                        <img id="userImage">
-                        <!-- insert the user image via js here -->
+                        <div class="profPicBox row">
+                            <img id="userImage">
+                            <!-- insert the user image via js here -->
+                        </div>
+                        <div class="profPicBox row">
+                            <form ref='uploadForm' 
+                                id='uploadForm' 
+                                action='/api/uploadImage'
+                                method='post'
+                                enctype="multipart/form-data">
+                                <input id='photoupload' type="file" name="profpic" />
+                                <input type="text" id="photokey" name="photokey" style="display: none"/>
+                                <input id='addPhoto' type='submit' value='Upload!' />
+                            </form>
+                        </div>
                     </div>
-
-                    <form ref='uploadForm' 
-                        id='uploadForm' 
-                        action='/api/uploadImage'
-                        method='post'
-                        enctype="multipart/form-data">
-                        <input id='photoupload' type="file" name="profpic" />
-                        <input type="text" id="photokey" name="photokey"/>
-                        <input id='addPhoto' type='submit' value='Upload!' />
-                    </form>
 <!--
                     <div id='submitProfileImage' class="text-center">
                         <input id="photoupload" type="file" accept="image/*">
