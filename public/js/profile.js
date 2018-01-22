@@ -9,23 +9,6 @@ function main() {
     }).datepicker('update', new Date()); // nice jQuery
 
     get('/api/user', {'_id': profileId}, function(profileUser) {
-        // renderUserData(profileUser);
-
-        const matchButton = document.getElementById('find-mealmate-button');
-        matchButton.addEventListener('click', function() {
-            const date = $('#datepicker').datepicker('getDate'); //ex output String: Thu Jan 18 2018 00:00:00 GMT-0500 (EST)
-            const selectedTimes = getSelectedTimes();
-            const topThreeHalls = getTopThreeHalls();
-            getMatch(profileUser, date, selectedTimes, topThreeHalls);
-            // document.location.href = '/u/matches?'+profileUser._id; // does this work lol
-        });
-
-        // render the correct edit link
-        const editLinkDiv = document.getElementById('editProfile');
-        const editLink = document.createElement('a');
-        editLink.setAttribute('href', '/u/edit?'+profileUser._id);
-        editLink.innerHTML = 'Edit Profile';
-        editLinkDiv.appendChild(editLink);
 
         if (profileUser.email === ""){
             $('#emailModal').show();
@@ -40,15 +23,13 @@ function main() {
                 });
             });
 
-        }else{
+        } else{
             loadPage(profileUser);
         }
     });
-
     get('/api/whoami', {}, function(user){
         renderNavbar(user);
     });
-
 
     $('#tester').click(function(){
         $('#emailModal').show();
@@ -62,7 +43,8 @@ function loadPage(user){
     matchButton.addEventListener('click', function() {
         const date = $('#datepicker').datepicker('getDate'); //ex output String: Thu Jan 18 2018 00:00:00 GMT-0500 (EST)
         const selectedTimes = getSelectedTimes();
-        getMatch(user, date, selectedTimes);
+        const topThreeHalls = getTopThreeHalls();
+        getMatch(user, date, selectedTimes, topThreeHalls);
         // document.location.href = '/u/matches?'+user._id; // does this work lol
     });
 
@@ -132,9 +114,6 @@ function getTopThreeHalls() {
 }
 
 function getMatch(user, d, ts, h) {
-    // currently hardcoded date, halls, and times
-    // halls are just the user's top 3
-
     const data = {
         userid: user._id,
         date: d,
@@ -142,41 +121,49 @@ function getMatch(user, d, ts, h) {
         halls: h
     };
 
-    // console.log(data);
-    // console.log(JSON.stringify(data))
-
-    // first post your request to the database
-    // then get a match
+    // post your request, and get a match!
     post('/api/matchPost', data, function (theMatch) { // return the posted match
         console.log("Your posted match request");
         console.log(theMatch);
         get('/api/matchRequest', {'userid': user._id, 'date': d, 'times': ts, 'halls': h}, function (match) {
             if (match.hasOwnProperty('times')) {
-                console.log("Your match, or lack thereof: ")
-                console.log(match);
-                const matchData = { // to be posted to the user
-                    _id: user._id,
-                    dataType: "matches",
-                    m: match
-                }
-
-                console.log("the match you got. Their userid:");
-                console.log(match.userid);
-                console.log("Your user _id");
-                console.log(user._id);
-
-                const matchData2 = { // to be posted to the match
-                    _id: match.userid,
-                    dataType: "matches",
-                    m: theMatch
-                }
-
-                // update the user and match with the match
-                post('/api/editProfile', matchData);
-                post('/api/editProfile', matchData2);
-            }
+                updateUsersWithMatch(user, match, theMatch);
+            };
         });
     });
+}
+
+function updateUsersWithMatch(user, yourMatch, theirMatch) {
+
+    console.log("Your match, or lack thereof: ")
+    console.log(yourMatch);
+
+    const matchData = { // to be posted to the user
+        data: {
+            _id: user._id,
+            matches: [yourMatch],
+        }
+    }
+
+    // create a modified version of their Match
+    const modTheirMatch = {
+        userid: theirMatch.userid,
+        date: theirMatch.date,
+        times: yourMatch.times, // shares same times as match
+        halls: yourMatch.halls, // shares same hall as match
+    }
+
+    const matchData2 = { // to be posted to the match
+        data: {
+            _id: yourMatch.userid,
+            matches: [modTheirMatch],
+        }
+    }
+
+    // update the user and match with the match
+    post('/api/editProfile', matchData);
+    post('/api/editProfile', matchData2);
+
 }
 
 main();

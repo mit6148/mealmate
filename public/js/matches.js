@@ -36,7 +36,7 @@ function renderMatches(user) {
                 const matchTime = document.createElement('th');
                 matchTime.innerHTML = user.matches[i].times[0]; // just choose the first available time for now
                 const matchHall = document.createElement('th');
-                matchHall.innerHTML = user.matches[i].halls[0]; // choose first hall
+                matchHall.innerHTML = user.matches[i].halls[0];
 
                 tabrow.appendChild(matchPic);
                 tabrow.appendChild(matchName);

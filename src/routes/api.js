@@ -39,6 +39,7 @@ router.get('/matchRequest', function(req, res) {
             console.log("Here are matches " + matches);
             let idMatches = [];
             let timeMatches = [];
+
             // filter by user id
             for (let i=0; i<matches.length; i++) {
                 if (req.query.userid != matches[i].userid) {
@@ -47,24 +48,58 @@ router.get('/matchRequest', function(req, res) {
                 }
             }
 
+            // filter by times if there remain matches
             if (idMatches.length) {
-                // filter by times
                 const uTimes = req.query.times.split(",");
-                let timeMatches = [];
+                let timeMatches = []; let possibleTimes = [];
                 for (let i=0; i<idMatches.length; i++) { // for each match
+                    let hasBeenMatched = false;
+                    let timesForMatch = new Set(); // times shared between user and match
+
                     for (let j=0; j<uTimes.length; j++) { // for each of user's times
-                        // if that time is inside the times for idMatches[i]
-                        // console.log("Here's a time you indicated you were available");
-                        console.log(uTimes[j]);
+                
                         if (idMatches[i].times.includes(uTimes[j])) {
-                            timeMatches.push(idMatches[i]);
-                            break; // do not add duplicates
+                            if (!hasBeenMatched) {
+                                timeMatches.push(idMatches[i]);
+                                timesForMatch.add(uTimes[j]);
+                                hasBeenMatched = true;
+                            } else {
+                                timesForMatch.add(uTimes[j]); // still a possible time
+                            } // end if
+                        } // end if
+                    } // end for loop of your times
+
+                    if (timesForMatch.size != 0) {
+                        possibleTimes.push(timesForMatch); 
+                    }
+                } // end for loop over all your matches
+                if (timeMatches.length) {
+                    console.log("There's at least one match request that works! ");
+                    
+                    // just take the first one
+                    // extract first set of possible times, find a shared fav hall
+                    const posTimes = Array.from(possibleTimes[0]);
+                    const myHalls = req.query.halls.split(",");
+                    const matchHalls = timeMatches[0].halls;
+                    // console.log("matchHalls");
+                    // console.log(matchHalls);
+                    let meetHall = "";
+                    for (let i=0; i<3; i++) {
+                        if (matchHalls.includes(myHalls[i])) {
+                            meetHall = myHalls[i];
+                            break;
                         }
                     }
-                }
-                if (timeMatches.length) {
-                    console.log("Here's a match request that works! ")
-                    res.send(timeMatches[0]);
+
+                    // create the modified match
+                    const realMatch = {
+                        'userid': timeMatches[0].userid,
+                        'date': req.query.date,
+                        'times': posTimes,
+                        'halls': [meetHall],
+                    }
+                    res.send(realMatch);
+                    
                 } else {
                   res.send({message: "Sorry! No matches yet. Check back soon!"})
                 }
