@@ -13,14 +13,26 @@ function main() {
         if (!(profileUser.email) || profileUser.email === ""){
             $('#emailModal').show();
             $('#submitEmail').click(function(){
-                const data={
-                    _id: profileUser._id,
-                    email: $('#userEmail').val()
+                if ($('#userEmail').val().indexOf('@') > -1){
+                    const data={
+                        _id: profileUser._id,
+                        email: $('#userEmail').val()
+                    }
+                    post('/api/editProfile', { data }, function(){
+                        loadPage(profileUser);
+                        $('#emailModal').hide();
+                    });
+                }else{
+                    alert("Please enter a valid email!");
                 }
-                post('/api/editProfile', { data }, function(){
+/*
+                else{
+                    console.log("hi!");
                     loadPage(profileUser);
                     $('#emailModal').hide();
-                });
+                }
+                */
+                
             });
 
         } else{
