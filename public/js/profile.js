@@ -42,15 +42,14 @@ function loadPage(user){
         const selectedTimes = getSelectedTimes();
         const topThreeHalls = getTopThreeHalls();
         getMatch(user, date, selectedTimes, topThreeHalls);
-        // document.location.href = '/u/matches?'+user._id; // does this work lol
+        // document.location.href = '/u/matches?'+user._id;
     });
 
     // render the correct edit link
-    const editLinkDiv = document.getElementById('editProfile');
-    const editLink = document.createElement('a');
-    editLink.setAttribute('href', '/u/edit?'+user._id);
-    editLink.innerHTML = 'Edit Profile';
-    editLinkDiv.appendChild(editLink);
+    const editButton = document.getElementById('editProfile');
+    editButton.addEventListener('click', function() {
+        document.location.href = '/u/edit?'+user._id;
+    });
 }
 
 function renderUserData(user) {
@@ -98,8 +97,7 @@ function getSelectedTimes() {
 
 // gets the top 3 halls in the ordered list object
 function getTopThreeHalls() {
-    // jQuery
-    // source: http://jsfiddle.net/LcBAQ/
+    // jQuery source: http://jsfiddle.net/LcBAQ/
     
     let topThreeHalls = [];
     for (let i=0; i<3; i++) {
