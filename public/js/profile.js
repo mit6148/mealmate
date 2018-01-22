@@ -10,7 +10,7 @@ function main() {
 
     get('/api/user', {'_id': profileId}, function(profileUser) {
 
-        if (profileUser.email === ""){
+        if (!(profileUser.email) || profileUser.email === ""){
             $('#emailModal').show();
             $('#submitEmail').click(function(){
                 const data={
@@ -31,9 +31,6 @@ function main() {
         renderNavbar(user);
     });
 
-    $('#tester').click(function(){
-        $('#emailModal').show();
-    });
 }
 
 function loadPage(user){
