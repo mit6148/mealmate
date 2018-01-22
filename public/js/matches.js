@@ -25,10 +25,17 @@ function renderMatches(user) {
                 const matchPic = document.createElement('th');
                 const profileImage = document.createElement('img');
                 profileImage.src = matchedUser.piclink;
+                profileImage.onclick = function () { // propic is link to other user's page
+                    document.location.href = '/u/profile?'+matchedUser._id;
+                }
                 matchPic.appendChild(profileImage);
 
                 const matchName = document.createElement('th');
-                matchName.innerHTML = matchedUser.name;
+                const nameLink = document.createElement('a');
+                nameLink.innerHTML = matchedUser.name;
+                nameLink.setAttribute('href', '/u/profile?'+matchedUser._id);
+                matchName.appendChild(nameLink);
+                
                 const matchDate = document.createElement('th');
                 // tbh this date formatting is hacky
                 console.log("This is the ith user match: ");
