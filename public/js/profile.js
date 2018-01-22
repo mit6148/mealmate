@@ -9,7 +9,7 @@ function main() {
     }).datepicker('update', new Date()); // nice jQuery
 
     get('/api/user', {'_id': profileId}, function(profileUser) {
-        if (profileUser.email === ""){
+        if (!(profileUser.email) || profileUser.email === ""){
             $('#emailModal').show();
             $('#submitEmail').click(function(){
                 const data={
