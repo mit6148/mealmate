@@ -38,7 +38,7 @@ function loadPage(user){
 
     const matchButton = document.getElementById('find-mealmate-button');
     matchButton.addEventListener('click', function() {
-        const date = $('#datepicker').datepicker('getDate'); //ex output String: Thu Jan 18 2018 00:00:00 GMT-0500 (EST)
+        const date = $('#datepicker').datepicker('getDate'); 
         const selectedTimes = getSelectedTimes();
         const topThreeHalls = getTopThreeHalls();
         getMatch(user, date, selectedTimes, topThreeHalls);
@@ -116,13 +116,23 @@ function getMatch(user, d, ts, h) {
     };
 
     // post your request, and get a match!
-    post('/api/matchPost', data, function (theMatch) { // return the posted match
+    post('/api/matchPost', data, function (theMatch) { // return the user's request
         console.log("Your posted match request");
         console.log(theMatch);
         get('/api/matchRequest', {'userid': user._id, 'date': d, 'times': ts, 'halls': h}, function (match) {
             if (match.hasOwnProperty('times')) {
                 updateUsersWithMatch(user, match, theMatch);
-            };
+                sendEmails(user, match);
+            } else {
+                const data = {
+                    receiverEmail: user.email,
+                    subjectText: "You don't have a match yet...",
+                    bodyText: "Sadly, no one was available in the time and day you requested. But keep checking your matches page, and watch your inbox!"
+                }
+                post('/api/emailSender', { data }, function() {
+                    alert("Email sent!");
+                });
+            }
         });
     });
 }
@@ -157,7 +167,30 @@ function updateUsersWithMatch(user, yourMatch, theirMatch) {
     // update the user and match with the match
     post('/api/editProfile', matchData);
     post('/api/editProfile', matchData2);
+}
 
+// send emails
+function sendEmails(user, match) {
+    // send email to user
+    const data = {
+        receiverEmail: user.email,
+        subjectText: "You have a match!",
+        bodyText: "Check your matches page for your new match, and happy dining!"
+    }
+    post('/api/emailSender', { data }, function() {
+        alert("Email sent!");
+    });
+
+    get('/api/user', { '_id': match.userid }, function (mUser) {
+        const data = {
+            receiverEmail: mUser.email,
+            subjectText: "You have a match!",
+            bodyText: "Check your matches page for your new match, and happy dining!"
+        }
+        post('/api/emailSender', { data }, function() {
+            alert("Email sent to your match!");
+        })
+    });
 }
 
 main();

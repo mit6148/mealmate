@@ -24,7 +24,7 @@ function renderMatches(user) {
 
                 const matchPic = document.createElement('th');
                 const profileImage = document.createElement('img');
-                profileImage.src = 'https://graph.facebook.com/'+matchedUser.fbid+'/picture?type=large';
+                profileImage.src = matchedUser.piclink;
                 matchPic.appendChild(profileImage);
 
                 const matchName = document.createElement('th');
