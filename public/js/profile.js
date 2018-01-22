@@ -9,6 +9,7 @@ function main() {
     }).datepicker('update', new Date()); // nice jQuery
 
     get('/api/user', {'_id': profileId}, function(profileUser) {
+
         if (!(profileUser.email) || profileUser.email === ""){
             $('#emailModal').show();
             $('#submitEmail').click(function(){
@@ -31,10 +32,6 @@ function main() {
         renderNavbar(user);
     });
 
-
-    $('#tester').click(function(){
-        $('#emailModal').show();
-    });
 }
 
 function loadPage(user){
@@ -44,7 +41,8 @@ function loadPage(user){
     matchButton.addEventListener('click', function() {
         const date = $('#datepicker').datepicker('getDate'); //ex output String: Thu Jan 18 2018 00:00:00 GMT-0500 (EST)
         const selectedTimes = getSelectedTimes();
-        getMatch(user, date, selectedTimes);
+        const topThreeHalls = getTopThreeHalls();
+        getMatch(user, date, selectedTimes, topThreeHalls);
         // document.location.href = '/u/matches?'+user._id; // does this work lol
     });
 
@@ -83,23 +81,10 @@ function renderUserData(user) {
     const livingGroup = document.getElementById('userLivingGroup');
     livingGroup.innerHTML = 'Living Group: ' + user.residence;
 
-    // rendering dining preferences
-    const hallPrefs = document.getElementById('userDiningPreferences');
-    if (user.halls) {
-        // print the hall choices if they exist
-        for (let i=0; i<user.halls.length; i++) {
-            const hallItem = document.createElement('li');
-            hallItem.innerHTML = user.halls[i];
-            hallPrefs.appendChild(hallItem);
-        }
-    } else {
-        const hallItem = document.createElement('li');
-        hallItem.innerHTML = 'No preferences listed';
-        hallPrefs.appendChild(hallItem);
-    } 
-    // PARTS NOT DONE: INTERESTS, MAKING ALL OF THIS EDITABLE, TIME/DATE
+    // PARTS NOT DONE: INTERESTS
 }
 
+// gets the times selected
 function getSelectedTimes() {
     // check every checkbox dom object for whether it is checked
     let selectedTimes = [];
@@ -109,15 +94,27 @@ function getSelectedTimes() {
             selectedTimes.push(t[i]);
         };
     }
-
     return selectedTimes;
 }
 
-function getMatch(user, d, ts) {
+// gets the top 3 halls in the ordered list object
+function getTopThreeHalls() {
+    // jQuery
+    // source: http://jsfiddle.net/LcBAQ/
+    
+    let topThreeHalls = [];
+    for (let i=0; i<3; i++) {
+        topThreeHalls.push($('#userDiningPreferences li:eq(' + i + ')').text());
+    }
+
+    console.log(topThreeHalls);
+    return topThreeHalls
+}
+
+function getMatch(user, d, ts, h) {
     // currently hardcoded date, halls, and times
     // halls are just the user's top 3
 
-    const h = ["Next", "Maseeh", "Baker"];
     const data = {
         userid: user._id,
         date: d,
