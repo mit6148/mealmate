@@ -9,7 +9,7 @@ function main() {
     }).datepicker('update', new Date()); // nice jQuery
 
     get('/api/user', {'_id': profileId}, function(profileUser) {
-        renderUserData(profileUser);
+        // renderUserData(profileUser);
 
         const matchButton = document.getElementById('find-mealmate-button');
         matchButton.addEventListener('click', function() {
@@ -27,10 +27,51 @@ function main() {
         editLink.innerHTML = 'Edit Profile';
         editLinkDiv.appendChild(editLink);
 
+        if (profileUser.email === ""){
+            $('#emailModal').show();
+            $('#submitEmail').click(function(){
+                const data={
+                    _id: profileUser._id,
+                    email: $('#userEmail').val()
+                }
+                post('/api/editProfile', { data }, function(){
+                    loadPage(profileUser);
+                    $('#emailModal').hide();
+                });
+            });
+
+        }else{
+            loadPage(profileUser);
+        }
     });
+
     get('/api/whoami', {}, function(user){
         renderNavbar(user);
     });
+
+
+    $('#tester').click(function(){
+        $('#emailModal').show();
+    });
+}
+
+function loadPage(user){
+    renderUserData(user);
+
+    const matchButton = document.getElementById('find-mealmate-button');
+    matchButton.addEventListener('click', function() {
+        const date = $('#datepicker').datepicker('getDate'); //ex output String: Thu Jan 18 2018 00:00:00 GMT-0500 (EST)
+        const selectedTimes = getSelectedTimes();
+        getMatch(user, date, selectedTimes);
+        // document.location.href = '/u/matches?'+user._id; // does this work lol
+    });
+
+    // render the correct edit link
+    const editLinkDiv = document.getElementById('editProfile');
+    const editLink = document.createElement('a');
+    editLink.setAttribute('href', '/u/edit?'+user._id);
+    editLink.innerHTML = 'Edit Profile';
+    editLinkDiv.appendChild(editLink);
 }
 
 function renderUserData(user) {
@@ -43,7 +84,9 @@ function renderUserData(user) {
     // rendering profile image
     const profileImage = document.createElement('img');
     document.getElementById('userImage').appendChild(profileImage);
-    profileImage.src = user.piclink;
+    profileImage.src = user.piclink + "?" + new Date().getTime();
+    profileImage.style.width='200px';
+    profileImage.style.height='auto';
 
     // rendering aboutme
     const userAbout = document.getElementById('userAbout');

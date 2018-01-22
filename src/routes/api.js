@@ -1,7 +1,6 @@
 // dependencies
 const express = require('express');
 const connect = require('connect-ensure-login');
-//const fileUpload = require('express-fileupload');
 
 // models
 const User = require('../models/user');
@@ -10,6 +9,7 @@ const MatchRequest = require('../models/matchRequest');
 const router = express.Router();
 
 const addPhoto = require('../pictures').addPhoto;
+const sendEmail = require('../emailSender').sendEmail;
 
 // api endpoints
 router.get('/whoami', function(req, res) {
@@ -114,56 +114,6 @@ router.post('/editProfile/',
          console.log("about to respond")
          res.json({ message: 'User updated!' });
     });
-    // User.findOne({ _id: req.body._id}, function(err, user) {
-    //   if (err) {
-    //     res.send(err);
-    //     return;
-    //   }
-    //   const userUpdate = req.body.data;
-    //   user = Object.assign(user, userUpdate);
-    //   switch(req.body.dataType) {
-    //     // newUser = {
-    //     //   pickLink: 'link',
-    //     //   year: 'freshman'
-    //     // }
-    //     // user  = Object.assign(user, newUser);
-    //     case "piclink":
-    //       user.piclink = req.body.piclink;
-    //       break;
-    //     case "course":
-    //       user.course = req.body.course;
-    //       break;
-    //     case "year":
-    //       user.year = req.body.year;
-    //       break;
-    //     case "about": // change about me
-    //       user.about = req.body.about;
-    //       break;
-    //     case "residence": // change residence
-    //       user.residence = req.body.residence;
-    //       break;
-    //     case "matches":
-    //       if (req.body.hasOwnProperty('m')) {
-    //         user.matches.push(req.body.m); // append a match
-    //       } 
-    //       break;
-    //     default:
-    //       break; // no changes
-    //   }
-
-    //   console.log(user)
-    //   // save the user
-    //   user.save(function(err) {
-    //     if (err) {// if error 
-    //       console.log(err)
-    //       res.send(err);
-    //       return;
-    //     }
-    //     console.log("about to respond")
-    //     res.json({ message: 'User updated!' });
-    //   });
-
-    // });
   }
 );
 
@@ -172,8 +122,14 @@ router.post('/uploadImage/', connect.ensureLoggedIn(), function(req, res) {
   console.log('rip', req.body);
   addPhoto(req.body.photokey, req.files.profpic, function(){
     res.redirect('/u/edit?' +req.body.photokey);
-    //res.end();
   });
 });
+
+//TEST AFTER START SENDING EMAILS
+router.post('/emailSender/', connect.ensureLoggedIn(), function(req, res){
+    sendEmail(req.body.receiverEmail, req.body.subjectText, req.body.bodyText, function(){
+        //action for after email sent
+    });
+})
 
 module.exports = router;
