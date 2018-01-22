@@ -54,7 +54,7 @@ function previewPic(user) {
         $('#userImage')
             .attr('src', e.target.result)
             .width(150)
-            .height(150);
+            .height(150)
     };
 
     reader.readAsDataURL(file);
