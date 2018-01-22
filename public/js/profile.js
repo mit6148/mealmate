@@ -42,7 +42,9 @@ function renderUserData(user) {
     // rendering profile image
     const profileImage = document.createElement('img');
     document.getElementById('userImage').appendChild(profileImage);
-    profileImage.src = user.piclink;
+    profileImage.src = user.piclink + "?" + new Date().getTime();
+    profileImage.style.width='200px';
+    profileImage.style.height='auto';
 
     // rendering aboutme
     const userAbout = document.getElementById('userAbout');
