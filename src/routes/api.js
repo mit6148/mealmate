@@ -160,9 +160,18 @@ router.post('/uploadImage/', connect.ensureLoggedIn(), function(req, res) {
   });
 });
 
-//TEST AFTER START SENDING EMAILS
+/*
+const data = {
+    receiverEmail: profileUser.email,
+    subjectText: "sending?",
+    bodyText: "hi this was sent from the profile page!"
+}
+post('/api/emailSender', { data }, function() {
+    alert("email sent!");
+});
+*/
 router.post('/emailSender/', connect.ensureLoggedIn(), function(req, res){
-    sendEmail(req.body.receiverEmail, req.body.subjectText, req.body.bodyText, function(){
+    sendEmail(req.body.data.receiverEmail, req.body.data.subjectText, req.body.data.bodyText, function(){
         //action for after email sent
     });
 })
