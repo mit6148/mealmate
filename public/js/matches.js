@@ -34,7 +34,7 @@ function renderMatches(user) {
                 console.log("This is the ith user match: ");
                 matchDate.innerHTML = user.matches[i].date.substring(0,10);
                 const matchTime = document.createElement('th');
-                matchTime.innerHTML = user.matches[i].times[0]; // just choose the first available time for now
+                matchTime.innerHTML = formatTime(user.matches[i].times[0]); // just choose the first available time for now
                 const matchHall = document.createElement('th');
                 matchHall.innerHTML = user.matches[i].halls[0];
 
@@ -53,6 +53,27 @@ function renderMatches(user) {
         noMatch.innerHTML = 'No matches yet! Check back soon.';
         matchTableDiv.appendChild(noMatch);
     }
+}
+
+// formats the text inside the time column properly
+function formatTime(t) {
+
+    let ending = "am";
+    let floatT = parseFloat(t);
+    if (floatT >= 12) {
+        floatT -= 12;
+        ending = "pm";
+        if (floatT === 0) {
+            floatT = 12; // midnight will never be an option
+        } else if (floatT === 0.5) {
+            floatT = 12.5;
+        }
+    }
+
+    if (Number.isInteger(floatT)) { // :00
+        return "" + floatT + ":00 " + ending;
+    }
+    return "" + parseInt(floatT) + ":30 " + ending;
 }
 
 main();
