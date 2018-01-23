@@ -184,6 +184,9 @@ h4 {
     .break-between-columns {
          display: inline;
      }
+    #userImage {
+        padding-right:0%;
+    }
      #profile-right {
         border-top-style: solid;
         border-top-color: #D5D5D5;
