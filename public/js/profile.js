@@ -144,7 +144,6 @@ function getMatch(user, d, ts, h) {
                     bodyText: "Sadly, no one was available in the time and day you requested. But keep checking your matches page, and watch your inbox!"
                 }
                 post('/api/emailSender', { data }, function () {
-                    console.log("uhhhhhhh"); // ask in office hours...Friday
                     document.location.href = '/u/matches?'+user._id; // done
                 });
                 alert('Match submitted. You will get an email soon!');

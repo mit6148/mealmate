@@ -192,7 +192,7 @@ router.post('/uploadImage/', connect.ensureLoggedIn(), function(req, res) {
 
 router.post('/emailSender/', connect.ensureLoggedIn(), function(req, res){
     sendEmail(req.body.data.receiverEmail, req.body.data.subjectText, req.body.data.bodyText, function(){
-        //action for after email sent
+        res.send({ message: "Email send!" })
     });
 })
 
