@@ -39,8 +39,8 @@
                     <h4 id='userName' class="text-center">
                         <!-- insert the username via js here -->
                     </h4>
-                    <div class='profPicBox img-responsive center-block'>
-                        <div class="profPicBox row">
+                    <div class='profPicBox img-responsive center-block' >
+                        <div class="profPicBox row custom-file-upload">
                             <img id="userImage">
                             <!-- insert the user image via js here -->
                         </div>
@@ -49,7 +49,8 @@
                                 id='uploadForm' 
                                 action='/api/uploadImage'
                                 method='post'
-                                enctype="multipart/form-data">
+                                enctype="multipart/form-data"
+                                class="custom-file-upload">
                                 <input id='photoupload' type="file" name="profpic"
                                 onchange="document.getElementById('userImage').src=window.URL.createObjectURL(this.files[0])" />
                                 <!-- below field is purposelly hidden!-->
@@ -65,27 +66,26 @@
                         <a id='addPhoto'>Submit New Profile Picture</a>
                     </div>
 -->
-
                     <br>
-                    <div class="form-group row">
+                    <div class="form-group row big-padding">
                         <label for="editUserAbout" class="col-2 col-form-label">Edit About Me</label>
                         <div class="col-10">
                             <input class="form-control" type="text" value="" id="editUserAbout">
                     </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row big-padding">
                         <label for="editUserCourse" class="col-2 col-form-label">Edit Course</label>
                         <div class="col-10">
                             <input class="form-control" type="text" value="" id="editUserCourse">
                     </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row big-padding">
                         <label for="editUserYear" class="col-2 col-form-label">Edit Class Year</label>
                         <div class="col-10">
                             <input class="form-control" type="text" value="" id="editUserYear">
                     </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row big-padding">
                         <label for="editUserLivingGroup" class="col-2 col-form-label">Edit Living Group</label>
                         <div class="col-10">
                             <input class="form-control" type="text" value="" id="editUserLivingGroup">
