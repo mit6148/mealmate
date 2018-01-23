@@ -11,7 +11,7 @@ function main() {
         $('#addPhoto').click(function() {
         	//previewPic(user);
         	user.piclink='https://s3.us-east-2.amazonaws.com/mealmate/'+user._id;
-
+    
         	const data = {
         		_id: user._id,
         		piclink: 'https://s3.us-east-2.amazonaws.com/mealmate/'+user._id
@@ -32,6 +32,11 @@ function main() {
         	 () => console.log('error'));
 
     	});
+
+
+        document.getElementById('uploadForm').onreset= function(){
+            renderUserPicture(user);
+        };
 
 
     });

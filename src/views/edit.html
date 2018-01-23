@@ -52,9 +52,12 @@
                                 action='/api/uploadImage'
                                 method='post'
                                 enctype="multipart/form-data">
-                                <input id='photoupload' type="file" name="profpic" />
+                                <input id='photoupload' type="file" name="profpic"
+                                onchange="document.getElementById('userImage').src=window.URL.createObjectURL(this.files[0])" />
+                                <!-- below field is purposelly hidden!-->
                                 <input type="text" id="photokey" name="photokey" style="display: none"/>
                                 <input id='addPhoto' type='submit' value='Upload!' />
+                                <input type='reset' value='Cancel'/>
                             </form>
                         </div>
                     </div>

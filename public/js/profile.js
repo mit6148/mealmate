@@ -13,14 +13,26 @@ function main() {
         if (!(profileUser.email) || profileUser.email === ""){
             $('#emailModal').show();
             $('#submitEmail').click(function(){
-                const data={
-                    _id: profileUser._id,
-                    email: $('#userEmail').val()
+                if ($('#userEmail').val().indexOf('@') > -1){
+                    const data={
+                        _id: profileUser._id,
+                        email: $('#userEmail').val()
+                    }
+                    post('/api/editProfile', { data }, function(){
+                        loadPage(profileUser);
+                        $('#emailModal').hide();
+                    });
+                }else{
+                    alert("Please enter a valid email!");
                 }
-                post('/api/editProfile', { data }, function(){
+/*
+                else{
+                    console.log("hi!");
                     loadPage(profileUser);
                     $('#emailModal').hide();
-                });
+                }
+                */
+                
             });
 
         } else{
@@ -62,7 +74,11 @@ function renderUserData(user) {
     // rendering profile image
     const profileImage = document.createElement('img');
     document.getElementById('userImage').appendChild(profileImage);
-    profileImage.src = user.piclink + "?" + new Date().getTime();
+    var picSrc = user.piclink;
+    if (picSrc.includes("amazonaws")){
+        picSrc = picSrc + "?" + new Date().getTime();
+    }
+    profileImage.src = picSrc;
     profileImage.className = "img-responsive";
 
     // rendering aboutme
@@ -143,10 +159,8 @@ function updateUsersWithMatch(user, yourMatch, theirMatch) {
     console.log(yourMatch);
 
     const matchData = { // to be posted to the user
-        data: {
-            _id: user._id,
-            matches: [yourMatch],
-        }
+        userid: user._id,
+        m: yourMatch,
     }
 
     // create a modified version of their Match
@@ -158,15 +172,14 @@ function updateUsersWithMatch(user, yourMatch, theirMatch) {
     }
 
     const matchData2 = { // to be posted to the match
-        data: {
-            _id: yourMatch.userid,
-            matches: [modTheirMatch],
-        }
+        userid: yourMatch.userid,
+        m: modTheirMatch,
     }
 
     // update the user and match with the match
-    post('/api/editProfile', matchData);
-    post('/api/editProfile', matchData2);
+    console.log("nani");
+    post('/api/addMatch', matchData);
+    post('/api/addMatch', matchData2);
 }
 
 // send emails

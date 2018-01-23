@@ -81,8 +81,6 @@ router.get('/matchRequest', function(req, res) {
                     const posTimes = Array.from(possibleTimes[0]);
                     const myHalls = req.query.halls.split(",");
                     const matchHalls = timeMatches[0].halls;
-                    // console.log("matchHalls");
-                    // console.log(matchHalls);
                     let meetHall = "";
                     for (let i=0; i<3; i++) {
                         if (matchHalls.includes(myHalls[i])) {
@@ -97,7 +95,7 @@ router.get('/matchRequest', function(req, res) {
                         'date': req.query.date,
                         'times': posTimes,
                         'halls': [meetHall],
-                    }
+                    };
                     res.send(realMatch);
                     
                 } else {
@@ -152,6 +150,33 @@ router.post('/editProfile/',
   }
 );
 
+router.post('/addMatch/',
+    connect.ensureLoggedIn(),
+    function (req,res) {
+        console.log("AAAAAAAAHHHHHHHHHHHHH");
+        User.findOne({_id: req.body.userid}, function(err, user) {
+            if (err) {
+                console.log(err);
+                res.send(err);
+                return;
+            }
+
+            /* console.log(user.matches);
+            user.matches.push(req.body.m); // push the match
+            console.log("This is req.body.m: ");
+            console.log(req.body.m); */
+
+            user.save(function(err) { // save the user
+                if (err) { // if error
+                    console.log(err);
+                    res.send(err);
+                    return;
+                }
+                res.json({ message: 'User updated!' });
+            });
+        });
+    });
+
 router.post('/uploadImage/', connect.ensureLoggedIn(), function(req, res) {
   console.log('hello',req.files);
   console.log('rip', req.body);
@@ -160,16 +185,6 @@ router.post('/uploadImage/', connect.ensureLoggedIn(), function(req, res) {
   });
 });
 
-/*
-const data = {
-    receiverEmail: profileUser.email,
-    subjectText: "sending?",
-    bodyText: "hi this was sent from the profile page!"
-}
-post('/api/emailSender', { data }, function() {
-    alert("email sent!");
-});
-*/
 router.post('/emailSender/', connect.ensureLoggedIn(), function(req, res){
     sendEmail(req.body.data.receiverEmail, req.body.data.subjectText, req.body.data.bodyText, function(){
         //action for after email sent
