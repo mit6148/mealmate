@@ -49,13 +49,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4" id="profile-left">
-                    <h3 id='userName'>
+                    <h4 id='userName'>
                         <!-- insert the username via js here -->
-                    </h3>
+                    </h4>
                     <div class='profPicBox' id="userImage">
                         <!-- insert the user image via js here -->
                     </div>
-                    <h2>About Me</h2>
+                    <h3 class="bold">About Me</h3>
 					<div id='userAbout'>
 						<!-- insert about me via js here -->
 					</div>
@@ -69,12 +69,13 @@
                         Interests: temp
                     </div> --> <!-- not changing this yet -->
                     <br>
-                    <button type="button" class="btn btn-default" id='editProfile'>Edit Profile</button> <!-- edit profile button -->
+                    <button type="button" class="btn btn-default" id='editProfile'>Edit Profile</button><!-- edit profile button -->
                         <!-- make the button react via javaScript -->
                 </div>
+                <br class="break-between-columns">
                 <div class="col-md-8" id="profile-right">
-                    <h1>Find your <span style="font-family:Chewy; font-size:35px">mealmate</span>!</h1>
-                    <h2>Preferred Dining Hall</h2>
+                    <h2>Find your <span style="font-family:Chewy; font-size:35px">mealmate</span>!</h2>
+                    <h3 class="bold">Preferred Dining Hall</h3>
                     <p>Drag the dining halls around and rank your preferences!</p>
 						<ol id="userDiningPreferences">
                             <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Baker</li>
@@ -85,7 +86,7 @@
                         </ol> 
                     <br>
                     
-                    <h2 id ='userAvailability'>Date Availability</h2>
+                    <h3 id ='userAvailability' class="bold">Date Availability</h3>
                     <p>Put in the date you want to have your meal!</p>
                     <div id="datepicker" class="input-group date" data-date-formate="yyyy-mm-dd">
                         <input type="text" name="">
@@ -94,7 +95,7 @@
                     
                     <br>
                     
-                    <h2>Time Availability</h2>
+                    <h3 class="bold">Time Availability</h3>
                     <p>Check off all the times when you are availabile for a meal!</p>
                     <div class="form-check">
                       <label class="form-check-label"><input class="form-check-input" type="checkbox" id='check9'> 9 am - 9:30 am</label><br>

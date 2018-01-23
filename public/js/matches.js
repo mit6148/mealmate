@@ -22,7 +22,7 @@ function renderMatches(user) {
             get('/api/user', { '_id': user.matches[i].userid }, function (matchedUser) {
                 const tabrow = document.createElement('tr');
 
-                const matchPic = document.createElement('th');
+                const matchPic = document.createElement('td');
                 const profileImage = document.createElement('img');
                 profileImage.src = matchedUser.piclink;
                 profileImage.onclick = function () { // propic is link to other user's page
@@ -30,19 +30,19 @@ function renderMatches(user) {
                 }
                 matchPic.appendChild(profileImage);
 
-                const matchName = document.createElement('th');
+                const matchName = document.createElement('td');
                 const nameLink = document.createElement('a');
                 nameLink.innerHTML = matchedUser.name;
                 nameLink.setAttribute('href', '/u/profile?'+matchedUser._id);
                 matchName.appendChild(nameLink);
                 
-                const matchDate = document.createElement('th');
+                const matchDate = document.createElement('td');
                 // tbh this date formatting is hacky
                 console.log("This is the ith user match: ");
                 matchDate.innerHTML = user.matches[i].date.substring(0,10);
-                const matchTime = document.createElement('th');
+                const matchTime = document.createElement('td');
                 matchTime.innerHTML = formatTime(user.matches[i].times[0]); // just choose the first available time for now
-                const matchHall = document.createElement('th');
+                const matchHall = document.createElement('td');
                 matchHall.innerHTML = user.matches[i].halls[0];
 
                 tabrow.appendChild(matchPic);
@@ -56,8 +56,10 @@ function renderMatches(user) {
 
     } else { // don't display a table if no matches
         const matchTableDiv = document.getElementById('matchTable')
+        const breakMatch = document.createElement('br');
         const noMatch = document.createElement('p');
         noMatch.innerHTML = 'No matches yet! Check back soon.';
+        matchTableDiv.appendChild(breakMatch);
         matchTableDiv.appendChild(noMatch);
     }
 }
