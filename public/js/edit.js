@@ -8,15 +8,17 @@ function main() {
     get('/api/whoami', {}, function(user){
         renderNavbar(user);
         //var data;
-        $('#addPhoto').click(function() {
+        $('#uploadForm').submit(function() {
         	//previewPic(user);
-        	user.piclink='https://s3.us-east-2.amazonaws.com/mealmate/'+user._id;
-    
+        	//user.piclink='https://s3.us-east-2.amazonaws.com/mealmate/'+user._id;
+
         	const data = {
         		_id: user._id,
         		piclink: 'https://s3.us-east-2.amazonaws.com/mealmate/'+user._id
         	}
-        	post('/api/editProfile', { data });
+        	post('/api/editProfile', { data }, function() {
+                alert("Your photo has been uploaded!");
+            });
 
         });
 
@@ -33,10 +35,17 @@ function main() {
 
     	});
 
+        $('input:file').on("change", function() {
+            $('input:submit').prop('disabled', !$(this).val());
+            $('#cancel').prop('disabled', !$(this).val());
+        });
 
-        document.getElementById('uploadForm').onreset= function(){
+        $('#cancel').click(function(){
             renderUserPicture(user);
-        };
+            $('input:file').val('');
+            $('input:submit').prop('disabled', !$(this).val());
+            $('#cancel').prop('disabled', !$(this).val());
+        });
 
 
     });

@@ -183,11 +183,18 @@ router.post('/doNothing/', function(req,res) {
 })
 
 router.post('/uploadImage/', connect.ensureLoggedIn(), function(req, res) {
-  console.log('hello',req.files);
-  console.log('rip', req.body);
-  addPhoto(req.body.photokey, req.files.profpic, function(){
-    res.redirect('/u/edit?' +req.body.photokey);
-  });
+    console.log('hello',req.files);
+    console.log('rip', req.body);
+
+    addPhoto(req.body.photokey, req.files.profpic, function(){
+        res.redirect('/u/edit?' +req.body.photokey);
+    });
+    if (err){
+        console.log(err);
+        res.send(err);
+        return;
+    }
+
 });
 
 router.post('/emailSender/', connect.ensureLoggedIn(), function(req, res){

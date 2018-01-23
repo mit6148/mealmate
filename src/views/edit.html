@@ -53,10 +53,10 @@
                                 class="custom-file-upload">
                                 <input id='photoupload' type="file" name="profpic"
                                 onchange="document.getElementById('userImage').src=window.URL.createObjectURL(this.files[0])" />
-                                <!-- below field is purposelly hidden!-->
+                                <!-- below field is purposely hidden!-->
                                 <input type="text" id="photokey" name="photokey" style="display: none"/>
-                                <input id='addPhoto' type='submit' value='Upload!' />
-                                <input type='reset' value='Cancel'/>
+                                <input id='addPhoto' type='submit' value='Upload!' disabled />
+                                <button id='cancel' type="button" disabled>Cancel</button>
                             </form>
                         </div>
                     </div>
