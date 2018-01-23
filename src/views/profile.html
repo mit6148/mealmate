@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="/static/css/style.css">
         <link rel="shortcut icon" type="image/x-icon" href="../../static/img/favicon.png"/>
         <link href='https://fonts.googleapis.com/css?family=Open Sans Condensed:300' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Chewy' rel='stylesheet'>
         
     </head>
 	<body>
@@ -47,10 +48,10 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
-                    <h4 id='userName'>
+                <div class="col-md-4" id="profile-left">
+                    <h3 id='userName'>
                         <!-- insert the username via js here -->
-                    </h4>
+                    </h3>
                     <div class='profPicBox' id="userImage">
                         <!-- insert the user image via js here -->
                     </div>
@@ -71,8 +72,8 @@
                     <button type="button" class="btn btn-default" id='editProfile'>Edit Profile</button> <!-- edit profile button -->
                         <!-- make the button react via javaScript -->
                 </div>
-                <div class="col-md-8">
-                    <br>
+                <div class="col-md-8" id="profile-right">
+                    <h1>Find your <span style="font-family:Chewy; font-size:35px">mealmate</span>!</h1>
                     <h2>Preferred Dining Hall</h2>
                     <p>Drag the dining halls around and rank your preferences!</p>
 						<ol id="userDiningPreferences">

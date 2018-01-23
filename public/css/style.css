@@ -62,6 +62,14 @@
      color: #D5D5D5;
      text-decoration: none;
 }
+#userImage {
+    padding-right:5%;
+}
+
+.small-padding {
+    padding-left: 5%;
+    padding-right: 5%;
+}
 
 .big-padding {
     padding-left: 20%;
@@ -106,6 +114,12 @@
     font-size: 30px;
     font-weight: bold;
     text-shadow: 0px 4px 8px rgba(0, 0, 0, 1);
+}
+
+#profile-right {
+    border-left-style: solid;
+    border-left-color: #D5D5D5;
+    border-left-width: thin;
 }
 
 .bold {
