@@ -189,11 +189,6 @@ router.post('/uploadImage/', connect.ensureLoggedIn(), function(req, res) {
     addPhoto(req.body.photokey, req.files.profpic, function(){
         res.redirect('/u/edit?' +req.body.photokey);
     });
-    if (err){
-        console.log(err);
-        res.send(err);
-        return;
-    }
 
 });
 
