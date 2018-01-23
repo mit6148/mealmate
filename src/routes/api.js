@@ -153,7 +153,7 @@ router.post('/editProfile/',
 router.post('/addMatch/',
     connect.ensureLoggedIn(),
     function (req,res) {
-        console.log("AAAAAAAAHHHHHHHHHHHHH");
+        // console.log("AAAAAAAAHHHHHHHHHHHHH");
         User.findOne({_id: req.body.userid}, function(err, user) {
             if (err) {
                 console.log(err);
@@ -161,10 +161,10 @@ router.post('/addMatch/',
                 return;
             }
 
-            /* console.log(user.matches);
+            // console.log(user.matches);
             user.matches.push(req.body.m); // push the match
-            console.log("This is req.body.m: ");
-            console.log(req.body.m); */
+            // console.log("This is req.body.m: ");
+            // console.log(req.body.m);
 
             user.save(function(err) { // save the user
                 if (err) { // if error
@@ -176,6 +176,11 @@ router.post('/addMatch/',
             });
         });
     });
+
+// this path does nothing but make functions into callback functions
+router.post('/doNothing/', function(req,res) {
+    console.log("Doing nothing~");
+})
 
 router.post('/uploadImage/', connect.ensureLoggedIn(), function(req, res) {
   console.log('hello',req.files);
