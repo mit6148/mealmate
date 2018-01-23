@@ -143,10 +143,8 @@ function updateUsersWithMatch(user, yourMatch, theirMatch) {
     console.log(yourMatch);
 
     const matchData = { // to be posted to the user
-        data: {
-            _id: user._id,
-            matches: [yourMatch],
-        }
+        userid: user._id,
+        m: yourMatch,
     }
 
     // create a modified version of their Match
@@ -158,15 +156,14 @@ function updateUsersWithMatch(user, yourMatch, theirMatch) {
     }
 
     const matchData2 = { // to be posted to the match
-        data: {
-            _id: yourMatch.userid,
-            matches: [modTheirMatch],
-        }
+        userid: yourMatch.userid,
+        m: modTheirMatch,
     }
 
     // update the user and match with the match
-    post('/api/editProfile', matchData);
-    post('/api/editProfile', matchData2);
+    console.log("nani");
+    post('/api/addMatch', matchData);
+    post('/api/addMatch', matchData2);
 }
 
 // send emails
