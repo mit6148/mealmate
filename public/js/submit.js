@@ -38,7 +38,11 @@ function renderUserPicture(user){
     //$('#userImage').attr('src', '');
     console.log('hello redner user');
 
-    $('#userImage').attr('src', user.piclink + "#" + new Date().getTime());
+    var picSrc = user.piclink;
+    if (picSrc.includes("amazonaws")){
+        picSrc = picSrc + "?" + new Date().getTime();
+    }
+    $('#userImage').attr('src', picSrc);
     $('#userImage').width('200px').height('auto');
 }
 

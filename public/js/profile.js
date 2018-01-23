@@ -74,7 +74,11 @@ function renderUserData(user) {
     // rendering profile image
     const profileImage = document.createElement('img');
     document.getElementById('userImage').appendChild(profileImage);
-    profileImage.src = user.piclink + "#" + new Date().getTime();
+    var picSrc = user.piclink;
+    if (picSrc.includes("amazonaws")){
+        picSrc = picSrc + "?" + new Date().getTime();
+    }
+    profileImage.src = picSrc;
     profileImage.className = "img-responsive";
 
     // rendering aboutme
