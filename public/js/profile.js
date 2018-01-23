@@ -74,7 +74,7 @@ function renderUserData(user) {
     // rendering profile image
     const profileImage = document.createElement('img');
     document.getElementById('userImage').appendChild(profileImage);
-    profileImage.src = user.piclink + "?" + new Date().getTime();
+    profileImage.src = user.piclink + "#" + new Date().getTime();
     profileImage.className = "img-responsive";
 
     // rendering aboutme

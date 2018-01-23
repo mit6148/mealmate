@@ -38,7 +38,7 @@ function renderUserPicture(user){
     //$('#userImage').attr('src', '');
     console.log('hello redner user');
 
-    $('#userImage').attr('src', user.piclink + "?" + new Date().getTime());
+    $('#userImage').attr('src', user.piclink + "#" + new Date().getTime());
     $('#userImage').width('200px').height('auto');
 }
 
