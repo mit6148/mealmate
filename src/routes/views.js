@@ -7,6 +7,10 @@ router.get('/', function(req, res) {
   	res.sendFile('index.html', { root: 'src/views' });
 });
 
+router.get('/about', function(req, res) {
+  	res.sendFile('about.html', { root: 'src/views' });
+});
+
 // route to profile
 router.get('/u/profile', function(req, res) {
   	res.sendFile('profile.html', { root: 'src/views' });

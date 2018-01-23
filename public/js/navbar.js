@@ -19,15 +19,16 @@ function renderNavbar(user){
 
 	const currentPath = window.location.pathname; // get the current page
 	
-	navbarObjects.appendChild(newNavbarItem('Home', '/', currentPath));
+	navbarObjects.appendChild(newNavbarItem('HOME', '/', currentPath));
+    navbarObjects.appendChild(newNavbarItem('ABOUT', '/about', currentPath));
 	if (user._id !== undefined) {
-		navbarObjects.appendChild(newNavbarItem('Profile', '/u/profile?'+user._id, currentPath)); // the real one. How to get it to work?
-		navbarObjects.appendChild(newNavbarItem('Matches', '/u/matches?'+user._id, currentPath));
+		navbarObjects.appendChild(newNavbarItem('PROFILE', '/u/profile?'+user._id, currentPath)); 
+		navbarObjects.appendChild(newNavbarItem('MATCHES', '/u/matches?'+user._id, currentPath));
 		//navbarDiv.appendChild(newNavbarItem('Profile', '/profile'));
 		//navbarDiv.appendChild(newNavbarItem('Matches', '/matches'));
-		navbarObjects.appendChild(newNavbarItem('Logout', '/logout', currentPath));
+		navbarObjects.appendChild(newNavbarItem('LOGOUT', '/logout', currentPath));
 	} else {
-		navbarObjects.appendChild(newNavbarItem('Login', 'auth/facebook', currentPath)); // add this when FB authentication happens
+		navbarObjects.appendChild(newNavbarItem('LOGIN', 'auth/facebook', currentPath)); // add this when FB authentication happens
 	}
 	
 	navbarDiv.appendChild(navbarObjects);

@@ -43,7 +43,7 @@ router.get('/matchRequest', function(req, res) {
             // filter by user id
             for (let i=0; i<matches.length; i++) {
                 if (req.query.userid != matches[i].userid) {
-                    console.log("hey it isn't yourself");
+                    console.log("Hey, it isn't yourself!");
                     idMatches.push(matches[i]); // add that match
                 }
             }
@@ -74,7 +74,7 @@ router.get('/matchRequest', function(req, res) {
                     }
                 } // end for loop over all your matches
                 if (timeMatches.length) {
-                    console.log("There's at least one match request that works! ");
+                    console.log("There's at least one match request that works!");
                     
                     // just take the first one
                     // extract first set of possible times, find a shared fav hall
