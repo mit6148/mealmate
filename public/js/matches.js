@@ -1,6 +1,9 @@
 function main(){
     const profileId = window.location.search.substring(1);
     get('/api/whoami', {}, function(user){
+        if (user._id === undefined){
+            document.location.href = '/';
+        }
         renderNavbar(user);
     });
     get('/api/user', {'_id': profileId}, function(profileUser) {

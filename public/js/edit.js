@@ -1,11 +1,16 @@
 function main() {
+
     const profileId = window.location.search.substring(1);
     get('/api/user', {'_id': profileId}, function(profileUser) {
         // all of these functions are now in submit.js
+
         renderUserText(profileUser);
         renderUserPicture(profileUser);
     });
     get('/api/whoami', {}, function(user){
+        if (user._id === undefined){
+            document.location.href = '/';
+        }
         renderNavbar(user);
         //var data;
         $('#uploadForm').submit(function() {
@@ -53,7 +58,7 @@ function main() {
 
         //This button is for going back to profile page
         $('#cancel').click(function(){
-            document.location.href = '/u/profile?'+user._id
+            document.location.href = '/u/profile?'+user._id;
         });
 
 

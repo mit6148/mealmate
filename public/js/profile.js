@@ -30,6 +30,9 @@ function main() {
         }
     });
     get('/api/whoami', {}, function(user){
+        if (user._id === undefined){
+            document.location.href = '/';
+        }
         renderNavbar(user);
     });
 
