@@ -4,7 +4,19 @@ function main(){
         renderNavbar(user);
     });
     get('/api/user', {'_id': profileId}, function(profileUser) {
-        renderMatches(profileUser)
+        renderMatches(profileUser);
+    });
+    $('.red-decline').click(function() {
+        $('#cancel-modal').show();
+
+        $('#cancel-decline').click(function() {
+            $('#cancel-modal').hide();
+        });
+        $('#verify-decline').click(function() {
+            //code to delete match
+            console.log("code to delete match");
+            $('#cancel-modal').hide();
+        });
     });
 }
 

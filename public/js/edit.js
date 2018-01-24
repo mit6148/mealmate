@@ -37,16 +37,22 @@ function main() {
 
     	});
 
+        //This is for enabling/ disabling the upload/cancel photo
         $('input:file').on("change", function() {
             $('input:submit').prop('disabled', !$(this).val());
-            $('#cancel').prop('disabled', !$(this).val());
+            $('#cancel-photo').prop('disabled', !$(this).val());
         });
 
-        $('#cancel').click(function(){
-            renderUserPicture(user); // what does this doooooo
+        //This button is for cancelling photo upload
+        $('#cancel-photo').click(function(){
+            renderUserPicture(user);
             $('input:file').val('');
             $('input:submit').prop('disabled', !$(this).val());
-            $('#cancel').prop('disabled', !$(this).val());
+            $('#cancel-photo').prop('disabled', !$(this).val());
+        });
+
+        //This button is for going back to profile page
+        $('#cancel').click(function(){
             document.location.href = '/u/profile?'+user._id
         });
 
