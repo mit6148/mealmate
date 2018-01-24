@@ -77,7 +77,7 @@
                     <h2 id="find-mealmate-h1">FIND YOUR <span style="font-family:Chewy; font-size:40px">mealmate</span>!</h2>
                     <h3 class="bold">Preferred Dining Hall</h3>
                     <p>Drag the dining halls around and rank your preferences!</p>
-						<ol id="userDiningPreferences">
+						<ol id="userDiningPreferences" class="sortable" style="cursor:pointer">
                             <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Baker</li>
                             <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Maseeh</li>
                             <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Mccormick</li>
@@ -157,7 +157,8 @@
 		<script src="/static/js/api.js"></script>
 		<script src="/static/js/navbar.js"></script>
 		<script src="/static/js/profile.js"></script>
-        
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script>
         $( function() {
             $( "#userDiningPreferences" ).sortable();
