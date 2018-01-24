@@ -47,7 +47,8 @@ function main() {
 
 function loadPage(user){
     renderUserData(user);
-
+    //Below commented out block is for the get matches :)
+    /*
     const matchButton = document.getElementById('find-mealmate-button');
     matchButton.addEventListener('click', function() {
         const date = $('#datepicker').datepicker('getDate'); 
@@ -55,6 +56,7 @@ function loadPage(user){
         const topThreeHalls = getTopThreeHalls();
         getMatch(user, date, selectedTimes, topThreeHalls);
     });
+    */
 
     // render the correct edit link
     const editButton = document.getElementById('editProfile');
