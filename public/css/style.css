@@ -7,6 +7,9 @@
      font-size: 1em;
      border: 0;
 }
+#about-me {
+    font-size: 40px;
+}
 
   #home-header {
      position: absolute;
