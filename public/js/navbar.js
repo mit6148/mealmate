@@ -24,6 +24,7 @@ function renderNavbar(user){
 	if (user._id !== undefined) {
 		navbarObjects.appendChild(newNavbarItem('PROFILE', '/u/profile?'+user._id, currentPath)); 
 		navbarObjects.appendChild(newNavbarItem('MATCHES', '/u/matches?'+user._id, currentPath));
+        navbarObjects.appendChild(newNavbarItem('FIND', '/u/findMealmate?'+user._id, currentPath));
 		//navbarDiv.appendChild(newNavbarItem('Profile', '/profile'));
 		//navbarDiv.appendChild(newNavbarItem('Matches', '/matches'));
 		navbarObjects.appendChild(newNavbarItem('LOGOUT', '/logout', currentPath));

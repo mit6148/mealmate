@@ -12,7 +12,6 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css">
-		<link rel="stylesheet" href="/static/css/profile.css">
         <link rel="stylesheet" href="/static/css/style.css">
         <link rel="shortcut icon" type="image/x-icon" href="../../static/img/favicon.png"/>
         <link href='https://fonts.googleapis.com/css?family=Open Sans Condensed:300' rel='stylesheet'>
@@ -48,7 +47,6 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-md-4" id="profile-left">
                     <h4 id='userName'>
                         <!-- insert the username via js here -->
                     </h4>
@@ -72,58 +70,8 @@
                     <button type="button" class="btn btn-default" id='editProfile'>Edit Profile</button><!-- edit profile button -->
                         <!-- make the button react via javaScript -->
                 </div>
-                <br class="break-between-columns">
-                <div class="col-md-8" id="profile-right">
-                    <h2 id="find-mealmate-h1">FIND YOUR <span style="font-family:Chewy; font-size:40px">mealmate</span>!</h2>
-                    <h3 class="bold">Preferred Dining Hall</h3>
-                    <p>Drag the dining halls around and rank your preferences!</p>
-						<ol id="userDiningPreferences" class="sortable" style="cursor:pointer">
-                            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Baker</li>
-                            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Maseeh</li>
-                            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Mccormick</li>
-                            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Simmons</li>
-                            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Next</li>
-                        </ol> 
-                    <br>
-                    
-                    <h3 id ='userAvailability' class="bold">Date Availability</h3>
-                    <p>Put in the date you want to have your meal!</p>
-                    <div id="datepicker" class="input-group date" data-date-formate="yyyy-mm-dd">
-                        <input type="text" name="">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                    </div>
-                    
-                    <br>
-                    
-                    <h3 class="bold">Time Availability</h3>
-                    <p>Check off all the times when you are availabile for a meal!</p>
-                    <div class="form-check">
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" id='check9'> 9 am - 9:30 am</label><br>
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" id='check9.5'> 9:30 am - 10 am</label><br>
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" id='check10'> 10 am - 10:30 am</label><br>
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" id='check10.5'> 10:30 am - 11 am</label><br> 
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" id='check11'> 11 am - 11:30 am</label><br>
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" id='check11.5'> 11:30 am - 12 pm</label><br>
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" id='check12'> 12 pm - 12:30 pm</label><br>
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" id='check12.5'> 12:30 pm - 1 pm</label><br>
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" id='check13'> 1 pm - 1:30 pm</label><br>
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" id='check13.5'> 1:30 pm - 2 pm</label><br>
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" id='check14'> 2 pm - 2:30 pm</label><br>
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" id='check14.5'> 2:30 pm - 3 pm</label><br>
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" id='check17'> 5 pm - 5:30 pm</label><br>
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" id='check17.5'> 5:30 pm - 6 pm</label><br>
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" id='check18'> 6 pm - 6:30 pm</label><br>
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" id='check18.5'> 6:30 pm - 7 pm</label><br>
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" id='check19'> 7 pm - 7:30 pm</label><br>
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" id='check19.5'> 7:30 pm - 8 pm</label><br>
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" id='check20'> 8 pm - 8:30 pm</label><br>
-                      <label class="form-check-label"><input class="form-check-input" type="checkbox" id='check20.5'> 8:30 pm - 9 pm</label><br><br>
-                    
-                      <button type="button" class="btn btn-default" id="find-mealmate-button">Find a mealmate!</button>
-                </div>
             </div>
-        </div>
-        </div>
+
         
         <footer class="container-fluid text-center">
             <div class="row">
