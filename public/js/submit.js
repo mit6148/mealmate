@@ -8,29 +8,20 @@ function renderUserText(user) {
 
     // rendering default values in input elements
     $('#photokey').val(user._id);
-    $('#editUserAbout').val(user.about);
+    // $('#editUserAbout').val(user.about);
     $('#editUserCourse').val(user.course);
     $('#editUserYear').val(user.year);
     $('#editUserLivingGroup').val(user.residence);
+    $('#editHomeState').val(user.hkc[0]);
+    $('#editKerb').val(user.hkc[1]);
+    $('#editCell').val(user.hkc[2]);
+    $('#editFavFood').val(user.favorites[0]);
+    $('#editFavDrink').val(user.favorites[1]);
+    $('#editFavMovie').val(user.favorites[2]);
+    $('#editFavMeal').val(user.favorites[3]);
+    $('#editFavCuisine').val(user.favorites[4]);
+    $('#editUserInterests').val(user.interests);
 
-    // User interests not currently implemented 
-//  $('editUserInterests').val(user.interests);
-
-    // rendering dining preferences
-    const hallPrefs = document.getElementById('userDiningPreferences');
-    if (user.halls) {
-        // print the hall choices if they exist
-        for (let i=0; i<user.halls.length; i++) {
-            const hallItem = document.createElement('li');
-            hallItem.innerHTML = user.halls[i];
-            hallPrefs.appendChild(hallItem);
-        }
-    } else {
-        const hallItem = document.createElement('li');
-        hallItem.innerHTML = 'No preferences listed';
-        hallPrefs.appendChild(hallItem);
-    } 
-    // currently nearly identical to profile.js, but with a matches button
 }
 
 function renderUserPicture(user){
@@ -50,7 +41,7 @@ function renderUserPicture(user){
 
 // render the correct submission link
 // currently just a "return to profile page link"
-function submitProfileLink(user) {
+/* function submitProfileLink(user) {
     const submitLinkDiv = document.getElementById('submitProfileImage');
     const submitLink = document.createElement('a');
     submitLink.setAttribute('href', '/u/profile?'+user._id);
@@ -95,7 +86,7 @@ function submitResidenceLink(user) {
 /* -------------------- SUBMISSION HANDLERS BELOW!!!!! ------------------- */
 
 // submit course and class
-function submitCourseClassHandler (user) {
+/*function submitCourseClassHandler (user) {
 
 	const newCourse = document.getElementById('new-course-input');
 	const newClass = document.getElementById('new-class-input');
@@ -142,4 +133,4 @@ function submitResHandler (user) {
 
 	post('/api/editProfile', data);
 	newRes.value = '';
-}
+} */

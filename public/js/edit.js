@@ -23,8 +23,6 @@ function main() {
         });
 
         $('#submitBtn').click(function() {
-            const test = $('#editFavFood').val();
-            console.log(test);
         	const data = {
         		_id: user._id,
         		course: $('#editUserCourse').val(),
@@ -45,10 +43,11 @@ function main() {
         });
 
         $('#cancel').click(function(){
-            renderUserPicture(user);
+            renderUserPicture(user); // what does this doooooo
             $('input:file').val('');
             $('input:submit').prop('disabled', !$(this).val());
             $('#cancel').prop('disabled', !$(this).val());
+            document.location.href = '/u/profile?'+user._id
         });
 
 
@@ -80,4 +79,5 @@ function previewPic(user) {
     //post('/api/uploadImage', {data: {user, file}})
 
 }
+
 main();
