@@ -31,7 +31,16 @@
                <!-- insert navbar here --> 
             </div>
         </div>
-        </nav>
+    </nav>
+
+    <div id="cancel-modal" class="modal">
+        <div class="modal-content">
+            <h1>Are you sure you want to decline this match?</h1>
+            <h2>This cannot be undone.</h2>
+            <button id="cancel-decline">Cancel</button>
+            <button id="verify-decline">Yes</button>
+        </div>
+    </div>
         
     <div class= "container text-center">
         <h1>MEALMATES</h1>
@@ -45,6 +54,7 @@
                 <li data-target="#matches-pics" data-slide-to="1"></li>
                 <li data-target="#matches-pics" data-slide-to="2"></li>
             </ol>
+
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
                 <img src="/static/img/sabrina.jpg">
@@ -55,7 +65,7 @@
                     <h2 class="closer-caption">6 pm</h2>
                     <h2 class="closer-caption">Mccormick</h2>
                     <button type="button" class="cannot-go">Cannot Go</button>
-                    </div>
+                </div>
             </div> 
             <div class="item">
                 <img src="/static/img/bean_burger.jpg">
@@ -84,6 +94,7 @@
                     <button type="button" class="cannot-go">Cannot Go</button>
                 </div>
             </div>    
+
            
             <a class="left carousel-control" href="#matches-pics" role="button" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -115,8 +126,8 @@
                         <p class="text-center">Mccormick</p> 
                     </td>
                 <td> 
-                    <button type="button" class="btn btn-default center-block">Confirm</button> <br>
-                    <button type="button" class="btn btn-default center-block" id="red-decline">Decline</button>
+                    <button type="button" class="btn btn-default center-block" class="confirm-match">Confirm</button> <br>
+                    <button type="button" class="btn btn-default center-block red-decline">Decline</button>
                 </td>
                 </tr>
             </table>
