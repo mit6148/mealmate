@@ -9,14 +9,63 @@ table {
      padding: 5px;
      text-align: left;
 }
- table#t01 tr:nth-child(even) {
+ table tr:nth-child(even) {
      background-color: #eee;
 }
- table#t01 tr:nth-child(odd) {
+ table tr:nth-child(odd) {
      background-color:#fff;
 }
- table#t01 th {
+ table th {
      background-color: #66A25C;
      color: white;
 }
- 
+
+.cannot-go {
+    font-size: 18px;
+     color: #FFF;
+     padding: 6px 10px;
+     background: red;
+     border: 2px solid #FFF;
+    margin: 5px;
+    border-radius: 4px;
+}
+
+#red-decline {
+    background: red;
+}
+
+.small-padding {
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.restrict-width {
+    width:300px;
+}
+
+.chewy {
+    font-family: Chewy;
+}
+
+.closer-caption {
+    line-height: 0.6em;
+}
+
+.carousel-caption {
+    top: 58%;
+    transform: translateY(-40%);
+}
+
+#matches-pics {
+    background-image: url(/static/img/wood.jpg);
+    background-size: contain;
+}
+
+#matches-pics .carousel-inner .item{
+    height: 100vh;  
+}
+
+.carousel-inner > .item > img{
+    margin:auto;
+    height: 100%;
+}

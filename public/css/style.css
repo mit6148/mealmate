@@ -11,10 +11,6 @@
     font-size: 40px;
 }
 
-  #home-header {
-     position: absolute;
-  }
-
 #uploadProfilePic {
     justify-content: center;
     text-align: center;
@@ -44,9 +40,10 @@
  .container {
      margin: 4% auto;
 }
- .carousel-caption {
+#home-header {
      top: 38%;
      transform: translateY(-40%);
+     position: absolute;
 }
  footer {
      width: 100%;
@@ -180,6 +177,23 @@
     text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.6);
 }
 
+.no-padding {
+    padding-left: 0%;
+    padding-right: 0%;
+}
+
+#userDiningPreferences {
+    list-style-position:inside;
+}
+
+ol li {
+    border: solid;
+    border-radius: 5px;
+    margin-bottom: 0.5%;
+    margin-top: 0.5%;
+    margin-left: 43%;
+    margin-right: 43%;
+}
 
 body {
     font-family: 'Open Sans Condensed';
@@ -196,8 +210,26 @@ h2 {
    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.6);
 }
 
+.add-line:after {
+    content:' ';
+    display:block;
+    border:2px solid;
+    border-color: #66A25C;
+    margin-top: 1%;
+}
+
+.margin-add-line:after {
+    content:' ';
+    display:block;
+    border:2px solid;
+    border-color: #66A25C;
+    margin-top: 1%;
+    margin-left: 23%;
+    margin-right: 23%;
+}
+
 h4 {
-    font-size:20px;
+    font-size: 20px;
 }
 
 .profPicBox {
@@ -227,11 +259,21 @@ h4 {
     display: none;
 }
 
+#profile-right {
+    border-left-width: thin;
+    border-left-color: #D5D5D5;
+    border-left-style: solid;
+}
+
 @media (max-width: 1000px) {
     #get-started {
          font-size: 12px;
          padding: 10px 20px;
      }
+    ol li {
+        margin-left: 40%;
+        margin-right: 40%;
+    }
      #welcome {
         font-size: 80px;
     }
@@ -263,6 +305,10 @@ h4 {
          max-width: 200px;
          margin: 1% auto;
     }
+     ol li {
+        margin-left: 38%;
+        margin-right: 38%;
+    }
      .fa{
          font-size: 20px;
          padding: 10px;
@@ -286,6 +332,10 @@ h4 {
         text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.6);
      }
 
+#find-mealmate-button {
+    margin-top: 2%;
+}
+
 @media (max-width: 815px) {
     #get-started, #title-description {
         display: none;
@@ -306,6 +356,10 @@ h4 {
     h2 {
          font-size: 25px;
     }
+    ol li {
+        margin-left: 36%;
+        margin-right: 36%;
+    }
 }
 
  @media (max-width: 600px) {
@@ -318,6 +372,10 @@ h4 {
         line-height: 0.8em;
      }
      
+    ol li {
+        margin-left: 30%;
+        margin-right: 30%;
+    }
     #mealmate {
         font-size: 40px;
         letter-spacing: 3px;
@@ -353,7 +411,7 @@ h4 {
 }
 
 @media (max-width: 385px) {
-    .carousel-caption {
+    #home-header {
         top: 32%;
     }
     
