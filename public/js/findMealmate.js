@@ -10,6 +10,9 @@ function main(){
     }).datepicker('update', new Date()); // nice jQuery
 
     get('/api/whoami', {}, function(user){
+        if (user._id === undefined){
+            document.location.href = '/';
+        }
         renderNavbar(user);
     });
     get('/api/user', {'_id': profileId}, function(profileUser) {
