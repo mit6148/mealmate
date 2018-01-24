@@ -5,13 +5,14 @@ const UserModelSchema = new mongoose.Schema ({
 	fbid: String,
 	email: String,
 	piclink: String,
-	about: String,
 	course: String,
 	year: String,
 	about: String,
-	halls: Array,
 	residence: String,
 	matches: Array,
+	hkc: Array, // array of homestate, kerberos, cell phone
+	favorites: Array, // array of all the favorite things
+	interests: String
 });
 
 module.exports = mongoose.model('UserModel', UserModelSchema);
