@@ -20,6 +20,10 @@ router.get('/u/matches', function(req, res) {
   	res.sendFile('matches.html', { root: 'src/views' });
 });
 
+router.get('/u/findMealmate', function(req, res) {
+  	res.sendFile('findMealmate.html', { root: 'src/views' });
+});
+
 router.get('/u/edit', function(req, res) {
 	res.sendFile('edit.html', { root: 'src/views'});
 });

@@ -76,6 +76,56 @@
     padding-right: 20%;
 }
 
+ #datepicker{
+     width: 180px;
+}
+ #datepicker > span:hover{
+     cursor: pointer;
+}
+ #sortable {
+     list-style-type: none;
+     margin: 0;
+     padding: 0;
+     width: 60%;
+}
+ #sortable li {
+     font-size: 1.4em;
+     height: 18px;
+}
+ #sortable li span {
+     position: absolute;
+     margin-left: -1.3em;
+}
+
+.form-check-label {
+    font-weight: normal;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    font-family: "Open Sans Condensed";
+    font-size: 22px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    text-align: center;
+}
+
 #welcome {
     font-family: 'Herr Von Muellerhoff';
     font-weight: normal;
@@ -165,6 +215,15 @@ h4 {
     text-transform: uppercase;
 }
 
+#welcome-mobile {
+    font-family: 'Herr Von Muellerhoff';
+    font-weight: normal;
+    font-size: 70px;
+    text-shadow: 0px 4px 8px rgba(0, 0, 0, 1);
+    animation-duration: 1s;
+    display: none;
+}
+
 @media (max-width: 1000px) {
     #get-started {
          font-size: 12px;
@@ -215,7 +274,8 @@ h4 {
          border: 2px solid #FFF;
      }
     #title-description {
-        font-size: 16px;
+        font-size: 20px;
+        line-height: 0.3em;
     }
 }
 #find-mealmate-h1 {
@@ -227,11 +287,6 @@ h4 {
     #get-started, #title-description {
         display: none;
     }
-    
-    #welcome {
-        font-size: 70px;
-    }
-
     #mealmate {
         font-size: 50px;
     }
@@ -249,14 +304,21 @@ h4 {
          font-size: 25px;
     }
 }
+
  @media (max-width: 600px) {
     #get-started, #title-description, #welcome, #dining-break {
         display: none;
     }
-
+     
+    #welcome-mobile {
+        display: inline;
+        line-height: 0.8em;
+     }
+     
     #mealmate {
         font-size: 40px;
         letter-spacing: 3px;
+        line-height: 0.5em;
     }
      #profile-pic {
          max-width: 300px;
@@ -273,4 +335,32 @@ h4 {
      h4 {
          font-size:18px;
      }
+}
+
+@media (max-width: 475px) {
+    #welcome-mobile {
+        line-height: 0.3em;
+        font-size: 60px;
+     }
+     
+    #mealmate {
+        font-size: 40px;
+        line-height: 0.3em;
+    }
+}
+
+@media (max-width: 385px) {
+    .carousel-caption {
+        top: 32%;
+    }
+    
+    #welcome-mobile {
+        line-height: 0em;
+        font-size: 45px;
+     }
+     
+    #mealmate {
+        font-size: 25px;
+        line-height: 0em;
+    }
 }
