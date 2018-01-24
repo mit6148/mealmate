@@ -4,7 +4,7 @@
      background-color: #66A25C;
      color: #D5D5D5;
      padding: 1% 0;
-     font-size: 1em;
+     font-size: 0.95em;
      border: 0;
 }
 #about-me {
@@ -113,7 +113,7 @@
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    font-family: "News Cycle";
+    font-family: "Catamaran";
     font-size: 22px;
 }
 
