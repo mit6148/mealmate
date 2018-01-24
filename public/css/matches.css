@@ -56,6 +56,11 @@ table {
     transform: translateY(-40%);
 }
 
+#no-matches {
+    top: 55%;
+    transform: translateY(-40%);
+}
+
 #matches-pics {
     background-image: url(/static/img/wood.jpg);
     background-size: contain;

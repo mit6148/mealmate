@@ -38,6 +38,7 @@
         <h3>Here are your confirmed <span style="font-family:Chewy; font-size:25px">mealmate</span> matches! Be sure to be on time for your meal!</h3>
         </div>
         
+        <!-- Carousel preferably sorted by the closest time -->
         <div id="matches-pics" class="carousel slide" data-ride="carousel" data-interval="false">
             <ol class="carousel-indicators">
                 <li data-target="#matches-pics" data-slide-to="0" class="active"></li>
@@ -63,11 +64,14 @@
                     <h2 class="closer-caption">January 25, 2018</h2>
                     <h2 class="closer-caption">2:30 pm</h2>
                     <h2 class="closer-caption">Maseeh</h2>
+                    <button type="button" class="cannot-go">Cannot Go</button>
                 </div>
             </div>
             <div class="item">
-                <div class="carousel-caption">
-                    <h1 class="chewy closer-caption">NO CONFIRMED MEALMATES YET</h1> <!-- Example of what it would look like w/o matches>
+                <div class="carousel-caption" id="no-matches">
+                    <!-- Example of what it would look like w/o matches-->
+                    <h1 class="chewy closer-caption">NO CONFIRMED MEALMATES YET</h1>
+                    <h1 class="chewy">mealmates will appear here later!</h1>
                 </div>
             </div>
             <div class="item">
@@ -77,6 +81,7 @@
                     <h2 class="closer-caption">January 25, 2018</h2>
                     <h2 class="closer-caption">7 pm</h2>
                     <h2 class="closer-caption">Next</h2>
+                    <button type="button" class="cannot-go">Cannot Go</button>
                 </div>
             </div>    
            
