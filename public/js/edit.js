@@ -23,12 +23,16 @@ function main() {
         });
 
         $('#submitBtn').click(function() {
+            const test = $('#editFavFood').val();
+            console.log(test);
         	const data = {
         		_id: user._id,
-        		about: $('#editUserAbout').val(),
         		course: $('#editUserCourse').val(),
         		year: $('#editUserYear').val(),
-        		residence: $('#editUserLivingGroup').val()
+        		residence: $('#editUserLivingGroup').val(),
+                hkc: [$('#editHomeState').val(), $('#editKerb').val(), $('#editCell').val()],
+                favorites: [$('#editFavFood').val(), $('#editFavDrink').val(), $('#editFavMovie').val(), $('#editFavMeal').val(), $('#editFavCuisine').val()],
+                interests: $('#editUserInterests').val()
         	}
         	post('/api/editProfile', { data }, () => alert("Your profile has been updated!"),
         	 () => console.log('error'));
