@@ -1,12 +1,17 @@
 .navbar {
      margin-bottom: 0;
      border-radius: 0;
-     background-color: #66A25C;
+     background-color: transparent;
      color: #FFF;
      padding: 1% 0;
      font-size: 0.95em;
      border: 0;
 }
+
+#about-nav {
+    background-color: #66A25C;
+}
+
  .navbar-brand {
      float: left;
      min-height: 55px;
@@ -56,7 +61,7 @@
 }
 
 #home-header {
-     top: 38%;
+     top: 45%;
      transform: translateY(-40%);
      position: absolute;
 }
