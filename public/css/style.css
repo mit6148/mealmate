@@ -184,6 +184,11 @@
 #get-started {
     animation-duration: 6s;
 }
+
+.smaller-break {
+    margin-bottom:2%;
+}
+
 .pics-group p {
     display: block;
     position: absolute;
