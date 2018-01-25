@@ -72,7 +72,7 @@ function getMatch(user, d, ts, h) {
             } else {
                 const data = {
                     receiverEmail: user.email,
-                    subjectText: "You don't have a match yet...",
+                    subjectText: "[mealmate] No match yet...",
                     bodyText: "Sadly, no one was available in the time and day you requested. But keep checking your matches page, and watch your inbox!"
                 }
                 post('/api/emailSender', { data }, function () {
@@ -123,8 +123,8 @@ function updateUsersWithMatch(user, yourMatch, theirMatch) {
 function sendEmailUser(user) {
     const data = {
         receiverEmail: user.email,
-        subjectText: "You have a match!",
-        bodyText: "Check your matches page for your new match, and happy dining!"
+        subjectText: "[mealmate] You have a match!",
+        bodyText: "Check your matches page for your new match, and happy dining! :)"
     }
     post('/api/emailSender', { data });
     alert("Match submitted. You will get an email soon! Check your matches page");
@@ -134,8 +134,8 @@ function sendEmailMatch(user, match) {
     get('/api/user', { '_id': match.userid }, function (mUser) {
         const data = {
             receiverEmail: mUser.email,
-            subjectText: "You have a match!",
-            bodyText: "Check your matches page for your new match, and happy dining!"
+            subjectText: "[mealmate] You have a match!",
+            bodyText: "Check your matches page for your new match, and happy dining! :)"
         }
         post('/api/emailSender', { data });
         document.location.href = '/u/matches?'+user._id // done
