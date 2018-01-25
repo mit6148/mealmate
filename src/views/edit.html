@@ -33,8 +33,6 @@
             </div>
         </div>
         </nav>
-        
-        <button id='cancel' type="button">Back/Cancel</button>
 
         <div class="container">
             <div class="row">
@@ -56,7 +54,7 @@
                                 class="custom-file-upload">
 <!--Source for styled choose file button: https://blog.benestudio.co/custom-file-upload-button-with-pure-css-5aacf39aa0a-->
                                 <div class="upload-btn-wrapper">
-                                  <button class="btn">Choose File</button>
+                                  <button class="btn" id="choose-file">Choose File</button>
                                   <input id='photoupload' type="file" name="profpic" onchange="document.getElementById('userImage').src=window.URL.createObjectURL(this.files[0])"/>
                                 </div>
                                 <!--
@@ -65,9 +63,9 @@
                                 -->
                                 <!-- below field is purposely hidden!-->
                                 <input type="text" id="photokey" name="photokey" style="display: none"/>
-                                <input id='addPhoto' type='submit' value='Upload!' disabled />
+                                <br>
+                                <input class="upload-btn-wrapper" id='addPhoto' type='submit' value='Upload' disabled />
                                 <button id='cancel-photo' type="button" disabled>Cancel</button>
-                                
                             </form>
                         </div>
                     </div>
@@ -77,7 +75,6 @@
                         <a id='addPhoto'>Submit New Profile Picture</a>
                     </div>
 -->
-                    <br>
                     <!-- <div class="form-group row small-padding">
                         <label for="editUserAbout" class="col-2 col-form-label small-padding">Edit About Me</label>
                         <div class="col-10 small-padding">
@@ -85,8 +82,8 @@
                     </div> 
                     </div> -->
                     <br>
-                    <p>EDIT ABOUT ME</p>
                     <div class="form-group row small-padding">
+                        <h3 class="bold small-padding add-line">EDIT ABOUT ME</h3>
                         <label for="editUserCourse" class="col-2 col-form-label small-padding">Course</label>
                         <div class="col-10 small-padding">
                             <input class="form-control" type="text" value="" id="editUserCourse">
@@ -122,8 +119,9 @@
                             <input class="form-control" type="text" value="" id="editCell">
                         </div>
                     </div>
-                    <p>EDIT GET TO KNOW ME</p>
+                    <br>
                     <div class="form-group row small-padding">
+                        <h3 class="bold small-padding add-line">EDIT GET TO KNOW ME</h3>
                         <label for="editFavFood" class="col-2 col-form-label small-padding">Favorite Food</label>
                         <div class="col-10 small-padding">
                             <input class="form-control" type="text" value="" id="editFavFood">
@@ -153,13 +151,14 @@
                             <input class="form-control" type="text" value="" id="editFavCuisine">
                         </div>
                     </div> 
-                    <div class="form-group row">
-                        <label for="editUserInterests" class="col-2 col-form-label">Interests</label>
-                        <div class="col-10">
+                    <div class="form-group row small-padding">
+                        <label for="editUserInterests" class="col-2 col-form-label small-padding">Interests</label>
+                        <div class="col-10 small-padding">
                             <input class="form-control" type="text" value="" id="editUserInterests">
                     </div>
                     </div>                                       
                     <button type="button" class="btn btn-default center-block" id="submitBtn">Submit Changes</button>
+                    <a href="profile.html" class="fa fa-arrow-circle-o-left" id="back-to-profile"></a>
                 </div>
             </div>
         </div>
@@ -184,7 +183,7 @@
                 </div>
                 <div class="col-sm-4">
                     <br>
-                    <img src="../../static/img/logo.png" class="icon">
+                    <img src="/static/img/logo.png" class="icon">
                 </div>
             </div>
         </footer>

@@ -5,14 +5,30 @@
 }
 
 .btn {
-  border: 2px solid gray;
-  color: gray;
-  background-color: white;
-  padding: 8px 20px;
-  border-radius: 8px;
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 18px;
+  color: #FFF;
+     padding: 12px 22px;
+     background: #66A25C;
+     border: 2px solid #FFF;
 }
+
+#choose-file {
+    margin-top: 8%;
+}
+
+#addPhoto, #cancel-photo {
+    margin-top: 0.5%;
+    margin-left: 0.5%;
+    font-size: 18px;
+     color: #FFF;
+     padding: 12px 22px;
+     background: #66A25C;
+     border: 2px solid #FFF;
+}
+
+.profPicBox {
+    text-align: center;
+ }
 
 .upload-btn-wrapper input[type=file] {
   font-size: 100px;
@@ -21,3 +37,12 @@
   top: 0;
   opacity: 0;
 }
+
+@media (max-width: 900px) {
+    .btn, #addPhoto, #cancel-photo {
+         font-size: 16px;
+         padding: 8px 16px;
+     }
+}
+
+

@@ -23,6 +23,10 @@
     font-weight: normal;
 }
 
+#userImage {
+    padding-right:5%;
+}
+
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -67,4 +71,10 @@
 #userDiningPreferences li span {
     position: absolute;
     margin-left: -1.3em;
+}
+
+@media (max-width: 1000px) {
+    #userImage {
+        padding-right:0%;
+    }
 }

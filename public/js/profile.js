@@ -92,7 +92,7 @@ function renderUserData(user) {
 
     // rednering living group
     const livingGroup = document.getElementById('userLivingGroup');
-    livingGroup.innerHTML = 'Living Group: ' + user.residence;
+    livingGroup.innerHTML = user.residence;
 
     // home state, kerberos, cell phone
     const homeState = document.getElementById('userHomeState');
