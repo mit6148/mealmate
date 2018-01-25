@@ -20,7 +20,7 @@ function renderUserText(user) {
     $('#editFavMovie').val(user.favorites[2]);
     $('#editFavMeal').val(user.favorites[3]);
     $('#editFavCuisine').val(user.favorites[4]);
-    $('#editUserInterests').val(user.interests);
+    $('#interests-select').val(user.interests.split(',')).trigger('chosen:updated');
 
 }
 

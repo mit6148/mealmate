@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="/static/css/style.css">
         <link rel="stylesheet" href="/static/css/edit.css">
+        <link rel="stylesheet" href="/node_modules/chosen-js/chosen.css">
         <link rel="shortcut icon" type="image/x-icon" href="../../static/img/favicon.png"/>
         <link href='https://fonts.googleapis.com/css?family=Catamaran' rel='stylesheet'>
         
@@ -150,13 +151,26 @@
                         <div class="col-10 small-padding">
                             <input class="form-control" type="text" value="" id="editFavCuisine">
                         </div>
-                    </div> 
+                    </div>
+<!--Source for chosen library to format select: https://github.com/harvesthq/chosen -->
+                    <div class="row small-padding">
+                        <label for="interests-select" class="col-2 col-form-label small-padding">Interests</label>
+                        <select id="interests-select" class="my_select_box" multiple data-placeholder="Select 3 Options">
+                            <option value="Dance">Dance</option>
+                            <option value="Music">Music</option>
+                            <option value="Painting">Painting</option>
+                            <option value="Sports">Sports</option>
+                            <option value="Video Games">Video Games</option>
+                        </select>
+                    </div>
+<!-- 
                     <div class="form-group row small-padding">
                         <label for="editUserInterests" class="col-2 col-form-label small-padding">Interests</label>
                         <div class="col-10 small-padding">
                             <input class="form-control" type="text" value="" id="editUserInterests">
+                        </div>
                     </div>
-                    </div>                                       
+-->                                       
                     <button type="button" class="btn btn-default center-block" id="submitBtn">Submit Changes</button>
                     <!-- Back button -->
                     <a href="/u/profile.html" class="fa fa-arrow-circle-o-left" id="back-to-profile"></a>
@@ -199,5 +213,6 @@
         <script src="/static/js/edit.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
+        <script src="/node_modules/chosen-js/chosen.jquery.js"></script>
 	</body>
 </html>
