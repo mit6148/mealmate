@@ -47,7 +47,6 @@ function renderConfirmedMatches(user) {
         });
         carouselIndicators.append(makeCarouselIndicator(i));
     }
-    
 }
 
 // make a carousel object
