@@ -53,3 +53,25 @@ function post(endpoint, params, successCallback, failureCallback) {
   };
   xhr.send(JSON.stringify(params));
 }
+
+// https://gist.github.com/EtienneR/2f3ab345df502bd3d13e
+/* function delete(endpoint, params, successCallback, failureCallback) {
+  const xhr = new XMLHttpRequest();
+  const fullPath = endpoint + '?' + formatParams(params)
+  xhr.open("DELETE", fullPath, true);
+  xhr.onload = function(err) {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        if (successCallback)
+          successCallback(JSON.parse(xhr.responseText));
+      } else {
+        if (failureCallback)
+          failureCallback(xhr.statusText);
+      }
+    }
+  };
+  xhr.onerror = function(err) {
+    console.log(xhr.statusText);
+  };
+  xhr.send(JSON.stringify(params));
+}*/

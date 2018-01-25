@@ -1,4 +1,5 @@
 function main() {
+  // cleanReqDB(); // clean the requests database
   get('/api/whoami', {}, function(user) {
     console.log(user);
     renderNavbar(user);
@@ -9,7 +10,7 @@ function main() {
       getStarted(user);
     });
   });
-}
+} 
 
 // activates the get started button
 function getStarted(user) { 
@@ -19,6 +20,13 @@ function getStarted(user) {
   } else { // then it is a "go to profile button"
     document.location.href = '/u/profile?'+user._id;
   }
+} 
+
+// clean the request database
+function cleanReqDB() {
+  post('/api/cleanReqDB', {}, function(req,res) {
+    console.log("Theoretically cleaned out the database of old times");
+  });
 }
 
 main();

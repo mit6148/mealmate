@@ -1,6 +1,7 @@
 // dependencies
 const express = require('express');
 const connect = require('connect-ensure-login');
+const mongoose = require('mongoose');
 
 // models
 const User = require('../models/user');
@@ -10,6 +11,12 @@ const router = express.Router();
 
 const addPhoto = require('../pictures').addPhoto;
 const sendEmail = require('../emailSender').sendEmail;
+
+// set up mongoDB connection
+const mongoURL = process.env.MLAB_URL;
+const options = {
+    useMongoClient: true,
+};
 
 // api endpoints
 router.get('/whoami', function(req, res) {
@@ -174,11 +181,6 @@ router.post('/addMatch/',
         });
     });
 
-// this path does nothing but make functions into callback functions
-/*router.post('/doNothing/', function(req,res) {
-    console.log("Doing nothing~");
-})*/
-
 router.post('/uploadImage/', connect.ensureLoggedIn(), function(req, res) {
     console.log('hello',req.files);
     console.log('rip', req.body);
@@ -194,5 +196,26 @@ router.post('/emailSender/', connect.ensureLoggedIn(), function(req, res){
         res.send({ message: "Email send!" })
     });
 })
+
+/*router.delete('/cleanReqs/', function(req ,res) {
+    console.log("what the duck");
+    res.send({ message: "Woot we sent something"});
+})*/
+
+// this should be a delete request but the error I'm getting is jank af
+/* router.post('/cleanReqDB/', function(req, res) {
+    const today = new Date();
+    MatchRequest.find({}, function(err, matches) { // get all matches
+        // connect to the database
+        mongoose.connect(mongoURL, options, function(err, db) {
+            if (err) throw err;
+            for (let i=0; i<matches.length; i++) {
+                if (matches[i].date < today) { // if the day of the match has passed
+                    db.collection("matchrequestmodels").deleteOne({'_id': matches[i]._id})
+                }
+            }
+        });
+    })
+}) */
 
 module.exports = router;
