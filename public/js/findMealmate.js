@@ -100,6 +100,7 @@ function updateUsersWithMatch(user, yourMatch, theirMatch) {
         date: theirMatch.date,
         times: yourMatch.times, // shares same times as match
         halls: yourMatch.halls, // shares same hall as match
+        confirmed: false // your match has also not confirmed
     }
 
     const matchData2 = { // to be posted to the match
