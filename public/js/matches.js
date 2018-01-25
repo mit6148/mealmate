@@ -32,21 +32,59 @@ function renderConfirmedMatches(user) {
 
     const carouselObjects = document.getElementById('carousel-inner-objects');
     const carouselIndicators = document.getElementById('indicators');
+    let count = 0;
+    let isConfirmed = false;
 
     for (let i=0; i<user.matches.length; i++) {
         console.log("Yo what up");
-        get('/api/user', { '_id': user.matches[i].userid }, function (mUser) {
-            //carouselObjects.innerHTML = makeCarouselObject(user.matches[i], mUser);
-            //makeCarouselObject(user.matches[i], mUser).appendTo(carouselObjects);
-            var carouselObj = makeCarouselObject(user.matches[i], mUser);
-            //if first carouselobj, needs to be active to display
-            if (i === 0){
-                carouselObj.className = "item active";
-            }
-            carouselObjects.append(carouselObj);
-        });
-        carouselIndicators.append(makeCarouselIndicator(i));
+        // only get match and make carousel object if match is confirmed
+        if (user.matches[i].confirmed) {
+            console.log("wheeeeeeee");
+            isConfirmed = true;
+            get('/api/user', { '_id': user.matches[i].userid }, function (mUser) {
+                //carouselObjects.innerHTML = makeCarouselObject(user.matches[i], mUser);
+                //makeCarouselObject(user.matches[i], mUser).appendTo(carouselObjects);
+                var carouselObj = makeCarouselObject(user.matches[i], mUser);
+                //if first carouselobj, needs to be active to display
+                if (i === 0){
+                    carouselObj.className = "item active";
+                }
+                carouselObjects.append(carouselObj);
+            });
+            carouselIndicators.append(makeCarouselIndicator(count));
+            count++;
+        }
     }
+
+    // if there are no confirmed matches, display the "no matches" slide
+    if (!isConfirmed) {
+        console.log("No confirmed matches");
+        carouselObjects.append(makeNoMatch());
+    }
+}
+
+// make a carousel object indicating no confirmed matches
+function makeNoMatch() {
+    const it = document.createElement('div');
+    it.className = "item active";
+
+    const caption = document.createElement('div');
+    caption.className="carousel-caption";
+
+    const text = document.createElement('h1');
+    text.className = "chewy closer-caption";
+    text.innerHTML = "NO CONFIRMED MATCHES YET";
+
+    const details = document.createElement('h1');
+    details.className = "chewy";
+    details.innerHTML = "pending matches that have been confirmed will appear here";
+
+    it.appendChild(caption);
+    caption.appendChild(text);
+    caption.appendChild(details);
+
+    return it;
+
 }
 
 // make a carousel object
@@ -130,7 +168,7 @@ function renderOldMatches(user) {
             matchTableDiv.appendChild(breakMatch);
             matchTableDiv.appendChild(noMatch);
         }
-        
+
     } else { // don't display a table if no matches
         const matchTableDiv = document.getElementById('matchTable')
         const breakMatch = document.createElement('br');
