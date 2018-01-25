@@ -118,7 +118,8 @@ function renderUserFavs(user) {
     favCuisine.innerHTML = user.favorites[4];
 
     const ints = document.getElementById('interests');
-    ints.innerHTML = user.interests.replace(',', ', ');
+    ints.innerHTML = user.interests;
+    //ints.innerHTML = user.interests.replace(',', ', ');
 
 }
 
