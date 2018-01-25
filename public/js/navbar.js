@@ -17,9 +17,12 @@ function renderNavbar(user){
 	navbarObjects.className = "nav navbar-nav navbar-right";
 
 	const currentPath = window.location.pathname; // get the current page
+    const aboutHeader = newNavbarItem('ABOUT', '/about', currentPath); 
+    const matchesHeader = newNavbarItem('MATCHES', '/u/matches?'+user._id, currentPath); 
 	
 	navbarObjects.appendChild(newNavbarItem('HOME', '/', currentPath));
     navbarObjects.appendChild(newNavbarItem('ABOUT', '/about', currentPath));
+    
 	if (user._id !== undefined) {
 		navbarObjects.appendChild(newNavbarItem('PROFILE', '/u/profile?'+user._id, currentPath)); 
 		navbarObjects.appendChild(newNavbarItem('MATCHES', '/u/matches?'+user._id, currentPath));
