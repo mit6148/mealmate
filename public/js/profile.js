@@ -34,10 +34,6 @@ function main() {
             document.location.href = '/';
         } else if (user._id != profileId) {
             // you're viewing someone else's profile
-            console.log("Your id:");
-            console.log(user._id);
-            console.log("The id of the profile you're viewing");
-            console.log(profileId);
             const editButton = document.getElementById('editProfile');
             editButton.style.visibility = "hidden";
         } else {
@@ -122,7 +118,7 @@ function renderUserFavs(user) {
     favCuisine.innerHTML = user.favorites[4];
 
     const ints = document.getElementById('interests');
-    ints.innerHTML = user.interests;
+    ints.innerHTML = user.interests.replace(',', ', ');
 
 }
 

@@ -1,3 +1,4 @@
+
 function main() {
 
     const profileId = window.location.search.substring(1);
@@ -35,7 +36,7 @@ function main() {
         		residence: $('#editUserLivingGroup').val(),
                 hkc: [$('#editHomeState').val(), $('#editKerb').val(), $('#editCell').val()],
                 favorites: [$('#editFavFood').val(), $('#editFavDrink').val(), $('#editFavMovie').val(), $('#editFavMeal').val(), $('#editFavCuisine').val()],
-                interests: $('#editUserInterests').val()
+                interests: $('#interests-select').val()
         	}
         	post('/api/editProfile', { data }, () => alert("Your profile has been updated!"),
         	 () => console.log('error'));
@@ -61,6 +62,10 @@ function main() {
             document.location.href = '/u/profile?'+user._id;
         });
 
+        $("#interests-select").chosen({
+            width:"95%",
+            max_selected_options: 3
+        });
 
     });
 }
