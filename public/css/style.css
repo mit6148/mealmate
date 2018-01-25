@@ -27,6 +27,10 @@
     font-size: 40px;
 }
 
+#interests-bar {
+    padding-left: 5%;
+}
+
 #back-to-profile {
     color: #66A25C;
     margin-left: 0.5%;
@@ -128,7 +132,6 @@
     font-weight: normal;
 }
 
-<<<<<<< HEAD
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -181,6 +184,11 @@
 #get-started {
     animation-duration: 6s;
 }
+
+.smaller-break {
+    margin-bottom:2%;
+}
+
 .pics-group p {
     display: block;
     position: absolute;

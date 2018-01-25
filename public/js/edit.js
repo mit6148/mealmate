@@ -36,10 +36,12 @@ function main() {
         		residence: $('#editUserLivingGroup').val(),
                 hkc: [$('#editHomeState').val(), $('#editKerb').val(), $('#editCell').val()],
                 favorites: [$('#editFavFood').val(), $('#editFavDrink').val(), $('#editFavMovie').val(), $('#editFavMeal').val(), $('#editFavCuisine').val()],
-                interests: $('#interests-select').val()
+                interests: $('#editUserInterests').val()
+                //interests: $('#interests-select').val()
         	}
         	post('/api/editProfile', { data }, () => alert("Your profile has been updated!"),
         	 () => console.log('error'));
+            document.location.href = '/u/profile?'+user._id;
 
     	});
 
