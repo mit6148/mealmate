@@ -1,7 +1,6 @@
 function newNavbarItem(text, url, currentPath) {
 	const itemBox = document.createElement('li');
 	const itemLink = document.createElement('a');
-	// itemLink.className = 'nav-item nav-link';
 	itemLink.innerHTML = text;
 	itemLink.href = url;
 	if (url == currentPath) {
@@ -25,8 +24,6 @@ function renderNavbar(user){
 		navbarObjects.appendChild(newNavbarItem('PROFILE', '/u/profile?'+user._id, currentPath)); 
 		navbarObjects.appendChild(newNavbarItem('MATCHES', '/u/matches?'+user._id, currentPath));
         navbarObjects.appendChild(newNavbarItem('FIND', '/u/findMealmate?'+user._id, currentPath));
-		//navbarDiv.appendChild(newNavbarItem('Profile', '/profile'));
-		//navbarDiv.appendChild(newNavbarItem('Matches', '/matches'));
 		navbarObjects.appendChild(newNavbarItem('LOGOUT', '/logout', currentPath));
 	} else {
 		navbarObjects.appendChild(newNavbarItem('LOGIN', 'auth/facebook', currentPath)); // add this when FB authentication happens
