@@ -81,8 +81,6 @@ function previewPic(user) {
     reader.onload = function (e) {
         $('#userImage')
             .attr('src', e.target.result)
-            .width(150)
-            .height(150)
     };
 
     reader.readAsDataURL(file);
