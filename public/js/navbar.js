@@ -25,8 +25,8 @@ function renderNavbar(user){
     
 	if (user._id !== undefined) {
 		navbarObjects.appendChild(newNavbarItem('PROFILE', '/u/profile?'+user._id, currentPath)); 
-		navbarObjects.appendChild(newNavbarItem('MATCHES', '/u/matches?'+user._id, currentPath));
         navbarObjects.appendChild(newNavbarItem('FIND', '/u/findMealmate?'+user._id, currentPath));
+        navbarObjects.appendChild(newNavbarItem('MATCHES', '/u/matches?'+user._id, currentPath));
 		navbarObjects.appendChild(newNavbarItem('LOGOUT', '/logout', currentPath));
 	} else {
 		navbarObjects.appendChild(newNavbarItem('LOGIN', 'auth/facebook', currentPath)); // add this when FB authentication happens
