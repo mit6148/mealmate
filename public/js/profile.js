@@ -32,6 +32,16 @@ function main() {
     get('/api/whoami', {}, function(user){
         if (user._id === undefined){
             document.location.href = '/';
+        } else if (user._id != profileId) {
+            // you're viewing someone else's profile
+            console.log("Your id:");
+            console.log(user._id);
+            console.log("The id of the profile you're viewing");
+            console.log(profileId);
+            const editButton = document.getElementById('editProfile');
+            editButton.style.visibility = "hidden";
+        } else {
+            loadEditButton(user);
         }
         renderNavbar(user);
     });
@@ -41,21 +51,13 @@ function main() {
 function loadPage(user){
     renderUserData(user);
     renderUserFavs(user);
-    //Below commented out block is for the get matches :)
-    /*
-    const matchButton = document.getElementById('find-mealmate-button');
-    matchButton.addEventListener('click', function() {
-        const date = $('#datepicker').datepicker('getDate'); 
-        const selectedTimes = getSelectedTimes();
-        const topThreeHalls = getTopThreeHalls();
-        getMatch(user, date, selectedTimes, topThreeHalls);
-    });
-    */
+}
 
+// only load the edit button if the current user owns the profile
+function loadEditButton(user) {
     // render the correct edit link
     const editButton = document.getElementById('editProfile');
     editButton.addEventListener('click', function() {
-        console.log("yo what the heck");
         document.location.href = '/u/edit?'+user._id;
     });
 }
