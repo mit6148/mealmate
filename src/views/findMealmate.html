@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
         <link rel="stylesheet" href="/static/css/style.css">
         <link rel="shortcut icon" type="image/x-icon" href="../../static/img/favicon.png"/>
         <link href='https://fonts.googleapis.com/css?family=Chewy' rel='stylesheet'>
@@ -35,7 +36,7 @@
         </div>
         </nav>
         <div class="container text-center">
-        <h1 id="find-mealmate-h1"><img class="header-lines" src="/static/img/left_line.png"> FIND YOUR <span style="font-family:Chewy; font-size:40px">mealmate</span>! <img class="header-lines" src="/static/img/right_line.png"></h1>    
+        <h1 id="find-mealmate-h1"><img class="header-lines animated bounceInLeft" src="/static/img/left_line.png"> FIND YOUR <span style="font-family:Chewy; font-size:40px">mealmate</span>! <img class="header-lines animated bounceInRight" src="/static/img/right_line.png"></h1>    
                 <h2 class="margin-add-line">Preferred Dining Hall</h2>
                     <p>Drag the dining halls around and rank your preferences!</p>
 						<ol id="userDiningPreferences" class="no-padding">
@@ -124,6 +125,7 @@
 		<script src="/static/js/api.js"></script>
 		<script src="/static/js/navbar.js"></script>
 		<script src="/static/js/findMealmate.js"></script>
+        <script src="bower_components/aos/dist/aos.js"></script>
         
         <script>
         $( function() {
