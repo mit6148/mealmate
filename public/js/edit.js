@@ -58,7 +58,7 @@ function main() {
         });
 
         //This button is for going back to profile page
-        $('#cancel').click(function(){
+        $('#back-to-profile').click(function(){
             document.location.href = '/u/profile?'+user._id;
         });
 
