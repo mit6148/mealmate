@@ -40,7 +40,6 @@ function renderConfirmedMatches(user) {
         });
         carouselIndicators.appendChild(makeCarouselIndicator(i));
     }
-    
 }
 
 // make a carousel object
