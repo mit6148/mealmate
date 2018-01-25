@@ -36,9 +36,16 @@ function renderConfirmedMatches(user) {
     for (let i=0; i<user.matches.length; i++) {
         console.log("Yo what up");
         get('/api/user', { '_id': user.matches[i].userid }, function (mUser) {
-            carouselObjects.appendChild(makeCarouselObject(user.matches[i], mUser));
+            //carouselObjects.innerHTML = makeCarouselObject(user.matches[i], mUser);
+            //makeCarouselObject(user.matches[i], mUser).appendTo(carouselObjects);
+            var carouselObj = makeCarouselObject(user.matches[i], mUser);
+            //if first carouselobj, needs to be active to display
+            if (i === 0){
+                carouselObj.className = "item active";
+            }
+            carouselObjects.append(carouselObj);
         });
-        carouselIndicators.appendChild(makeCarouselIndicator(i));
+        carouselIndicators.append(makeCarouselIndicator(i));
     }
     
 }
@@ -95,7 +102,6 @@ function makeCarouselObject(match, mUser) {
         caption.appendChild(matchDate);
         caption.appendChild(matchTime);
         caption.appendChild(matchHall);
-
         return it;
 }
 
