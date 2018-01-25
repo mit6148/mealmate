@@ -330,6 +330,9 @@ h4 {
     body {
         padding-top: 66px; 
     }
+    .header-lines {
+        display: none;
+    }
 }
 
 
@@ -402,9 +405,6 @@ h4 {
     }
     body {
         padding-top: 59px; 
-    }
-    .hide-mobile-break {
-        display: none;
     }
 }
 
