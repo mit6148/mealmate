@@ -70,7 +70,7 @@ function previewPic(user) {
 	//get the file out of the upload widget
 	const files = document.getElementById('photoupload').files;
 	if (!files.length) {
-	console.log('no image');
+	console.log('No image.');
 	return alert('Please choose a file to upload first.');
 	}
 	const file = files[0];
