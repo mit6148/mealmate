@@ -51,57 +51,47 @@ function renderConfirmedMatches(user) {
 
 // make a carousel object
 function makeCarouselObject(match, mUser) {
-    /*  <div class="item">
-            <img src="/static/img/bean_burger.jpg">
-            <div class="carousel-caption">
-                <h1 class="chewy closer-caption">DELICIOUS BEAN BURGER WITH A LONG NAME</h1> <!-- I can make it all caps later! just need name to be passed-->
-                <h2 class="closer-caption">January 25, 2018</h2>
-                <h2 class="closer-caption">2:30 pm</h2>
-                <h2 class="closer-caption">Maseeh</h2>
-                <button type="button" class="cannot-go">Cannot Go</button>
-            </div>
-        </div> */
 
-        console.log("Making a carousel object, theoretically");
-    
-        const it = document.createElement('div');
-        it.className = "item";
+    console.log("Making a carousel object, theoretically");
 
-        const caption = document.createElement('div');
-        caption.className="carousel-caption";
+    const it = document.createElement('div');
+    it.className = "item";
 
-        const mName = document.createElement('h1');
-        mName.className = "chewy closer-caption";
-        mName.innerHTML = mUser.name;
+    const caption = document.createElement('div');
+    caption.className="carousel-caption";
 
-        const matchDate = document.createElement('h2');
-        matchDate.className = "closer-caption";
-        matchDate.innerHTML = match.date.substring(0,10);
+    const mName = document.createElement('h1');
+    mName.className = "chewy closer-caption";
+    mName.innerHTML = mUser.name;
 
-        const matchTime = document.createElement('h2');
-        matchTime.className = "closer-caption";
-        matchTime.innerHTML = formatTime(match.times[0]);
+    const matchDate = document.createElement('h2');
+    matchDate.className = "closer-caption";
+    matchDate.innerHTML = match.date.substring(0,10);
 
-        const matchHall = document.createElement('h2');
-        matchHall.className = "closer-caption";
-        matchHall.innerHTML = match.halls[0];
+    const matchTime = document.createElement('h2');
+    matchTime.className = "closer-caption";
+    matchTime.innerHTML = formatTime(match.times[0]);
 
-        if (mUser.hasOwnProperty('piclink')) {
-            const backgroundImage = document.createElement('img');
-            var picSrc = mUser.piclink;
-            if (picSrc.includes("amazonaws")){
-                picSrc = picSrc + "?" + new Date().getTime();
-            }
-            backgroundImage.src = picSrc;
-            it.appendChild(backgroundImage);
+    const matchHall = document.createElement('h2');
+    matchHall.className = "closer-caption";
+    matchHall.innerHTML = match.halls[0];
+
+    if (mUser.hasOwnProperty('piclink')) {
+        const backgroundImage = document.createElement('img');
+        var picSrc = mUser.piclink;
+        if (picSrc.includes("amazonaws")){
+            picSrc = picSrc + "?" + new Date().getTime();
         }
-        
-        it.appendChild(caption);
-        caption.appendChild(mName);
-        caption.appendChild(matchDate);
-        caption.appendChild(matchTime);
-        caption.appendChild(matchHall);
-        return it;
+        backgroundImage.src = picSrc;
+        it.appendChild(backgroundImage);
+    }
+    
+    it.appendChild(caption);
+    caption.appendChild(mName);
+    caption.appendChild(matchDate);
+    caption.appendChild(matchTime);
+    caption.appendChild(matchHall);
+    return it;
 }
 
 function makeCarouselIndicator(num) {
@@ -118,45 +108,29 @@ function makeCarouselIndicator(num) {
 function renderOldMatches(user) {
 
     if (user.matches.length) { // if the user has matches
-        // create table
-        // ----- LATER: FILTER THEM BY DATE ---------
-        const matchTable = document.getElementById('t01')
+        const today = new Date()
+        let werePrevMatches = false;
 
         for (let i=0; i<user.matches.length; i++) {
-            get('/api/user', { '_id': user.matches[i].userid }, function (matchedUser) {
-                const tabrow = document.createElement('tr');
-
-                const matchPic = document.createElement('td');
-                const profileImage = document.createElement('img');
-                profileImage.src = matchedUser.piclink;
-                profileImage.onclick = function () { // propic is link to other user's page
-                    document.location.href = '/u/profile?'+matchedUser._id;
-                }
-                matchPic.appendChild(profileImage);
-
-                const matchName = document.createElement('td');
-                const nameLink = document.createElement('a');
-                nameLink.innerHTML = matchedUser.name;
-                nameLink.setAttribute('href', '/u/profile?'+matchedUser._id);
-                matchName.appendChild(nameLink);
-                
-                const matchDate = document.createElement('td');
-                // tbh this date formatting is hacky
-                matchDate.innerHTML = user.matches[i].date.substring(0,10);
-                const matchTime = document.createElement('td');
-                matchTime.innerHTML = formatTime(user.matches[i].times[0]); // just choose the first available time for now
-                const matchHall = document.createElement('td');
-                matchHall.innerHTML = user.matches[i].halls[0];
-
-                tabrow.appendChild(matchPic);
-                tabrow.appendChild(matchName);
-                tabrow.appendChild(matchDate);
-                tabrow.appendChild(matchTime);
-                tabrow.appendChild(matchHall);
-                matchTable.appendChild(tabrow);
-            });
+            const matchDate = new Date(user.matches[i].date);
+            if (matchDate < today) {
+                werePrevMatches = true;
+                get('/api/user', { '_id': user.matches[i].userid }, function(matchedUser) {
+                    renderMatchRow(matchedUser, user.matches[i]);
+                });
+            }
         }
 
+        // if no outdated matches to display
+        if (!werePrevMatches) {
+            const matchTableDiv = document.getElementById('matchTable')
+            const breakMatch = document.createElement('br');
+            const noMatch = document.createElement('p');
+            noMatch.innerHTML = 'You have no previous matches! Matches will show up here once the day of your meal has passed.';
+            matchTableDiv.appendChild(breakMatch);
+            matchTableDiv.appendChild(noMatch);
+        }
+        
     } else { // don't display a table if no matches
         const matchTableDiv = document.getElementById('matchTable')
         const breakMatch = document.createElement('br');
@@ -165,6 +139,40 @@ function renderOldMatches(user) {
         matchTableDiv.appendChild(breakMatch);
         matchTableDiv.appendChild(noMatch);
     }
+}
+
+function renderMatchRow(mUser, match) {
+    const matchTable = document.getElementById('t01')
+    const tabrow = document.createElement('tr');
+
+    const matchPic = document.createElement('td');
+    const profileImage = document.createElement('img');
+    profileImage.src = mUser.piclink;
+    profileImage.onclick = function () { // propic is link to other user's page
+        document.location.href = '/u/profile?'+mUser._id;
+    }
+    matchPic.appendChild(profileImage);
+
+    const matchName = document.createElement('td');
+    const nameLink = document.createElement('a');
+    nameLink.innerHTML = mUser.name;
+    nameLink.setAttribute('href', '/u/profile?'+mUser._id);
+    matchName.appendChild(nameLink);
+    
+    const matchDate = document.createElement('td');
+    // tbh this date formatting is hacky
+    matchDate.innerHTML = match.date.substring(0,10);
+    const matchTime = document.createElement('td');
+    matchTime.innerHTML = formatTime(match.times[0]); // just choose the first available time for now
+    const matchHall = document.createElement('td');
+    matchHall.innerHTML = match.halls[0];
+
+    tabrow.appendChild(matchPic);
+    tabrow.appendChild(matchName);
+    tabrow.appendChild(matchDate);
+    tabrow.appendChild(matchTime);
+    tabrow.appendChild(matchHall);
+    matchTable.appendChild(tabrow);
 }
 
 // formats the text inside the time column properly
