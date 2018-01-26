@@ -197,25 +197,18 @@ router.post('/emailSender/', connect.ensureLoggedIn(), function(req, res){
     });
 })
 
-/*router.delete('/cleanReqs/', function(req ,res) {
-    console.log("what the duck");
-    res.send({ message: "Woot we sent something"});
-})*/
-
 // this should be a delete request but the error I'm getting is jank af
+// http://mongoosejs.com/docs/api.html
 /* router.post('/cleanReqDB/', function(req, res) {
     const today = new Date();
     MatchRequest.find({}, function(err, matches) { // get all matches
-        // connect to the database
-        mongoose.connect(mongoURL, options, function(err, db) {
-            if (err) throw err;
-            for (let i=0; i<matches.length; i++) {
-                if (matches[i].date < today) { // if the day of the match has passed
-                    db.collection("matchrequestmodels").deleteOne({'_id': matches[i]._id})
-                }
+        for (let i=0; i<matches.length; i++) {
+            if (matches[i].date < today) { // if the day of the match has passed
+                console.log("wow");
+                matches[i].remove() // 
             }
-        });
-    })
-}) */
+        }
+    });
+})*/
 
 module.exports = router;
