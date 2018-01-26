@@ -56,9 +56,11 @@ function newDropdown(text, links, linkLabels, currentPath, user){
 	dropdownBox.addEventListener("mouseout", function(){
 		dropMenu.style.display = "none";
 	});
+	/*
 	dropButton.addEventListener("click", function(){
         document.location.href = links[0];
 	});
+	*/
 
 	return dropdownBox;
 }
