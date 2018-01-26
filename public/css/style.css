@@ -1,11 +1,13 @@
 .navbar {
-     margin-bottom: 0;
-     border-radius: 0;
-     background-color: #66A25C;
-     color: #FFF;
-     padding: 1% 0;
-     font-size: 0.95em;
-     border: 0;
+    overflow: initial;
+    max-height: 90px;
+    margin-bottom: 0;
+    border-radius: 0;
+    background-color: #66A25C;
+    color: #FFF;
+    padding: 1% 0;
+    font-size: 0.95em;
+    border: 0;
 }
 
  .navbar-brand {
@@ -21,6 +23,58 @@
      
  .navbar a:focus, .navbar a:hover {
      color: #D5D5D5 !important;
+}
+
+ .dropdown a:focus, .dropdown a:hover {
+     color: #D5D5D5 !important;
+}
+ 
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    font-size: 0.95em;    
+    border: none;
+    outline: none;
+    color: white;
+    background-color: inherit;
+    font: inherit;
+    margin: 0;
+}
+
+/*
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
+}
+*/
+
+.dropdown-content {
+    display: none;
+    position: relative;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    height:auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    position: relative;
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 
 #about-me {
