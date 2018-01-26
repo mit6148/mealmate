@@ -25,28 +25,64 @@ function main(){
 }
 
 // render carousel matches
-// ------------- right now just display all matches -----------------
-// ------------- later check if the match is "confirmed" ------------
-// ------------- ALSO LATER display alternative slide if no matches yet (see html) ---
 function renderConfirmedMatches(user) {
 
     const carouselObjects = document.getElementById('carousel-inner-objects');
     const carouselIndicators = document.getElementById('indicators');
+    let count = 0;
+    let isConfirmed = false;
+    let isActive = true;
 
-    for (let i=0; i<user.matches.length; i++) {
+    for (let i=user.matches.length-1; i>-1; i--) {
         console.log("Yo what up");
-        get('/api/user', { '_id': user.matches[i].userid }, function (mUser) {
-            //carouselObjects.innerHTML = makeCarouselObject(user.matches[i], mUser);
-            //makeCarouselObject(user.matches[i], mUser).appendTo(carouselObjects);
-            var carouselObj = makeCarouselObject(user.matches[i], mUser);
-            //if first carouselobj, needs to be active to display
-            if (i === 0){
-                carouselObj.className = "item active";
-            }
-            carouselObjects.append(carouselObj);
-        });
-        carouselIndicators.append(makeCarouselIndicator(i));
+        // only get match and make carousel object if match is confirmed
+        if (user.matches[i].confirmed) {
+            isConfirmed = true;
+            get('/api/user', { '_id': user.matches[i].userid }, function (mUser) {
+                //carouselObjects.innerHTML = makeCarouselObject(user.matches[i], mUser);
+                //makeCarouselObject(user.matches[i], mUser).appendTo(carouselObjects);
+                var carouselObj = makeCarouselObject(user.matches[i], mUser);
+                //if first carouselobj, needs to be active to display
+                if (isActive){ // first carouselobj to be added is active
+                    carouselObj.className = "item active";
+                    isActive = false;
+                }
+                carouselObjects.prepend(carouselObj);
+            });
+            carouselIndicators.append(makeCarouselIndicator(count));
+            count++;
+        }
     }
+
+    // if there are no confirmed matches, display the "no matches" slide
+    if (!isConfirmed) {
+        console.log("No confirmed matches");
+        carouselObjects.append(makeNoMatch());
+    }
+}
+
+// make a carousel object indicating no confirmed matches
+function makeNoMatch() {
+    const it = document.createElement('div');
+    it.className = "item active";
+
+    const caption = document.createElement('div');
+    caption.className="carousel-caption";
+
+    const text = document.createElement('h1');
+    text.className = "chewy closer-caption";
+    text.innerHTML = "NO CONFIRMED MATCHES YET";
+
+    const details = document.createElement('h1');
+    details.className = "chewy";
+    details.innerHTML = "pending matches that have been confirmed will appear here";
+
+    it.appendChild(caption);
+    caption.appendChild(text);
+    caption.appendChild(details);
+
+    return it;
+
 }
 
 // make a carousel object
@@ -76,6 +112,11 @@ function makeCarouselObject(match, mUser) {
     matchHall.className = "closer-caption";
     matchHall.innerHTML = match.halls[0];
 
+    const flakeButton = document.createElement('button');
+    flakeButton.setAttribute('type', 'button');
+    flakeButton.className = "cannot-go";
+    flakeButton.innerHTML = "Cannot Go";
+
     if (mUser.hasOwnProperty('piclink')) {
         const backgroundImage = document.createElement('img');
         var picSrc = mUser.piclink;
@@ -104,6 +145,10 @@ function makeCarouselIndicator(num) {
     return indic;
 }
 
+function renderPendingMatches(user) {
+    console.log("wheeee");
+}
+
 // render old (out of date) matches
 function renderOldMatches(user) {
 
@@ -130,7 +175,7 @@ function renderOldMatches(user) {
             matchTableDiv.appendChild(breakMatch);
             matchTableDiv.appendChild(noMatch);
         }
-        
+
     } else { // don't display a table if no matches
         const matchTableDiv = document.getElementById('matchTable')
         const breakMatch = document.createElement('br');

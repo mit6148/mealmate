@@ -243,6 +243,10 @@
     margin-bottom:2%;
 }
 
+.animate-2s {
+    animation-duration: 2s;
+}
+
 .pics-group p {
     display: block;
     position: absolute;
