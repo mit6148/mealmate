@@ -1,3 +1,12 @@
+const hallAvailabilities = [
+    [8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5, 13, 13.5, 14, 14.5, 15, 15.5, 16, 16.5, 17, 17.5, 18, 18.5, 19, 19.5, 20, 20.5],
+    [true, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, true, true, true, true, true, false], //Baker availability
+    [true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false, false, false, true, true, true, true, true, true, true, true], //Maseeh availability
+    [true, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, true, true, true, true, true, false, false], //McCormick availability
+    [true, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, true, true, true, true, true, false], //Next availability
+    [true, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, true, true, true, true, true, false, false] //Simmons availability
+];
+
 // dependencies
 const express = require('express');
 const connect = require('connect-ensure-login');
@@ -89,13 +98,47 @@ router.get('/matchRequest', function(req, res) {
                     const myHalls = req.query.halls.split(",");
                     const matchHalls = timeMatches[0].halls;
                     let meetHall = "";
+                    const availabilityIdx = hallAvailabilities[0].indexOf(parseInt(posTimes[0]));
+                    var hallFitsTime = 
+                        [['Baker', 'Maseeh', 'McCormick', 'Next', 'Simmons'],
+                        [false, false, false, false, false], //start with all of halls not fit time
+                        [0, 0, 0, 0, 0]]; //start with all halls rank of 0
+                    //find the halls open during the required time
+                    for (let i = 1; i < hallAvailabilities.length; i++){
+                        if (hallAvailabilities[i][availabilityIdx]){
+                            hallFitsTime[1][i-1] = true;
+                        }
+                    }
+                    //get sum of ranking for each hall from both users, lower total means more favorable hall
+                    //use lowercase to compare since McCormick spelled differently in another page
+                    const lowercaseHalls = hallFitsTime[0].map(e => e.toLowerCase());
+                    for (let i=0; i<matchHalls.length; i++){
+                        hallFitsTime[2][lowercaseHalls.indexOf(matchHalls[i].toLowerCase())] += i;
+                    }
+                    for (let i=0; i<myHalls.length; i++){
+                        hallFitsTime[2][lowercaseHalls.indexOf(myHalls[i].toLowerCase())] += i;
+                    }
+
+                    let optimalIdx = -1; //index of optimal hall (fits time and lowest ranking) in array
+                    for (let i = 0; i<5; i++){
+                        if (hallFitsTime[1][i]){
+                            if (optimalIdx < 0){
+                                optimalIdx = i;
+                            }else if(hallFitsTime[2][i] < hallFitsTime[2][optimalIdx]){
+                                optimalIdx = i;
+                            }
+                        }
+                    }
+                    meetHall = hallFitsTime[0][optimalIdx]; //get name of optimal hall
+
+/*
                     for (let i=0; i<3; i++) {
                         if (matchHalls.includes(myHalls[i])) {
                             meetHall = myHalls[i];
                             break;
                         }
                     }
-
+*/
                     // create the modified match
                     const realMatch = {
                         'userid': timeMatches[0].userid,

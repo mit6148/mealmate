@@ -22,8 +22,8 @@ function main(){
     	matchButton.addEventListener('click', function() {
 	        const date = $('#datepicker').datepicker('getDate'); 
 	        const selectedTimes = getSelectedTimes();
-	        const topThreeHalls = getTopThreeHalls();
-	        getMatch(profileUser, date, selectedTimes, topThreeHalls);
+	        const hallRankings = getHallRankings();
+	        getMatch(profileUser, date, selectedTimes, hallRankings);
 	    });
     });
 }
@@ -43,16 +43,27 @@ function getSelectedTimes() {
 }
 
 // gets the top 3 halls in the ordered list object
-function getTopThreeHalls() {
-    // jQuery source: http://jsfiddle.net/LcBAQ/
+// function getTopThreeHalls() {
+//     // jQuery source: http://jsfiddle.net/LcBAQ/
     
-    let topThreeHalls = [];
-    for (let i=0; i<3; i++) {
-        topThreeHalls.push($('#userDiningPreferences li:eq(' + i + ')').text());
+//     let topThreeHalls = [];
+//     for (let i=0; i<3; i++) {
+//         topThreeHalls.push($('#userDiningPreferences li:eq(' + i + ')').text());
+//     }
+
+//     console.log(topThreeHalls);
+//     return topThreeHalls
+// }
+
+function getHallRankings() {
+    
+    let hallRankings= [];
+    for (let i=0; i<5; i++) {
+        hallRankings.push($('#userDiningPreferences li:eq(' + i + ')').text());
     }
 
-    console.log(topThreeHalls);
-    return topThreeHalls
+    console.log(hallRankings);
+    return hallRankings;
 }
 
 function getMatch(user, d, ts, h) {

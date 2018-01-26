@@ -221,6 +221,7 @@ function renderPendRow(user, match) {
     const hall = document.createElement('p');
     hall.className = "text-center";
     hall.innerHTML = match.halls[0];
+    console.log(match.halls[0]);
     details.appendChild(date);
     details.appendChild(matchTime);
     details.appendChild(hall);
