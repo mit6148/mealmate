@@ -240,6 +240,10 @@ function renderPendRow(you, user, match) {
     decline.setAttribute('type', 'button');
     decline.className = "btn btn-default center-block red-decline";
     decline.innerHTML = "Decline"
+    decline.addEventListener('click', function() {
+        const matchDate = new Date(match.date);
+        declineMatch(you, matchDate);
+    })
     decision.appendChild(confirm);
     decision.appendChild(decline);
 
@@ -249,6 +253,7 @@ function renderPendRow(you, user, match) {
     return pendTable;
 }
 
+// event listener for the pending confirm button
 function confirmMatch(user, date) {
     console.log("inside confirmMatch");
     const data = {
@@ -256,6 +261,16 @@ function confirmMatch(user, date) {
         date: date
     }
     post('/api/confirmMatch', data);
+}
+
+// event listener for the pending decline button
+function declineMatch(user, date) {
+    console.log("inside declineMatch");
+    const data = {
+        userid: user._id,
+        date: date
+    }
+    post('/api/declineMatch', data);
 }
 
 // render old (out of date) matches
