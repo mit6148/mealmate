@@ -30,6 +30,9 @@ passport.use(new fbp.Strategy({
       year: "",
       about: "",
       residence: "",
+      hkc: ["", "", ""],
+      favorites: ["", "", "", "", ""],
+      interests: ""
       });
       user.save(function(err) {
         if (err) console.log(err);
