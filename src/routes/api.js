@@ -275,42 +275,65 @@ router.post('/confirmMatch/',
 
 // decline a pending match
 router.post('/declineMatch/', connect.ensureLoggedIn(), function(req,res) {
-        User.findOne({_id: req.body.userid}, function(err, user) {
-        console.log("The user of the matches page: ");
-        console.log(user);
+    User.findOne({_id: req.body.userid}, function(err, user) {
         if (err) {
             console.log(err);
             res.send(err);
             return;
         }
-
-        // remove the relevant match
-        // will later fix match making to only allow 1 match per day
-        const confirmDate = new Date(req.body.date);
-        let mateIndex = -1;
-        for (let i=0; i<user.matches.length; i++) {
-            const d = new Date(user.matches[i].date);
-            if (d <= confirmDate && d >= confirmDate) { // if same date
-                mateIndex = i;
-                console.log("found a relevant match!")
-                break;
-            }
-        }
-
-        if (mateIndex > -1) {
-            user.matches.splice(mateIndex,1);
-        } // do not add anything else
-
+        user = removeMatch(user, req.body.date);
         user.save(function(err) {
             if (err) {
                 console.log(err);
                 res.send(err);
                 return;
             }
+            // now update your match and send her an email
+            User.findOne({_id: req.body.matchid}, function(err, match) {
+                   if (err) {
+                        console.log(err);
+                        res.send(err);
+                        return;
+                    }
+                    match = removeMatch(match, req.body.date);
+                    match.save(function(err) {
+                        if (err) {
+                            console.log(err);
+                            res.send(err);
+                        return;
+                        }
+                        const data = {
+                            receiverEmail: match.email,
+                            subjectText: "[mealmate] One of your matches declined",
+                            bodyText: "Sadly, it appears that one of your matches declined the invitation. Check your matches page for more details, and happy dining!"
+                        }                    
+                        sendEmail(data.receiverEmail, data.subjectText, data.bodyText, function() { console.log("woohoo"); });
+                    });
+                });
+            // updated both users! We are done
             res.json({ message: "User updated!" });
         });
     });
 });
+
+function removeMatch(user, date) {
+    // remove the relevant match
+    const confirmDate = new Date(date);
+    let mateIndex = -1;
+    for (let i=0; i<user.matches.length; i++) {
+        const d = new Date(user.matches[i].date);
+        if (d <= confirmDate && d >= confirmDate) { // if same date
+            mateIndex = i;
+            console.log("found a relevant match!")
+            break;
+        }
+    }
+
+    if (mateIndex > -1) {
+        user.matches.splice(mateIndex,1);
+    }
+    return user;
+}
 
 router.post('/uploadImage/', connect.ensureLoggedIn(), function(req, res) {
     console.log('hello',req.files);

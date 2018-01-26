@@ -234,7 +234,7 @@ function renderPendRow(you, user, match) {
     confirm.innerHTML = "Confirm";
     confirm.addEventListener('click', function() {
         const matchDate = new Date(match.date);
-        confirmMatch(you, matchDate);
+        confirmMatch(you, user, matchDate);
     });
     const decline = document.createElement('button');
     decline.setAttribute('type', 'button');
@@ -242,7 +242,7 @@ function renderPendRow(you, user, match) {
     decline.innerHTML = "Decline"
     decline.addEventListener('click', function() {
         const matchDate = new Date(match.date);
-        declineMatch(you, matchDate);
+        declineMatch(you, user, matchDate);
     })
     decision.appendChild(confirm);
     decision.appendChild(decline);
@@ -254,20 +254,22 @@ function renderPendRow(you, user, match) {
 }
 
 // event listener for the pending confirm button
-function confirmMatch(user, date) {
+function confirmMatch(user, mUser, date) {
     console.log("inside confirmMatch");
     const data = {
         userid: user._id,
+        matchid: mUser._id,
         date: date
     }
     post('/api/confirmMatch', data);
 }
 
 // event listener for the pending decline button
-function declineMatch(user, date) {
+function declineMatch(user, mUser, date) {
     console.log("inside declineMatch");
     const data = {
         userid: user._id,
+        matchid: mUser._id,
         date: date
     }
     post('/api/declineMatch', data);
