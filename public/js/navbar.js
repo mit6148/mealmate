@@ -17,46 +17,52 @@ function newNavbarItem(text, url, currentPath, user) {
 
 	return itemBox;
 }
-/*
+
+//Bootstrap dropdown source: https://www.w3schools.com/bootstrap/bootstrap_ref_js_dropdown.asp
 function newDropdown(text, links, linkLabels, currentPath, user){
-	const dropdownBox = document.createElement('div');
+	const dropdownBox = document.createElement('li');
 	dropdownBox.className = "dropdown";
 
-	const dropdownBtn = document.createElement('button');
-	dropdownBox.appendChild(dropdownBtn);
-	dropdownBtn.className = "dropbtn";
-	dropdownBtn.innerHTML =  text;
-    text.className = "dropdown-text";
-	dropdownBtn.addEventListener('click', function(){
-		document.location.href = links[0];
-	})
+	const dropButton = document.createElement('button');
+	dropdownBox.appendChild(dropButton);
+	dropButton.className = "btn btn-primary dropdown-toggle"; //bootstrap button styling
+	dropButton.type="button";
+	dropButton.setAttribute("data-toggle", "dropdown");
+	dropButton.innerHTML= text+"<span class='caret'></span>";
 
-	const dropdowncontent = document.createElement('div');
-	dropdownBox.appendChild(dropdowncontent);
-	dropdowncontent.className = "dropdown-content";
+	const dropMenu = document.createElement('ul');
+	dropdownBox.appendChild(dropMenu);
+	dropMenu.className="dropdown-menu";
+	dropMenu.setAttribute("role", "menu");
+	dropMenu.setAttribute("aria-labelledby", "menu1");
 
 	for (let i = 0; i < links.length; i++){
-		//dropdowncontent.appendChild(newNavbarItem(linkLabels[i], links[i], currentPath));
-		const dropdownLink = document.createElement('a');
-        dropdownLink.className = "dropdown-link";
-		dropdowncontent.appendChild(dropdownLink);
-		dropdownLink.href = links[i];
-		dropdownLink.innerHTML = linkLabels[i];
-		dropdownLink.addEventListener("click", function(){
-			document.location.href = links[i];
-		});
-		/*
-		if (links[i] === currentPath){
-			dropdownLink.className = "active";
-		}
-		
+		const dropItem = document.createElement('li');
+		dropMenu.appendChild(dropItem);
+		dropItem.setAttribute("role", "presentation");
+
+		const dropLink = document.createElement('a');
+		dropItem.appendChild(dropLink);
+		dropLink.setAttribute("role", "menuitem");
+		dropLink.setAttribute("tabindex", "-1");
+		dropLink.href=links[i];
+		dropLink.innerHTML=linkLabels[i];
 	}
-	console.log(dropdowncontent);
+
+	/*opens menu when hover, goes to first link if click*/
+	dropdownBox.addEventListener("mouseover", function(){
+		dropMenu.style.display = "block";
+	});
+	dropdownBox.addEventListener("mouseout", function(){
+		dropMenu.style.display = "none";
+	});
+	dropButton.addEventListener("click", function(){
+        document.location.href = links[0];
+	});
 
 	return dropdownBox;
-
 }
-*/
+
 
 function renderNavbar(user){
 	const navbarDiv = document.getElementById('myNavbar');
@@ -69,14 +75,13 @@ function renderNavbar(user){
     navbarObjects.appendChild(newNavbarItem('ABOUT', '/about', currentPath));
     
 	if (user._id !== undefined) {
-		navbarObjects.appendChild(newNavbarItem('PROFILE', '/u/profile?'+user._id, currentPath, user)); 
-        navbarObjects.appendChild(newNavbarItem('FIND', '/u/findMealmate?'+user._id, currentPath, user));
-        navbarObjects.appendChild(newNavbarItem('MATCHES', '/u/matches?'+user._id, currentPath, user));
-		navbarObjects.appendChild(newNavbarItem('LOGOUT', '/logout', currentPath, user));
+		//navbarObjects.appendChild(newNavbarItem('PROFILE', '/u/profile?'+user._id, currentPath, user)); 
+        //navbarObjects.appendChild(newNavbarItem('FIND', '/u/findMealmate?'+user._id, currentPath, user));
+        //navbarObjects.appendChild(newNavbarItem('MATCHES', '/u/matches?'+user._id, currentPath, user));
 		//navbarObjects.innerHTML = '<div class="dropdown"> <button class="dropbtn">Dropdown <i class="fa fa-caret-down"></i> </button> <div class="dropdown-content">  <a href="#">Link 1</a>  <a href="#">Link 2</a> <a href="#">Link 3</a> </div </div> ';
-		/*navbarObjects.appendChild(newDropdown('PROFILE', ['/u/profile?'+user._id, '/u/edit?'+user._id], ['VIEW', 'EDIT'], currentPath, user));
+		navbarObjects.appendChild(newDropdown('PROFILE', ['/u/profile?'+user._id, '/u/edit?'+user._id], ['VIEW', 'EDIT'], currentPath, user));
         navbarObjects.appendChild(newDropdown('MATCHES', ['/u/matches?'+user._id, '/u/findMealmate?'+user._id], ['CURRENT', 'FIND'], currentPath, user));
-		navbarObjects.appendChild(newNavbarItem('LOGOUT', '/logout', currentPath, user));*/
+		navbarObjects.appendChild(newNavbarItem('LOGOUT', '/logout', currentPath, user));
 	} else {
 		navbarObjects.appendChild(newNavbarItem('LOGIN', 'auth/facebook', currentPath)); // add this when FB authentication happens
 	}
