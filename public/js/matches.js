@@ -35,7 +35,17 @@ function renderConfirmedMatches(user) {
     let isActive = true;
     const today = new Date(); today.setHours(0,0,0,0);
 
+    //get the total number of confirmed and count down when assign since need to prepend
+    for (let i=0; i < user.matches.length; i++){
+        const matchDate = new Date(user.matches[i].date);
+        if (user.matches[i].confirmed && matchDate >= today) {
+            count ++;
+        }
+    }
+    count --; //start indexing count from 0
+
     for (let i=user.matches.length-1; i>-1; i--) {
+        console.log(user.matches.length);
         console.log("Yo what up");
         // only get match and make carousel object if match is confirmed
         const matchDate = new Date(user.matches[i].date);
@@ -45,6 +55,7 @@ function renderConfirmedMatches(user) {
                 //carouselObjects.innerHTML = makeCarouselObject(user.matches[i], mUser);
                 //makeCarouselObject(user.matches[i], mUser).appendTo(carouselObjects);
                 var carouselObj = makeCarouselObject(user.matches[i], mUser);
+                //const indic = makeCarouselIndicator(count);
                 const indic = makeCarouselIndicator(count);
                 //if first carouselobj, needs to be active to display
                 if (isActive){ // first carouselobj to be added is active
@@ -53,8 +64,8 @@ function renderConfirmedMatches(user) {
                     indic.className = "active";
                 }
                 carouselObjects.prepend(carouselObj);
-                carouselIndicators.append(indic);
-                count++;
+                carouselIndicators.prepend(indic);
+                count--;
             });
         }
     }
