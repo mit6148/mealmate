@@ -8,6 +8,7 @@ function main(){
     });
     get('/api/user', {'_id': profileId}, function(profileUser) {
         renderOldMatches(profileUser);
+        renderPendingMatches(profileUser);
         renderConfirmedMatches(profileUser);
     });
     $('.red-decline').click(function() {
@@ -32,25 +33,29 @@ function renderConfirmedMatches(user) {
     let count = 0;
     let isConfirmed = false;
     let isActive = true;
+    const today = new Date();
 
     for (let i=user.matches.length-1; i>-1; i--) {
         console.log("Yo what up");
         // only get match and make carousel object if match is confirmed
-        if (user.matches[i].confirmed) {
+        const matchDate = new Date(user.matches[i].date);
+        if (user.matches[i].confirmed && matchDate >= today) {
             isConfirmed = true;
             get('/api/user', { '_id': user.matches[i].userid }, function (mUser) {
                 //carouselObjects.innerHTML = makeCarouselObject(user.matches[i], mUser);
                 //makeCarouselObject(user.matches[i], mUser).appendTo(carouselObjects);
                 var carouselObj = makeCarouselObject(user.matches[i], mUser);
+                const indic = makeCarouselIndicator(count);
                 //if first carouselobj, needs to be active to display
                 if (isActive){ // first carouselobj to be added is active
                     carouselObj.className = "item active";
                     isActive = false;
+                    indic.className = "active";
                 }
                 carouselObjects.prepend(carouselObj);
+                carouselIndicators.append(indic);
+                count++;
             });
-            carouselIndicators.append(makeCarouselIndicator(count));
-            count++;
         }
     }
 
@@ -82,7 +87,6 @@ function makeNoMatch() {
     caption.appendChild(details);
 
     return it;
-
 }
 
 // make a carousel object
@@ -147,6 +151,97 @@ function makeCarouselIndicator(num) {
 
 function renderPendingMatches(user) {
     console.log("wheeee");
+    if (user.matches.length) { // if the user has matches
+        const today = new Date()
+        let arePendMatches = false;
+
+        for (let i=0; i<user.matches.length; i++) {
+            const matchDate = new Date(user.matches[i].date);
+            if (matchDate >= today && !user.matches[i].confirmed) { // days after today or today
+                arePendMatches = true;
+                console.log("screaming sheep");
+                get('/api/user', { '_id': user.matches[i].userid }, function(matchedUser) {
+                    renderPendRow(matchedUser, user.matches[i]);
+                });
+            }
+        }
+
+        // if no outdated matches to display
+        if (!arePendMatches) {
+            const matchTableDiv = document.getElementById('pendDiv')
+            const breakMatch = document.createElement('br');
+            const noMatch = document.createElement('p');
+            noMatch.innerHTML = 'You responded to all of your invitations! Woohoo!';
+            matchTableDiv.appendChild(breakMatch);
+            matchTableDiv.appendChild(noMatch);
+        }
+
+    } else { // don't display a table if no matches
+        const matchTableDiv = document.getElementById('pendDiv')
+        const breakMatch = document.createElement('br');
+        const noMatch = document.createElement('p');
+        noMatch.innerHTML = 'No mealmates yet! Check back soon';
+        matchTableDiv.appendChild(breakMatch);
+        matchTableDiv.appendChild(noMatch);
+    }    
+}
+
+function renderPendRow(user, match) {
+    console.log("screaming pigs!");
+    const pendTable = document.getElementById('pendTable');
+    const tabrow = document.createElement('tr');
+    pendTable.appendChild(tabrow);
+
+    // image and name, both links
+    const imgName = document.createElement('td');
+    const profileImage = document.createElement('img');
+    profileImage.src = user.piclink;
+    profileImage.className = "restrict-width center-block small-padding";
+    profileImage.onclick = function () { // propic is link to other user's page
+        document.location.href = '/u/profile?'+user._id;
+    }
+    imgName.appendChild(profileImage);
+
+    const nameLink = document.createElement('p');
+    const name = document.createElement('a');
+    name.innerHTML = user.name;
+    nameLink.className = "text-center";
+    name.setAttribute('href', '/u/profile?'+user._id);
+    nameLink.appendChild(name);
+    imgName.appendChild(nameLink);
+
+    // date, time, location
+    const details = document.createElement('td');
+    const date = document.createElement('p');
+    date.className = "text-center";
+    date.innerHTML = match.date.substring(0,10);
+    const matchTime = document.createElement('p');
+    matchTime.className = "text-center";
+    matchTime.innerHTML = formatTime(match.times[0]);
+    const hall = document.createElement('p');
+    hall.className = "text-center";
+    hall.innerHTML = match.halls[0];
+    details.appendChild(date);
+    details.appendChild(matchTime);
+    details.appendChild(hall);
+
+    // decision buttons
+    const decision = document.createElement('td');
+    const confirm = document.createElement('button');
+    confirm.setAttribute('type', 'button');
+    confirm.className = 'btn btn-default center-block confirm-match';
+    confirm.innerHTML = "Confirm";
+    const decline = document.createElement('button');
+    decline.setAttribute('type', 'button');
+    decline.className = "btn btn-default center-block red-decline";
+    decline.innerHTML = "Decline"
+    decision.appendChild(confirm);
+    decision.appendChild(decline);
+
+    tabrow.appendChild(imgName);
+    tabrow.appendChild(details);
+    tabrow.appendChild(decision);
+    return pendTable;
 }
 
 // render old (out of date) matches
@@ -161,7 +256,7 @@ function renderOldMatches(user) {
             if (matchDate < today) {
                 werePrevMatches = true;
                 get('/api/user', { '_id': user.matches[i].userid }, function(matchedUser) {
-                    renderMatchRow(matchedUser, user.matches[i]);
+                    renderOldRow(matchedUser, user.matches[i]);
                 });
             }
         }
@@ -180,13 +275,13 @@ function renderOldMatches(user) {
         const matchTableDiv = document.getElementById('matchTable')
         const breakMatch = document.createElement('br');
         const noMatch = document.createElement('p');
-        noMatch.innerHTML = 'No matches yet! Check back soon.';
+        noMatch.innerHTML = 'You have no previous matches! Matches will show up here once the day of your meal has passed.';
         matchTableDiv.appendChild(breakMatch);
         matchTableDiv.appendChild(noMatch);
     }
 }
 
-function renderMatchRow(mUser, match) {
+function renderOldRow(mUser, match) {
     const matchTable = document.getElementById('t01')
     const tabrow = document.createElement('tr');
 
