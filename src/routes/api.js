@@ -224,10 +224,10 @@ router.post('/addMatch/',
         });
     });
 
+// confirm a pending match
 router.post('/confirmMatch/',
     connect.ensureLoggedIn(),
     function(req, res) {
-        console.log("Yo, made it to the backend");
         User.findOne({_id: req.body.userid}, function(err, user) {
             console.log("The user of the matches page: ");
             console.log(user);
@@ -243,17 +243,9 @@ router.post('/confirmMatch/',
             let mateIndex = -1;
             for (let i=0; i<user.matches.length; i++) {
                 const d = new Date(user.matches[i].date);
-                console.log("Your match date");
-                console.log(d);
-                console.log("The date on which you're confirming a meal");
-                console.log(confirmDate);
                 if (d <= confirmDate && d >= confirmDate) { // if same date
                     mateIndex = i;
                     console.log("...we're changing confirmed?")
-                    /* console.log(user.matches[i].confirmed);
-                    user.matches[i].confirmed = true; // confirmed
-                    console.log(user.matches[i].confirmed); */ 
-                    // do NOT update the other user for now
                     break;
                 }
             }
@@ -280,6 +272,68 @@ router.post('/confirmMatch/',
             });
         });
     });
+
+// decline a pending match
+router.post('/declineMatch/', connect.ensureLoggedIn(), function(req,res) {
+    User.findOne({_id: req.body.userid}, function(err, user) {
+        if (err) {
+            console.log(err);
+            res.send(err);
+            return;
+        }
+        user = removeMatch(user, req.body.date);
+        user.save(function(err) {
+            if (err) {
+                console.log(err);
+                res.send(err);
+                return;
+            }
+            // now update your match and send her an email
+            User.findOne({_id: req.body.matchid}, function(err, match) {
+                   if (err) {
+                        console.log(err);
+                        res.send(err);
+                        return;
+                    }
+                    match = removeMatch(match, req.body.date);
+                    match.save(function(err) {
+                        if (err) {
+                            console.log(err);
+                            res.send(err);
+                        return;
+                        }
+                        const data = {
+                            receiverEmail: match.email,
+                            subjectText: "[mealmate] One of your matches declined",
+                            bodyText: "Sadly, it appears that one of your matches declined the invitation. Check your matches page for more details, and happy dining!"
+                        }                    
+                        sendEmail(data.receiverEmail, data.subjectText, data.bodyText, function() { console.log("woohoo"); });
+                    });
+                });
+            // updated both users! We are done
+            res.json({ message: "User updated!" });
+        });
+    });
+});
+
+function removeMatch(user, date) {
+    // remove the relevant match
+    const confirmDate = new Date(date);
+    let mateIndex = -1;
+    for (let i=0; i<user.matches.length; i++) {
+        const d = new Date(user.matches[i].date);
+        if (d <= confirmDate && d >= confirmDate) { // if same date
+            mateIndex = i;
+            console.log("found a relevant match!")
+            break;
+        }
+    }
+
+    if (mateIndex > -1) {
+        user.matches.splice(mateIndex,1);
+    }
+    return user;
+}
 
 router.post('/uploadImage/', connect.ensureLoggedIn(), function(req, res) {
     console.log('hello',req.files);

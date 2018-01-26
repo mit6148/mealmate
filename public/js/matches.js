@@ -234,12 +234,16 @@ function renderPendRow(you, user, match) {
     confirm.innerHTML = "Confirm";
     confirm.addEventListener('click', function() {
         const matchDate = new Date(match.date);
-        confirmMatch(you, matchDate);
+        confirmMatch(you, user, matchDate);
     });
     const decline = document.createElement('button');
     decline.setAttribute('type', 'button');
     decline.className = "btn btn-default center-block red-decline";
     decline.innerHTML = "Decline"
+    decline.addEventListener('click', function() {
+        const matchDate = new Date(match.date);
+        declineMatch(you, user, matchDate);
+    })
     decision.appendChild(confirm);
     decision.appendChild(decline);
 
@@ -249,13 +253,26 @@ function renderPendRow(you, user, match) {
     return pendTable;
 }
 
-function confirmMatch(user, date) {
+// event listener for the pending confirm button
+function confirmMatch(user, mUser, date) {
     console.log("inside confirmMatch");
     const data = {
         userid: user._id,
+        matchid: mUser._id,
         date: date
     }
     post('/api/confirmMatch', data);
+}
+
+// event listener for the pending decline button
+function declineMatch(user, mUser, date) {
+    console.log("inside declineMatch");
+    const data = {
+        userid: user._id,
+        matchid: mUser._id,
+        date: date
+    }
+    post('/api/declineMatch', data);
 }
 
 // render old (out of date) matches
