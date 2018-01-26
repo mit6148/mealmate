@@ -33,7 +33,7 @@ function renderConfirmedMatches(user) {
     let count = 0;
     let isConfirmed = false;
     let isActive = true;
-    const today = new Date();
+    const today = new Date(); today.setHours(0,0,0,0);
 
     for (let i=user.matches.length-1; i>-1; i--) {
         console.log("Yo what up");
@@ -152,7 +152,7 @@ function makeCarouselIndicator(num) {
 function renderPendingMatches(user) {
     console.log("wheeee");
     if (user.matches.length) { // if the user has matches
-        const today = new Date()
+        const today = new Date(); today.setHours(0,0,0,0);
         let arePendMatches = false;
 
         for (let i=0; i<user.matches.length; i++) {
@@ -161,7 +161,7 @@ function renderPendingMatches(user) {
                 arePendMatches = true;
                 console.log("screaming sheep");
                 get('/api/user', { '_id': user.matches[i].userid }, function(matchedUser) {
-                    renderPendRow(matchedUser, user.matches[i]);
+                    renderPendRow(user, matchedUser, user.matches[i]);
                 });
             }
         }
@@ -186,7 +186,7 @@ function renderPendingMatches(user) {
     }    
 }
 
-function renderPendRow(user, match) {
+function renderPendRow(you, user, match) {
     console.log("screaming pigs!");
     const pendTable = document.getElementById('pendTable');
     const tabrow = document.createElement('tr');
@@ -231,6 +231,10 @@ function renderPendRow(user, match) {
     confirm.setAttribute('type', 'button');
     confirm.className = 'btn btn-default center-block confirm-match';
     confirm.innerHTML = "Confirm";
+    confirm.addEventListener('click', function() {
+        const matchDate = new Date(match.date);
+        confirmMatch(you, matchDate);
+    });
     const decline = document.createElement('button');
     decline.setAttribute('type', 'button');
     decline.className = "btn btn-default center-block red-decline";
@@ -244,11 +248,21 @@ function renderPendRow(user, match) {
     return pendTable;
 }
 
+function confirmMatch(user, date) {
+    console.log("inside confirmMatch");
+    const data = {
+        userid: user._id,
+        date: date
+    }
+    post('/api/confirmMatch', data);
+}
+
 // render old (out of date) matches
 function renderOldMatches(user) {
 
     if (user.matches.length) { // if the user has matches
         const today = new Date()
+        today.setHours(0,0,0,0);
         let werePrevMatches = false;
 
         for (let i=0; i<user.matches.length; i++) {
