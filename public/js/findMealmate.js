@@ -1,4 +1,4 @@
-const t = ['9','9.5','10','10.5','11','11.5','12','12.5','13','13.5','14','14.5',
+const t = ['8', '8.5', '9','9.5','10','10.5','11','11.5','12','12.5','13','13.5','14','14.5',
            '17','17.5','18','18.5','19','19.5','20','20.5'];
 
 function main(){
@@ -7,7 +7,7 @@ function main(){
     $('#datepicker').datepicker({
         autoclose: true,
         todayHighlight: true
-    }).datepicker('update', new Date()); // nice jQuery
+    }).datepicker('update', new Date(2018, 0, 1)); // nice jQuery
 
     get('/api/whoami', {}, function(user){
         if (user._id === undefined){
@@ -35,6 +35,7 @@ function getSelectedTimes() {
     for (let i=0; i<t.length; i++) {
         const checkBox = document.getElementById("check"+t[i]);
         if (checkBox.checked) {
+            console.log("Checked time: check"+t[i]);
             selectedTimes.push(t[i]);
         };
     }
@@ -67,6 +68,8 @@ function getMatch(user, d, ts, h) {
         console.log("Your posted match request");
         console.log(theMatch);
         get('/api/matchRequest', {'userid': user._id, 'date': d, 'times': ts, 'halls': h}, function (match) {
+            console.log("Your gotten match:");
+            console.log(match);
             if (match.hasOwnProperty('times')) {
                 updateUsersWithMatch(user, match, theMatch);
             } else {
@@ -137,8 +140,9 @@ function sendEmailMatch(user, match) {
             subjectText: "[mealmate] You have a match!",
             bodyText: "Check your matches page for your new match, and happy dining! :)"
         }
-        post('/api/emailSender', { data });
-        document.location.href = '/u/matches?'+user._id // done
+        post('/api/emailSender', { data }, function() {
+            document.location.href = '/u/matches?'+user._id // done
+        });
         // alert("Your match will get an email soon!");
     });
 }

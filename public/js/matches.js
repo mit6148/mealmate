@@ -25,31 +25,29 @@ function main(){
 }
 
 // render carousel matches
-// ------------- right now just display all matches -----------------
-// ------------- later check if the match is "confirmed" ------------
-// ------------- ALSO LATER display alternative slide if no matches yet (see html) ---
 function renderConfirmedMatches(user) {
 
     const carouselObjects = document.getElementById('carousel-inner-objects');
     const carouselIndicators = document.getElementById('indicators');
     let count = 0;
     let isConfirmed = false;
+    let isActive = true;
 
-    for (let i=0; i<user.matches.length; i++) {
+    for (let i=user.matches.length-1; i>-1; i--) {
         console.log("Yo what up");
         // only get match and make carousel object if match is confirmed
         if (user.matches[i].confirmed) {
-            console.log("wheeeeeeee");
             isConfirmed = true;
             get('/api/user', { '_id': user.matches[i].userid }, function (mUser) {
                 //carouselObjects.innerHTML = makeCarouselObject(user.matches[i], mUser);
                 //makeCarouselObject(user.matches[i], mUser).appendTo(carouselObjects);
                 var carouselObj = makeCarouselObject(user.matches[i], mUser);
                 //if first carouselobj, needs to be active to display
-                if (i === 0){
+                if (isActive){ // first carouselobj to be added is active
                     carouselObj.className = "item active";
+                    isActive = false;
                 }
-                carouselObjects.append(carouselObj);
+                carouselObjects.prepend(carouselObj);
             });
             carouselIndicators.append(makeCarouselIndicator(count));
             count++;
@@ -114,6 +112,11 @@ function makeCarouselObject(match, mUser) {
     matchHall.className = "closer-caption";
     matchHall.innerHTML = match.halls[0];
 
+    const flakeButton = document.createElement('button');
+    flakeButton.setAttribute('type', 'button');
+    flakeButton.className = "cannot-go";
+    flakeButton.innerHTML = "Cannot Go";
+
     if (mUser.hasOwnProperty('piclink')) {
         const backgroundImage = document.createElement('img');
         var picSrc = mUser.piclink;
@@ -140,6 +143,10 @@ function makeCarouselIndicator(num) {
     indic.setAttribute('data-slide-to', ""+num);
 
     return indic;
+}
+
+function renderPendingMatches(user) {
+    console.log("wheeee");
 }
 
 // render old (out of date) matches
