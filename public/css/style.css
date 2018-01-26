@@ -162,6 +162,11 @@
     text-decoration: none;
 }
 
+.tiny-padding {
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
 .small-padding {
     padding-left: 5%;
     padding-right: 5%;
@@ -524,7 +529,7 @@ h4 {
          font-size:18px;
      }
      body {
-        padding-top: 57px; 
+        padding-top: 55px; 
     }
 }
 
