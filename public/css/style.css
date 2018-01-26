@@ -1,6 +1,5 @@
 .navbar {
     overflow: initial;
-    max-height: 70px;
     margin-bottom: 0;
     border-radius: 0;
     background-color: #66A25C;
@@ -160,6 +159,11 @@
 .fa:hover, .fa:focus {
     color: #D5D5D5;
     text-decoration: none;
+}
+
+.tiny-padding {
+    padding-left: 3%;
+    padding-right: 3%;
 }
 
 .small-padding {
@@ -524,7 +528,7 @@ h4 {
          font-size:18px;
      }
      body {
-        padding-top: 57px; 
+        padding-top: 55px; 
     }
 }
 

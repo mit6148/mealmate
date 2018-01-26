@@ -224,6 +224,63 @@ router.post('/addMatch/',
         });
     });
 
+router.post('/confirmMatch/',
+    connect.ensureLoggedIn(),
+    function(req, res) {
+        console.log("Yo, made it to the backend");
+        User.findOne({_id: req.body.userid}, function(err, user) {
+            console.log("The user of the matches page: ");
+            console.log(user);
+            if (err) {
+                console.log(err);
+                res.send(err);
+                return;
+            }
+
+            // update the relevant match (date)
+            // will later fix match making to only allow 1 match per day
+            const confirmDate = new Date(req.body.date);
+            let mateIndex = -1;
+            for (let i=0; i<user.matches.length; i++) {
+                const d = new Date(user.matches[i].date);
+                console.log("Your match date");
+                console.log(d);
+                console.log("The date on which you're confirming a meal");
+                console.log(confirmDate);
+                if (d <= confirmDate && d >= confirmDate) { // if same date
+                    mateIndex = i;
+                    console.log("...we're changing confirmed?")
+                    /* console.log(user.matches[i].confirmed);
+                    user.matches[i].confirmed = true; // confirmed
+                    console.log(user.matches[i].confirmed); */ 
+                    // do NOT update the other user for now
+                    break;
+                }
+            }
+
+            console.log("Mateindex: " + mateIndex);
+            if (mateIndex > -1) {
+                const data = user.matches.splice(mateIndex,1);
+                const updated = {
+                    'userid': data[0].userid,
+                    'date': data[0].date,
+                    'times': data[0].times,
+                    'halls': data[0].halls,
+                    'confirmed': true,
+                }
+                user.matches.push(updated);
+            }
+            user.save(function(err) {
+                if (err) {
+                    console.log(err);
+                    res.send(err);
+                    return;
+                }
+                res.json({ message: "User updated!" });
+            });
+        });
+    });
+
 router.post('/uploadImage/', connect.ensureLoggedIn(), function(req, res) {
     console.log('hello',req.files);
     console.log('rip', req.body);
