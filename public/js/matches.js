@@ -11,18 +11,6 @@ function main(){
         renderPendingMatches(profileUser);
         renderConfirmedMatches(profileUser);
     });
-    $('.red-decline').click(function() {
-        $('#cancel-modal').show();
-
-        $('#cancel-decline').click(function() {
-            $('#cancel-modal').hide();
-        });
-        $('#verify-decline').click(function() {
-            //code to delete match
-            console.log("code to delete match");
-            $('#cancel-modal').hide();
-        });
-    });
 }
 
 // render carousel matches
@@ -54,7 +42,7 @@ function renderConfirmedMatches(user) {
             get('/api/user', { '_id': user.matches[i].userid }, function (mUser) {
                 //carouselObjects.innerHTML = makeCarouselObject(user.matches[i], mUser);
                 //makeCarouselObject(user.matches[i], mUser).appendTo(carouselObjects);
-                var carouselObj = makeCarouselObject(user.matches[i], mUser);
+                var carouselObj = makeCarouselObject(user, user.matches[i], mUser);
                 //const indic = makeCarouselIndicator(count);
                 const indic = makeCarouselIndicator(count);
                 //if first carouselobj, needs to be active to display
@@ -101,7 +89,7 @@ function makeNoMatch() {
 }
 
 // make a carousel object
-function makeCarouselObject(match, mUser) {
+function makeCarouselObject(user, match, mUser) {
 
     console.log("Making a carousel object, theoretically");
 
@@ -129,8 +117,21 @@ function makeCarouselObject(match, mUser) {
 
     const flakeButton = document.createElement('button');
     flakeButton.setAttribute('type', 'button');
-    flakeButton.className = "cannot-go";
+    flakeButton.className = "cannot-go red-decline";
     flakeButton.innerHTML = "Cannot Go";
+    $(flakeButton).click(function() {
+        $('#cancel-modal').show();
+
+        $('#cancel-decline').click(function() {
+            $('#cancel-modal').hide();
+        });
+        $('#verify-decline').click(function() {
+            const matchDate = new Date(match.date);
+            declineMatch(user, mUser, matchDate);
+            // console.log("code to delete match");
+            $('#cancel-modal').hide();
+        });
+    });
 
     if (mUser.hasOwnProperty('piclink')) {
         const backgroundImage = document.createElement('img');
@@ -147,6 +148,7 @@ function makeCarouselObject(match, mUser) {
     caption.appendChild(matchDate);
     caption.appendChild(matchTime);
     caption.appendChild(matchHall);
+    caption.appendChild(flakeButton);
     return it;
 }
 

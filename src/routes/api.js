@@ -326,6 +326,9 @@ router.post('/declineMatch/', connect.ensureLoggedIn(), function(req,res) {
                         res.send(err);
                         return;
                     }
+                    const j = findMatchByDate(match, req.body.date);
+                    const confirmedByMatch = match.matches[j].confirmed;
+
                     match = removeMatch(match, req.body.date);
                     match.save(function(err) {
                         if (err) {
@@ -333,12 +336,20 @@ router.post('/declineMatch/', connect.ensureLoggedIn(), function(req,res) {
                             res.send(err);
                         return;
                         }
-                        const data = {
-                            receiverEmail: match.email,
-                            subjectText: "[mealmate] One of your matches declined",
-                            bodyText: "Sadly, it appears that one of your matches declined the invitation. Check your matches page for more details, and happy dining!"
-                        }                    
-                        sendEmail(data.receiverEmail, data.subjectText, data.bodyText, function() { console.log("woohoo"); });
+                        if (!confirmedByMatch) { // different email depending on if your match confirmed
+                            const data = {
+                                receiverEmail: match.email,
+                                subjectText: "[mealmate] One of your matches declined",
+                                bodyText: "Sadly, it appears that one of your matches declined the invitation. Check your matches page for more details, and happy dining!"
+                            }                    
+                            sendEmail(data.receiverEmail, data.subjectText, data.bodyText, function() { console.log("woohoo"); });
+                        } else {
+                            const data = {
+                                receiverEmail: match.email,
+                                subjectText: "[mealmate] One of your mealmates cannot go",
+                                bodyText: "It looks like your mealmate for " + req.body.date.substring(0,10) + " cannot make it to the meal. Check your matches page for more details, and happy dining."
+                            }     
+                        }
                     });
                 });
             // updated both users! We are done
