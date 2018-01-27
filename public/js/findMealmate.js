@@ -20,7 +20,8 @@ function main(){
 
         const matchButton = document.getElementById('find-mealmate-button');
     	matchButton.addEventListener('click', function() {
-	        const date = $('#datepicker').datepicker('getDate'); 
+	        const date = $('#datepicker').datepicker('getDate');
+            date.setHours(0,0,0,0);
 	        const selectedTimes = getSelectedTimes();
 	        const hallRankings = getHallRankings();
 	        getMatch(profileUser, date, selectedTimes, hallRankings);
@@ -41,19 +42,6 @@ function getSelectedTimes() {
     }
     return selectedTimes;
 }
-
-// gets the top 3 halls in the ordered list object
-// function getTopThreeHalls() {
-//     // jQuery source: http://jsfiddle.net/LcBAQ/
-    
-//     let topThreeHalls = [];
-//     for (let i=0; i<3; i++) {
-//         topThreeHalls.push($('#userDiningPreferences li:eq(' + i + ')').text());
-//     }
-
-//     console.log(topThreeHalls);
-//     return topThreeHalls
-// }
 
 function getHallRankings() {
     
