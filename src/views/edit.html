@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>edit profile • mealmate</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width">
-        <meta name="author" content="Liu^3 - Cynthia Liu, Nanxi Liu, and Sabrina Liu">
-        <meta name="description" content="Join us in mealmate, where you'll discover new students through dining together!">
-        <meta name="keywords" content="college students meal, dining hall, mealmate, MIT, eat, new friends">  
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
-        <link rel="stylesheet" href="/static/css/style.css">
-        <link rel="stylesheet" href="/static/css/edit.css">
-        <link rel="stylesheet" href="/node_modules/chosen-js/chosen.css">
-        <link rel="shortcut icon" type="image/x-icon" href="/static/img/favicon.png"/>
-        <link href='https://fonts.googleapis.com/css?family=Catamaran' rel='stylesheet'>
-        
-	</head>
-	<body>
+<head>
+    <title>edit profile • mealmate</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="author" content="Liu^3 - Cynthia Liu, Nanxi Liu, and Sabrina Liu">
+    <meta name="description" content="Join us in mealmate, where you'll discover new students through dining together!">
+    <meta name="keywords" content="college students meal, dining hall, mealmate, MIT, eat, new friends">
 
-		<nav class="navbar navbar-inverse navbar-fixed-top"> <!-- navbar -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/edit.css">
+    <link rel="stylesheet" href="/node_modules/chosen-js/chosen.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/static/img/favicon.png" />
+    <link href='https://fonts.googleapis.com/css?family=Catamaran' rel='stylesheet'>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <!-- navbar -->
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -34,128 +35,111 @@
                 <!-- insert Navbar here -->
             </div>
         </div>
-        </nav>
+    </nav>
 
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <h4 id='userName' class="text-center">
-                        <!-- insert the username via js here -->
-                    </h4>
-                    <div class='profPicBox img-responsive center-block' >
-                        <div class="profPicBox row custom-file-upload">
-                            <img id="userImage">
-                            <!-- insert the user image via js here -->
-                        </div>
-                        <div class="profPicBox row" id="uploadProfilePic">
-                            <form ref='uploadForm' 
-                                id='uploadForm' 
-                                action='/api/uploadImage'
-                                method='post'
-                                enctype="multipart/form-data"
-                                class="custom-file-upload">
-<!--Source for styled choose file button: https://blog.benestudio.co/custom-file-upload-button-with-pure-css-5aacf39aa0a-->
-                                <div class="upload-btn-wrapper">
-                                  <button class="btn" id="choose-file">Choose File</button>
-                                  <input id='photoupload' type="file" name="profpic" onchange="document.getElementById('userImage').src=window.URL.createObjectURL(this.files[0])"/>
-                                </div>
-                                <!--
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h4 id='userName' class="text-center">
+                    <!-- insert the username via js here -->
+                </h4>
+                <div class='profPicBox img-responsive center-block'>
+                    <div class="profPicBox row custom-file-upload">
+                        <img id="userImage">
+                        <!-- insert the user image via js here -->
+                    </div>
+                    <div class="profPicBox row" id="uploadProfilePic">
+                        <form ref='uploadForm' id='uploadForm' action='/api/uploadImage' method='post' enctype="multipart/form-data" class="custom-file-upload">
+                            <!--Source for styled choose file button: https://blog.benestudio.co/custom-file-upload-button-with-pure-css-5aacf39aa0a-->
+                            <div class="upload-btn-wrapper">
+                                <button class="btn green-btn" id="choose-file">Update Profile Picture</button>
+                                <input id='photoupload' type="file" name="profpic" onchange="document.getElementById('userImage').src=window.URL.createObjectURL(this.files[0])" />
+                            </div>
+                            <!--
                                 <input id='photoupload' type="file" name="profpic"
                                 onchange="document.getElementById('userImage').src=window.URL.createObjectURL(this.files[0])" />
                                 -->
-                                <!-- below field is purposely hidden!-->
-                                <input type="text" id="photokey" name="photokey" style="display: none"/>
-                                <br>
-                                <input class="upload-btn-wrapper" id='addPhoto' type='submit' value='Upload' disabled />
-                                <button id='cancel-photo' type="button" disabled>Cancel</button>
-                            </form>
-                        </div>
+                            <!-- below field is purposely hidden!-->
+                            <input type="text" id="photokey" name="photokey" style="display: none" />
+                            <br>
+                            <input class="upload-btn-wrapper green-btn" id='addPhoto' type='submit' value='Upload' disabled />
+                            <button id='cancel-photo' type="button" disabled>Cancel</button>
+                        </form>
                     </div>
-<!--
-                    <div id='submitProfileImage' class="text-center">
-                        <input id="photoupload" type="file" accept="image/*">
-                        <a id='addPhoto'>Submit New Profile Picture</a>
+                </div>
+                <br>
+
+                <div class="form-group row small-padding">
+                    <h3 class="bold small-padding add-line">EDIT ABOUT ME</h3>
+                    <label for="editUserCourse" class="col-2 col-form-label small-padding">Course</label>
+                    <div class="col-10 small-padding">
+                        <input class="form-control" type="text" value="" id="editUserCourse">
                     </div>
--->
-                    <!-- <div class="form-group row small-padding">
-                        <label for="editUserAbout" class="col-2 col-form-label small-padding">Edit About Me</label>
-                        <div class="col-10 small-padding">
-                            <input class="form-control" type="text" value="" id="editUserAbout">
-                    </div> 
-                    </div> -->
-                    <br>
-                    
-                    <div class="form-group required row small-padding">
-                        <h3 class="bold small-padding add-line">EDIT ABOUT ME</h3>
-                        <label for="editUserCourse" class="col-2 col-form-label small-padding">Course</label>
-                        <div class="col-10 small-padding">
-                            <input class="form-control" type="text" value="" id="editUserCourse">
+                </div>
+                <div class="form-group row small-padding">
+                    <label for="editUserYear" class="col-2 col-form-label small-padding">Class Year</label>
+                    <div class="col-10 small-padding">
+                        <input class="form-control" type="text" value="" id="editUserYear">
                     </div>
+                </div>
+                <div class="form-group row small-padding">
+                    <label for="editUserLivingGroup" class="col-2 col-form-label small-padding">Living Group</label>
+                    <div class="col-10 small-padding">
+                        <input class="form-control" type="text" value="" id="editUserLivingGroup">
                     </div>
-                    <div class="form-group required row small-padding">
-                        <label for="editUserYear" class="col-2 col-form-label small-padding">Class Year</label>
-                        <div class="col-10 small-padding">
-                            <input class="form-control" type="text" value="" id="editUserYear">
+                </div>
+                <div class="form-group row small-padding">
+                    <label for="editHomeState" class="col-2 col-form-label small-padding">Home State</label>
+                    <div class="col-10 small-padding">
+                        <input class="form-control" type="text" value="" id="editHomeState">
                     </div>
+                </div>
+                <div class="form-group row small-padding">
+                    <label for="editKerb" class="col-2 col-form-label small-padding">Kerberos</label>
+                    <div class="col-10 small-padding">
+                        <input class="form-control" type="text" value="" id="editKerb">
                     </div>
-                    <div class="form-group required row small-padding">
-                        <label for="editUserLivingGroup" class="col-2 col-form-label small-padding">Living Group</label>
-                        <div class="col-10 small-padding">
-                            <input class="form-control" type="text" value="" id="editUserLivingGroup">
-                        </div>
+                </div>
+                <div class="form-group row small-padding">
+                    <label for="editCell" class="col-2 col-form-label small-padding">Cell Phone Number</label>
+                    <div class="col-10 small-padding">
+                        <input class="form-control" type="text" value="" id="editCell">
                     </div>
-                    <div class="form-group row small-padding">
-                        <label for="editHomeState" class="col-2 col-form-label small-padding">Home State</label>
-                        <div class="col-10 small-padding">
-                            <input class="form-control" type="text" value="" id="editHomeState">
-                        </div>
+                </div>
+                <br>
+                <div class="form-group row small-padding">
+                    <h3 class="bold small-padding add-line">EDIT GET TO KNOW ME</h3>
+                    <label for="editFavFood" class="col-2 col-form-label small-padding">Favorite Food</label>
+                    <div class="col-10 small-padding">
+                        <input class="form-control" type="text" value="" id="editFavFood">
                     </div>
-                    <div class="form-group row small-padding">
-                        <label for="editKerb" class="col-2 col-form-label small-padding">Kerberos</label>
-                        <div class="col-10 small-padding">
-                            <input class="form-control" type="text" value="" id="editKerb">
-                        </div>
+                </div>
+                <div class="form-group row small-padding">
+                    <label for="editFavDrink" class="col-2 col-form-label small-padding">Favorite Drink</label>
+                    <div class="col-10 small-padding">
+                        <input class="form-control" type="text" value="" id="editFavDrink">
                     </div>
-                    <div class="form-group row small-padding">
-                        <label for="editCell" class="col-2 col-form-label small-padding">Cell Phone</label>
-                        <div class="col-10 small-padding">
-                            <input class="form-control" type="text" value="" id="editCell">
-                        </div>
+                </div>
+                <div class="form-group row small-padding">
+                    <label for="editFavMovie" class="col-2 col-form-label small-padding">Favorite Movie</label>
+                    <div class="col-10 small-padding">
+                        <input class="form-control" type="text" value="" id="editFavMovie">
                     </div>
-                    <br>
-                    <div class="form-group row small-padding">
-                        <h3 class="bold small-padding add-line">EDIT GET TO KNOW ME</h3>
-                        <label for="editFavFood" class="col-2 col-form-label small-padding">Favorite Food</label>
-                        <div class="col-10 small-padding">
-                            <input class="form-control" type="text" value="" id="editFavFood">
-                        </div>
+                </div>
+                <div class="form-group row small-padding">
+                    <label for="editFavMeal" class="col-2 col-form-label small-padding">Favorite Meal</label>
+                    <div class="col-10 small-padding">
+                        <input class="form-control" type="text" value="" id="editFavMeal">
                     </div>
-                    <div class="form-group row small-padding">
-                        <label for="editFavDrink" class="col-2 col-form-label small-padding">Favorite Drink</label>
-                        <div class="col-10 small-padding">
-                            <input class="form-control" type="text" value="" id="editFavDrink">
-                        </div>
+                </div>
+                <div class="form-group row small-padding">
+                    <label for="editFavCuisine" class="col-2 col-form-label small-padding">Favorite Cuisine</label>
+                    <div class="col-10 small-padding">
+                        <input class="form-control" type="text" value="" id="editFavCuisine">
                     </div>
-                    <div class="form-group row small-padding">
-                        <label for="editFavMovie" class="col-2 col-form-label small-padding">Favorite Movie</label>
-                        <div class="col-10 small-padding">
-                            <input class="form-control" type="text" value="" id="editFavMovie">
-                        </div>
-                    </div>
-                    <div class="form-group row small-padding">
-                        <label for="editFavMeal" class="col-2 col-form-label small-padding">Favorite Meal</label>
-                        <div class="col-10 small-padding">
-                            <input class="form-control" type="text" value="" id="editFavMeal">
-                        </div>
-                    </div>
-                    <div class="form-group row small-padding">
-                        <label for="editFavCuisine" class="col-2 col-form-label small-padding">Favorite Cuisine</label>
-                        <div class="col-10 small-padding">
-                            <input class="form-control" type="text" value="" id="editFavCuisine">
-                        </div>
-                    </div>
-                    <!--Source for chosen library to format select: https://github.com/harvesthq/chosen -->
-                    <!-- 3 interests
+                </div>
+                <!--Source for chosen library to format select: https://github.com/harvesthq/chosen -->
+                <!-- 3 interests
                     <div class="row form-group" id=interests-bar>
                         <label for="interests-select" class="col-2 col-form-label small-padding">Interests</label>
                         <div class="col-12 small-padding">
@@ -171,53 +155,56 @@
                     <br>
                     -->
 
-                    <div class="form-group row small-padding">
-                        <label for="editUserInterests" class="col-2 col-form-label small-padding">Interests</label>
-                        <div class="col-10 small-padding">
-                            <input class="form-control" type="text" value="" id="editUserInterests">
-                        </div>
+                <div class="form-group row small-padding">
+                    <label for="editUserInterests" class="col-2 col-form-label small-padding">Interests</label>
+                    <div class="col-10 small-padding">
+                        <input class="form-control" type="text" value="" id="editUserInterests">
                     </div>
-                                    
-                    <button type="button" class="btn btn-default center-block" id="submitBtn">Submit Changes</button>
-                    <!-- Back button -->
-                    <a class="fa fa-arrow-circle-o-left" id="back-to-profile"></a>
                 </div>
+
+                <div id="back-edit">
+                    <button type="button" class="btn btn-default green-btn" id="submitBtn">Submit Changes</button>
+                </div>
+                <a class="fa fa-arrow-circle-o-left" id="back-to-profile"></a>
+                <!-- Back button -->
             </div>
         </div>
-        
-        <footer class="container-fluid text-center">
-            <div class="row">
-                <div class="col-sm-4">
-                    <h3 class="bold">CONTACT US</h3>
-                    <a class="fa fa-envelope"></a>
-                    <h4><a class="footer-email" href="mailto:mealmate.mit@gmail.com">mealmate.mit@gmail.com</a></h4>
-                    <br>
-                </div>
-                <div class="col-sm-4">
-                    <h3 class="bold">CONNECT</h3>
-                    <a class="fa fa-handshake-o"></a>
-                    <h4 class="email-text"><a class="footer-email" href="mailto:cynliu98@mit.edu">Cynthia Liu</a></h4>
-                    <h4 class="email-text"><a class="footer-email" href="mailto:nanxi@mit.edu">Nanxi Liu</a></h4>
-                    <h4 class="email-text"><a class="footer-email" href="mailto:sabliu@mit.edu">Sabrina Liu</a></h4>
-                </div>
-                <div class="col-sm-4">
-                    <br>
-                    <a href="#"><img src="/static/img/logo.png" class="icon"></a>
-                </div>
+    </div>
+
+    <footer class="container-fluid text-center">
+        <div class="row">
+            <div class="col-sm-4">
+                <h3 class="bold">CONTACT US</h3>
+                <a class="fa fa-envelope"></a>
+                <h4><a class="footer-email" href="mailto:mealmate.mit@gmail.com">mealmate.mit@gmail.com</a></h4>
+                <br>
             </div>
-        </footer>
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="bower_components/aos/dist/aos.js"></script>
-<!--
+            <div class="col-sm-4">
+                <h3 class="bold">CONNECT</h3>
+                <a class="fa fa-handshake-o"></a>
+                <h4 class="email-text"><a class="footer-email" href="mailto:cynliu98@mit.edu">Cynthia Liu</a></h4>
+                <h4 class="email-text"><a class="footer-email" href="mailto:nanxi@mit.edu">Nanxi Liu</a></h4>
+                <h4 class="email-text"><a class="footer-email" href="mailto:sabliu@mit.edu">Sabrina Liu</a></h4>
+            </div>
+            <div class="col-sm-4">
+                <br>
+                <a href="#"><img src="/static/img/logo.png" class="icon"></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="bower_components/aos/dist/aos.js"></script>
+    <!--
         <script src="https://sdk.amazonaws.com/js/aws-sdk-2.182.0.min.js"></script> -->
-        <script src="/static/js/api.js"></script>
-        <script src="/static/js/navbar.js"></script>
-        <script src="/static/js/submit.js"></script>
-        <script src="/static/js/edit.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
-        <script src="/node_modules/chosen-js/chosen.jquery.js"></script>
-	</body>
+    <script src="/static/js/api.js"></script>
+    <script src="/static/js/navbar.js"></script>
+    <script src="/static/js/submit.js"></script>
+    <script src="/static/js/edit.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
+    <script src="/node_modules/chosen-js/chosen.jquery.js"></script>
+</body>
+
 </html>

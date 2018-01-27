@@ -28,7 +28,7 @@ function newDropdown(text, links, linkLabels, currentPath, user){
 	dropButton.className = "btn btn-primary dropdown-toggle"; //bootstrap button styling
 	dropButton.type="button";
 	dropButton.setAttribute("data-toggle", "dropdown");
-	dropButton.innerHTML= text+"<span class='caret'></span>";
+	dropButton.innerHTML= text+" <span class='caret'></span>";
 
 	const dropMenu = document.createElement('ul');
 	dropdownBox.appendChild(dropMenu);
@@ -38,10 +38,12 @@ function newDropdown(text, links, linkLabels, currentPath, user){
 
 	for (let i = 0; i < links.length; i++){
 		const dropItem = document.createElement('li');
+        dropItem.className="dropdown-li";
 		dropMenu.appendChild(dropItem);
 		dropItem.setAttribute("role", "presentation");
 
 		const dropLink = document.createElement('a');
+        dropLink.className="dropdown-a text-center";
 		dropItem.appendChild(dropLink);
 		dropLink.setAttribute("role", "menuitem");
 		dropLink.setAttribute("tabindex", "-1");

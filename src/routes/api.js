@@ -131,14 +131,6 @@ router.get('/matchRequest', function(req, res) {
                     }
                     meetHall = hallFitsTime[0][optimalIdx]; //get name of optimal hall
 
-/*
-                    for (let i=0; i<3; i++) {
-                        if (matchHalls.includes(myHalls[i])) {
-                            meetHall = myHalls[i];
-                            break;
-                        }
-                    }
-*/
                     // create the modified match
                     const realMatch = {
                         'userid': timeMatches[0].userid,
@@ -239,16 +231,7 @@ router.post('/confirmMatch/',
 
             // update the relevant match (date)
             // will later fix match making to only allow 1 match per day
-            const confirmDate = new Date(req.body.date);
-            let mateIndex = -1;
-            for (let i=0; i<user.matches.length; i++) {
-                const d = new Date(user.matches[i].date);
-                if (d <= confirmDate && d >= confirmDate) { // if same date
-                    mateIndex = i;
-                    console.log("...we're changing confirmed?")
-                    break;
-                }
-            }
+            const mateIndex = findMatchByDate(user, req.body.date);
 
             console.log("Mateindex: " + mateIndex);
             if (mateIndex > -1) {
@@ -268,7 +251,22 @@ router.post('/confirmMatch/',
                     res.send(err);
                     return;
                 }
-                res.json({ message: "User updated!" });
+                // check if your match confirmed
+                User.findOne({_id: req.body.matchid}, function(err, match) {
+                   if (err) {
+                        console.log(err);
+                        res.send(err);
+                        return;
+                    }
+                    const mateIndex2 = findMatchByDate(match, req.body.date);
+                    console.log("Your mealmate's copy of your request");
+                    console.log(match.matches[mateIndex2]);
+                    if (mateIndex > -1 && match.matches[mateIndex2].confirmed) {
+                        res.json({message: true});
+                    } else {
+                        res.json({message: false});
+                    }
+                });
             });
         });
     });
@@ -316,8 +314,7 @@ router.post('/declineMatch/', connect.ensureLoggedIn(), function(req,res) {
     });
 });
 
-function removeMatch(user, date) {
-    // remove the relevant match
+function findMatchByDate(user, date) {
     const confirmDate = new Date(date);
     let mateIndex = -1;
     for (let i=0; i<user.matches.length; i++) {
@@ -328,6 +325,13 @@ function removeMatch(user, date) {
             break;
         }
     }
+
+    return mateIndex;
+}
+
+function removeMatch(user, date) {
+    // remove the relevant match
+    mateIndex = findMatchByDate(user, date);
 
     if (mateIndex > -1) {
         user.matches.splice(mateIndex,1);
@@ -353,16 +357,24 @@ router.post('/emailSender/', connect.ensureLoggedIn(), function(req, res){
 
 // this should be a delete request but the error I'm getting is jank af
 // http://mongoosejs.com/docs/api.html
-/* router.post('/cleanReqDB/', function(req, res) {
+router.post('/cleanReqDB/', function(req, res) {
     const today = new Date();
+    today.setHours(0,0,0,0); // midnight
     MatchRequest.find({}, function(err, matches) { // get all matches
         for (let i=0; i<matches.length; i++) {
-            if (matches[i].date < today) { // if the day of the match has passed
-                console.log("wow");
-                matches[i].remove() // 
+            const matchDate = new Date(matches[i].date);
+            if (matchDate < today) { // if the day of the match has passed
+                console.log("the match's date");
+                console.log(matchDate);
+                console.log("today's date");
+                console.log(today);
+                matches[i].remove(function(err, m) {
+                    console.log("We have removed the match! (Theoretically)");
+                }) // 
             }
         }
     });
-})*/
+    res.send(null);
+})
 
 module.exports = router;

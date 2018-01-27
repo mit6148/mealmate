@@ -1,40 +1,29 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>profile • mealmate</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width">
-        <meta name="author" content="Liu^3 - Cynthia Liu, Nanxi Liu, and Sabrina Liu">
-        <meta name="description" content="Join us in mealmate, where you'll discover new students through dining together!">
-        <meta name="keywords" content="college students meal, dining hall, mealmate, MIT, eat, new friends"> 
-        
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css">
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
-        <link rel="stylesheet" href="/static/css/style.css">
-        <link rel="stylesheet" href="/static/css/profile.css">
-        <link rel="shortcut icon" type="image/x-icon" href="/static/img/favicon.png"/>
-        <link href='https://fonts.googleapis.com/css?family=Chewy' rel='stylesheet'>
-        <link href='https://fonts.googleapis.com/css?family=Catamaran' rel='stylesheet'>
 
+<head>
+    <title>profile • mealmate</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="author" content="Liu^3 - Cynthia Liu, Nanxi Liu, and Sabrina Liu">
+    <meta name="description" content="Join us in mealmate, where you'll discover new students through dining together!">
+    <meta name="keywords" content="college students meal, dining hall, mealmate, MIT, eat, new friends">
 
-        
-    </head>
-	<body>
-       <!--  <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle dropdown-content" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown button
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </div> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/profile.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/static/img/favicon.png" />
+    <link href='https://fonts.googleapis.com/css?family=Chewy' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Catamaran' rel='stylesheet'>
+</head>
 
-        <nav class="navbar navbar-inverse navbar-fixed-top"> <!-- navbar -->
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <!-- navbar -->
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -48,111 +37,99 @@
                 <!-- insert navbar here -->
             </div>
         </div>
-        </nav>
+    </nav>
 
-<!-- Source: https://www.w3schools.com/howto/howto_css_modals.asp -->
-        <div id="emailModal" class="modal">
-            <div class="modal-content">
-                <h1>Please enter your email.</h1>
-                <h2><span style="font-family:Chewy">mealmate</span> uses your email to notify you of your next match. We promise no spam!</h2>
-                <input id="userEmail" type="text">
-                <btn id="submitEmail" disabled>Submit</btn>
-            </div>
+    <!-- Source: https://www.w3schools.com/howto/howto_css_modals.asp -->
+    <div id="emailModal" class="modal">
+        <div class="modal-content">
+            <h1>Please enter your email.</h1>
+            <h2><span style="font-family:Chewy">mealmate</span> uses your email to notify you of your next match. We promise no spam!</h2>
+            <input id="userEmail" type="text">
+            <btn id="submitEmail" class="green-btn" disabled>Submit</btn>
         </div>
+    </div>
 
-        <div class="container">
-            <div class="row">
-                    <div class="col-sm-4" id="profile-left">
-                        <h4 id='userName'>
-                            <!-- insert the username via js here -->
-                        </h4>
-                        <div class='profPicBox' id="userImage">
-                            <!-- insert the user image via js here -->
-                        </div>
-                        <br>
-                        <button type="button" class="btn btn-default" id='editProfile'>Edit Profile</button><!-- edit profile button -->
-                        <!-- make the button react via javaScript -->
-                    </div>
-                    <br class="break-between-columns">
-                    <div class="col-sm-8" id="profile-right">
-                        <h1 id="about-me">ABOUT ME</h1>
-                        <!-- Ideal front-end for me currently! Only Course, class, and living group are required,
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4" id="profile-left">
+                <h4 id='userName'>
+                    <!-- insert the username via js here -->
+                </h4>
+                <div class='profPicBox' id="userImage">
+                    <!-- insert the user image via js here -->
+                </div>
+                <br>
+                <button type="button" class="btn green-btn btn-default" id='editProfile'>Edit Profile</button>
+                <!-- edit profile button -->
+                <!-- make the button react via javaScript -->
+            </div>
+            <br class="break-between-columns">
+            <div class="col-sm-8" id="profile-right">
+                <h1 id="about-me">ABOUT ME</h1>
+                <!-- Ideal front-end for me currently! Only Course, class, and living group are required,
                              the rest pop up if they enter something for it!-->
-                        <h2 class="add-line">GENERAL</h2>
-                        <h4><span style="font-weight:bold">COURSE: </span><span id='userCourse'></span></h4>
-                        <h4><span style="font-weight:bold">CLASS: </span><span id='userClass'></span></h4>
-                        <h4><span style="font-weight:bold">LIVING GROUP: </span><span id='userLivingGroup'></span></h4>
-                        <h4><span style="font-weight:bold">HOME STATE: </span><span id='userHomeState'></span></h4>
-                        <h4><span style="font-weight:bold">KERBEROS: </span><span id='userKerb'></span></h4>
-                        <h4><span style="font-weight:bold">CELL-PHONE: </span><span id='userCell'></span></h4>
-                        <br>
-                        <!-- Javascript makes a way for GET TO KNOW ME/ SOCIAL MEDIA to only pop up when people enter at least one
+                <h2 class="add-line">GENERAL</h2>
+                <h4><span style="font-weight:bold">COURSE: </span><span id='userCourse'></span></h4>
+                <h4><span style="font-weight:bold">CLASS: </span><span id='userClass'></span></h4>
+                <h4><span style="font-weight:bold">LIVING GROUP: </span><span id='userLivingGroup'></span></h4>
+                <h4><span style="font-weight:bold">HOME STATE: </span><span id='userHomeState'></span></h4>
+                <h4><span style="font-weight:bold">KERBEROS: </span><span id='userKerb'></span></h4>
+                <h4><span style="font-weight:bold">CELL PHONE NUMBER: </span><span id='userCell'></span></h4>
+                <br>
+                <!-- Javascript makes a way for GET TO KNOW ME/ SOCIAL MEDIA to only pop up when people enter at least one
                              of the ones below? -->
-                        <h2 class="add-line">GET TO KNOW ME</h2>
-                        <h4><span style="font-weight:bold">FAVORITE FOOD: </span><span id="favfood"></span></h4>
-                        <h4><span style="font-weight:bold">FAVORITE DRINK: </span><span id="favdrink"></span></h4>
-                        <h4><span style="font-weight:bold">FAVORITE MOVIE: </span><span id="favmovie"></span></h4>
-                        <h4><span style="font-weight:bold">FAVORITE MEAL OF THE DAY: </span><span id="favmeal"></span></h4>
-                        <h4><span style="font-weight:bold">FAVORITE CUISINE: </span><span id="favcuisine"></span></h4>
-                        <h4><span style="font-weight:bold">INTERESTS: </span><span id="interests"></span></h4>
-                        <br>
-                        <!--
-                        <h2 class="add-line">SOCIAL MEDIA</h2>
-                        <h4><span style="font-weight:bold">FACEBOOK: </span>nanxii</h4>
-                        <h4><span style="font-weight:bold">INSTAGRAM: </span>nanxii</h4>
-                        <h4><span style="font-weight:bold">SNAPCHAT: </span>nanxii</h4>
-                        <h4><span style="font-weight:bold">TWITTER: </span>nanxii</h4>
-                        -->
-                        <!-- Inserts About, Course and Class, and Living Group with Javascript... old code!
-                        <div id='userAbout'>
-                        <div id='userCourseClass'></div>
-                        <div id='userLivingGroup'></div> -->
-                        <!-- <div id='userInterests'>
-                            Interests: temp
-                        </div> --> <!-- not changing this yet -->
-                    </div>
+                <h2 class="add-line">GET TO KNOW ME</h2>
+                <h4><span style="font-weight:bold">FAVORITE FOOD: </span><span id="favfood"></span></h4>
+                <h4><span style="font-weight:bold">FAVORITE DRINK: </span><span id="favdrink"></span></h4>
+                <h4><span style="font-weight:bold">FAVORITE MOVIE: </span><span id="favmovie"></span></h4>
+                <h4><span style="font-weight:bold">FAVORITE MEAL OF THE DAY: </span><span id="favmeal"></span></h4>
+                <h4><span style="font-weight:bold">FAVORITE CUISINE: </span><span id="favcuisine"></span></h4>
+                <h4><span style="font-weight:bold">INTERESTS: </span><span id="interests"></span></h4>
+                <br>
             </div>
         </div>
+    </div>
 
-        
-        <footer class="container-fluid text-center">
-            <div class="row">
-                <div class="col-sm-4">
-                    <h3 class="bold">CONTACT US</h3>
-                    <a class="fa fa-envelope"></a>
-                    <h4><a class="footer-email" href="mailto:mealmate.mit@gmail.com">mealmate.mit@gmail.com</a></h4>
-                    <br>
-                </div>
-                <div class="col-sm-4">
-                    <h3 class="bold">CONNECT</h3>
-                    <a class="fa fa-handshake-o"></a>
-                    <h4 class="email-text"><a class="footer-email" href="mailto:cynliu98@mit.edu">Cynthia Liu</a></h4>
-                    <h4 class="email-text"><a class="footer-email" href="mailto:nanxi@mit.edu">Nanxi Liu</a></h4>
-                    <h4 class="email-text"><a class="footer-email" href="mailto:sabliu@mit.edu">Sabrina Liu</a></h4>
-                </div>
-                <div class="col-sm-4">
-                    <br>
-                    <a href="#"><img src="/static/img/logo.png" class="icon"></a>
-                </div>
+
+    <footer class="container-fluid text-center">
+        <div class="row">
+            <div class="col-sm-4">
+                <h3 class="bold">CONTACT US</h3>
+                <a class="fa fa-envelope"></a>
+                <h4><a class="footer-email" href="mailto:mealmate.mit@gmail.com">mealmate.mit@gmail.com</a></h4>
+                <br>
             </div>
-        </footer>
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
-        <script src="bower_components/aos/dist/aos.js"></script>
-		<script src="/static/js/api.js"></script>
-        
-		<script src="/static/js/navbar.js"></script> 
-		<script src="/static/js/profile.js"></script>
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script>
+            <div class="col-sm-4">
+                <h3 class="bold">CONNECT</h3>
+                <a class="fa fa-handshake-o"></a>
+                <h4 class="email-text"><a class="footer-email" href="mailto:cynliu98@mit.edu">Cynthia Liu</a></h4>
+                <h4 class="email-text"><a class="footer-email" href="mailto:nanxi@mit.edu">Nanxi Liu</a></h4>
+                <h4 class="email-text"><a class="footer-email" href="mailto:sabliu@mit.edu">Sabrina Liu</a></h4>
+            </div>
+            <div class="col-sm-4">
+                <br>
+                <a href="#"><img src="/static/img/logo.png" class="icon"></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
+    <script src="bower_components/aos/dist/aos.js"></script>
+    <script src="/static/js/api.js"></script>
+
+    <script src="/static/js/navbar.js"></script>
+    <script src="/static/js/profile.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
         $( function() {
             $( "#userDiningPreferences" ).sortable();
             $( "#userDiningPreferences" ).disableSelection();
         } );
-        </script>
-	</body>
+    </script>
+</body>
+
 </html>

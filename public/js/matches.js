@@ -161,7 +161,6 @@ function makeCarouselIndicator(num) {
 }
 
 function renderPendingMatches(user) {
-    console.log("wheeee");
     if (user.matches.length) { // if the user has matches
         const today = new Date(); today.setHours(0,0,0,0);
         let arePendMatches = false;
@@ -241,15 +240,27 @@ function renderPendRow(you, user, match) {
     const decision = document.createElement('td');
     const confirm = document.createElement('button');
     confirm.setAttribute('type', 'button');
-    confirm.className = 'btn btn-default center-block confirm-match';
+    confirm.className = 'btn btn-default green-btn center-block confirm-match';
     confirm.innerHTML = "Confirm";
     confirm.addEventListener('click', function() {
         const matchDate = new Date(match.date);
-        confirmMatch(you, user, matchDate);
+        const data = {
+            userid: you._id,
+            matchid: user._id,
+            date: matchDate
+        }
+        post('/api/confirmMatch', data, function(didMatchConfirm) {
+            console.log(didMatchConfirm.message);
+            if (didMatchConfirm.message) {
+                alert("Match confirmed! Enjoy your meal!")
+            } else {
+                alert("Your match hasn't confirmed that they are able to go yet. You will receive an email if your match cannot go.");
+            }
+        });
     });
     const decline = document.createElement('button');
     decline.setAttribute('type', 'button');
-    decline.className = "btn btn-default center-block red-decline";
+    decline.className = "btn btn-default green-btn center-block red-decline";
     decline.innerHTML = "Decline"
     decline.addEventListener('click', function() {
         const matchDate = new Date(match.date);
@@ -272,6 +283,7 @@ function confirmMatch(user, mUser, date) {
         matchid: mUser._id,
         date: date
     }
+
     post('/api/confirmMatch', data);
 }
 
