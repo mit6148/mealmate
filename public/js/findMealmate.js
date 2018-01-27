@@ -75,7 +75,8 @@ function getMatch(user, d, ts, h) {
                 const data = {
                     receiverEmail: user.email,
                     subjectText: "[mealmate] No match yet...",
-                    bodyText: "Sadly, no one was available in the time and day you requested. But keep checking your matches page, and watch your inbox!"
+                    bodyText: noMatchEmail.replace('Hello,', 'Hello ' + user.name.split(' ')[0] + ',') //email templates in emailTemplates.js
+                    //bodyText: "Sadly, no one was available in the time and day you requested. But keep checking your matches page, and watch your inbox!"
                 }
                 post('/api/emailSender', { data }, function () {
                     document.location.href = '/u/matches?'+user._id; // done
@@ -126,7 +127,7 @@ function sendEmailUser(user) {
     const data = {
         receiverEmail: user.email,
         subjectText: "[mealmate] You have a match!",
-        bodyText: "Check your matches page for your new match, and happy dining! :)"
+        bodyText: foundMatchEmail.replace('Hello,', 'Hello ' + user.name.split(' ')[0] + ',') //email templates in emailTemplates.js
     }
     post('/api/emailSender', { data });
     alert("Match submitted. You will get an email soon! Check your matches page");
@@ -137,7 +138,7 @@ function sendEmailMatch(user, match) {
         const data = {
             receiverEmail: mUser.email,
             subjectText: "[mealmate] You have a match!",
-            bodyText: "Check your matches page for your new match, and happy dining! :)"
+            bodyText: foundMatchEmail.replace('Hello,', 'Hello ' + mUser.name.split(' ')[0] + ',') //email templates in emailTemplates.js
         }
         post('/api/emailSender', { data }, function() {
             document.location.href = '/u/matches?'+user._id // done

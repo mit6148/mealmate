@@ -5,5 +5,6 @@ Team members: Cynthia Liu, Nanxi Liu, Sabrina Liu
 
 emailSender.js source: https://www.w3schools.com/nodejs/nodejs_email.asp
 	uses nodemailer: https://nodemailer.com/about/
+Email templates source: MailChimp, https://mailchimp.com/
 passport.js source: 6.148 staff
 pictures.js source: 6.148 Staff
