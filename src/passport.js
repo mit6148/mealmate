@@ -1,3 +1,5 @@
+//Source: 6.148 Staff
+
 const passport = require('passport');
 const fbp = require('passport-facebook');
 

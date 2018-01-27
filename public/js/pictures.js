@@ -1,3 +1,5 @@
+//Source: 6.148 Staff
+
 var albumBucketName = process.env.S3_BUCKET_NAME;
 var bucketRegion = process.env.S3_BUCKET_REGION;
 var IdentityPoolId = process.env.S3_IDENTITY_POOL_ID;
