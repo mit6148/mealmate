@@ -357,16 +357,24 @@ router.post('/emailSender/', connect.ensureLoggedIn(), function(req, res){
 
 // this should be a delete request but the error I'm getting is jank af
 // http://mongoosejs.com/docs/api.html
-/* router.post('/cleanReqDB/', function(req, res) {
+router.post('/cleanReqDB/', function(req, res) {
     const today = new Date();
+    today.setHours(0,0,0,0); // midnight
     MatchRequest.find({}, function(err, matches) { // get all matches
         for (let i=0; i<matches.length; i++) {
-            if (matches[i].date < today) { // if the day of the match has passed
-                console.log("wow");
-                matches[i].remove() // 
+            const matchDate = new Date(matches[i].date);
+            if (matchDate < today) { // if the day of the match has passed
+                console.log("the match's date");
+                console.log(matchDate);
+                console.log("today's date");
+                console.log(today);
+                matches[i].remove(function(err, m) {
+                    console.log("We have removed the match! (Theoretically)");
+                }) // 
             }
         }
     });
-})*/
+    res.send(null);
+})
 
 module.exports = router;

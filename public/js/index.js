@@ -1,5 +1,5 @@
 function main() {
-  // cleanReqDB(); // clean the requests database
+  cleanReqDB(); // clean the requests database
   get('/api/whoami', {}, function(user) {
     console.log(user);
     renderNavbar(user);
@@ -24,7 +24,7 @@ function getStarted(user) {
 
 // clean the request database
 function cleanReqDB() {
-  post('/api/cleanReqDB', {}, function(req,res) {
+  post('/api/cleanReqDB', {}, function() {
     console.log("Theoretically cleaned out the database of old times");
   });
 }
