@@ -20,7 +20,7 @@ function sendEmail(receiverEmail, subjectText, bodyText, callback){
 	  from: process.env.EMAIL_ADDRESS,
 	  to: receiverEmail,
 	  subject: subjectText,
-	  text: bodyText
+	  html: bodyText
 	};
 	transporter.sendMail(mailOptions, function(error, info){
 	  if (error) {
