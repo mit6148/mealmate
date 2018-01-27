@@ -240,7 +240,7 @@ function renderPendRow(you, user, match) {
     const decision = document.createElement('td');
     const confirm = document.createElement('button');
     confirm.setAttribute('type', 'button');
-    confirm.className = 'btn btn-default center-block confirm-match';
+    confirm.className = 'btn btn-default green-btn center-block confirm-match';
     confirm.innerHTML = "Confirm";
     confirm.addEventListener('click', function() {
         const matchDate = new Date(match.date);
@@ -260,7 +260,7 @@ function renderPendRow(you, user, match) {
     });
     const decline = document.createElement('button');
     decline.setAttribute('type', 'button');
-    decline.className = "btn btn-default center-block red-decline";
+    decline.className = "btn btn-default green-btn center-block red-decline";
     decline.innerHTML = "Decline"
     decline.addEventListener('click', function() {
         const matchDate = new Date(match.date);
