@@ -44,114 +44,147 @@ router.get('/user', function(req, res) {
 
 // match step 2: get matching requests
 router.get('/matchRequest', function(req, res) {
-    // first: the match must eat on the same day
-    MatchRequest.find({ date: req.query.date }, function(err, matches) {
-        if (err) { // log error
+    // first check if you have matches on that day already
+    User.findOne({_id: req.query.userid}, function(err, user) {
+        if (err) {
             console.log("Error " + err);
-            res.send({message: "There was an error!"}); // error
+            res.send({message: "There was an error!"});
+            return;
         }
-        // if there are matches, filter them
-        if (matches && matches.length) {
-            console.log("Here are matches " + matches);
-            let idMatches = [];
-            let timeMatches = [];
-
-            // filter by user id
-            for (let i=0; i<matches.length; i++) {
-                if (req.query.userid != matches[i].userid) {
-                    console.log("Hey, it isn't yourself!");
-                    idMatches.push(matches[i]); // add that match
-                }
+        // console.log(user);
+        if (areMatchesOnDate(user, req.query.date)) {
+            res.send({message: "You already have a match on this date. You are limited to one match per day"});
+            return;
+        } else { // if nothing wrong: the match must eat on the same day
+        MatchRequest.find({ date: req.query.date }, function(err, matches) {
+            if (err) { // log error
+                console.log("Error " + err);
+                res.send({message: "There was an error!"}); // error
+                return;
             }
 
-            // filter by times if there remain matches
-            if (idMatches.length) {
-                const uTimes = req.query.times.split(",");
-                let timeMatches = []; let possibleTimes = [];
-                for (let i=0; i<idMatches.length; i++) { // for each match
-                    let hasBeenMatched = false;
-                    let timesForMatch = new Set(); // times shared between user and match
+            if (matches && matches.length) {
+                console.log("Here are matches " + matches);
+                let idMatches = [];
+                let timeMatches = [];
 
-                    for (let j=0; j<uTimes.length; j++) { // for each of user's times
-                
-                        if (idMatches[i].times.includes(uTimes[j])) {
-                            if (!hasBeenMatched) {
-                                timeMatches.push(idMatches[i]);
-                                timesForMatch.add(uTimes[j]);
-                                hasBeenMatched = true;
-                            } else {
-                                timesForMatch.add(uTimes[j]); // still a possible time
-                            } // end if
-                        } // end if
-                    } // end for loop of your times
-
-                    if (timesForMatch.size != 0) {
-                        possibleTimes.push(timesForMatch); 
+                // filter by user id
+                for (let i=0; i<matches.length; i++) {
+                    if (req.query.userid != matches[i].userid) {
+                        console.log("Hey, it isn't yourself!");
+                        idMatches.push(matches[i]); // add that match
                     }
-                } // end for loop over all your matches
-                if (timeMatches.length) {
-                    console.log("There's at least one match request that works!");
+                }
+
+                // filter by times if there remain matches
+                if (idMatches.length) {
+                    const uTimes = req.query.times.split(",");
+                    let timeMatches = []; let possibleTimes = [];
+                    for (let i=0; i<idMatches.length; i++) { // for each match
+                        let hasBeenMatched = false;
+                        let timesForMatch = new Set(); // times shared
+
+                        for (let j=0; j<uTimes.length; j++) { // for each of user's times
                     
-                    // just take the first one
-                    // extract first set of possible times, find a shared fav hall
-                    const posTimes = Array.from(possibleTimes[0]);
-                    const myHalls = req.query.halls.split(",");
-                    const matchHalls = timeMatches[0].halls;
-                    let meetHall = "";
-                    const availabilityIdx = hallAvailabilities[0].indexOf(parseInt(posTimes[0]));
-                    var hallFitsTime = 
-                        [['Baker', 'Maseeh', 'McCormick', 'Next', 'Simmons'],
-                        [false, false, false, false, false], //start with all of halls not fit time
-                        [0, 0, 0, 0, 0]]; //start with all halls rank of 0
-                    //find the halls open during the required time
-                    for (let i = 1; i < hallAvailabilities.length; i++){
-                        if (hallAvailabilities[i][availabilityIdx]){
-                            hallFitsTime[1][i-1] = true;
-                        }
-                    }
-                    //get sum of ranking for each hall from both users, lower total means more favorable hall
-                    //use lowercase to compare since McCormick spelled differently in another page
-                    const lowercaseHalls = hallFitsTime[0].map(e => e.toLowerCase());
-                    for (let i=0; i<matchHalls.length; i++){
-                        hallFitsTime[2][lowercaseHalls.indexOf(matchHalls[i].toLowerCase())] += i;
-                    }
-                    for (let i=0; i<myHalls.length; i++){
-                        hallFitsTime[2][lowercaseHalls.indexOf(myHalls[i].toLowerCase())] += i;
-                    }
+                            if (idMatches[i].times.includes(uTimes[j])) {
+                                if (!hasBeenMatched) {
+                                    timeMatches.push(idMatches[i]);
+                                    timesForMatch.add(uTimes[j]);
+                                    hasBeenMatched = true;
+                                } else {
+                                    timesForMatch.add(uTimes[j]); // still a possible time
+                                } // end if
+                            } // end if
+                        } // end for loop of your times
 
-                    let optimalIdx = -1; //index of optimal hall (fits time and lowest ranking) in array
-                    for (let i = 0; i<5; i++){
-                        if (hallFitsTime[1][i]){
-                            if (optimalIdx < 0){
-                                optimalIdx = i;
-                            }else if(hallFitsTime[2][i] < hallFitsTime[2][optimalIdx]){
-                                optimalIdx = i;
+                        if (timesForMatch.size != 0) {
+                            possibleTimes.push(timesForMatch); 
+                        }
+                    } // end for loop over all your matches
+                    if (timeMatches.length) {
+                        
+                        // just take the first one
+                        // extract first set of possible times, find a shared fav hall
+                        const posTimes = Array.from(possibleTimes[0]);
+                        const myHalls = req.query.halls.split(",");
+                        const matchHalls = timeMatches[0].halls;
+                        let meetHall = "";
+                        const availabilityIdx = hallAvailabilities[0].indexOf(parseInt(posTimes[0]));
+                        var hallFitsTime = 
+                            [['Baker', 'Maseeh', 'McCormick', 'Next', 'Simmons'],
+                            [false, false, false, false, false], //start with all of halls not fit time
+                            [0, 0, 0, 0, 0]]; //start with all halls rank of 0
+                        //find the halls open during the required time
+                        for (let i = 1; i < hallAvailabilities.length; i++){
+                            if (hallAvailabilities[i][availabilityIdx]){
+                                hallFitsTime[1][i-1] = true;
                             }
                         }
-                    }
-                    meetHall = hallFitsTime[0][optimalIdx]; //get name of optimal hall
+                        //get sum of ranking for each hall from both users, lower total means more favorable hall
+                        //use lowercase to compare since McCormick spelled differently in another page
+                        const lowercaseHalls = hallFitsTime[0].map(e => e.toLowerCase());
+                        for (let i=0; i<matchHalls.length; i++){
+                            hallFitsTime[2][lowercaseHalls.indexOf(matchHalls[i].toLowerCase())] += i;
+                        }
+                        for (let i=0; i<myHalls.length; i++){
+                            hallFitsTime[2][lowercaseHalls.indexOf(myHalls[i].toLowerCase())] += i;
+                        }
 
-                    // create the modified match
-                    const realMatch = {
-                        'userid': timeMatches[0].userid,
-                        'date': req.query.date,
-                        'times': posTimes,
-                        'halls': [meetHall],
-                        'confirmed': false, // whether or not the dinner was confirmed
-                    };
-                    res.send(realMatch);
-                    
+                        const optimalIdx = findOptInd(hallFitsTime);
+                        meetHall = hallFitsTime[0][optimalIdx]; //get name of optimal hall
+
+                        // create the modified match
+                        const realMatch = {
+                            'userid': timeMatches[0].userid,
+                            'date': req.query.date,
+                            'times': posTimes,
+                            'halls': [meetHall],
+                            'confirmed': false, // whether or not the dinner was confirmed
+                        };
+                        res.send(realMatch);
+                        
+                    } else {
+                      res.send({message: "Sorry! No matches yet. Check back soon!"})
+                    }
                 } else {
-                  res.send({message: "Sorry! No matches yet. Check back soon!"})
+                    res.send({message: "Sorry! No matches yet. Check back soon!"})
                 }
             } else {
-                res.send({message: "Sorry! No matches yet. Check back soon!"})
+                res.send({message: "Sorry! No matches yet. Check back soon!"});
             }
-        } else {
-            res.send({message: "Sorry! No matches yet. Check back soon!"});
-        }
+        });
+    }
     });
 });
+
+function areMatchesOnDate(user, date) {
+    let yes = false;
+    const reqDate = new Date(date);
+    console.log("user: ");
+    console.log(user);
+    for (let i=0; i<user.matches.length; i++) {
+        const mDate = new Date(user.matches[i].date);
+        if (mDate <= reqDate && reqDate <= mDate) {
+            yes = true;
+            break;
+        }
+    }
+    return yes;
+}
+
+function findOptInd(hallFitsTime) {
+    let optimalIdx = -1; //index of optimal hall (fits time and lowest ranking) in array
+    for (let i = 0; i<5; i++){
+        if (hallFitsTime[1][i]){
+            if (optimalIdx < 0){
+                optimalIdx = i;
+            }else if(hallFitsTime[2][i] < hallFitsTime[2][optimalIdx]){
+                optimalIdx = i;
+            }
+        }
+    }
+    return optimalIdx;
+}
 
 // match step 1: post your request
 router.post('/matchPost', 
