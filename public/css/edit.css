@@ -1,53 +1,45 @@
 .upload-btn-wrapper {
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
+     position: relative;
+     overflow: hidden;
+     display: inline-block;
 }
-
-.btn {
-  font-size: 18px;
-  color: #FFF;
+ .btn {
+     font-size: 18px;
+     color: #FFF;
      padding: 12px 22px;
      background: #66A25C;
      border: 2px solid #FFF;
 }
-
-.form-group.required .col-form-label:after {
-  content:"*";
-  color:red;
+ .form-group.required .col-form-label:after {
+     content:"*";
+     color:red;
 }
-
-#choose-file {
-    margin-top: 8%;
+ #choose-file {
+     margin-top: 8%;
 }
-
-#addPhoto, #cancel-photo {
-    margin-top: 0.5%;
-    margin-left: 0.5%;
-    font-size: 18px;
+ #addPhoto, #cancel-photo {
+     margin-top: 0.5%;
+     margin-left: 0.5%;
+     font-size: 18px;
      color: #FFF;
      padding: 12px 22px;
      border: 2px solid #FFF;
-    background: #66A25C;
+     background: #66A25C;
 }
-
-.profPicBox {
-    text-align: center;
- }
-
-.upload-btn-wrapper input[type=file] {
-  font-size: 100px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
+ .profPicBox {
+     text-align: center;
 }
-
-@media (max-width: 900px) {
-    .btn, #addPhoto, #cancel-photo {
+ .upload-btn-wrapper input[type=file] {
+     font-size: 100px;
+     position: absolute;
+     left: 0;
+     top: 0;
+     opacity: 0;
+}
+ @media (max-width: 900px) {
+     .btn, #addPhoto, #cancel-photo {
          font-size: 16px;
          padding: 8px 16px;
-     }
+    }
 }
-
-
+ 

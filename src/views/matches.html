@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html>
-    <head>
-    <title>matches • mealmate</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width">
-        <meta name="author" content="Liu^3 - Cynthia Liu, Nanxi Liu, and Sabrina Liu">
-        <meta name="description" content="Join us in mealmate, where you'll discover new students through dining together!">
-        <meta name="keywords" content="college students meal, dining hall, mealmate, MIT, eat, new friends">    
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
-        <link rel="stylesheet" href="/static/css/matches.css">
-        <link rel="stylesheet" href="/static/css/style.css">
-        <link rel="shortcut icon" type="image/x-icon" href="/static/img/favicon.png"/>
-        <link href='https://fonts.googleapis.com/css?family=Chewy' rel='stylesheet'>
-        <link href='https://fonts.googleapis.com/css?family=Catamaran' rel='stylesheet'>
-    </head>
-    <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top"> <!-- navbar -->
+<head>
+    <title>matches • mealmate</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="author" content="Liu^3 - Cynthia Liu, Nanxi Liu, and Sabrina Liu">
+    <meta name="description" content="Join us in mealmate, where you'll discover new students through dining together!">
+    <meta name="keywords" content="college students meal, dining hall, mealmate, MIT, eat, new friends">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
+    <link rel="stylesheet" href="/static/css/matches.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/static/img/favicon.png" />
+    <link href='https://fonts.googleapis.com/css?family=Chewy' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Catamaran' rel='stylesheet'>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <!-- navbar -->
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -29,7 +32,7 @@
                 <a class="navbar-brand" href="/"><img src="../../static/img/logo.png"></a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
-               <!-- insert navbar here --> 
+                <!-- insert navbar here -->
             </div>
         </div>
     </nav>
@@ -42,20 +45,20 @@
             <button id="verify-decline">Yes</button>
         </div>
     </div>
-        
-    <div class= "container text-center">
+
+    <div class="container text-center">
         <h1><img class="header-lines animated bounceInLeft" src="/static/img/left_line.png"> MEALMATES <img class="header-lines animated bounceInRight" src="/static/img/right_line.png"></h1>
         <h3>Here are your confirmed <span style="font-family:Chewy; font-size:25px">mealmate</span> matches! Be sure to be on time for your meal!</h3>
-        </div>
-        
-        <!-- Carousel preferably sorted by the closest time -->
-        <div id="matches-pics" class="carousel slide" data-ride="carousel" data-interval="false">
-            <ol class="carousel-indicators" id="indicators">
-                <!-- append carousel indicators here -->
-            </ol>
+    </div>
 
-            <div class="carousel-inner" role="listbox" id="carousel-inner-objects">
-                <!-- prepend carousel objects here -->
+    <!-- Carousel preferably sorted by the closest time -->
+    <div id="matches-pics" class="carousel slide" data-ride="carousel" data-interval="false">
+        <ol class="carousel-indicators" id="indicators">
+            <!-- append carousel indicators here -->
+        </ol>
+
+        <div class="carousel-inner" role="listbox" id="carousel-inner-objects">
+            <!-- prepend carousel objects here -->
             <a class="left carousel-control" href="#matches-pics" role="button" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
@@ -64,63 +67,65 @@
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
             </a>
-            </div>   
-        </div>   
-    
-    <div class= "container text-center" id="pendDiv"> 
+        </div>
+    </div>
+
+    <div class="container text-center" id="pendDiv">
         <h1><img class="header-lines animated bounceInLeft" src="/static/img/left_line.png"> PENDING MATCHES <img class="header-lines animated bounceInRight" src="/static/img/right_line.png"></h1> <br>
-            <table id="pendTable">
-                <tr>
+        <table id="pendTable">
+            <tr>
                 <th class="text-center bold">MATCH</th>
                 <th class="text-center bold">DETAILS</th>
                 <th class="text-center bold">DECISION</th>
-                </tr>
-            </table>
-        </div>
-        
-        <div class= "container text-center">
-            <h1><img class="header-lines animated bounceInLeft" src="/static/img/left_line.png"> PREVIOUS MATCHES <img class="header-lines animated bounceInRight" src="/static/img/right_line.png"></h1>
-            <br>
-            <div id="matchTable"> <!-- table of matches, or indication of no matches, goes here -->
-                <table id="t01">
-                    <tr>
+            </tr>
+        </table>
+    </div>
+
+    <div class="container text-center">
+        <h1><img class="header-lines animated bounceInLeft" src="/static/img/left_line.png"> PREVIOUS MATCHES <img class="header-lines animated bounceInRight" src="/static/img/right_line.png"></h1>
+        <br>
+        <div id="matchTable">
+            <!-- table of matches, or indication of no matches, goes here -->
+            <table id="t01">
+                <tr>
                     <th class="text-center bold">PICTURE</th>
-                    <th class="text-center bold">NAME</th> 
+                    <th class="text-center bold">NAME</th>
                     <th class="text-center bold">DATE</th>
                     <th class="text-center bold">TIME</th>
                     <th class="text-center bold">DINING HALL</th>
-                    </tr>
-                </table>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <footer class="container-fluid text-center">
+        <div class="row">
+            <div class="col-sm-4">
+                <h3 class="bold">CONTACT US</h3>
+                <a class="fa fa-envelope"></a>
+                <h4><a class="footer-email" href="mailto:mealmate.mit@gmail.com">mealmate.mit@gmail.com</a></h4>
+                <br>
+            </div>
+            <div class="col-sm-4">
+                <h3 class="bold">CONNECT</h3>
+                <a class="fa fa-handshake-o"></a>
+                <h4 class="email-text"><a class="footer-email" href="mailto:cynliu98@mit.edu">Cynthia Liu</a></h4>
+                <h4 class="email-text"><a class="footer-email" href="mailto:nanxi@mit.edu">Nanxi Liu</a></h4>
+                <h4 class="email-text"><a class="footer-email" href="mailto:sabliu@mit.edu">Sabrina Liu</a></h4>
+            </div>
+            <div class="col-sm-4">
+                <br>
+                <a href="#"><img src="/static/img/logo.png" class="icon"></a>
             </div>
         </div>
+    </footer>
 
-        <footer class="container-fluid text-center">
-            <div class="row">
-                <div class="col-sm-4">
-                    <h3 class="bold">CONTACT US</h3>
-                    <a class="fa fa-envelope"></a>
-                    <h4><a class="footer-email" href="mailto:mealmate.mit@gmail.com">mealmate.mit@gmail.com</a></h4>
-                    <br>
-                </div>
-                <div class="col-sm-4">
-                    <h3 class="bold">CONNECT</h3>
-                    <a class="fa fa-handshake-o"></a>
-                    <h4 class="email-text"><a class="footer-email" href="mailto:cynliu98@mit.edu">Cynthia Liu</a></h4>
-                    <h4 class="email-text"><a class="footer-email" href="mailto:nanxi@mit.edu">Nanxi Liu</a></h4>
-                    <h4 class="email-text"><a class="footer-email" href="mailto:sabliu@mit.edu">Sabrina Liu</a></h4>
-                </div>
-                <div class="col-sm-4">
-                    <br>
-                    <a href="#"><img src="/static/img/logo.png" class="icon"></a>
-                </div>
-            </div>
-        </footer>
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="bower_components/aos/dist/aos.js"></script>
-        <script src="/static/js/api.js"></script>
-        <script src="/static/js/navbar.js"></script>
-        <script src="/static/js/matches.js"></script>
-    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="bower_components/aos/dist/aos.js"></script>
+    <script src="/static/js/api.js"></script>
+    <script src="/static/js/navbar.js"></script>
+    <script src="/static/js/matches.js"></script>
+</body>
+
 </html>
