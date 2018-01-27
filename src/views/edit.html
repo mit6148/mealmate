@@ -56,7 +56,7 @@
                                 class="custom-file-upload">
 <!--Source for styled choose file button: https://blog.benestudio.co/custom-file-upload-button-with-pure-css-5aacf39aa0a-->
                                 <div class="upload-btn-wrapper">
-                                  <button class="btn" id="choose-file">Choose File</button>
+                                  <button class="btn" id="choose-file">Update Profile Picture</button>
                                   <input id='photoupload' type="file" name="profpic" onchange="document.getElementById('userImage').src=window.URL.createObjectURL(this.files[0])"/>
                                 </div>
                                 <!--
@@ -85,20 +85,20 @@
                     </div> -->
                     <br>
                     
-                    <div class="form-group required row small-padding">
+                    <div class="form-group row small-padding">
                         <h3 class="bold small-padding add-line">EDIT ABOUT ME</h3>
                         <label for="editUserCourse" class="col-2 col-form-label small-padding">Course</label>
                         <div class="col-10 small-padding">
                             <input class="form-control" type="text" value="" id="editUserCourse">
                     </div>
                     </div>
-                    <div class="form-group required row small-padding">
+                    <div class="form-group row small-padding">
                         <label for="editUserYear" class="col-2 col-form-label small-padding">Class Year</label>
                         <div class="col-10 small-padding">
                             <input class="form-control" type="text" value="" id="editUserYear">
                     </div>
                     </div>
-                    <div class="form-group required row small-padding">
+                    <div class="form-group row small-padding">
                         <label for="editUserLivingGroup" class="col-2 col-form-label small-padding">Living Group</label>
                         <div class="col-10 small-padding">
                             <input class="form-control" type="text" value="" id="editUserLivingGroup">
@@ -117,7 +117,7 @@
                         </div>
                     </div>
                     <div class="form-group row small-padding">
-                        <label for="editCell" class="col-2 col-form-label small-padding">Cell Phone</label>
+                        <label for="editCell" class="col-2 col-form-label small-padding">Cell Phone Number</label>
                         <div class="col-10 small-padding">
                             <input class="form-control" type="text" value="" id="editCell">
                         </div>
@@ -177,10 +177,12 @@
                             <input class="form-control" type="text" value="" id="editUserInterests">
                         </div>
                     </div>
-                                    
-                    <button type="button" class="btn btn-default center-block" id="submitBtn">Submit Changes</button>
-                    <!-- Back button -->
+                    
+                    <div id="back-edit">
+                        <button type="button" class="btn btn-default" id="submitBtn">Submit Changes</button>
+                    </div>
                     <a class="fa fa-arrow-circle-o-left" id="back-to-profile"></a>
+                    <!-- Back button -->
                 </div>
             </div>
         </div>

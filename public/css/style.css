@@ -24,6 +24,37 @@
      color: #D5D5D5 !important;
 }
 
+.date-holder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.dropdown-toggle {
+    border: none !important;
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.6);
+    margin-bottom: 0 !important;
+    border-radius: 0 !important;
+    font-size: 1em !important;
+    border: 0 !important;
+    background-color: #66A25C !important;
+}
+
+.dropdown-menu {
+    background-color: #66A25C !important;
+    max-width: 100px !important;
+}
+
+.dropdown-a {
+    color: #FFF !important;
+    background-color: #66A25C !important;
+}
+
+.dropdown-toggle:hover, .dropdown-toggle:visited {
+    background-color: #66A25C !important;
+}
+
 /*
  .dropdown a:focus, .dropdown a:hover {
      color: #D5D5D5 !important;
@@ -36,13 +67,6 @@
 
 .dropdownbtn, .dropdown-content, .dropdown-link, .dropdown-text {
     text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.6);
-}
-
-.date-holder {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
 
 .dropdown .dropbtn {
@@ -102,6 +126,21 @@
     font-size: 50px;
 }
 
+#back-to-profile:hover, #back-to-profile:focus {
+    color: #D5D5D5;
+    text-decoration: none;
+    cursor: pointer;
+} 
+
+.ui-state-default {
+    cursor: pointer;
+}
+
+.ui-state-default:hover {
+    color: #66A25C;
+    font-weight: bold;
+}
+
 #uploadProfilePic {
     justify-content: center;
     text-align: center;
@@ -123,6 +162,8 @@
 
  .container {
      margin: 4% auto;
+     max-width: 100% !important;
+    overflow-x: hidden !important;
 }
 
 #home-header {
@@ -152,14 +193,20 @@
      color: #FFF;
      text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.6);
 }
+
  .fa:visited, .fa active{
      color: #FFF !important; 
      text-decoration: none;
 }
 
 .fa:hover, .fa:focus {
-    color: #D5D5D5;
+    color: #FFF;
     text-decoration: none;
+} 
+
+#back-edit {
+    display: flex;
+    justify-content: center;
 }
 
 .tiny-padding {
@@ -309,6 +356,7 @@ body {
     font-family: 'Catamaran';
     font-size: 22px;
     padding-top: 70px; 
+    overflow-x: hidden !important;
 }
 
 h1 {
@@ -418,6 +466,9 @@ h4 {
     }
     .header-lines {
         display: none;
+    }
+    .dropdown-a {
+        text-align: left !important;
     }
 }
 
