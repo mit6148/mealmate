@@ -1,3 +1,6 @@
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
 function main(){
     const profileId = window.location.search.substring(1);
     get('/api/whoami', {}, function(user){
@@ -105,7 +108,9 @@ function makeCarouselObject(user, match, mUser) {
 
     const matchDate = document.createElement('h2');
     matchDate.className = "closer-caption";
-    matchDate.innerHTML = match.date.substring(0,10);
+    const dateObj = new Date(match.date);
+    matchDate.innerHTML = DAYS[dateObj.getDay()] + ', ' + MONTHS[dateObj.getMonth()] + ' ' + dateObj.getDate();
+    //matchDate.innerHTML = match.date.substring(0,10);
 
     const matchTime = document.createElement('h2');
     matchTime.className = "closer-caption";
@@ -175,6 +180,7 @@ function renderPendingMatches(user) {
         let arePendMatches = false;
 
         for (let i=0; i<user.matches.length; i++) {
+            console.log(user.matches[i].date);
             const matchDate = new Date(user.matches[i].date);
             if (matchDate >= today && !user.matches[i].confirmed) { // days after today or today
                 arePendMatches = true;
@@ -233,7 +239,9 @@ function renderPendRow(you, user, match) {
     const details = document.createElement('td');
     const date = document.createElement('p');
     date.className = "text-center";
-    date.innerHTML = match.date.substring(0,10);
+    const dateObj = new Date(match.date);
+    matchDate.innerHTML = DAYS[dateObj.getDay()] + ', ' + MONTHS[dateObj.getMonth()] + ' ' + dateObj.getDate();
+    //date.innerHTML = match.date.substring(0,10);
     const matchTime = document.createElement('p');
     matchTime.className = "text-center";
     matchTime.innerHTML = formatTime(match.times[0]);
@@ -368,8 +376,10 @@ function renderOldRow(mUser, match) {
     
     const matchDate = document.createElement('td');
     matchDate.className = "text-center";
-    // tbh this date formatting is hacky
-    matchDate.innerHTML = match.date.substring(0,10);
+    const dateObj = new Date(match.date);
+    matchDate.innerHTML = DAYS[dateObj.getDay()] + ', ' + MONTHS[dateObj.getMonth()] + ' ' + dateObj.getDate();
+    //console.log(dateObj.getMonth());
+    //matchDate.innerHTML = match.date.substring(0,10);
     const matchTime = document.createElement('td');
     matchTime.className = "text-center";
     matchTime.innerHTML = formatTime(match.times[0]); // just choose the first available time for now
