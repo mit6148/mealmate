@@ -186,7 +186,7 @@ function renderPendingMatches(user) {
                 arePendMatches = true;
                 console.log("screaming sheep");
                 get('/api/user', { '_id': user.matches[i].userid }, function(matchedUser) {
-                    renderPendRow(user, matchedUser, user.matches[i]);
+                    renderPendRow(user, matchedUser, user.matches[i], i);
                 });
             }
         }
@@ -211,10 +211,10 @@ function renderPendingMatches(user) {
     }    
 }
 
-function renderPendRow(you, user, match) {
-    console.log("screaming pigs!");
+function renderPendRow(you, user, match, num) {
     const pendTable = document.getElementById('pendTable');
     const tabrow = document.createElement('tr');
+    tabrow.setAttribute('id', 'pending-row'+num);
     pendTable.appendChild(tabrow);
 
     // image and name, both links
@@ -258,7 +258,7 @@ function renderPendRow(you, user, match) {
     confirm.className = 'btn btn-default green-btn center-block confirm-match';
     confirm.innerHTML = "Confirm";
     confirm.addEventListener('click', function() {
-        confirmMatch(you, user, match);
+        confirmMatch(you, user, match, num);
     });
     const decline = document.createElement('button');
     decline.setAttribute('type', 'button');
@@ -278,7 +278,7 @@ function renderPendRow(you, user, match) {
 }
 
 // event listener for the pending confirm button
-function confirmMatch(user, mUser, match) {
+function confirmMatch(user, mUser, match, num) {
     console.log("inside confirmMatch");
     const matchDate = new Date(match.date);
     const data = {
@@ -304,6 +304,8 @@ function confirmMatch(user, mUser, match) {
         carouselObjects.prepend(newConfirmed); carouselIndicators.prepend(indic)
 
         // then, delete the row!
+        const pendRow = document.getElementById('pending-row'+num);
+        pendRow.remove(); // woot?
     });
 }
 
