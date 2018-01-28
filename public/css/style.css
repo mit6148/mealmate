@@ -50,9 +50,6 @@
      align-items: center;
      justify-content: center;
 }
- #about-me {
-     font-size: 40px;
-}
  #interests-bar {
      padding-left: 5%;
 }
@@ -229,12 +226,25 @@
  #get-started {
      animation-duration: 6s;
 }
+ #pendDiv, #matchTable {
+     overflow-x:auto;
+ }
  .smaller-break {
      margin-bottom:2%;
 }
  .animate-2s {
      animation-duration: 2s;
 }
+ .match-picture {
+     cursor: pointer;
+}
+ #limit-text {
+     margin-top: 5px;
+     font-size: 15px;
+ }
+ .find-bottom-margin {
+     margin-bottom: 14px;
+ }
  .pics-group p {
      display: block;
      position: absolute;

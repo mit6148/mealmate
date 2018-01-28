@@ -99,17 +99,17 @@ function makeCarouselObject(user, match, mUser) {
     mName.className = "chewy closer-caption";
     mName.innerHTML = mUser.name;
 
-    const matchDate = document.createElement('h2');
+    const matchDate = document.createElement('h3');
     matchDate.className = "closer-caption";
     const dateObj = new Date(match.date);
     matchDate.innerHTML = DAYS[dateObj.getDay()] + ', ' + MONTHS[dateObj.getMonth()] + ' ' + dateObj.getDate();
     //matchDate.innerHTML = match.date.substring(0,10);
 
-    const matchTime = document.createElement('h2');
+    const matchTime = document.createElement('h3');
     matchTime.className = "closer-caption";
     matchTime.innerHTML = formatTime(match.times[0]);
 
-    const matchHall = document.createElement('h2');
+    const matchHall = document.createElement('h3');
     matchHall.className = "closer-caption";
     matchHall.innerHTML = match.halls[0];
 
@@ -227,7 +227,7 @@ function renderPendRow(you, user, match, num) {
     const imgName = document.createElement('td');
     const profileImage = document.createElement('img');
     profileImage.src = user.piclink;
-    profileImage.className = "restrict-width center-block small-padding";
+    profileImage.className = "restrict-width center-block small-padding match-picture";
     profileImage.onclick = function () { // propic is link to other user's page
         document.location.href = '/u/profile?'+user._id;
     }
@@ -370,41 +370,54 @@ function renderOldMatches(user) {
 function renderOldRow(mUser, match) {
     const matchTable = document.getElementById('t01')
     const tabrow = document.createElement('tr');
+    const breakMatch = document.createElement('br');
 
+    //start of "match" column
     const matchPic = document.createElement('td');
     matchPic.className = "text-center";
+    
+    //picture of past match
     const profileImage = document.createElement('img');
+    profileImage.className = "match-picture"
     profileImage.src = mUser.piclink;
     profileImage.onclick = function () { // propic is link to other user's page
         document.location.href = '/u/profile?'+mUser._id;
     }
-    matchPic.appendChild(profileImage);
-
-    const matchName = document.createElement('td');
-    matchName.className = "text-center";
-    const nameLink = document.createElement('a');
-    nameLink.innerHTML = mUser.name;
-    nameLink.setAttribute('href', '/u/profile?'+mUser._id);
-    matchName.appendChild(nameLink);
     
+    //name of past match
+    const nameLink = document.createElement('p');
+    const name = document.createElement('a');
+    name.innerHTML = mUser.name;
+    nameLink.className = "text-center";
+    name.setAttribute('href', '/u/profile?'+mUser._id);
+    nameLink.appendChild(name);
+    
+    matchPic.appendChild(profileImage);
+    matchPic.appendChild(breakMatch);
+    matchPic.appendChild(nameLink);
+    //end of "match" column
+    
+    //start of "details" column
     const matchDate = document.createElement('td');
-    matchDate.className = "text-center";
+    matchDate.className = "text-center";    
+    const date = document.createElement('p');
+    date.className = "text-center";
     const dateObj = new Date(match.date);
     matchDate.innerHTML = DAYS[dateObj.getDay()] + ', ' + MONTHS[dateObj.getMonth()] + ' ' + dateObj.getDate();
-    //console.log(dateObj.getMonth());
-    //matchDate.innerHTML = match.date.substring(0,10);
-    const matchTime = document.createElement('td');
+    //date.innerHTML = match.date.substring(0,10);
+    const matchTime = document.createElement('p');
     matchTime.className = "text-center";
-    matchTime.innerHTML = formatTime(match.times[0]); // just choose the first available time for now
-    const matchHall = document.createElement('td');
-    matchHall.className = "text-center";
-    matchHall.innerHTML = match.halls[0];
+    matchTime.innerHTML = formatTime(match.times[0]);
+    const hall = document.createElement('p');
+    hall.className = "text-center";
+    hall.innerHTML = match.halls[0];
+    console.log(match.halls[0]);
+    matchDate.appendChild(date);
+    matchDate.appendChild(matchTime);
+    matchDate.appendChild(hall);
 
     tabrow.appendChild(matchPic);
-    tabrow.appendChild(matchName);
     tabrow.appendChild(matchDate);
-    tabrow.appendChild(matchTime);
-    tabrow.appendChild(matchHall);
     matchTable.appendChild(tabrow);
 }
 
