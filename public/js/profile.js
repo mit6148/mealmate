@@ -62,7 +62,7 @@ function loadEditButton(user) {
 function renderUserData(user) {
     // rendering name
     const nameContainer = document.getElementById('userName');
-    const nameHeader = document.createElement('h1');
+    const nameHeader = document.createElement('h2');
     nameHeader.innerHTML = user.name;
     nameContainer.appendChild(nameHeader);
 
