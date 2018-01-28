@@ -131,6 +131,7 @@
      cursor: pointer !important;  
      border-color: black !important;
      border-radius: 4px;
+     padding: 8px 16px !important;
 }
 
 #choose-file:hover, #addPhoto:hover {
@@ -138,12 +139,13 @@
     color: #66A25C !important;
     font-weight: bold;
 }
- 
+
 #cancel-photo {
     background: darkgray !important;
     border-color: black !important;
     border-radius: 4px;
     cursor: pointer !important;
+    padding: 8px 16px !important;
 }
 
 #cancel-photo:hover {
@@ -414,6 +416,19 @@ h4, p {
  #mealmate-img {
      max-width: 140px;
 }
+#name-header {
+    display: flex;
+     flex-direction: row;
+     align-items: center;
+     justify-content: center;
+}
+
+.inline {
+    display: inline-block !important;
+}
+.hidden-space {
+    color: white;
+    text-shadow: none;
 }
  #find-mealmate-h1 {
      font-size: 36px;
@@ -450,7 +465,7 @@ h4, p {
          padding-top: 66px;
     }
      .header-lines {
-         display: none;
+         display: none !important;
     }
      .dropdown-a {
          text-align: left !important;

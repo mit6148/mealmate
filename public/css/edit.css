@@ -12,13 +12,28 @@
 }
  #addPhoto, #cancel-photo {
      margin-top: 0.5%;
-     margin-left: 0.5%;
+     margin-left: 0.5%; 
+     margin-right: 0.5%;
      font-size: 18px;
      color: #FFF;
-     padding: 12px 22px;
      border: 2px solid #FFF;
      background: #66A25C;
 }
+#addPhoto[disabled], #cancel-photo[disabled] {
+    background-color: gray !important;
+    cursor:not-allowed !important;
+    color: white !important;
+    font-weight: normal !important;
+}
+
+#addPhoto[disabled]:hover, #cancel-photo[disabled]:hover {
+    background-color: gray !important;
+}
+
+#update-profile-div {
+    cursor: pointer !important;
+}
+
  .profPicBox {
      text-align: center;
 }
