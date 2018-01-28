@@ -64,11 +64,12 @@ function main() {
             document.location.href = '/u/profile?'+user._id;
         });
 
+/*
         $("#interests-select").chosen({
             width:"95%",
             max_selected_options: 3
         });
-
+*/
     });
 }
 
