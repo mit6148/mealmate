@@ -519,16 +519,30 @@ h4, p {
          line-height: 0.3em;
     }
 }
- @media (max-width: 385px) {
+ @media (max-width: 410px) {
      #home-header {
-         top: 35%;
+         top: 38%;
     }
      #welcome-mobile {
+         line-height: 0em;
+         font-size: 57px;
+    }
+     #mealmate {
+         font-size: 37px;
+         line-height: 0em;
+    }
+}
+ @media (max-width: 385px) {
+      #home-header {
+         top: 33%;
+    }
+      #welcome-mobile {
          line-height: 0em;
          font-size: 45px;
     }
      #mealmate {
          font-size: 25px;
-         line-height: 0em;
-    }
+         margin-top: 10px;
+         padding-top: 0;
+     }
 }
