@@ -18,19 +18,13 @@ function renderConfirmedMatches(user) {
 
     const carouselObjects = document.getElementById('carousel-inner-objects');
     const carouselIndicators = document.getElementById('indicators');
-    let count = 0;
     let isConfirmed = false;
     let isActive = true;
     const today = new Date(); today.setHours(0,0,0,0);
 
-    //get the total number of confirmed and count down when assign since need to prepend
-    for (let i=0; i < user.matches.length; i++){
-        const matchDate = new Date(user.matches[i].date);
-        if (user.matches[i].confirmed && matchDate >= today) {
-            count ++;
-        }
-    }
-    count --; //start indexing count from 0
+    //get the total number of confirmed and count down
+    let count = countConfirmed(user);
+    count --;
 
     for (let i=user.matches.length-1; i>-1; i--) {
         console.log(user.matches.length);
@@ -92,7 +86,6 @@ function makeNoMatch() {
 function makeCarouselObject(user, match, mUser) {
 
     console.log("Making a carousel object, theoretically");
-
     const it = document.createElement('div');
     it.className = "item";
 
@@ -160,6 +153,19 @@ function makeCarouselIndicator(num) {
     indic.setAttribute('data-slide-to', ""+num);
 
     return indic;
+}
+
+function countConfirmed(user) {
+    // count the number of confirmed matches for a user
+    let count = 0; today = new Date();
+    today.setHours(0,0,0,0);
+    for (let i=0; i < user.matches.length; i++){
+        const matchDate = new Date(user.matches[i].date);
+        if (user.matches[i].confirmed && matchDate >= today) {
+            count ++;
+        }
+    }
+    return count
 }
 
 function renderPendingMatches(user) {
@@ -245,20 +251,7 @@ function renderPendRow(you, user, match) {
     confirm.className = 'btn btn-default green-btn center-block confirm-match';
     confirm.innerHTML = "Confirm";
     confirm.addEventListener('click', function() {
-        const matchDate = new Date(match.date);
-        const data = {
-            userid: you._id,
-            matchid: user._id,
-            date: matchDate
-        }
-        post('/api/confirmMatch', data, function(didMatchConfirm) {
-            console.log(didMatchConfirm.message);
-            if (didMatchConfirm.message) {
-                alert("Match confirmed! Enjoy your meal!")
-            } else {
-                alert("Your match hasn't confirmed that they are able to go yet. You will receive an email if your match cannot go.");
-            }
-        });
+        confirmMatch(you, user, match);
     });
     const decline = document.createElement('button');
     decline.setAttribute('type', 'button');
@@ -278,19 +271,37 @@ function renderPendRow(you, user, match) {
 }
 
 // event listener for the pending confirm button
-function confirmMatch(user, mUser, date) {
+function confirmMatch(user, mUser, match) {
     console.log("inside confirmMatch");
+    const matchDate = new Date(match.date);
     const data = {
         userid: user._id,
         matchid: mUser._id,
-        date: date
+        date: matchDate
     }
 
-    post('/api/confirmMatch', data);
+    post('/api/confirmMatch', data, function(didMatchConfirm) {
+        console.log(didMatchConfirm.message);
+        if (didMatchConfirm.message) {
+            alert("Match confirmed! Enjoy your meal!")
+        } else {
+            alert("Your match hasn't confirmed that they are able to go yet. You will receive an email if your match cannot go.");
+        }
+        // first, create the corresponding carousel object
+        const carouselObjects = document.getElementById('carousel-inner-objects');
+        const carouselIndicators = document.getElementById('indicators');
+        const newConfirmed = makeCarouselObject(user, match, mUser);
+        const count = countConfirmed(user);
+        const indic = makeCarouselIndicator(count-1);
+
+        carouselObjects.prepend(newConfirmed); carouselIndicators.prepend(indic)
+
+        // then, delete the row!
+    });
 }
 
 // event listener for the pending decline button
-function declineMatch(user, mUser, date) {
+function declineMatch(user, mUser, match) {
     console.log("inside declineMatch");
     const data = {
         userid: user._id,
