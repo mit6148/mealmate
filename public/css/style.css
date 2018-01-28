@@ -37,7 +37,7 @@
      font-size: 1em !important;
      border: 0 !important;
      background-color: #66A25C !important;
-     padding: 10px 15px !important;
+     padding: 10px 15px;
 }
  .dropdown-menu {
      background-color: #66A25C !important;
@@ -152,8 +152,8 @@
      justify-content: center;
 }
  .tiny-padding {
-     padding-left: 3%;
-     padding-right: 3%;
+     padding-left: 4%;
+     padding-right: 4%;
 }
  .small-padding {
      padding-left: 5%;
@@ -255,6 +255,7 @@
  .match-picture {
      cursor: pointer;
 }
+
  #limit-text {
      margin-top: 5px;
      font-size: 15px;
@@ -369,6 +370,17 @@ h4, p {
  #mealmate-img {
      width: 130px;
 }
+}
+ #find-mealmate-h1 {
+     font-size: 36px;
+     text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.6);
+}
+ #find-mealmate-button {
+     margin-top: 2%;
+}
+.match-name {
+    color: #000 !important;
+}
  @media (max-width: 1000px) {
      #get-started {
          font-size: 12px;
@@ -396,13 +408,11 @@ h4, p {
      .header-lines {
          display: none;
     }
-     .dropdown-toggle {
-         padding-top: 5px;
-         padding-bottom: 5px;
-         padding-left: 15px;
-     }
      .dropdown-a {
          text-align: left !important;
+    }
+      #matchTable, #pendTable {
+        margin-top: 3%;
     }
 }
  @media (max-width: 900px) {
@@ -418,7 +428,7 @@ h4, p {
          font-size: 20px;
          padding: 10px;
     }
-     .big-padding {
+     .big-padding, .tiny-padding {
          padding-left: 5%;
          padding-right: 5%;
     }
@@ -434,14 +444,6 @@ h4, p {
      body {
          padding-top: 65px;
     }
-}
- #find-mealmate-h1 {
-     font-size: 36px;
-     text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.6);
-}
- #find-mealmate-button {
-     margin-top: 2%;
-}
  @media (max-width: 815px) {
      #get-started, #title-description {
          display: none;
@@ -480,6 +482,12 @@ h4, p {
          border-top-width: thin;
          border-left-width: 0px;
     }
+     .dropdown-toggle {
+        padding: 6px 15px !important;
+     }
+      #matchTable, #pendTable {
+        margin-top: 3%;
+    }
 }
  @media (max-width: 600px) {
      #get-started, #title-description, #welcome, #dining-break {
@@ -516,6 +524,12 @@ h4, p {
      body {
          padding-top: 55px;
     }
+     .match-picture {
+         max-width: 150px; 
+     }
+     #matchTable, #pendTable {
+        margin-top: 4%;
+    }
 }
  @media (max-width: 475px) {
      #welcome-mobile {
@@ -525,6 +539,9 @@ h4, p {
      #mealmate {
          font-size: 40px;
          line-height: 0.3em;
+    }
+     #matchTable, #pendTable {
+        margin-top: 5%;
     }
 }
  @media (max-width: 410px) {
@@ -538,6 +555,9 @@ h4, p {
      #mealmate {
          font-size: 37px;
          line-height: 0em;
+    }
+      #matchTable, #pendTable {
+        margin-top: 6%;
     }
 }
  @media (max-width: 385px) {
@@ -553,4 +573,7 @@ h4, p {
          margin-top: 10px;
          padding-top: 0;
      }
+      #matchTable, #pendTable {
+        margin-top: 7%;
+    }
 }

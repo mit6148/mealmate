@@ -236,6 +236,7 @@ function renderPendRow(you, user, match, num) {
     const nameLink = document.createElement('p');
     const name = document.createElement('a');
     name.innerHTML = user.name;
+    name.className = "match-name";
     nameLink.className = "text-center";
     name.setAttribute('href', '/u/profile?'+user._id);
     nameLink.appendChild(name);
@@ -392,6 +393,7 @@ function renderOldRow(mUser, match) {
     const name = document.createElement('a');
     name.innerHTML = mUser.name;
     nameLink.className = "text-center";
+    name.className = "match-name";
     name.setAttribute('href', '/u/profile?'+mUser._id);
     nameLink.appendChild(name);
     
