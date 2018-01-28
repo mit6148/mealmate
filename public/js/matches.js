@@ -22,7 +22,6 @@ function renderConfirmedMatches(user) {
     const carouselObjects = document.getElementById('carousel-inner-objects');
     const carouselIndicators = document.getElementById('indicators');
     let isConfirmed = false;
-    let isActive = true;
     const today = new Date(); today.setHours(0,0,0,0);
 
     //get the total number of confirmed and count down
@@ -37,15 +36,11 @@ function renderConfirmedMatches(user) {
         if (user.matches[i].confirmed && matchDate >= today) {
             isConfirmed = true;
             get('/api/user', { '_id': user.matches[i].userid }, function (mUser) {
-                //carouselObjects.innerHTML = makeCarouselObject(user.matches[i], mUser);
-                //makeCarouselObject(user.matches[i], mUser).appendTo(carouselObjects);
                 var carouselObj = makeCarouselObject(user, user.matches[i], mUser);
-                //const indic = makeCarouselIndicator(count);
                 const indic = makeCarouselIndicator(count);
                 //if first carouselobj, needs to be active to display
-                if (isActive){ // first carouselobj to be added is active
+                if (i == 0){ // first carouselobj in list is active
                     carouselObj.className = "item active";
-                    isActive = false;
                     indic.className = "active";
                 }
                 carouselObjects.prepend(carouselObj);
