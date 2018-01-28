@@ -274,9 +274,17 @@ function renderPendRow(you, user, match, num) {
     decline.className = "btn btn-default green-btn center-block red-decline border-black";
     decline.innerHTML = "Decline"
     decline.addEventListener('click', function() {
-        const matchDate = new Date(match.date);
-        declineMatch(you, user, matchDate, num);
-    })
+        $('#decline-match-modal').show();
+
+        $('#cancel-no-match').click(function(){
+            $('#decline-match-modal').hide();
+        });
+        $('#verify-no-match').click(function(){
+            const matchDate = new Date(match.date);
+            declineMatch(you, user, matchDate, num);
+            $('#decline-match-modal').hide();
+        });
+    });
     decision.appendChild(confirm);
     decision.appendChild(breakButton);
     decision.appendChild(decline);
