@@ -29,7 +29,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/"><img src="../../static/img/logo.png"></a>
+                <a class="navbar-brand" href="/"><img src="/static/img/logo.png" class="navbar-image"></a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <!-- insert navbar here -->
@@ -39,10 +39,10 @@
 
     <div id="cancel-modal" class="modal">
         <div class="modal-content">
-            <h1>Are you sure you want to decline this match?</h1>
-            <h2>This cannot be undone.</h2>
-            <button id="cancel-decline">Cancel</button>
-            <button id="verify-decline">Yes</button>
+            <h2>Are you sure you want to decline this match?</h2>
+            <h3>This cannot be undone.</h3>
+            <button id="verify-decline" class= "red-decline green-btn border-black">Yes</button>
+            <button id="cancel-decline" class="green-btn border-black">Cancel</button>
         </div>
     </div>
 
@@ -115,7 +115,7 @@
             </div>
             <div class="col-sm-4">
                 <br>
-                <a href="#"><img src="/static/img/logo.png" class="icon"></a>
+                <a href="#"><img src="/static/img/logo.png" class="icon navbar-image"></a>
             </div>
         </div>
     </footer>
