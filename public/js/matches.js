@@ -343,6 +343,7 @@ function renderOldRow(mUser, match) {
     const tabrow = document.createElement('tr');
 
     const matchPic = document.createElement('td');
+    matchPic.className = "text-center";
     const profileImage = document.createElement('img');
     profileImage.src = mUser.piclink;
     profileImage.onclick = function () { // propic is link to other user's page
@@ -351,17 +352,21 @@ function renderOldRow(mUser, match) {
     matchPic.appendChild(profileImage);
 
     const matchName = document.createElement('td');
+    matchName.className = "text-center";
     const nameLink = document.createElement('a');
     nameLink.innerHTML = mUser.name;
     nameLink.setAttribute('href', '/u/profile?'+mUser._id);
     matchName.appendChild(nameLink);
     
     const matchDate = document.createElement('td');
+    matchDate.className = "text-center";
     // tbh this date formatting is hacky
     matchDate.innerHTML = match.date.substring(0,10);
     const matchTime = document.createElement('td');
+    matchTime.className = "text-center";
     matchTime.innerHTML = formatTime(match.times[0]); // just choose the first available time for now
     const matchHall = document.createElement('td');
+    matchHall.className = "text-center";
     matchHall.innerHTML = match.halls[0];
 
     tabrow.appendChild(matchPic);

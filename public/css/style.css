@@ -11,7 +11,7 @@
  .navbar-brand {
      float: left;
      min-height: 47px;
-     padding: 0 15px 5px;
+     padding: 0 15px 3px;
 }
  .navbar-inverse .navbar-nav li a{
      color: #FFF;
@@ -19,6 +19,10 @@
 }
  .navbar a:focus, .navbar a:hover {
      color: #D5D5D5 !important;
+}
+ .navbar-image {
+     max-height: 47px;
+     max-width: 190px;
 }
  .dropdown-toggle {
      border: none !important;
@@ -32,11 +36,11 @@
 }
  .dropdown-menu {
      background-color: #66A25C !important;
-     max-width: 100px !important;
 }
  .dropdown-a {
      color: #FFF !important;
      background-color: #66A25C !important;
+     max-width: 10px;
 }
  .dropdown-toggle:hover, .dropdown-toggle:visited {
      background-color: #66A25C !important;
@@ -69,6 +73,10 @@
  .ui-state-default:hover {
      color: #66A25C;
      font-weight: bold;
+     background-color: #F1F1F1;
+}
+ .form-check-input {
+     cursor: pointer;
 }
  #uploadProfilePic {
      justify-content: center;
@@ -85,7 +93,7 @@
      border: 2px solid #FFF;
 }
  .active {
-     font-weight: bold;
+     font-weight: bold !important;
      color: #FFF !important;
      text-decoration-color: #FFF;
 }
@@ -118,7 +126,7 @@
      color: #FFF;
      text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.6);
 }
- .fa:visited, .fa active{
+ .fa:visited, .fa:active{
      color: #FFF !important;
      text-decoration: none;
 }
@@ -143,7 +151,7 @@
      padding-right: 20%;
 }
  #datepicker{
-     width: 180px;
+     width: 200px;
 }
  #datepicker > span:hover{
      cursor: pointer;
@@ -294,6 +302,10 @@
      margin-left: 23%;
      margin-right: 23%;
 }
+ .left-checkbox {
+     display: inline-block; 
+     text-align: left;
+}
  h4 {
      font-size: 20px;
 }
@@ -364,6 +376,11 @@
      .header-lines {
          display: none;
     }
+     .dropdown-toggle {
+         padding-top: 5px;
+         padding-bottom: 5px;
+         padding-left: 15px;
+     }
      .dropdown-a {
          text-align: left !important;
     }

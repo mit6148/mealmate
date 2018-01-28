@@ -20,7 +20,7 @@ function newNavbarItem(text, url, currentPath, user) {
 
 //Bootstrap dropdown source: https://www.w3schools.com/bootstrap/bootstrap_ref_js_dropdown.asp
 function newDropdown(text, links, linkLabels, currentPath, user){
-	const dropdownBox = document.createElement('li');
+	const dropdownBox = document.createElement('li'); //itemBox = dropdownBox
 	dropdownBox.className = "dropdown";
 
 	const dropButton = document.createElement('button');
@@ -42,15 +42,30 @@ function newDropdown(text, links, linkLabels, currentPath, user){
 		dropMenu.appendChild(dropItem);
 		dropItem.setAttribute("role", "presentation");
 
-		const dropLink = document.createElement('a');
+		const dropLink = document.createElement('a'); //itemLink = dropLink
         dropLink.className="dropdown-a text-center";
 		dropItem.appendChild(dropLink);
 		dropLink.setAttribute("role", "menuitem");
 		dropLink.setAttribute("tabindex", "-1");
 		dropLink.href=links[i];
 		dropLink.innerHTML=linkLabels[i];
+        console.log("links[i]: " + links[i]);
+        console.log("currentPath: " + currentPath + "?" + user._id);
+        
+        if (links[i] == currentPath) {
+            dropLink.className = "dropdown-a text-center active";
+        }
+        if (user != undefined) {
+            if (links[i] == (currentPath + "?" + user._id)) {
+                dropLink.className = "dropdown-a text-center active";
+                dropButton.className = "btn btn-primary dropdown-toggle bold"
+            }
+        }
+        
+        
 	}
-
+    
+    
 	/*opens menu when hover, goes to first link if click*/
 	dropdownBox.addEventListener("mouseover", function(){
 		dropMenu.style.display = "block";
