@@ -32,9 +32,10 @@ table {
      background: red !important;
 }
 
- .border-black {
-     border-color: black !important;
-     border-radius: 4px;
+.red-decline:hover {
+    background: #F1F1F1 !important;
+    color: red !important;
+    border: 2px solid gray;
 }
  .small-padding {
      padding-top: 2%;
@@ -101,3 +102,8 @@ table {
     /* Could be more or less, depending on screen size */
      text-align: center;
 }
+
+@media (max-width: 600px) {
+    .green-btn {
+        padding: 8px 16px !important;
+    }

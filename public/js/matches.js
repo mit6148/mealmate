@@ -262,21 +262,23 @@ function renderPendRow(you, user, match, num) {
     // decision buttons
     const decision = document.createElement('td');
     const confirm = document.createElement('button');
+    const breakButton = document.createElement('br');
     confirm.setAttribute('type', 'button');
-    confirm.className = 'btn btn-default green-btn center-block confirm-match';
+    confirm.className = 'btn btn-default green-btn center-block confirm-match border-black';
     confirm.innerHTML = "Confirm";
     confirm.addEventListener('click', function() {
         confirmMatch(you, user, match, num);
     });
     const decline = document.createElement('button');
     decline.setAttribute('type', 'button');
-    decline.className = "btn btn-default green-btn center-block red-decline";
+    decline.className = "btn btn-default green-btn center-block red-decline border-black";
     decline.innerHTML = "Decline"
     decline.addEventListener('click', function() {
         const matchDate = new Date(match.date);
         declineMatch(you, user, matchDate, num);
     })
     decision.appendChild(confirm);
+    decision.appendChild(breakButton);
     decision.appendChild(decline);
 
     tabrow.appendChild(imgName);

@@ -102,6 +102,16 @@
      background: #66A25C;
      border: 2px solid #FFF;
 }
+  .border-black {
+     border-color: black !important;
+     border-radius: 4px;
+}
+.green-btn:hover, .form-submit-button:hover {
+    color: green;
+    font-weight: bold;
+    background-color: #F1F1F1;
+    border: 2px solid gray;
+}
  .active {
      font-weight: bold !important;
      color: #FFF !important;
@@ -119,7 +129,16 @@
 }
  #choose-file, #cancel-photo, #addPhoto {
      cursor: pointer !important;  
- }
+     border-color: black !important;
+     border-radius: 4px;
+}
+
+#choose-file:hover, #cancel-photo:hover, #addPhoto:hover {
+    background: #F1F1F1 !important;
+    color: #66A25C !important;
+    font-weight: bold;
+}
+ 
  footer {
      width: 100%;
      background-color: #66A25C;
@@ -246,7 +265,7 @@
  #get-started {
      animation-duration: 6s;
 }
- #pendDiv, #matchTable {
+ #pendDiv, #pendTable, #pendTableDiv, #matchTable {
      overflow-x:auto;
  }
  .smaller-break {

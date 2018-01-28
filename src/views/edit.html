@@ -51,7 +51,7 @@
                         <form ref='uploadForm' id='uploadForm' action='/api/uploadImage' method='post' enctype="multipart/form-data" class="custom-file-upload">
                             <!--Source for styled choose file button: https://blog.benestudio.co/custom-file-upload-button-with-pure-css-5aacf39aa0a-->
                             <div class="upload-btn-wrapper">
-                                <button class="btn green-btn" id="choose-file">Update Profile Picture</button>
+                                <button class="btn green-btn border-black" id="choose-file">Update Profile Picture</button>
                                 <input id='photoupload' type="file" name="profpic" onchange="document.getElementById('userImage').src=window.URL.createObjectURL(this.files[0])" accept="image/*" />
                             </div>
                             <!--
@@ -61,8 +61,8 @@
                             <!-- below field is purposely hidden!-->
                             <input type="text" id="photokey" name="photokey" style="display: none" />
                             <br>
-                            <input class="upload-btn-wrapper green-btn" id='addPhoto' type='submit' value='Upload' disabled />
-                            <button id='cancel-photo' type="button" disabled>Cancel</button>
+                            <input class="upload-btn-wrapper green-btn border-black" id='addPhoto' type='submit' value='Upload' disabled />
+                            <button id='cancel-photo' type="button border-black" disabled>Cancel</button>
                         </form>
                     </div>
                 </div>
@@ -162,7 +162,7 @@
                 </div>
 
                 <div id="back-edit">
-                    <button type="button" class="btn btn-default green-btn" id="submitBtn">Submit Changes</button>
+                    <button type="button" class="btn btn-default green-btn border-black" id="submitBtn">Submit Changes</button>
                 </div>
                 <a class="fa fa-arrow-circle-o-left" id="back-to-profile"></a>
                 <!-- Back button -->
