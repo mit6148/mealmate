@@ -73,7 +73,7 @@
      font-size: 100px !important;
 }
  #back-to-profile:hover, #back-to-profile:focus {
-     color: #D5D5D5;
+     color: darkgray;
      text-decoration: none;
      cursor: pointer;
 }
@@ -102,6 +102,16 @@
      background: #66A25C;
      border: 2px solid #FFF;
 }
+  .border-black {
+     border-color: black !important;
+     border-radius: 4px;
+}
+.green-btn:hover, .form-submit-button:hover {
+    color: green;
+    font-weight: bold;
+    background-color: #F1F1F1;
+    border: 2px solid gray;
+}
  .active {
      font-weight: bold !important;
      color: #FFF !important;
@@ -117,9 +127,32 @@
      transform: translateY(-40%);
      position: absolute;
 }
- #choose-file, #cancel-photo, #addPhoto {
+ #choose-file, #addPhoto {
      cursor: pointer !important;  
- }
+     border-color: black !important;
+     border-radius: 4px;
+}
+
+#choose-file:hover, #addPhoto:hover {
+    background: #F1F1F1 !important;
+    color: #66A25C !important;
+    font-weight: bold;
+}
+ 
+#cancel-photo {
+    background: darkgray !important;
+    border-color: black !important;
+    border-radius: 4px;
+    cursor: pointer !important;
+}
+
+#cancel-photo:hover {
+    background: #F1F1F1 !important;
+    color: darkgray !important;
+    border: 2px solid gray;
+    font-weight: bold;
+}
+
  footer {
      width: 100%;
      background-color: #66A25C;
@@ -246,7 +279,7 @@
  #get-started {
      animation-duration: 6s;
 }
- #pendDiv, #matchTable {
+ #pendDiv, #pendTable, #pendTableDiv, #matchTable {
      overflow-x:auto;
  }
  .smaller-break {
@@ -274,9 +307,17 @@
      margin: 0 auto;
      transform: translate(-50%,-50%);
      color: #FFF;
-     font-size: 30px;
+     font-size: 36px;
      font-weight: bold;
-     text-shadow: 0px 4px 8px rgba(0, 0, 0, 1);
+     text-shadow: 0px 8px 10px rgba(0, 0, 0, 1);
+     letter-spacing: 5px;
+     /*border-color: white !important;
+     border-width: thick !important;
+     border-style: solid;
+     padding: 5px 5px;
+     background-color: #66A25C;
+     opacity: 0.9; */
+     
 }
  #profile-right {
      border-left-style: solid;
@@ -501,6 +542,9 @@ h4, p {
       #matchTable, #pendTable {
         margin-top: 3%;
     }
+     .pics-group p {
+         font-size: 30px;
+     }
 }
  @media (max-width: 600px) {
      #get-started, #title-description, #welcome, #dining-break {
@@ -516,7 +560,7 @@ h4, p {
     }
      #mealmate {
          font-size: 40px;
-         letter-spacing: 3px;
+         letter-spacing: 2px;
          line-height: 0.5em;
     }
      #profile-pic {
