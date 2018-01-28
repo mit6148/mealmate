@@ -73,7 +73,7 @@
      font-size: 100px !important;
 }
  #back-to-profile:hover, #back-to-profile:focus {
-     color: #D5D5D5;
+     color: darkgray;
      text-decoration: none;
      cursor: pointer;
 }
@@ -127,18 +127,32 @@
      transform: translateY(-40%);
      position: absolute;
 }
- #choose-file, #cancel-photo, #addPhoto {
+ #choose-file, #addPhoto {
      cursor: pointer !important;  
      border-color: black !important;
      border-radius: 4px;
 }
 
-#choose-file:hover, #cancel-photo:hover, #addPhoto:hover {
+#choose-file:hover, #addPhoto:hover {
     background: #F1F1F1 !important;
     color: #66A25C !important;
     font-weight: bold;
 }
  
+#cancel-photo {
+    background: darkgray !important;
+    border-color: black !important;
+    border-radius: 4px;
+    cursor: pointer !important;
+}
+
+#cancel-photo:hover {
+    background: #F1F1F1 !important;
+    color: darkgray !important;
+    border: 2px solid gray;
+    font-weight: bold;
+}
+
  footer {
      width: 100%;
      background-color: #66A25C;
