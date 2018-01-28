@@ -70,7 +70,7 @@
 }
  .front-icons {
      color: #000 !important;
-     font-size: 80px !important;
+     font-size: 100px !important;
 }
  #back-to-profile:hover, #back-to-profile:focus {
      color: #D5D5D5;
@@ -368,7 +368,7 @@ h4, p {
      padding-bottom: 4%;
 }
  #mealmate-img {
-     width: 130px;
+     max-width: 140px;
 }
 }
  #find-mealmate-h1 {
