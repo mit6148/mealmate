@@ -246,8 +246,7 @@ function renderPendRow(you, user, match, num) {
     const date = document.createElement('p');
     date.className = "text-center";
     const dateObj = new Date(match.date);
-    matchDate.innerHTML = DAYS[dateObj.getDay()] + ', ' + MONTHS[dateObj.getMonth()] + ' ' + dateObj.getDate();
-    //date.innerHTML = match.date.substring(0,10);
+    date.innerHTML = DAYS[dateObj.getDay()] + ', ' + MONTHS[dateObj.getMonth()] + ' ' + dateObj.getDate();
     const matchTime = document.createElement('p');
     matchTime.className = "text-center";
     matchTime.innerHTML = formatTime(match.times[0]);
@@ -274,7 +273,7 @@ function renderPendRow(you, user, match, num) {
     decline.innerHTML = "Decline"
     decline.addEventListener('click', function() {
         const matchDate = new Date(match.date);
-        declineMatch(you, user, matchDate);
+        declineMatch(you, user, matchDate, num);
     })
     decision.appendChild(confirm);
     decision.appendChild(decline);
@@ -313,20 +312,24 @@ function confirmMatch(user, mUser, match, num) {
 
         // then, delete the row!
         const pendRow = document.getElementById('pending-row'+num);
-        pendRow.remove(); // woot?
+        pendRow.remove(); // woot
     });
 }
 
 // event listener for the pending decline button
-function declineMatch(user, mUser, match) {
+function declineMatch(user, mUser, matchDate, num) {
     console.log("inside declineMatch");
     const data = {
         userid: user._id,
         matchid: mUser._id,
-        date: date,
+        date: matchDate,
         emailcontent: declinedMatchEmail.replace('Hello,', 'Hello ' + mUser.name.split(' ')[0] + ',') //email templates in emailTemplates.js
     }
-    post('/api/declineMatch', data);
+    post('/api/declineMatch', data, function() {
+        // just delete the row
+        const pendRow = document.getElementById('pending-row'+num);
+        pendRow.remove(); // woot
+    });
 }
 
 // render old (out of date) matches

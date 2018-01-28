@@ -363,16 +363,18 @@ router.post('/declineMatch/', connect.ensureLoggedIn(), function(req,res) {
 
 function findMatchByDate(user, date) {
     const confirmDate = new Date(date);
+    confirmDate.setHours(0,0,0,0); // destroy time zones
     let mateIndex = -1;
     for (let i=0; i<user.matches.length; i++) {
         const d = new Date(user.matches[i].date);
+        d.setHours(0,0,0,0);
         if (d <= confirmDate && d >= confirmDate) { // if same date
             mateIndex = i;
             console.log("found a relevant match!")
             break;
         }
     }
-
+    console.log(mateIndex);
     return mateIndex;
 }
 
