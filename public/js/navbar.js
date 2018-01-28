@@ -29,21 +29,21 @@ function newDropdown(text, links, linkLabels, currentPath, user){
 	dropButton.type="button";
 	dropButton.setAttribute("data-toggle", "dropdown");
 	dropButton.innerHTML= text+" <span class='caret'></span>";
-
+    
 	const dropMenu = document.createElement('ul');
 	dropdownBox.appendChild(dropMenu);
-	dropMenu.className="dropdown-menu";
+	dropMenu.className="dropdown-menu dropdown-menu-left";
 	dropMenu.setAttribute("role", "menu");
 	dropMenu.setAttribute("aria-labelledby", "menu1");
 
 	for (let i = 0; i < links.length; i++){
 		const dropItem = document.createElement('li');
-        dropItem.className="dropdown-li";
+        dropItem.className="dropdown-li text-center";
 		dropMenu.appendChild(dropItem);
 		dropItem.setAttribute("role", "presentation");
 
 		const dropLink = document.createElement('a'); //itemLink = dropLink
-        dropLink.className="dropdown-a text-center";
+        dropLink.className="dropdown-a";
 		dropItem.appendChild(dropLink);
 		dropLink.setAttribute("role", "menuitem");
 		dropLink.setAttribute("tabindex", "-1");
@@ -51,11 +51,11 @@ function newDropdown(text, links, linkLabels, currentPath, user){
 		dropLink.innerHTML=linkLabels[i];
         
         if (links[i] == currentPath) {
-            dropLink.className = "dropdown-a text-center active";
+            dropLink.className = "dropdown-a active";
         }
         if (user != undefined) {
             if (links[i] == (currentPath + "?" + user._id)) {
-                dropLink.className = "dropdown-a text-center active";
+                dropLink.className = "dropdown-a active";
                 dropButton.className = "btn btn-primary dropdown-toggle bold"
             }
         }
