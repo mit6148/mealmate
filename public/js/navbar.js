@@ -49,8 +49,6 @@ function newDropdown(text, links, linkLabels, currentPath, user){
 		dropLink.setAttribute("tabindex", "-1");
 		dropLink.href=links[i];
 		dropLink.innerHTML=linkLabels[i];
-        console.log("links[i]: " + links[i]);
-        console.log("currentPath: " + currentPath + "?" + user._id);
         
         if (links[i] == currentPath) {
             dropLink.className = "dropdown-a text-center active";
@@ -62,9 +60,7 @@ function newDropdown(text, links, linkLabels, currentPath, user){
             }
         }
         
-        
 	}
-    
     
 	/*opens menu when hover, goes to first link if click*/
 	dropdownBox.addEventListener("mouseover", function(){
