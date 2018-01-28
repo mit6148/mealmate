@@ -307,9 +307,17 @@
      margin: 0 auto;
      transform: translate(-50%,-50%);
      color: #FFF;
-     font-size: 30px;
+     font-size: 36px;
      font-weight: bold;
-     text-shadow: 0px 4px 8px rgba(0, 0, 0, 1);
+     text-shadow: 0px 8px 10px rgba(0, 0, 0, 1);
+     letter-spacing: 5px;
+     /*border-color: white !important;
+     border-width: thick !important;
+     border-style: solid;
+     padding: 5px 5px;
+     background-color: #66A25C;
+     opacity: 0.9; */
+     
 }
  #profile-right {
      border-left-style: solid;
@@ -534,6 +542,9 @@ h4, p {
       #matchTable, #pendTable {
         margin-top: 3%;
     }
+     .pics-group p {
+         font-size: 30px;
+     }
 }
  @media (max-width: 600px) {
      #get-started, #title-description, #welcome, #dining-break {
@@ -549,7 +560,7 @@ h4, p {
     }
      #mealmate {
          font-size: 40px;
-         letter-spacing: 3px;
+         letter-spacing: 2px;
          line-height: 0.5em;
     }
      #profile-pic {
