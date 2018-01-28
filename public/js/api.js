@@ -1,3 +1,5 @@
+//Source: 6.148 Staff
+
 // Source: https://stackoverflow.com/questions/8064691/how-do-i-pass-along-variables-with-xmlhttprequest
 function formatParams(params) {
   return Object

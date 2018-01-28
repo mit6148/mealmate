@@ -1,3 +1,5 @@
+//Source: 6.148 Staff
+
 var albumBucketName = process.env.S3_BUCKET_NAME;
 var bucketRegion = process.env.S3_BUCKET_REGION;
 var IdentityPoolId = process.env.S3_IDENTITY_POOL_ID;
@@ -16,20 +18,6 @@ var s3 = new AWS.S3({
   apiVersion: '2006-03-01',
   params: {Bucket: albumBucketName}
 });
-
-/*
-//get all the data from the bucket and call addAllPhotos to display it
-function viewAlbum() {
-  s3.listObjects({}, function(err, data){
-    if (err){
-      return alert('There was an error: ' + err.message);
-    }
-    var bucketUrl = "https://s3.amazonaws.com/" + albumBucketName + '/';
-    addAllPhotos(bucketUrl, data);
-  });
-}
-*/
-
 
 //adds a photo to our S3 database
 function addPhoto(photokey, profpic, callback){

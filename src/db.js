@@ -1,3 +1,5 @@
+//Source: 6.148 Staff
+
 const mongoose = require('mongoose');
 
 //sets up mongoDB connection

@@ -1,3 +1,5 @@
+//Source: 6.148 Staff
+
 const hallAvailabilities = [
     [8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5, 13, 13.5, 14, 14.5, 15, 15.5, 16, 16.5, 17, 17.5, 18, 18.5, 19, 19.5, 20, 20.5],
     [true, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, true, true, true, true, true, false], //Baker availability
@@ -206,7 +208,7 @@ router.post('/matchPost',
 );
 
 // edit different aspects of a user's profile
-// source: https://scotch.io/tutorials/build-a-restful-api-using-node-and-express-4
+// Source: https://scotch.io/tutorials/build-a-restful-api-using-node-and-express-4
 router.post('/editProfile/',
   connect.ensureLoggedIn(),
   function(req,res) {

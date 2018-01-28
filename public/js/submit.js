@@ -28,7 +28,6 @@ function renderUserText(user) {
 function renderUserPicture(user){
     // rendering profile image
     //$('#userImage').attr('src', '');
-    console.log('hello redner user');
 
     var picSrc = user.piclink;
     if (picSrc.includes("amazonaws")){

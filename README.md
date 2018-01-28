@@ -3,12 +3,28 @@
 Team: Liu^3
 Team members: Cynthia Liu, Nanxi Liu, Sabrina Liu
 
+/public
+api.js source: 6.148 staff
+	Pass in parameters source: https://stackoverflow.com/questions/8064691/how-do-i-pass-along-variables-with-xmlhttprequest
+edit.js
+	Display preview of picture source: https://stackoverflow.com/questions/12368910/html-display-image-after-selecting-filename
+
+Email templates source: MailChimp, https://mailchimp.com/
+navbar.js
+	Bootstrap dropdown source: https://www.w3schools.com/bootstrap/bootstrap_ref_js_dropdown.asp
+/src
+api.js source: 6.148 staff
+	Building a RESTful API source: https://scotch.io/tutorials/build-a-restful-api-using-node-and-express-4
+app.js: 6.148 staff
+db.js: 6.148 staff
 emailSender.js source: https://www.w3schools.com/nodejs/nodejs_email.asp
 	uses nodemailer: https://nodemailer.com/about/
-Email templates source: MailChimp, https://mailchimp.com/
 passport.js source: 6.148 staff
-pictures.js source: 6.148 Staff
+pictures.js source: 6.148 staff
 
+Frontend
+profile.html
+	Modal source: https://www.w3schools.com/howto/howto_css_modals.asp
 
 Image Sources:
 	baker.jpg: https://mitguidetoresidences.mit.edu/map/baker-house

@@ -1,6 +1,5 @@
 var nodemailer = require('nodemailer');
 
-//HAS NOT BEEN TESTED W ENV VARIABLES, CHECK AFTER IMPLEMENTED!
 var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
