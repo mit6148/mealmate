@@ -308,7 +308,25 @@ function confirmMatch(user, mUser, match, num) {
     post('/api/confirmMatch', data, function(didMatchConfirm) {
         console.log(didMatchConfirm.message);
         if (didMatchConfirm.message) {
-            alert("Match confirmed! Enjoy your meal!")
+
+            var data = {
+                receiverEmail: user.email,
+                subjectText: "[mealmate] New mealmate!",
+                bodyText: newMealmateEmail.replace('Hello,', 'Hello ' + user.name.split(' ')[0] + ',') //email templates in emailTemplates.js
+            }
+            post('/api/emailSender', { data }, function () {
+                console.log("new mealmate email sent to first user");
+            });
+
+            data = {
+                receiverEmail: mUser.email,
+                subjectText: "[mealmate] New mealmate!",
+                bodyText: newMealmateEmail.replace('Hello,', 'Hello ' + mUser.name.split(' ')[0] + ',') //email templates in emailTemplates.js
+            }
+            post('/api/emailSender', { data }, function () {
+                alert("Match confirmed! Enjoy your meal!"); // done
+            });
+
         } else {
             alert("Your match hasn't confirmed that they are able to go yet. You will receive an email if your match cannot go.");
         }
