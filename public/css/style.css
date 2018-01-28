@@ -117,6 +117,9 @@
      transform: translateY(-40%);
      position: absolute;
 }
+ #choose-file, #cancel-photo, #addPhoto {
+     cursor: pointer !important;  
+ }
  footer {
      width: 100%;
      background-color: #66A25C;
