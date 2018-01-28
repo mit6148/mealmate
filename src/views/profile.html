@@ -52,23 +52,23 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-4" id="profile-left">
-                <div id='userName'>
+                <div id='userName' class="profile-name text-center">
                     <!-- insert the username via js here -->
                 </div>
                 <div class='profPicBox' id="userImage">
                     <!-- insert the user image via js here -->
                 </div>
                 <br>
-                <button type="button" class="btn green-btn btn-default border-black" id='editProfile'>Edit Profile</button>
+                <button type="button" class="btn green-btn btn-default border-black center-block" id='editProfile'>Edit Profile</button>
                 <!-- edit profile button -->
                 <!-- make the button react via javaScript -->
             </div>
             <br class="break-between-columns">
             <div class="col-sm-8" id="profile-right">
-                <h2 id="about-me">ABOUT ME</h2>
+                <h2 id="about-me" class="text-center"><img class="header-lines animated bounceInLeft" src="/static/img/left_line.png"> ABOUT ME <img class="header-lines animated bounceInRight" src="/static/img/right_line.png"></h2>
                 <!-- Ideal front-end for me currently! Only Course, class, and living group are required,
                              the rest pop up if they enter something for it!-->
-                <h3 class="add-line bold font-28">GENERAL INFORMATION</h3>
+                <h3 class="add-line bold font-28 text-center">GENERAL INFORMATION</h3>
                 <h4><span style="font-weight:bold">COURSE: </span><span id='userCourse'></span></h4>
                 <h4><span style="font-weight:bold">CLASS: </span><span id='userClass'></span></h4>
                 <h4><span style="font-weight:bold">LIVING GROUP: </span><span id='userLivingGroup'></span></h4>
@@ -78,7 +78,7 @@
                 <br>
                 <!-- Javascript makes a way for GET TO KNOW ME/ SOCIAL MEDIA to only pop up when people enter at least one
                              of the ones below? -->
-                <h3 class="add-line bold font-28">GET TO KNOW ME</h3>
+                <h3 class="add-line bold font-28 text-center">GET TO KNOW ME</h3>
                 <h4><span style="font-weight:bold">FAVORITE FOOD: </span><span id="favfood"></span></h4>
                 <h4><span style="font-weight:bold">FAVORITE DRINK: </span><span id="favdrink"></span></h4>
                 <h4><span style="font-weight:bold">FAVORITE MOVIE: </span><span id="favmovie"></span></h4>
