@@ -129,7 +129,14 @@ function makeCarouselObject(user, match, mUser) {
             const matchDate = new Date(match.date);
             declineMatch(user, mUser, matchDate);
             // console.log("code to delete match");
-            $('#cancel-modal').hide();
+            const data = {
+                    receiverEmail: mUser.email,
+                    subjectText: "[mealmate] mealmate Cancelled",
+                    bodyText: cancelledMealmateEmail.replace('Hello,', 'Hello ' + mUser.name.split(' ')[0] + ',') //email templates in emailTemplates.js
+                }
+                post('/api/emailSender', { data }, function () {
+                    $('#cancel-modal').hide();
+                });
         });
     });
 
