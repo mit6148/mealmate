@@ -337,18 +337,21 @@ router.post('/declineMatch/', connect.ensureLoggedIn(), function(req,res) {
                         return;
                         }
                         if (!confirmedByMatch) { // different email depending on if your match confirmed
+                           /*
                             const data = {
                                 receiverEmail: match.email,
                                 subjectText: "[mealmate] One of your matches declined",
                                 bodyText: "Sadly, it appears that one of your matches declined the invitation. Check your matches page for more details, and happy dining!"
                             }                    
                             sendEmail(data.receiverEmail, data.subjectText, data.bodyText, function() { console.log("woohoo"); });
+                            */
                         } else {
                             const data = {
                                 receiverEmail: match.email,
-                                subjectText: "[mealmate] One of your mealmates cannot go",
-                                bodyText: "It looks like your mealmate for " + req.body.date.substring(0,10) + " cannot make it to the meal. Check your matches page for more details, and happy dining."
-                            }     
+                                subjectText: "[mealmate] One of your matches cannot go",
+                                bodyText: req.body.emailcontent
+                            }
+                            sendEmail(data.receiverEmail, data.subjectText, data.bodyText, function() { console.log("woohoo"); });
                         }
                     });
                 });

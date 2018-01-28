@@ -295,7 +295,8 @@ function declineMatch(user, mUser, date) {
     const data = {
         userid: user._id,
         matchid: mUser._id,
-        date: date
+        date: date,
+        emailcontent: declinedMatchEmail.replace('Hello,', 'Hello ' + mUser.name.split(' ')[0] + ',') //email templates in emailTemplates.js
     }
     post('/api/declineMatch', data);
 }
