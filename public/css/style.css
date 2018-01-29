@@ -77,16 +77,16 @@
      text-decoration: none;
      cursor: pointer;
 }
- .ui-state-default {
+ .list-group-item {
      cursor: pointer;
      font-size: 24px;
 }
- .ui-state-default:hover {
+ .list-group-item:hover {
      color: #66A25C;
      font-weight: bold;
      background-color: #F1F1F1;
 }
-.ui-state-default:active {
+.list-group-item:active {
      color: black;
      font-weight: normal;
     background-color: white;
@@ -592,7 +592,7 @@ h4, p {
      .pics-group p {
          font-size: 30px;
      }
-     h3, .form-check-label, .ui-state-default {
+     h3, .form-check-label, .list-group-item {
          font-size: 20px;
      }
 }
