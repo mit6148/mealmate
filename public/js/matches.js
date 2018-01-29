@@ -67,11 +67,11 @@ function makeNoMatch() {
 
     const text = document.createElement('h1');
     text.className = "chewy closer-caption";
-    text.innerHTML = "NO CONFIRMED MATCHES YET";
+    text.innerHTML = "NO MEALMATES YET!";
 
     const details = document.createElement('h1');
     details.className = "chewy";
-    details.innerHTML = "pending matches that have been confirmed will appear here";
+    details.innerHTML = "Pending matches will appear here after being confirmed by you and your match.";
 
     it.appendChild(caption);
     caption.appendChild(text);

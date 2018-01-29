@@ -130,7 +130,7 @@ function sendEmailUser(user) {
         bodyText: foundMatchEmail.replace('Hello,', 'Hello ' + user.name.split(' ')[0] + ',') //email templates in emailTemplates.js
     }
     post('/api/emailSender', { data });
-    alert("Match submitted. You will get an email soon! Check your matches page");
+    alert("Request for a match submitted. You will get an email soon! Check your matches page.");
 }
 
 function sendEmailMatch(user, match) {

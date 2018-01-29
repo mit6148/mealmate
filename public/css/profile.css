@@ -31,7 +31,7 @@
     font-size: 28px;
 }
 
-#userImage, #editProfile {
+#userImage, #editProfile, .profile-name {
     padding-right:5%;
 }
 
