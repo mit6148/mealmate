@@ -51,6 +51,7 @@
     <div class="body-wrap">
     <div class="container text-center">
         <h1 id="find-mealmate-h1"><img class="header-lines animated bounceInLeft" src="/static/img/left_line.png"> FIND YOUR <span style="font-family:Chewy; font-size:40px; text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.6);">mealmate</span>! <img class="header-lines animated bounceInRight" src="/static/img/right_line.png"></h1>
+        <!-- Touch-sensible draggable list: https://stackoverflow.com/questions/20424477/how-can-i-implement-a-touch-sensitive-responsive-sortable-list-supporting-drag -->
         <h2 class="margin-add-line">PREFERRED DINING HALL</h2>
         <h3 class="find-bottom-margin">Drag the halls around and rank your preferences from <span style="color:#66A25C; font-weight: bold">most</span> to <span style="color:red; font-weight:bold">least</span> desired!</h3>
         <div id="ol-div">
@@ -62,7 +63,8 @@
                 <li class="list-group-item">Next</li>
             </ol>
         </div>
-
+        
+        <!-- Beautiful HTML/CSS Datepicker: https://www.youtube.com/watch?v=TGXk6lEY5H8 -->
         <h2 id='userAvailability' class="margin-add-line">DATE AVAILABILITY</h2>
         <h3>Select the date you want for your meal!</h3>
         <p id="limit-text" class="find-bottom-margin">You are limited to at most one match per selected day.</p>
@@ -74,12 +76,14 @@
         </div>
 
         <br>
-
+        
+        <!-- Checkboxes: https://getbootstrap.com/docs/4.0/components/forms/ -->
         <h2 class="margin-add-line">TIME AVAILABILITY</h2>
         <h3 class="find-bottom-margin">Check off all the times when you are availabile for a meal!</h3>
         <div class="form-check" id="time-availability">
             <div class="col-sm-4 no-padding">
                 <h3 class="bold margin-add-line">Breakfast</h3>
+                <!-- Center block, align contents to left: https://stackoverflow.com/questions/1269589/css-center-block-but-align-contents-to-the-left -->
                 <div class="left-checkbox">
                     <label class="form-check-label"><input class="form-check-input" type="checkbox" id='check8'> 8 am - 8:30 am</label><br>
                     <label class="form-check-label"><input class="form-check-input" type="checkbox" id='check8.5'> 8:30 am - 9 am</label><br>

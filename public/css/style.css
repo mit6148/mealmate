@@ -259,7 +259,7 @@
      font-family: "Catamaran";
      font-size: 22px;
 }
-/* Modal Content/Box */
+/* Modal Content/Box https://www.w3schools.com/howto/howto_css_modals.asp */
  .modal-content {
      background-color: #fefefe;
      margin: 15% auto;
@@ -270,6 +270,7 @@
     /* Could be more or less, depending on screen size */
      text-align: center;
 }
+
  #welcome {
      font-family: 'Herr Von Muellerhoff';
      font-weight: normal;
@@ -381,6 +382,7 @@ html, body {
 h4, p {
     color: #444;
 }
+/* Line under header: https://stackoverflow.com/questions/35285467/how-to-make-a-line-below-text-without-text-decoration-underline */
  .add-line:after {
      content:' ';
      display:block;
@@ -435,6 +437,7 @@ h4, p {
  #mealmate-img {
      max-width: 140px;
 }
+/* Flex box: https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
 #name-header, #ol-div {
     display: flex;
      flex-direction: row;
