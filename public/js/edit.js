@@ -16,7 +16,6 @@ function main() {
         //var data;
         $('#uploadForm').submit(function() {
         	//previewPic(user);
-        	//user.piclink='https://s3.us-east-2.amazonaws.com/mealmate/'+user._id;
 
         	const data = {
         		_id: user._id,
@@ -29,14 +28,21 @@ function main() {
         });
 
         $('#submitBtn').click(function() {
+            //Source: https://stackoverflow.com/questions/20855482/preventing-html-and-script-injections-in-javascript
         	const data = {
         		_id: user._id,
-        		course: $('#editUserCourse').val(),
-        		year: $('#editUserYear').val(),
-        		residence: $('#editUserLivingGroup').val(),
-                hkc: [$('#editHomeState').val(), $('#editKerb').val(), $('#editCell').val()],
-                favorites: [$('#editFavFood').val(), $('#editFavDrink').val(), $('#editFavMovie').val(), $('#editFavMeal').val(), $('#editFavCuisine').val()],
-                interests: $('#editUserInterests').val()
+        		course: $('#editUserCourse').val().replace(/</g, "&lt;").replace(/>/g, "&gt;"),
+        		year: $('#editUserYear').val().replace(/</g, "&lt;").replace(/>/g, "&gt;"),
+        		residence: $('#editUserLivingGroup').val().replace(/</g, "&lt;").replace(/>/g, "&gt;"),
+                hkc: [$('#editHomeState').val().replace(/</g, "&lt;").replace(/>/g, "&gt;"), 
+                    $('#editKerb').val().replace(/</g, "&lt;").replace(/>/g, "&gt;"), 
+                    $('#editCell').val().replace(/</g, "&lt;").replace(/>/g, "&gt;")],
+                favorites: [$('#editFavFood').val().replace(/</g, "&lt;").replace(/>/g, "&gt;"), 
+                    $('#editFavDrink').val().replace(/</g, "&lt;").replace(/>/g, "&gt;"), 
+                    $('#editFavMovie').val().replace(/</g, "&lt;").replace(/>/g, "&gt;"), 
+                    $('#editFavMeal').val().replace(/</g, "&lt;").replace(/>/g, "&gt;"), 
+                    $('#editFavCuisine').val().replace(/</g, "&lt;").replace(/>/g, "&gt;")],
+                interests: $('#editUserInterests').val().replace(/</g, "&lt;").replace(/>/g, "&gt;")
                 //interests: $('#interests-select').val()
         	}
         	post('/api/editProfile', { data }, () => alert("Your profile has been updated!"),
@@ -64,12 +70,6 @@ function main() {
             document.location.href = '/u/profile?'+user._id;
         });
 
-/*
-        $("#interests-select").chosen({
-            width:"95%",
-            max_selected_options: 3
-        });
-*/
     });
 }
 

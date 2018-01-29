@@ -8,26 +8,23 @@ function renderUserText(user) {
 
     // rendering default values in input elements
     $('#photokey').val(user._id);
-    // $('#editUserAbout').val(user.about);
-    $('#editUserCourse').val(user.course);
-    $('#editUserYear').val(user.year);
-    $('#editUserLivingGroup').val(user.residence);
-    $('#editHomeState').val(user.hkc[0]);
-    $('#editKerb').val(user.hkc[1]);
-    $('#editCell').val(user.hkc[2]);
-    $('#editFavFood').val(user.favorites[0]);
-    $('#editFavDrink').val(user.favorites[1]);
-    $('#editFavMovie').val(user.favorites[2]);
-    $('#editFavMeal').val(user.favorites[3]);
-    $('#editFavCuisine').val(user.favorites[4]);
-    $('#editUserInterests').val(user.interests);
-    //$('#interests-select').val(user.interests.split(',')).trigger('chosen:updated');
+    $('#editUserCourse').val(user.course.replace(/&lt;/g, '<').replace(/&gt;/g, '>'));
+    $('#editUserYear').val(user.year.replace(/&lt;/g, '<').replace(/&gt;/g, '>'));
+    $('#editUserLivingGroup').val(user.residence.replace(/&lt;/g, '<').replace(/&gt;/g, '>'));
+    $('#editHomeState').val(user.hkc[0].replace(/&lt;/g, '<').replace(/&gt;/g, '>'));
+    $('#editKerb').val(user.hkc[1].replace(/&lt;/g, '<').replace(/&gt;/g, '>'));
+    $('#editCell').val(user.hkc[2].replace(/&lt;/g, '<').replace(/&gt;/g, '>'));
+    $('#editFavFood').val(user.favorites[0].replace(/&lt;/g, '<').replace(/&gt;/g, '>'));
+    $('#editFavDrink').val(user.favorites[1].replace(/&lt;/g, '<').replace(/&gt;/g, '>'));
+    $('#editFavMovie').val(user.favorites[2].replace(/&lt;/g, '<').replace(/&gt;/g, '>'));
+    $('#editFavMeal').val(user.favorites[3].replace(/&lt;/g, '<').replace(/&gt;/g, '>'));
+    $('#editFavCuisine').val(user.favorites[4].replace(/&lt;/g, '<').replace(/&gt;/g, '>'));
+    $('#editUserInterests').val(user.interests.replace(/&lt;/g, '<').replace(/&gt;/g, '>'));
 
 }
 
 function renderUserPicture(user){
     // rendering profile image
-    //$('#userImage').attr('src', '');
 
     var picSrc = user.piclink;
     if (picSrc.includes("amazonaws")){

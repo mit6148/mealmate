@@ -76,7 +76,6 @@ function getMatch(user, d, ts, h) {
                     receiverEmail: user.email,
                     subjectText: "[mealmate] No match yet...",
                     bodyText: noMatchEmail.replace('Hello,', 'Hello ' + user.name.split(' ')[0] + ',') //email templates in emailTemplates.js
-                    //bodyText: "Sadly, no one was available in the time and day you requested. But keep checking your matches page, and watch your inbox!"
                 }
                 post('/api/emailSender', { data }, function () {
                     document.location.href = '/u/matches?'+user._id; // done
@@ -112,7 +111,6 @@ function updateUsersWithMatch(user, yourMatch, theirMatch) {
     }
 
     // update the user and match with the match
-    // console.log("nani");
     post('/api/addMatch', matchData, function() {
         sendEmailUser(user);
         // then email your match, and change pages

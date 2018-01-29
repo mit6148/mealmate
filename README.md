@@ -37,6 +37,7 @@ mealmate pairs MIT students up to eat at dining halls. It helps people who are l
     * [6.148 - Authentication](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday5_auth.pdf)
 	* [Pass in parameters](https://stackoverflow.com/questions/8064691/how-do-i-pass-along-variables-with-xmlhttprequest)
 * **edit.js**
+    * [Basic prevent HTML/ Script injections](https://stackoverflow.com/questions/20855482/preventing-html-and-script-injections-in-javascript)
 	* [Display preview of picture](https://stackoverflow.com/questions/12368910/html-display-image-after-selecting-filename)
 * **emailTemplates.js**
 * **findMealmate.js**
