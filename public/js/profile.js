@@ -102,24 +102,31 @@ function renderUserData(user) {
 // render the GET TO KNOW ME section of ABOUT
 function renderUserFavs(user) {
 
-    const favFood = document.getElementById('favfood');
-    favFood.innerHTML = user.favorites[0];
+    generateFavBlock('FAVORITE FOOD', 'favfood', user.favorites[0]);
+    generateFavBlock('FAVORITE DRINK', 'favdrink', user.favorites[1]);
+    generateFavBlock('FAVORITE MOVIE', 'favmovie', user.favorites[2]);
+    generateFavBlock('FAVORITE MEAL OF THE DAY', 'favmeal', user.favorites[3]);
+    generateFavBlock('FAVORITE CUISINE', 'favcuisine', user.favorites[4]);
+    generateFavBlock('INTERESTS', 'interests', user.interests);
 
-    const favDrink = document.getElementById('favdrink');
-    favDrink.innerHTML = user.favorites[1];
+}
 
-    const favMovie = document.getElementById('favmovie');
-    favMovie.innerHTML = user.favorites[2];
+function generateFavBlock(favLabel, favId, favContent){
+    if (favContent.replace(/\s/g, '').length){
+        $('#getToKnowMeHeader').show();
+        const headerWrap = document.createElement('h4');
+        $('#favDiv').append(headerWrap);
 
-    const favMeal = document.getElementById('favmeal');
-    favMeal.innerHTML = user.favorites[3];
+        const labelSpan = document.createElement('span');
+        headerWrap.appendChild(labelSpan);
+        labelSpan.style.fontWeight = 'bold';
+        labelSpan.innerHTML = favLabel + ': ';
 
-    const favCuisine = document.getElementById('favcuisine');
-    favCuisine.innerHTML = user.favorites[4];
-
-    const ints = document.getElementById('interests');
-    ints.innerHTML = user.interests;
-    //ints.innerHTML = user.interests.replace(',', ', ');
+        const contentSpan = document.createElement('span');
+        headerWrap.appendChild(contentSpan);
+        contentSpan.id = favId;
+        contentSpan.innerHTML = favContent;
+    }
 
 }
 

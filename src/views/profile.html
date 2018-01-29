@@ -87,15 +87,10 @@
                 <h4><span style="font-weight:bold">KERBEROS: </span><span id='userKerb'></span></h4>
                 <h4><span style="font-weight:bold">CELL PHONE NUMBER: </span><span id='userCell'></span></h4>
                 <br>
-                <!-- Javascript makes a way for GET TO KNOW ME/ SOCIAL MEDIA to only pop up when people enter at least one
-                             of the ones below? -->
-                <h3 class="add-line bold font-28 text-center">GET TO KNOW ME</h3>
-                <h4><span style="font-weight:bold">FAVORITE FOOD: </span><span id="favfood"></span></h4>
-                <h4><span style="font-weight:bold">FAVORITE DRINK: </span><span id="favdrink"></span></h4>
-                <h4><span style="font-weight:bold">FAVORITE MOVIE: </span><span id="favmovie"></span></h4>
-                <h4><span style="font-weight:bold">FAVORITE MEAL OF THE DAY: </span><span id="favmeal"></span></h4>
-                <h4><span style="font-weight:bold">FAVORITE CUISINE: </span><span id="favcuisine"></span></h4>
-                <h4><span style="font-weight:bold">INTERESTS: </span><span id="interests"></span></h4>
+                <!-- Get to know me rendered in JS only if not all fields are whitespace -->
+                <h3 class="add-line bold font-28 text-center" id='getToKnowMeHeader' style='display: none'>GET TO KNOW ME</h3>
+                <div id="favDiv">
+                </div>
                 <br>
             </div>
         </div>
