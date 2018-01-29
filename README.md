@@ -14,8 +14,8 @@ mealmate pairs MIT students up to eat at dining halls. It helps people who are l
 * **.gitignore**
     * [6.148 - Intro to NodeJS](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday3_nodejs.pdf)
 * **package.json**
-    * Source: 6.148 Staff
     * [6.148 - Authentication](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday5_auth.pdf)
+    * [6.148 - Intro to MongoDB](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday4_mongodb.pdf)
     * [6.148 - Deployment](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday9_deployment.pdf)
 * **package-lock.kson**
 * **README.md**
@@ -82,9 +82,11 @@ mealmate pairs MIT students up to eat at dining halls. It helps people who are l
 ## /src ##
 * **app.js**
     * [6.148 - Intro to NodeJS](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday3_nodejs.pdf)
+    * [6.148 - Intro to MongoDB](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday3_nodejs.pdf)
     * [6.148 - Authentication](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday5_auth.pdf)
 * **db.js**
     * [6.148 - Intro to Databases](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday4_databases.pdf)
+    * [6.148 - Intro to MongoDB](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday3_nodejs.pdf)
     * [mLab](https://mlab.com/)
 * **emailSender.js**
     * [Node JS](https://www.w3schools.com/nodejs/nodejs_email.asp)
@@ -97,15 +99,21 @@ mealmate pairs MIT students up to eat at dining halls. It helps people who are l
     
 ## /src/models ##
 * **matchRequest.js**
+    * [6.148 - Intro to Databases](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday4_databases.pdf)
+    * [6.148 - Intro to MongoDB](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday3_nodejs.pdf)
 * **user.js**
+    * [6.148 - Intro to Databases](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday4_databases.pdf)
+    * [6.148 - Intro to MongoDB](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday3_nodejs.pdf)
     * [6.148 - Authentication](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday5_auth.pdf)
 	* [Mongoose populate](http://mongoosejs.com/docs/populate.html)
 
 ## /src/routes ##
 * **api.js** 
-    * Source: 6.148 Staff
+    * [6.148 - Intro to MongoDB](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday4_mongodb.pdf)
     * [Building a RESTful API source](https://scotch.io/tutorials/build-a-restful-api-using-node-and-express-4)
 * **views.js**
+    * [6.148 - Intro to NodeJS](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday3_nodejs.pdf)
+    * [6.148 - Intro to MongoDB](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday3_nodejs.pdf)
 
 ## /src/views ##
 * All
