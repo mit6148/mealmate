@@ -320,12 +320,11 @@
      font-weight: bold;
      text-shadow: 0px 8px 10px rgba(0, 0, 0, 1);
      letter-spacing: 5px;
-     /*border-color: white !important;
+     border-color: white !important;
      border-width: thick !important;
      border-style: solid;
      padding: 5px 5px;
-     background-color: #66A25C;
-     opacity: 0.9; */
+     background-color: rgba(102,162,92,0.7);
      
 }
  #profile-right {
@@ -356,7 +355,11 @@
      font-family: 'Catamaran';
      font-size: 22px;
      padding-top: 70px;
-     overflow-x: hidden !important;
+}
+
+html, body {
+    overflow-x: hidden !important;
+    max-width: 100% !important;
 }
  h1 {
      font-weight: bold;
