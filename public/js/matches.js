@@ -67,7 +67,7 @@ function makeNoMatch() {
     text.innerHTML = "NO MEALMATES YET!";
 
     const details = document.createElement('h2');
-    details.innerHTML = "Pending matches will appear here after being confirmed by you and your match.";
+    details.innerHTML = "Matches will appear here after being confirmed by you and your match.";
 
     it.appendChild(caption);
     caption.appendChild(text);
@@ -373,7 +373,7 @@ function renderOldMatches(user) {
             const matchTableDiv = document.getElementById('matchTable')
             const breakMatch = document.createElement('br');
             const noMatch = document.createElement('h3');
-            noMatch.innerHTML = 'You have no previous matches! Matches will show up here once the day of your meal has passed.';
+            noMatch.innerHTML = 'You have no previous mealmates! Past mealmates will show up here once the day of your meal has passed.';
             matchTableDiv.appendChild(breakMatch);
             matchTableDiv.appendChild(noMatch);
         }
@@ -382,7 +382,7 @@ function renderOldMatches(user) {
         const matchTableDiv = document.getElementById('matchTable')
         const breakMatch = document.createElement('br');
         const noMatch = document.createElement('h3');
-        noMatch.innerHTML = 'You have no previous matches! Matches will show up here once the day of your meal has passed.';
+        noMatch.innerHTML = 'You have no previous mealmates! Past mealmates will show up here once the day of your meal has passed.';
         matchTableDiv.appendChild(breakMatch);
         matchTableDiv.appendChild(noMatch);
     }
