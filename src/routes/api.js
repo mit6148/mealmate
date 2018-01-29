@@ -40,11 +40,13 @@ router.get('/whoami', function(req, res) {
 
 router.get('/user', function(req, res) {
     if (req.query.getMatches){
-        User.findOne({_id: req.query._id}).populate('matches.userid').then(function(user, err){
-            if(err) console.log('error', err);
-            console.log('actual user', user);
-            res.send({user});
-        });
+        User
+            .findOne({_id: req.query._id})
+            .populate('matches.userid')
+            .then(function(user, err){
+                if(err) console.log('error', err);
+                res.send({user});
+            });
     } else {
         User.findOne({ _id: req.query._id}, function(err, user){
             res.send(user);

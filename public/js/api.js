@@ -16,12 +16,9 @@ function get(endpoint, params, successCallback, failureCallback) {
   const fullPath = endpoint + '?' + formatParams(params);
   xhr.open('GET', fullPath, true);
   xhr.onload = function(err) {
-    if(err) console.log(err);
-    console.log('onload', xhr);
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
         if (successCallback) {
-          console.log(xhr.responseText);
           successCallback(JSON.parse(xhr.responseText));
         }
       } else {

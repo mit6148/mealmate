@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const UserModelSchema = new mongoose.Schema ({
+const UserModelSchema = new Schema ({
 	name: String,
 	fbid: String,
 	email: String,
@@ -10,7 +10,7 @@ const UserModelSchema = new mongoose.Schema ({
 	year: String,
 	about: String,
 	residence: String,
-	matches: [{
+	matches: [{ //Source: http://mongoosejs.com/docs/populate.html
 		userid: {type: Schema.Types.ObjectId, ref: 'UserModel'},
 		date: String, 
 		times: Array, 

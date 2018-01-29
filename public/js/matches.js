@@ -9,9 +9,9 @@ function main(){
         }
         renderNavbar(user);
     });
+    //Populate the matched users when get user so confirmed matches add in order
     get('/api/user', {'_id': profileId, 'getMatches': true}, function(user) {
         const profileUser = user.user;
-        console.log(profileUser);
         renderOldMatches(profileUser);
         renderPendingMatches(profileUser);
         renderConfirmedMatches(profileUser);
@@ -23,37 +23,32 @@ function renderConfirmedMatches(user) {
 
     const carouselObjects = document.getElementById('carousel-inner-objects');
     const carouselIndicators = document.getElementById('indicators');
-    let isConfirmed = false;
-    const today = new Date(); today.setHours(0,0,0,0);
+    const today = new Date(); today.setHours(0, 0, 0, 0);
 
-    //get the total number of confirmed and count down
-    let count = countConfirmed(user);
-    count --;
+    let confirmedMatchesArr = countConfirmed(user);
 
-    for (let i=user.matches.length-1; i>-1; i--) {
-        console.log(user.matches.length);
-        console.log("Yo what up");
-        // only get match and make carousel object if match is confirmed
-        const matchDate = new Date(user.matches[i].date);
-        if (user.matches[i].confirmed && matchDate >= today) {
-            isConfirmed = true;
-            get('/api/user', { '_id': user.matches[i].userid }, function (mUser) {
-                var carouselObj = makeCarouselObject(user, user.matches[i], mUser);
-                const indic = makeCarouselIndicator(count);
-                //if first carouselobj, needs to be active to display
-                if (i == 0){ // first carouselobj in list is active
-                    carouselObj.className = "item active";
-                    indic.className = "active";
-                }
-                carouselObjects.prepend(carouselObj);
-                carouselIndicators.prepend(indic);
-                count--;
-            });
+    //Compare dates source: https://stackoverflow.com/questions/492994/compare-two-dates-with-javascript
+    confirmedMatchesArr.sort(function(a, b) {
+        const aDate = new Date(a.date);
+        const bDate = new Date(b.date);
+        return (aDate > bDate) - (aDate < bDate);
+    });
+    
+    for (let i = confirmedMatchesArr.length-1; i >= 0; i--){
+        const mUser = confirmedMatchesArr[i].userid;
+        var carouselObj = makeCarouselObject(user, confirmedMatchesArr[i], mUser);
+        var indic = makeCarouselIndicator(i);
+        //if first carouselobj, needs to be active to display
+        if (!i){ // first carouselobj in list is active
+            carouselObj.className = "item active";
+            indic.className = "active";
         }
+        carouselObjects.prepend(carouselObj);
+        carouselIndicators.prepend(indic);
     }
 
     // if there are no confirmed matches, display the "no matches" slide
-    if (!isConfirmed) {
+    if (confirmedMatchesArr.length === 0) {
         console.log("No confirmed matches");
         carouselObjects.append(makeNoMatch());
     }
@@ -85,7 +80,6 @@ function makeNoMatch() {
 // make a carousel object
 function makeCarouselObject(user, match, mUser) {
 
-    console.log("Making a carousel object, theoretically");
     const it = document.createElement('div');
     it.className = "item";
 
@@ -100,7 +94,6 @@ function makeCarouselObject(user, match, mUser) {
     matchDate.className = "closer-caption";
     const dateObj = new Date(match.date);
     matchDate.innerHTML = DAYS[dateObj.getDay()] + ', ' + MONTHS[dateObj.getMonth()] + ' ' + dateObj.getDate();
-    //matchDate.innerHTML = match.date.substring(0,10);
 
     const matchTime = document.createElement('h3');
     matchTime.className = "closer-caption";
@@ -123,7 +116,6 @@ function makeCarouselObject(user, match, mUser) {
         $('#verify-decline').click(function() {
             const matchDate = new Date(match.date);
             declineMatch(user, mUser, matchDate);
-            // console.log("code to delete match");
             const data = {
                     receiverEmail: mUser.email,
                     subjectText: "[mealmate] mealmate Cancelled",
@@ -156,7 +148,6 @@ function makeCarouselObject(user, match, mUser) {
 
 function makeCarouselIndicator(num) {
     // <li data-target="#matches-pics" data-slide-to="0" class="active"></li>
-    console.log("Making a carousel indicator");
     const indic = document.createElement('li');
     indic.setAttribute('data-target', "#matches-pics");
     indic.setAttribute('data-slide-to', ""+num);
@@ -165,16 +156,15 @@ function makeCarouselIndicator(num) {
 }
 
 function countConfirmed(user) {
-    // count the number of confirmed matches for a user
-    let count = 0; today = new Date();
-    today.setHours(0,0,0,0);
-    for (let i=0; i < user.matches.length; i++){
+    var confirmedArr = [];
+    let today = new Date(); today.setHours(0,0,0,0);
+    for (let i = 0; i < user.matches.length; i++){
         const matchDate = new Date(user.matches[i].date);
-        if (user.matches[i].confirmed && matchDate >= today) {
-            count ++;
+        if (user.matches[i].confirmed && matchDate >= today){
+            confirmedArr.push(user.matches[i]);
         }
     }
-    return count
+    return confirmedArr;
 }
 
 function renderPendingMatches(user) {
@@ -188,9 +178,8 @@ function renderPendingMatches(user) {
             if (matchDate >= today && !user.matches[i].confirmed) { // days after today or today
                 arePendMatches = true;
                 console.log("screaming sheep");
-                get('/api/user', { '_id': user.matches[i].userid }, function(matchedUser) {
-                    renderPendRow(user, matchedUser, user.matches[i], i);
-                });
+                const matchedUser = user.matches[i].userid
+                renderPendRow(user, matchedUser, user.matches[i], i);
             }
         }
 
@@ -370,9 +359,8 @@ function renderOldMatches(user) {
             const matchDate = new Date(user.matches[i].date);
             if (matchDate < today) {
                 werePrevMatches = true;
-                get('/api/user', { '_id': user.matches[i].userid }, function(matchedUser) {
-                    renderOldRow(matchedUser, user.matches[i]);
-                });
+                const matchedUser = user.matches[i].userid;
+                renderOldRow(matchedUser, user.matches[i]);
             }
         }
 

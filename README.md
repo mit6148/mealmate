@@ -8,15 +8,19 @@ api.js source: 6.148 staff
 	Pass in parameters source: https://stackoverflow.com/questions/8064691/how-do-i-pass-along-variables-with-xmlhttprequest
 edit.js
 	Display preview of picture source: https://stackoverflow.com/questions/12368910/html-display-image-after-selecting-filename
-
+matches.js
+	Compare dates source: https://stackoverflow.com/questions/492994/compare-two-dates-with-javascript
 Email templates source: MailChimp, https://mailchimp.com/
 navbar.js
 	Bootstrap dropdown source: https://www.w3schools.com/bootstrap/bootstrap_ref_js_dropdown.asp
+
 /src
+user.js
+	Populate source: http://mongoosejs.com/docs/populate.html
 api.js source: 6.148 staff
 	Building a RESTful API source: https://scotch.io/tutorials/build-a-restful-api-using-node-and-express-4
-app.js: 6.148 staff
-db.js: 6.148 staff
+app.js source: 6.148 staff
+db.js source: 6.148 staff
 emailSender.js source: https://www.w3schools.com/nodejs/nodejs_email.asp
 	uses nodemailer: https://nodemailer.com/about/
 passport.js source: 6.148 staff
