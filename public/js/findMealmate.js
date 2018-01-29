@@ -112,7 +112,6 @@ function updateUsersWithMatch(user, yourMatch, theirMatch) {
 
     // update the user and match with the match
     post('/api/addMatch', matchData, function() {
-        sendEmailUser(user);
         // then email your match, and change pages
         post('/api/addMatch', matchData2, function() {
             sendEmailMatch(user, yourMatch);
@@ -121,11 +120,12 @@ function updateUsersWithMatch(user, yourMatch, theirMatch) {
 }
 
 // send email to user
-function sendEmailUser(user) {
+function sendEmailUser(user, mUser) {
     const data = {
         receiverEmail: user.email,
         subjectText: "[mealmate] You have a match!",
-        bodyText: foundMatchEmail.replace('Hello,', 'Hello ' + user.name.split(' ')[0] + ',') //email templates in emailTemplates.js
+        bodyText: foundMatchEmail.replace('Hello', 'Hello ' + user.name.split(' ')[0])
+            .replace('MIT student', 'MIT student: ' + mUser.name.split(' ')[0])//email templates in emailTemplates.js
     }
     post('/api/emailSender', { data });
     alert("Request for a match submitted. You will get an email soon! Check your matches page.");
@@ -133,10 +133,12 @@ function sendEmailUser(user) {
 
 function sendEmailMatch(user, match) {
     get('/api/user', { '_id': match.userid }, function (mUser) {
+        sendEmailUser(user, mUser);
         const data = {
             receiverEmail: mUser.email,
             subjectText: "[mealmate] You have a match!",
-            bodyText: foundMatchEmail.replace('Hello,', 'Hello ' + mUser.name.split(' ')[0] + ',') //email templates in emailTemplates.js
+            bodyText: foundMatchEmail.replace('Hello,', 'Hello ' + mUser.name.split(' ')[0] + ',')
+                .replace('MIT student', 'MIT student: ' + user.name.split(' ')[0]) //email templates in emailTemplates.js
         }
         post('/api/emailSender', { data }, function() {
             document.location.href = '/u/matches?'+user._id // done

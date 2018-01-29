@@ -637,7 +637,7 @@ const declinedMatchEmail =
                         
                             <span style="font-size:18px"><strong>Hello,</strong></span><br>
 <br>
-It looks like one of your pending matches cannot make it to the meal. The match is no longer pending. Check your matches page for more details, and happy dining.<br>
+It looks like cannot make it to the meal. The match is no longer pending. Check your matches page for more details, and happy dining.<br>
 <br>
 Even though this match didn't work out, submit another request for a mealmate! Regardless, we hope you have a fantastic, delicious meal and keep using mealmate.<br>
 &nbsp;
@@ -934,7 +934,7 @@ const cancelledMealmateEmail =
                         
                             <span style="font-size:18px"><strong>Hello,</strong></span><br>
 <br>
-It looks like one of your mealmates can't make it to your confirmed meal anymore.&nbsp;Check your matches page for your other meals, and happy dining.<br>
+It looks like can't make it to your confirmed meal anymore.&nbsp;Check your matches page for your other meals, and happy dining.<br>
 <br>
 Even though this match didn't work out, submit another request for a mealmate! Regardless, we hope you have a fantastic, delicious meal and keep using mealmate.<br>
 &nbsp;
@@ -1230,7 +1230,7 @@ const newMealmateEmail =
                         
                             <span style="font-size:18px"><strong>Hello,</strong></span><br>
 <br>
-Get hyped! You and another MIT student have both confirmed a match. Check your matches page to see the details of your meal, and happy dining!<br>
+Get hyped! You and have both confirmed a match. Check your matches page to see the details of your meal, and happy dining!<br>
 <br>
 Be sure to show up for your meal on time. If you find that you can't make it anymore, make sure to let your mealmate know by selecting "Cannot Go" on your matches page.&nbsp;Then, submit another request for a different time! We hope you have a fantastic, delicious meal and keep using mealmate.<br>
 &nbsp;
