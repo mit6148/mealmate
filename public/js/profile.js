@@ -74,7 +74,7 @@ function renderUserData(user) {
         picSrc = picSrc + "?" + new Date().getTime();
     }
     profileImage.src = picSrc;
-    profileImage.className = "img-responsive";
+    profileImage.className = "img-responsive center-block profile-image";
 
     /* // rendering aboutme
     const userAbout = document.getElementById('userAbout');

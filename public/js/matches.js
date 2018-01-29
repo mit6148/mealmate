@@ -206,7 +206,7 @@ function renderPendingMatches(user) {
         const matchTableDiv = document.getElementById('pendDiv')
         const breakMatch = document.createElement('br');
         const noMatch = document.createElement('p');
-        noMatch.innerHTML = 'No mealmates yet! Check back soon';
+        noMatch.innerHTML = 'No pending matches yet! Check back soon.';
         matchTableDiv.appendChild(breakMatch);
         matchTableDiv.appendChild(noMatch);
     }    
