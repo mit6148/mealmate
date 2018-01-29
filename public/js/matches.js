@@ -63,12 +63,11 @@ function makeNoMatch() {
     caption.className="carousel-caption";
 
     const text = document.createElement('h1');
-    text.className = "chewy closer-caption";
-    text.innerHTML = "NO CONFIRMED MATCHES YET";
+    text.className = "chewy";
+    text.innerHTML = "NO MEALMATES YET!";
 
-    const details = document.createElement('h1');
-    details.className = "chewy";
-    details.innerHTML = "pending matches that have been confirmed will appear here";
+    const details = document.createElement('h2');
+    details.innerHTML = "Pending matches will appear here after being confirmed by you and your match.";
 
     it.appendChild(caption);
     caption.appendChild(text);
@@ -89,6 +88,7 @@ function makeCarouselObject(user, match, mUser) {
     const mName = document.createElement('h1');
     mName.className = "chewy closer-caption";
     mName.innerHTML = mUser.name;
+    mName.setAttribute('href', '/u/profile?'+mUser._id);
 
     const matchDate = document.createElement('h3');
     matchDate.className = "closer-caption";
@@ -187,7 +187,7 @@ function renderPendingMatches(user) {
         if (!arePendMatches) {
             const matchTableDiv = document.getElementById('pendDiv')
             const breakMatch = document.createElement('br');
-            const noMatch = document.createElement('p');
+            const noMatch = document.createElement('h3');
             noMatch.innerHTML = 'You responded to all of your invitations! Woohoo!';
             matchTableDiv.appendChild(breakMatch);
             matchTableDiv.appendChild(noMatch);
@@ -196,8 +196,8 @@ function renderPendingMatches(user) {
     } else { // don't display a table if no matches
         const matchTableDiv = document.getElementById('pendDiv')
         const breakMatch = document.createElement('br');
-        const noMatch = document.createElement('p');
-        noMatch.innerHTML = 'No mealmates yet! Check back soon';
+        const noMatch = document.createElement('h3');
+        noMatch.innerHTML = 'No pending matches yet! Check back soon.';
         matchTableDiv.appendChild(breakMatch);
         matchTableDiv.appendChild(noMatch);
     }    
@@ -368,7 +368,7 @@ function renderOldMatches(user) {
         if (!werePrevMatches) {
             const matchTableDiv = document.getElementById('matchTable')
             const breakMatch = document.createElement('br');
-            const noMatch = document.createElement('p');
+            const noMatch = document.createElement('h3');
             noMatch.innerHTML = 'You have no previous matches! Matches will show up here once the day of your meal has passed.';
             matchTableDiv.appendChild(breakMatch);
             matchTableDiv.appendChild(noMatch);
@@ -377,7 +377,7 @@ function renderOldMatches(user) {
     } else { // don't display a table if no matches
         const matchTableDiv = document.getElementById('matchTable')
         const breakMatch = document.createElement('br');
-        const noMatch = document.createElement('p');
+        const noMatch = document.createElement('h3');
         noMatch.innerHTML = 'You have no previous matches! Matches will show up here once the day of your meal has passed.';
         matchTableDiv.appendChild(breakMatch);
         matchTableDiv.appendChild(noMatch);

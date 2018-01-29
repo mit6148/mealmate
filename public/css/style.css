@@ -79,11 +79,17 @@
 }
  .ui-state-default {
      cursor: pointer;
+     font-size: 24px;
 }
  .ui-state-default:hover {
      color: #66A25C;
      font-weight: bold;
      background-color: #F1F1F1;
+}
+.ui-state-default:active {
+     color: black;
+     font-weight: normal;
+    background-color: white;
 }
  .form-check-input {
      cursor: pointer;
@@ -131,6 +137,7 @@
      cursor: pointer !important;  
      border-color: black !important;
      border-radius: 4px;
+     padding: 8px 16px !important;
 }
 
 #choose-file:hover, #addPhoto:hover {
@@ -138,12 +145,13 @@
     color: #66A25C !important;
     font-weight: bold;
 }
- 
+
 #cancel-photo {
     background: darkgray !important;
     border-color: black !important;
     border-radius: 4px;
     cursor: pointer !important;
+    padding: 8px 16px !important;
 }
 
 #cancel-photo:hover {
@@ -199,6 +207,11 @@
      padding-left: 20%;
      padding-right: 20%;
 }
+
+.medium-padding {
+    padding-left: 10%;
+    padding-right: 10%;
+}
  #datepicker{
      width: 200px;
 }
@@ -221,6 +234,7 @@
 }
  .form-check-label {
      font-weight: normal;
+     font-size: 24px;
 }
  .modal {
      display: none;
@@ -299,6 +313,10 @@
  .find-bottom-margin {
      margin-bottom: 14px;
  }
+.body-wrap {
+    height: 100% !important;
+    overflow-x: hidden !important;
+}
  .pics-group p {
      display: block;
      position: absolute;
@@ -309,14 +327,13 @@
      color: #FFF;
      font-size: 36px;
      font-weight: bold;
-     text-shadow: 0px 8px 10px rgba(0, 0, 0, 1);
+     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.7);
      letter-spacing: 5px;
-     /*border-color: white !important;
+     border-color: white !important;
      border-width: thick !important;
      border-style: solid;
      padding: 5px 5px;
-     background-color: #66A25C;
-     opacity: 0.9; */
+     background-color: rgba(102,162,92,0.7);
      
 }
  #profile-right {
@@ -347,7 +364,11 @@
      font-family: 'Catamaran';
      font-size: 22px;
      padding-top: 70px;
-     overflow-x: hidden !important;
+}
+
+html, body {
+    overflow-x: hidden !important;
+    max-width: 100% !important;
 }
  h1 {
      font-weight: bold;
@@ -414,6 +435,19 @@ h4, p {
  #mealmate-img {
      max-width: 140px;
 }
+#name-header {
+    display: flex;
+     flex-direction: row;
+     align-items: center;
+     justify-content: center;
+}
+
+.inline {
+    display: inline-block !important;
+}
+.hidden-space {
+    color: white;
+    text-shadow: none;
 }
  #find-mealmate-h1 {
      font-size: 36px;
@@ -443,14 +477,14 @@ h4, p {
      #title-description {
          font-size: 22px;
     }
-     #userImage {
+     #userImage, #editProfile, .profile-name {
          padding-right:0%;
     }
      body {
          padding-top: 66px;
     }
      .header-lines {
-         display: none;
+         display: none !important;
     }
      .dropdown-a {
          text-align: left !important;
@@ -467,6 +501,12 @@ h4, p {
          margin-left: 5%;
          margin-right: 5%;
      }
+     #editProfile-div {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+     }
 }
  @media (max-width: 900px) {
      #profile-pic {
@@ -481,7 +521,7 @@ h4, p {
          font-size: 20px;
          padding: 10px;
     }
-     .big-padding, .tiny-padding {
+     .big-padding, .tiny-padding, .medium-padding {
          padding-left: 5%;
          padding-right: 5%;
     }
@@ -508,6 +548,10 @@ h4, p {
      body {
          padding-top: 63px;
     }
+     .margin-add-line:after {
+         margin-left: 8%;
+         margin-right: 8%;
+     }
 }
  @media (max-width: 760px) {
      .pics-group {
@@ -545,6 +589,9 @@ h4, p {
      .pics-group p {
          font-size: 30px;
      }
+     h3, .form-check-label, .ui-state-default {
+         font-size: 20px;
+     }
 }
  @media (max-width: 600px) {
      #get-started, #title-description, #welcome, #dining-break {
@@ -567,7 +614,7 @@ h4, p {
          max-width: 300px;
          margin: 1% auto;
     }
-     .big-padding {
+     .big-padding, .medium-padding {
          padding-left: 4%;
          padding-right: 4%;
     }
