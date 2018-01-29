@@ -6,7 +6,7 @@ Team: Liu^3
 
 Team members: Cynthia Liu, Nanxi Liu, Sabrina Liu
 
-![homepage screenshot](/screenshots/index.png)
+![homepage screenshot](screenshots/index.png)
 
 ## /public
 
@@ -44,7 +44,7 @@ Team members: Cynthia Liu, Nanxi Liu, Sabrina Liu
 * profile.html
 	* [Modal source](https://www.w3schools.com/howto/howto_css_modals.asp)
 
-## Image Sources:
+## Image Sources
 * [baker.jpg](https://mitguidetoresidences.mit.edu/map/baker-house)
 * [bean_burger.jpg](http://5thstreetstation.cafebonappetit.com/recipes/)
 * [breakfast.jpg](https://www.epicurious.com/recipes-menus/summer-brunch-menu-eggs-bacon-cantaloupe-menu)
