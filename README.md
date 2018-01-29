@@ -6,12 +6,18 @@ mealmate pairs MIT students up to eat at dining halls. It helps people who are l
 
 **Team Members:** Cynthia Liu, Nanxi Liu, Sabrina Liu
 
-## / ##
+![homepage screenshot](/screenshots/index.PNG)
+
+## nanxiliu-sabrinaliu-cynliu98-2018 ##
+* **.env**
+* **.gitignore**
+* **package.json**
+    * Source: 6.148 Staff
+* **package-lock.kson**
 * **README.md**
     * [Styling README.md](https://github.com/tchapi/markdown-cheatsheet/blob/master/README.md)
     * [Add screenshot to README.md](https://www.tilcode.com/add-a-screenshot-to-your-github-repo-readme-md/)
 
-![homepage screenshot](/screenshots/index.PNG)
 ## /public ##
 * **Email templates**
     * [MailChimp](https://mailchimp.com/)
