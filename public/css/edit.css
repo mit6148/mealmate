@@ -29,13 +29,17 @@
 #addPhoto[disabled]:hover, #cancel-photo[disabled]:hover {
     background-color: gray !important;
 }
-
 #update-profile-div {
     cursor: pointer !important;
 }
 
  .profPicBox {
      text-align: center;
+}
+
+#userImage {
+    min-width: 275px;
+    max-width: 600px;
 }
  .upload-btn-wrapper input[type=file] {
      font-size: 100px;
