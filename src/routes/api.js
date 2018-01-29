@@ -316,7 +316,7 @@ router.post('/confirmMatch/',
         });
     });
 
-// decline a pending match
+// decline a pending and confirmed match
 router.post('/declineMatch/', connect.ensureLoggedIn(), function(req,res) {
     User.findOne({_id: req.body.userid}, function(err, user) {
         if (err) {
@@ -360,7 +360,7 @@ router.post('/declineMatch/', connect.ensureLoggedIn(), function(req,res) {
                         } else {
                             const data = {
                                 receiverEmail: match.email,
-                                subjectText: "[mealmate] One of your matches cannot go...",
+                                subjectText: req.body.emailsubject,
                                 bodyText: req.body.emailcontent
                             }
                             sendEmail(data.receiverEmail, data.subjectText, data.bodyText, function() { console.log("woohoo"); });

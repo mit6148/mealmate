@@ -110,7 +110,10 @@ function makeCarouselObject(user, match, mUser) {
     flakeButton.setAttribute('type', 'button');
     flakeButton.className = "cannot-go red-decline";
     flakeButton.innerHTML = "Cannot Go";
-    $(flakeButton).click(function() {
+    $(flakeButton).click(function() { //When decline a confirmed match
+        console.log('mUser', mUser);
+        console.log('user', user);
+        console.log(mUser.email);
         $('#cancel-modal').show();
 
         $('#cancel-decline').click(function() {
@@ -118,16 +121,16 @@ function makeCarouselObject(user, match, mUser) {
         });
         $('#verify-decline').click(function() {
             const matchDate = new Date(match.date);
-            declineMatch(user, mUser, matchDate);
-            const data = {
-                    receiverEmail: mUser.email,
-                    subjectText: "[mealmate] Your mealmate cancelled...",
-                    bodyText: cancelledMealmateEmail.replace('Hello,', 'Hello ' + mUser.name.split(' ')[0] + ',') //email templates in emailTemplates.js
-                }
-                post('/api/emailSender', { data }, function () {
-                    $('#cancel-modal').hide();
-                    document.location.href = '/u/matches?'+user._id;
-                });
+            const emailText = cancelledMealmateEmail.replace('Hello,', 'Hello ' + mUser.name.split(' ')[0] + ','); //email templates in emailTemplates.js
+            declineMatch(user, mUser, matchDate, "[mealmate] Your mealmate cancelled...", emailText, -1);
+            
+            console.log(mUser.email);
+/*
+            post('/api/emailSender', { data }, function () {
+                $('#cancel-modal').hide();
+                //document.location.href = '/u/matches?'+user._id;
+            });
+*/
         });
     });
 
@@ -181,7 +184,6 @@ function renderPendingMatches(user) {
             const matchDate = new Date(user.matches[i].date);
             if (matchDate >= today && !user.matches[i].confirmed) { // days after today or today
                 arePendMatches = true;
-                console.log("screaming sheep");
                 const matchedUser = user.matches[i].userid
                 renderPendRow(user, matchedUser, user.matches[i], i);
             }
@@ -263,7 +265,9 @@ function renderPendRow(you, user, match, num) {
     decline.setAttribute('type', 'button');
     decline.className = "btn btn-default green-btn center-block red-decline border-black";
     decline.innerHTML = "Decline"
-    decline.addEventListener('click', function() {
+    decline.addEventListener('click', function() { //When decline a pending match
+        console.log('pending you', you);
+        console.log('pending user', user);
         $('#decline-match-modal').show();
 
         $('#cancel-no-match').click(function(){
@@ -271,7 +275,8 @@ function renderPendRow(you, user, match, num) {
         });
         $('#verify-no-match').click(function(){
             const matchDate = new Date(match.date);
-            declineMatch(you, user, matchDate, num);
+            const emailText = declinedMatchEmail.replace('Hello,', 'Hello ' + user.name.split(' ')[0] + ','); //email templates in emailTemplates.js
+            declineMatch(you, user, matchDate, "[mealmate] One of your matches cannot go...", emailText, num);
             $('#decline-match-modal').hide();
         });
     });
@@ -335,19 +340,24 @@ function confirmMatch(user, mUser, match, num) {
     });
 }
 
-// event listener for the pending decline button
-function declineMatch(user, mUser, matchDate, num) {
+// event listener for the confirmed and pending decline button
+function declineMatch(user, mUser, matchDate, emailTitle, emailText, num) {
     console.log("inside declineMatch");
     const data = {
         userid: user._id,
         matchid: mUser._id,
         date: matchDate,
-        emailcontent: declinedMatchEmail.replace('Hello,', 'Hello ' + mUser.name.split(' ')[0] + ',') //email templates in emailTemplates.js
+        emailsubject: emailTitle,
+        emailcontent: emailText
     }
     post('/api/declineMatch', data, function() {
-        // just delete the row
-        const pendRow = document.getElementById('pending-row'+num);
-        pendRow.remove(); // woot
+        if (num < 0){  //from delete confirmed match --> refresh
+            document.location.href = '/u/matches?'+user._id;
+
+        }else{ // just delete the row when decline pending match
+            const pendRow = document.getElementById('pending-row'+num);
+            pendRow.remove(); // woot
+        }
     });
 }
 
