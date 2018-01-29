@@ -35,7 +35,7 @@ function main() {
         } else if (user._id != profileId) {
             // you're viewing someone else's profile
             const editButton = document.getElementById('editProfile');
-            editButton.style.visibility = "none";
+            editButton.style.display = "none";
         } else {
             loadEditButton(user);
         }
