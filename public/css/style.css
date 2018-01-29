@@ -459,6 +459,9 @@ h4, p {
 .match-name {
     color: #000 !important;
 }
+.closer-caption a{
+    color: white;
+}
  @media (max-width: 1000px) {
      #get-started {
          font-size: 12px;
