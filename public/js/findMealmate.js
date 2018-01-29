@@ -147,4 +147,6 @@ function sendEmailMatch(user, match) {
     });
 }
 
+new Sortable(document.getElementsByClassName('sortable')[0]);
+
 main();
