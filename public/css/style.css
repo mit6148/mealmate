@@ -86,6 +86,11 @@
      font-weight: bold;
      background-color: #F1F1F1;
 }
+.ui-state-default:active {
+     color: black;
+     font-weight: normal;
+    background-color: white;
+}
  .form-check-input {
      cursor: pointer;
 }
@@ -308,6 +313,10 @@
  .find-bottom-margin {
      margin-bottom: 14px;
  }
+.body-wrap {
+    height: 100% !important;
+    overflow-x: hidden !important;
+}
  .pics-group p {
      display: block;
      position: absolute;
@@ -318,7 +327,7 @@
      color: #FFF;
      font-size: 36px;
      font-weight: bold;
-     text-shadow: 0px 8px 10px rgba(0, 0, 0, 1);
+     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.7);
      letter-spacing: 5px;
      border-color: white !important;
      border-width: thick !important;
