@@ -92,6 +92,7 @@ function makeCarouselObject(user, match, mUser) {
     const mName = document.createElement('h1');
     mName.className = "chewy closer-caption";
     mName.innerHTML = mUser.name;
+    mName.setAttribute('href', '/u/profile?'+mUser._id);
 
     const matchDate = document.createElement('h3');
     matchDate.className = "closer-caption";
