@@ -66,11 +66,10 @@ function makeNoMatch() {
     caption.className="carousel-caption";
 
     const text = document.createElement('h1');
-    text.className = "chewy closer-caption";
+    text.className = "chewy";
     text.innerHTML = "NO MEALMATES YET!";
 
-    const details = document.createElement('h1');
-    details.className = "chewy";
+    const details = document.createElement('h2');
     details.innerHTML = "Pending matches will appear here after being confirmed by you and your match.";
 
     it.appendChild(caption);
@@ -196,7 +195,7 @@ function renderPendingMatches(user) {
         if (!arePendMatches) {
             const matchTableDiv = document.getElementById('pendDiv')
             const breakMatch = document.createElement('br');
-            const noMatch = document.createElement('p');
+            const noMatch = document.createElement('h3');
             noMatch.innerHTML = 'You responded to all of your invitations! Woohoo!';
             matchTableDiv.appendChild(breakMatch);
             matchTableDiv.appendChild(noMatch);
@@ -205,7 +204,7 @@ function renderPendingMatches(user) {
     } else { // don't display a table if no matches
         const matchTableDiv = document.getElementById('pendDiv')
         const breakMatch = document.createElement('br');
-        const noMatch = document.createElement('p');
+        const noMatch = document.createElement('h3');
         noMatch.innerHTML = 'No pending matches yet! Check back soon.';
         matchTableDiv.appendChild(breakMatch);
         matchTableDiv.appendChild(noMatch);
@@ -378,7 +377,7 @@ function renderOldMatches(user) {
         if (!werePrevMatches) {
             const matchTableDiv = document.getElementById('matchTable')
             const breakMatch = document.createElement('br');
-            const noMatch = document.createElement('p');
+            const noMatch = document.createElement('h3');
             noMatch.innerHTML = 'You have no previous matches! Matches will show up here once the day of your meal has passed.';
             matchTableDiv.appendChild(breakMatch);
             matchTableDiv.appendChild(noMatch);
@@ -387,7 +386,7 @@ function renderOldMatches(user) {
     } else { // don't display a table if no matches
         const matchTableDiv = document.getElementById('matchTable')
         const breakMatch = document.createElement('br');
-        const noMatch = document.createElement('p');
+        const noMatch = document.createElement('h3');
         noMatch.innerHTML = 'You have no previous matches! Matches will show up here once the day of your meal has passed.';
         matchTableDiv.appendChild(breakMatch);
         matchTableDiv.appendChild(noMatch);

@@ -79,6 +79,7 @@
 }
  .ui-state-default {
      cursor: pointer;
+     font-size: 24px;
 }
  .ui-state-default:hover {
      color: #66A25C;
@@ -228,6 +229,7 @@
 }
  .form-check-label {
      font-weight: normal;
+     font-size: 24px;
 }
  .modal {
      display: none;
@@ -574,6 +576,9 @@ h4, p {
     }
      .pics-group p {
          font-size: 30px;
+     }
+     h3, .form-check-label, .ui-state-default {
+         font-size: 20px;
      }
 }
  @media (max-width: 600px) {
