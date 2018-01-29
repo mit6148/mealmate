@@ -360,7 +360,7 @@ router.post('/declineMatch/', connect.ensureLoggedIn(), function(req,res) {
                         } else {
                             const data = {
                                 receiverEmail: match.email,
-                                subjectText: "[mealmate] One of your matches cannot go",
+                                subjectText: "[mealmate] One of your matches cannot go...",
                                 bodyText: req.body.emailcontent
                             }
                             sendEmail(data.receiverEmail, data.subjectText, data.bodyText, function() { console.log("woohoo"); });

@@ -118,7 +118,7 @@ function makeCarouselObject(user, match, mUser) {
             declineMatch(user, mUser, matchDate);
             const data = {
                     receiverEmail: mUser.email,
-                    subjectText: "[mealmate] mealmate Cancelled",
+                    subjectText: "[mealmate] Your mealmate cancelled...",
                     bodyText: cancelledMealmateEmail.replace('Hello,', 'Hello ' + mUser.name.split(' ')[0] + ',') //email templates in emailTemplates.js
                 }
                 post('/api/emailSender', { data }, function () {
