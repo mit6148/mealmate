@@ -51,19 +51,20 @@
     <div class="container text-center">
         <h1 id="find-mealmate-h1"><img class="header-lines animated bounceInLeft" src="/static/img/left_line.png"> FIND YOUR <span style="font-family:Chewy; font-size:40px; text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.6);">mealmate</span>! <img class="header-lines animated bounceInRight" src="/static/img/right_line.png"></h1>
         <h2 class="margin-add-line">PREFERRED DINING HALL</h2>
-        <h3 class="find-bottom-margin">Drag the halls around and rank your preferences!</h3>
-        <ol id="userDiningPreferences" class="no-padding list-group sortable">
-            <li class="list-group-item"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Baker</li>
-            <li class="list-group-item"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Maseeh</li>
-            <li class="list-group-item"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>McCormick</li>
-            <li class="list-group-item"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Simmons</li>
-            <li class="list-group-item"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Next</li>
-        </ol>
-        <br>
+        <h3 class="find-bottom-margin">Drag the halls around and rank your preferences from <span style="color:#66A25C; font-weight: bold">most</span> to <span style="color:red; font-weight:bold">least</span> desired!</h3>
+        <div id="ol-div">
+            <ol id="userDiningPreferences" class="no-padding list-group sortable">
+                <li class="list-group-item">Baker</li>
+                <li class="list-group-item">Maseeh</li>
+                <li class="list-group-item">McCormick</li>
+                <li class="list-group-item">Simmons</li>
+                <li class="list-group-item">Next</li>
+            </ol>
+        </div>
 
         <h2 id='userAvailability' class="margin-add-line">DATE AVAILABILITY</h2>
         <h3>Select the date you want for your meal!</h3>
-        <p id="limit-text" class="find-bottom-margin">You are limited to at most one match per day.</p>
+        <p id="limit-text" class="find-bottom-margin">You are limited to at most one match per selected day.</p>
         <div class="date-holder">
             <div id="datepicker" class="input-group date" data-date-format="MM d, yyyy">
                 <input type="text" name="" class="date-text">

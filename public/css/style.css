@@ -78,7 +78,7 @@
      cursor: pointer;
 }
  .list-group-item {
-     cursor: pointer;
+     cursor: move;
      font-size: 24px;
 }
  .list-group-item:hover {
@@ -89,8 +89,9 @@
 .list-group-item:active {
      color: black;
      font-weight: normal;
-    background-color: white;
+     background-color: white;
 }
+
  .form-check-input {
      cursor: pointer;
 }
@@ -352,14 +353,17 @@
  #userDiningPreferences {
      list-style-position:inside;
 }
+
  ol li {
-     border: solid;
-     border-radius: 5px;
-     margin-bottom: 0.5%;
-     margin-top: 0.5%;
-     margin-left: 43%;
-     margin-right: 43%;
+     border: solid !important;
+     border-radius: 5px !important;
+     margin-bottom: 2% !important;
+     margin-top: 2% !important;
+     min-width: 150px;
+     max-width: 300px;
+     padding: 0 !important;
 }
+
  body {
      font-family: 'Catamaran';
      font-size: 22px;
@@ -435,11 +439,12 @@ h4, p {
  #mealmate-img {
      max-width: 140px;
 }
-#name-header {
+#name-header, #ol-div {
     display: flex;
      flex-direction: row;
      align-items: center;
      justify-content: center;
+    margin-bottom: 3%;
 }
 
 .inline {
@@ -466,10 +471,6 @@ h4, p {
      #get-started {
          font-size: 12px;
          padding: 10px 20px;
-    }
-     ol li {
-         margin-left: 40%;
-         margin-right: 40%;
     }
      #welcome {
          font-size: 80px;
@@ -515,10 +516,6 @@ h4, p {
      #profile-pic {
          max-width: 200px;
          margin: 1% auto;
-    }
-     ol li {
-         margin-left: 38%;
-         margin-right: 38%;
     }
      .fa{
          font-size: 20px;
@@ -567,10 +564,6 @@ h4, p {
      h2 {
          font-size: 25px;
     }
-     ol li {
-         margin-left: 36%;
-         margin-right: 36%;
-    }
      body {
          padding-top: 59px;
     }
@@ -603,10 +596,6 @@ h4, p {
      #welcome-mobile {
          display: inline;
          line-height: 0.8em;
-    }
-     ol li {
-         margin-left: 30%;
-         margin-right: 30%;
     }
      #mealmate {
          font-size: 40px;
