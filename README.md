@@ -10,9 +10,13 @@ mealmate pairs MIT students up to eat at dining halls. It helps people who are l
 
 ## nanxiliu-sabrinaliu-cynliu98-2018 ##
 * **.env**
+    *[6.148 - Deployment](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday9_deployment.pdf)
 * **.gitignore**
+    *[6.148 - Intro to NodeJS](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday3_nodejs.pdf)
 * **package.json**
     * Source: 6.148 Staff
+    *[6.148 - Authentication](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday5_auth.pdf)
+    *[6.148 - Deployment](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday9_deployment.pdf)
 * **package-lock.kson**
 * **README.md**
     * [Styling README.md](https://github.com/tchapi/markdown-cheatsheet/blob/master/README.md)
@@ -23,21 +27,30 @@ mealmate pairs MIT students up to eat at dining halls. It helps people who are l
     * [MailChimp](https://mailchimp.com/)
     
 ## /public/js ##
+* **All**
+    *[6.148 - Intro to Javascript](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday2_javascript.pdf)
+    *[6.148 - Intro to Backend](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday3_backend.pdf)
+    *[6.148 - Advanced JS](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday6_advancedjs.pdf)
 * **about.js**
 * **api.js**
-    * Source: 6.148 Staff
+    * [6.148 - Client Side JS](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday3_clientjs.pdf)
+    * [6.148 - Authentication](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday5_auth.pdf)
 	* [Pass in parameters](https://stackoverflow.com/questions/8064691/how-do-i-pass-along-variables-with-xmlhttprequest)
 * **edit.js**
 	* [Display preview of picture](https://stackoverflow.com/questions/12368910/html-display-image-after-selecting-filename)
 * **emailTemplates.js**
 * **findMealmate.js**
 * **index.js**
+    * [6.148 - Authentication](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday5_auth.pdf)
 * **matches.js**
 	* [Compare dates](https://stackoverflow.com/questions/492994/compare-two-dates-with-javascript)
 * **navbar.js**
+    * [6.148 - Authentication](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday5_auth.pdf)
+    * [6.148 - Deployment](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday9_deployment.pdf)
 	* [Bootstrap dropdown](https://www.w3schools.com/bootstrap/bootstrap_ref_js_dropdown.asp)
 * **pictures.js**
 * **profile.js**
+    * [6.148 - Authentication](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday5_auth.pdf)
 * **submit.js**
 
 ## /public/img ##
@@ -68,21 +81,24 @@ mealmate pairs MIT students up to eat at dining halls. It helps people who are l
 
 ## /src ##
 * **app.js**
-    * Source: 6.148 Staff
+    * [6.148 - Intro to NodeJS](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday3_nodejs.pdf)
+    * [6.148 - Authentication](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday5_auth.pdf)
 * **db.js**
-    * Source: 6.148 Staff
+    * [6.148 - Intro to Databases](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday4_databases.pdf)
     * [mLab](https://mlab.com/)
 * **emailSender.js**
     * [Node JS](https://www.w3schools.com/nodejs/nodejs_email.asp)
 	* [Nodemailer](https://nodemailer.com/about/)
 * **passport.js**
-    * Source: 6.148 Staff
+    * [6.148 - Authentication](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday5_auth.pdf)
+    * [6.148 - Deployment](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday9_deployment.pdf)
 * **pictures.js**
-    * Source: 6.148 Staff
+    * [6.148 - AWS S3 + Heroku Deployment](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday9_aws.pdf)
     
 ## /src/models ##
 * **matchRequest.js**
 * **user.js**
+    * [6.148 - Authentication](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday5_auth.pdf)
 	* [Mongoose populate](http://mongoosejs.com/docs/populate.html)
 
 ## /src/routes ##
@@ -93,10 +109,11 @@ mealmate pairs MIT students up to eat at dining halls. It helps people who are l
 
 ## /src/views ##
 * All
-    * [Animate.css](https://github.com/daneden/animate.css/)
+    * [6.148 - Intro to HTML and CSS](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday1_htmlcss.pdf)
+    * [6.148 - Advanced CSS](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday6_advancedcss.pdf)
     * [Initial Bootstrap navbar and footer, learning about HTML/CSS/Bootstrap and making websites responsive](https://www.youtube.com/watch?v=Wm6CUkswsNw)
     * [Customizing Bootstrap navbar, making navbar stay fixed to top](https://v4-alpha.getbootstrap.com/components/navbar/)
-    * Making navbar header bold if on the page or dropdown - Thanks Danny!
+    * [Making navbar header bold if on the page or dropdown - Thanks Danny!](https://stackoverflow.com/questions/43597768/html-how-to-bold-navigation-bar-text)
     * [Bootstrap navbar](https://www.w3schools.com/bootstrap/bootstrap_navbar.asp)
     * [Bootstrap dropdown navbar](https://www.w3schools.com/bootstrap/bootstrap_ref_js_dropdown.asp)
     * [Bootstrap padding and margin](https://v4-alpha.getbootstrap.com/utilities/spacing/)
@@ -110,6 +127,7 @@ mealmate pairs MIT students up to eat at dining halls. It helps people who are l
     * [CSS cursor property](https://www.w3schools.com/cssref/pr_class_cursor.asp)
     * [CSS round buttons](https://www.w3schools.com/howto/howto_css_round_buttons.asp)
     * [CSS flexbox - Thanks Alex!](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+    * [Animate.css](https://github.com/daneden/animate.css/)
     * [Disable scrolling right](https://stackoverflow.com/questions/16637031/completely-disable-scrolling-of-webpage)
     * [Disable horizontal scroll](https://stackoverflow.com/questions/17756649/disable-the-horizontal-scroll)
     * [Font Awesome Icons](http://fontawesome.io/icons/)
