@@ -337,6 +337,8 @@ function confirmMatch(user, mUser, match, num) {
         // then, delete the row!
         const pendRow = document.getElementById('pending-row'+num);
         pendRow.remove(); // woot
+
+        document.location.href = '/u/matches?'+user._id;
     });
 }
 
