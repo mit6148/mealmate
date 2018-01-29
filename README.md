@@ -10,13 +10,13 @@ mealmate pairs MIT students up to eat at dining halls. It helps people who are l
 
 ## nanxiliu-sabrinaliu-cynliu98-2018 ##
 * **.env**
-    *[6.148 - Deployment](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday9_deployment.pdf)
+    * [6.148 - Deployment](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday9_deployment.pdf)
 * **.gitignore**
-    *[6.148 - Intro to NodeJS](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday3_nodejs.pdf)
+    * [6.148 - Intro to NodeJS](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday3_nodejs.pdf)
 * **package.json**
     * Source: 6.148 Staff
-    *[6.148 - Authentication](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday5_auth.pdf)
-    *[6.148 - Deployment](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday9_deployment.pdf)
+    * [6.148 - Authentication](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday5_auth.pdf)
+    * [6.148 - Deployment](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday9_deployment.pdf)
 * **package-lock.kson**
 * **README.md**
     * [Styling README.md](https://github.com/tchapi/markdown-cheatsheet/blob/master/README.md)
@@ -28,9 +28,9 @@ mealmate pairs MIT students up to eat at dining halls. It helps people who are l
     
 ## /public/js ##
 * **All**
-    *[6.148 - Intro to Javascript](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday2_javascript.pdf)
-    *[6.148 - Intro to Backend](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday3_backend.pdf)
-    *[6.148 - Advanced JS](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday6_advancedjs.pdf)
+    * [6.148 - Intro to Javascript](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday2_javascript.pdf)
+    * [6.148 - Intro to Backend](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday3_backend.pdf)
+    * [6.148 - Advanced JS](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday6_advancedjs.pdf)
 * **about.js**
 * **api.js**
     * [6.148 - Client Side JS](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday3_clientjs.pdf)
