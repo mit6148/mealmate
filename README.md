@@ -49,6 +49,7 @@ mealmate pairs MIT students up to eat at dining halls. It helps people who are l
     * [6.148 - Authentication](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday5_auth.pdf)
     * [6.148 - Deployment](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday9_deployment.pdf)
 	* [Bootstrap dropdown](https://www.w3schools.com/bootstrap/bootstrap_ref_js_dropdown.asp)
+    * [JS Do something if screen is smaller than a certain number of pixels](https://stackoverflow.com/questions/7715124/do-something-if-screen-width-is-less-than-960-px)
 * **pictures.js**
 * **profile.js**
     * [6.148 - Authentication](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday5_auth.pdf)
@@ -80,6 +81,7 @@ mealmate pairs MIT students up to eat at dining halls. It helps people who are l
     * [Font Awesome Icons](http://fontawesome.io/icons/)
     * [Google Fonts](https://fonts.google.com/)
 * **datepicker.css**
+    * [Datepicker](https://www.youtube.com/watch?v=TGXk6lEY5H8)
 * **edit.css**
 * **findMealmate.css**
     * [Touch-sensitive draggable list](https://stackoverflow.com/questions/20424477/how-can-i-implement-a-touch-sensitive-responsive-sortable-list-supporting-drag)

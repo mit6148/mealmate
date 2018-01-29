@@ -62,13 +62,39 @@ function newDropdown(text, links, linkLabels, currentPath, user){
         
 	}
     
+    
+    
 	/*opens menu when hover, goes to first link if click*/
-	dropdownBox.addEventListener("mouseover", function(){
-		dropMenu.style.display = "block";
-	});
-	dropdownBox.addEventListener("mouseout", function(){
-		dropMenu.style.display = "none";
-	});
+    /*do something if width is less than a certain amount: https://stackoverflow.com/questions/7715124/do-something-if-screen-width-is-less-than-960-px */
+    if ($(window).width() > 768) {
+       console.log("Greater than 768");
+       dropdownBox.addEventListener("mouseover", function(){
+		  dropMenu.style.display = "block";
+	   });
+	   dropdownBox.addEventListener("mouseout", function(){
+		  dropMenu.style.display = "none";
+       });
+    }
+    else {
+       console.log("Less than 768");
+    }
+    
+    $(window).resize(function() {
+      if ($(window).width() > 768) {
+         console.log('Resized greated than 768');
+         dropdownBox.addEventListener("mouseover", function(){
+		    dropMenu.style.display = "block";
+	     });
+	     dropdownBox.addEventListener("mouseout", function(){
+		    dropMenu.style.display = "none";
+         });
+      }
+     else {
+        console.log('Resized less than 768');
+        /* Want to make it not show up, but idk how... */
+     }
+    });
+    
 	/*
 	dropButton.addEventListener("click", function(){
         document.location.href = links[0];
