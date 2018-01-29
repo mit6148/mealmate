@@ -126,6 +126,7 @@ function makeCarouselObject(user, match, mUser) {
                 }
                 post('/api/emailSender', { data }, function () {
                     $('#cancel-modal').hide();
+                    document.location.href = '/u/matches?'+user._id;
                 });
         });
     });
