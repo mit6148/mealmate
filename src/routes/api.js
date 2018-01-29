@@ -39,9 +39,17 @@ router.get('/whoami', function(req, res) {
 });
 
 router.get('/user', function(req, res) {
-    User.findOne({ _id: req.query._id}, function(err, user){
-        res.send(user);
-    });
+    if (req.query.getMatches){
+        User.findOne({_id: req.query._id}).populate('matches.userid').then(function(user, err){
+            if(err) console.log('error', err);
+            console.log('actual user', user);
+            res.send({user});
+        });
+    } else {
+        User.findOne({ _id: req.query._id}, function(err, user){
+            res.send(user);
+        });
+    }
 });
 
 // match step 2: get matching requests
@@ -425,7 +433,7 @@ router.post('/cleanReqDB/', function(req, res) {
             }
         }
     });
-    res.send(null);
+    res.json({});
 })
 
 module.exports = router;

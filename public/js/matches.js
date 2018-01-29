@@ -9,7 +9,9 @@ function main(){
         }
         renderNavbar(user);
     });
-    get('/api/user', {'_id': profileId}, function(profileUser) {
+    get('/api/user', {'_id': profileId, 'getMatches': true}, function(user) {
+        const profileUser = user.user;
+        console.log(profileUser);
         renderOldMatches(profileUser);
         renderPendingMatches(profileUser);
         renderConfirmedMatches(profileUser);
