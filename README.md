@@ -17,7 +17,7 @@ mealmate pairs MIT students up to eat at dining halls. It helps people who are l
     * [6.148 - Authentication](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday5_auth.pdf)
     * [6.148 - Intro to MongoDB](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday4_mongodb.pdf)
     * [6.148 - Deployment](http://webdevelopment.mit.edu/2018/pages/lectures/WEBday9_deployment.pdf)
-* **package-lock.kson**
+* **package-lock.json**
 * **README.md**
     * [Styling README.md](https://github.com/tchapi/markdown-cheatsheet/blob/master/README.md)
     * [Add screenshot to README.md](https://www.tilcode.com/add-a-screenshot-to-your-github-repo-readme-md/)
