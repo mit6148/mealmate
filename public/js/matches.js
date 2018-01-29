@@ -35,6 +35,7 @@ function renderConfirmedMatches(user) {
     });
     
     for (let i = confirmedMatchesArr.length-1; i >= 0; i--){
+        console.log(confirmedMatchesArr[i]);
         const mUser = confirmedMatchesArr[i].userid;
         var carouselObj = makeCarouselObject(user, confirmedMatchesArr[i], mUser);
         var indic = makeCarouselIndicator(i);
@@ -121,7 +122,8 @@ function makeCarouselObject(user, match, mUser) {
         });
         $('#verify-decline').click(function() {
             const matchDate = new Date(match.date);
-            const emailText = cancelledMealmateEmail.replace('Hello,', 'Hello ' + mUser.name.split(' ')[0] + ','); //email templates in emailTemplates.js
+            const emailText = cancelledMealmateEmail.replace('Hello', 'Hello ' + mUser.name.split(' ')[0])
+                .replace('looks like', 'looks like ' + user.name.split(' ')[0]); //email templates in emailTemplates.js
             declineMatch(user, mUser, matchDate, "[mealmate] Your mealmate cancelled...", emailText, -1);
             
             console.log(mUser.email);
@@ -275,7 +277,8 @@ function renderPendRow(you, user, match, num) {
         });
         $('#verify-no-match').click(function(){
             const matchDate = new Date(match.date);
-            const emailText = declinedMatchEmail.replace('Hello,', 'Hello ' + user.name.split(' ')[0] + ','); //email templates in emailTemplates.js
+            const emailText = declinedMatchEmail.replace('Hello', 'Hello ' + user.name.split(' ')[0])
+                .replace('looks like', 'looks like ' + you.name.split(' ')[0]); //email templates in emailTemplates.js
             declineMatch(you, user, matchDate, "[mealmate] One of your matches cannot go...", emailText, num);
             $('#decline-match-modal').hide();
         });
@@ -307,7 +310,8 @@ function confirmMatch(user, mUser, match, num) {
             var data = {
                 receiverEmail: user.email,
                 subjectText: "[mealmate] New mealmate!",
-                bodyText: newMealmateEmail.replace('Hello,', 'Hello ' + user.name.split(' ')[0] + ',') //email templates in emailTemplates.js
+                bodyText: newMealmateEmail.replace('Hello', 'Hello ' + user.name.split(' ')[0])
+                    .replace('You and', 'You and ' + mUser.name.split(' ')[0]) //email templates in emailTemplates.js
             }
             post('/api/emailSender', { data }, function () {
                 console.log("new mealmate email sent to first user");
@@ -316,7 +320,8 @@ function confirmMatch(user, mUser, match, num) {
             data = {
                 receiverEmail: mUser.email,
                 subjectText: "[mealmate] New mealmate!",
-                bodyText: newMealmateEmail.replace('Hello,', 'Hello ' + mUser.name.split(' ')[0] + ',') //email templates in emailTemplates.js
+                bodyText: newMealmateEmail.replace('Hello', 'Hello ' + mUser.name.split(' ')[0])
+                    .replace('You and', 'You and ' + user.name.split(' ')[0]) //email templates in emailTemplates.js
             }
             post('/api/emailSender', { data }, function () {
                 alert("Match confirmed! Enjoy your meal!"); // done
