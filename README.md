@@ -6,7 +6,7 @@ Team: Liu^3
 
 Team members: Cynthia Liu, Nanxi Liu, Sabrina Liu
 
-![homepage screenshot](screenshots/index.png)
+![homepage screenshot](/screenshots/index.png)
 
 ## /public
 
