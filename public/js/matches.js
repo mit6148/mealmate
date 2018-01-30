@@ -223,9 +223,10 @@ function renderPendRow(you, user, match, num) {
 
     // image and name, both links
     const imgName = document.createElement('td');
+    imgName.className = "text-center"
     const profileImage = document.createElement('img');
     profileImage.src = user.piclink;
-    profileImage.className = "restrict-width center-block small-padding match-picture";
+    profileImage.className = "restrict-width small-padding match-picture"; 
     profileImage.onclick = function () { // propic is link to other user's page
         document.location.href = '/u/profile?'+user._id;
     }

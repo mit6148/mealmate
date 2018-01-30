@@ -293,7 +293,7 @@
      animation-duration: 6s;
 }
  #pendDiv, #pendTable, #pendTableDiv, #matchTable {
-     overflow-x:auto !important;
+     overflow-x:auto;
  }
  .smaller-break {
      margin-bottom:2%;
