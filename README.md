@@ -185,3 +185,20 @@ mealmate pairs MIT students up to eat at dining halls. It helps people who are l
     * [Responsive tables](https://www.w3schools.com/howto/howto_css_table_responsive.asp)
 * **profile.html**
 	* [CSS modal](https://www.w3schools.com/howto/howto_css_modals.asp)
+
+## 3rd Party Libraries ##
+* [aws-sdk](https://aws.amazon.com/sdk-for-node-js/)
+* [connect-ensure-login](https://github.com/jaredhanson/connect-ensure-login)
+* [dotenv](https://www.npmjs.com/package/dotenv)
+* [express](https://expressjs.com/)
+* [express-fileupload](https://www.npmjs.com/package/express-fileupload)
+* [express-session](https://www.npmjs.com/package/express-session)
+* [http](https://www.w3schools.com/nodejs/nodejs_http.asp)
+* [mdbootstrap](https://www.npmjs.com/package/mdbootstrap)
+* [mongoose](http://mongoosejs.com/)
+* [nodemailer](https://nodemailer.com/about/)
+* [passport](http://www.passportjs.org/)
+* [passport-facebook](http://www.passportjs.org/docs/facebook/)
+* [session](https://www.npmjs.com/package/sessions)
+* [nodemon](https://nodemon.io/)
+* [ws](https://www.npmjs.com/package/ws)
