@@ -56,7 +56,6 @@ app.get('/logout', function(req, res){
 app.use('/', views);
 app.use('/api', api); // for when we're ready
 app.use('/static', express.static('public'));
-//app.use('/node_modules', express.static('node_modules'));
 
 //404 error handler
 app.use(function(req, res, next){
