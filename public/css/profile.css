@@ -64,6 +64,10 @@
     text-align: center;
 }
 
+#userName, #userImage, .edit-btn-div {
+    padding-right: 5%;
+}
+
 /*Source for sortables: https://jqueryui.com/sortable/ */
 #userDiningPreferences { 
     list-style-type: none;
