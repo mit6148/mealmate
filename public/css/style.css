@@ -293,7 +293,7 @@
      animation-duration: 6s;
 }
  #pendDiv, #pendTable, #pendTableDiv, #matchTable {
-     overflow-x:auto;
+     overflow-x:auto !important;
  }
  .smaller-break {
      margin-bottom:2%;
@@ -626,7 +626,9 @@ h4, p {
          padding-top: 55px;
     }
      .match-picture {
-         max-width: 150px; 
+         min-width: 50px;
+         max-width: 150px;
+         min-height: 50px;
          max-height: 400px;
      }
      #matchTable, #pendTable {
