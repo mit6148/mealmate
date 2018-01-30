@@ -330,6 +330,7 @@ function confirmMatch(user, mUser, match, num) {
         } else {
             alert("Your match hasn't confirmed that they are able to go yet. You will receive an email if your match cannot go.");
         }
+        /*
         // first, create the corresponding carousel object
         const carouselObjects = document.getElementById('carousel-inner-objects');
         const carouselIndicators = document.getElementById('indicators');
@@ -338,12 +339,13 @@ function confirmMatch(user, mUser, match, num) {
         const indic = makeCarouselIndicator(count-1);
 
         carouselObjects.prepend(newConfirmed); carouselIndicators.prepend(indic)
+        */
 
         // then, delete the row!
         const pendRow = document.getElementById('pending-row'+num);
         pendRow.remove(); // woot
 
-        document.location.href = '/u/matches?'+user._id;
+        // document.location.href = '/u/matches?'+user._id;
     });
 }
 
