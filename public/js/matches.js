@@ -443,7 +443,6 @@ function renderOldRow(mUser, match) {
     date.className = "text-center";
     const dateObj = new Date(match.date);
     matchDate.innerHTML = DAYS[dateObj.getDay()] + ', ' + MONTHS[dateObj.getMonth()] + ' ' + dateObj.getDate();
-    //date.innerHTML = match.date.substring(0,10);
     const matchTime = document.createElement('p');
     matchTime.className = "text-center";
     matchTime.innerHTML = formatTime(match.times[0]);
