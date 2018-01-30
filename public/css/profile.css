@@ -39,10 +39,6 @@
     padding: 12px 22px !important;
 }
 
-#userImage, .edit-btn-div, .profile-name {
-    padding-right:5%;
-}
-
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -88,9 +84,54 @@
     position: absolute;
     margin-left: -1.3em;
 }
-
-@media (max-width: 1000px) {
-    #userImage, .edit-btn-div {
+@media (max-width: 769px) {
+    .edit-btn-div, .profile-name {
+        padding-right: 0;
+    }
+    #userImage {
+        padding-right:10%;
+        padding-left:10%;
+    }
+}
+@media (max-width: 768px) {
+    .edit-btn-div {
         padding-right:0%;
+    }
+    .profile-padding {
+        padding-left:10%;
+        padding-right:10%;
+    }
+}
+
+@media (max-width: 700px) {
+    #userImage {
+        padding-right:7%;
+        padding-left:7%;
+    }
+    .profile-padding {
+        padding-left:7%;
+        padding-right:7%;
+    }
+}
+
+@media (max-width: 650px) {
+    #userImage {
+        padding-right:4%;
+        padding-left:4%;
+    }
+    .profile-padding {
+        padding-left:4%;
+        padding-right:4%;
+    }
+}
+
+@media (max-width: 600px) {
+    #userImage {
+        padding-right:2%;
+        padding-left:2%;
+    }
+    .profile-padding {
+        padding-left:2%;
+        padding-right:2%;
     }
 }

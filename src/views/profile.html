@@ -66,7 +66,7 @@
                 <div id='userName' class="profile-name text-center">
                     <!-- insert the username via js here -->
                 </div>
-                <div class='profPicBox' id="userImage">
+                <div class='profPicBox profile-padding' id="userImage">
                     <!-- insert the user image via js here -->
                 </div>
                 <br>
@@ -80,6 +80,7 @@
                 <h2 id="about-me" class="text-center"><img class="header-lines animated bounceInLeft" src="/static/img/left_line.png"> ABOUT ME <img class="header-lines animated bounceInRight" src="/static/img/right_line.png"></h2>
                 <!-- Ideal front-end for me currently! Only Course, class, and living group are required,
                              the rest pop up if they enter something for it!-->
+                <div class="profile-padding">
                 <h3 class="add-line bold font-28 text-center">GENERAL INFORMATION</h3>
                 <h4><span style="font-weight:bold">COURSE: </span><span id='userCourse'></span></h4>
                 <h4><span style="font-weight:bold">CLASS: </span><span id='userClass'></span></h4>
@@ -87,10 +88,13 @@
                 <h4><span style="font-weight:bold">HOME STATE: </span><span id='userHomeState'></span></h4>
                 <h4><span style="font-weight:bold">KERBEROS: </span><span id='userKerb'></span></h4>
                 <h4 class="margin-bottom-6" id= "phone-num"><span style="font-weight:bold">CELL PHONE NUMBER: </span><span id='userCell'></span></h4>
+                </div>
                 <br id="break-bw" style='display: none'>
                 <!-- Get to know me rendered in JS only if not all fields are whitespace -->
+                <div class="profile-padding">
                 <h3 class="add-line bold font-28 text-center" id='getToKnowMeHeader' style='display: none'>GET TO KNOW ME</h3>
                 <div id="favDiv" class="margin-bottom-6">
+                </div>
                 </div>
             </div>
         </div>
