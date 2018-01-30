@@ -114,6 +114,9 @@ table {
     p {
         font-size: 20px;
     }
+    #mealmates-header {
+        margin-bottom: 4%;
+    }
 }
 
 @media (max-width: 600px) {

@@ -193,10 +193,6 @@
      color: #FFF;
      text-decoration: none;
 }
- #back-edit {
-     display: flex;
-     justify-content: center;
-}
  .tiny-padding {
      padding-left: 4%;
      padding-right: 4%;
@@ -629,9 +625,22 @@ h4, p {
     }
      .match-picture {
          max-width: 150px; 
+         max-height: 400px;
      }
      #matchTable, #pendTable {
         margin-top: 4%;
+    }
+    .margin-bottom-2 {
+        margin-bottom: 2%;
+    }
+    .margin-bottom-4 {
+        margin-bottom: 4%;
+    }
+    .margin-bottom-6 {
+        margin-bottom: 8%;
+    }
+     .margin-bottom-12 {
+        margin-bottom: 12%;
     }
 }
  @media (max-width: 475px) {

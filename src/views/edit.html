@@ -86,10 +86,10 @@
                 
                 <!-- Bootstrap forms: https://getbootstrap.com/docs/4.0/components/forms/ -->
                 <div class="form-group row small-padding">
-                    <h1 class ="small-padding text-center"><img class="header-lines animated bounceInLeft" src="/static/img/left_line.png"> EDIT ABOUT ME <img class="header-lines animated bounceInRight" src="/static/img/right_line.png"></h1>
+                    <h1 class ="small-padding text-center" id="edit-about-me"><img class="header-lines animated bounceInLeft" src="/static/img/left_line.png"> EDIT ABOUT ME <img class="header-lines animated bounceInRight" src="/static/img/right_line.png"></h1>
                     <h4 class="medium-padding text-center">People will be able to see your profile! All fields are optional. </h4>
                     <br>
-                    <h2 class="bold medium-padding add-line text-center">EDIT GENERAL INFORMATION</h2>
+                    <h2 class="bold medium-padding add-line text-center edit-header">EDIT GENERAL INFORMATION</h2>
                     <label for="editUserCourse" class="col-2 col-form-label medium-padding">Course</label>
                     <div class="col-10 medium-padding">
                         <input class="form-control" type="text" value="" id="editUserCourse">
@@ -127,7 +127,7 @@
                 </div>
                 <br>
                 <div class="form-group row small-padding">
-                    <h2 class="bold medium-padding add-line text-center">EDIT GET TO KNOW ME</h2>
+                    <h2 class="bold medium-padding add-line text-center edit-header">EDIT GET TO KNOW ME</h2>
                     <label for="editFavFood" class="col-2 col-form-label medium-padding">Favorite Food</label>
                     <div class="col-10 medium-padding">
                         <input class="form-control" type="text" value="" id="editFavFood">
@@ -165,10 +165,10 @@
                     </div>
                 </div>
 
-                <div id="back-edit">
-                    <button type="button" class="btn btn-default green-btn border-black" id="submitBtn">Submit Changes</button>
+                <div id="back-edit margin-bottom-6">
+                    <a class="fa fa-arrow-circle-o-left left-block" id="back-to-profile"></a>
+                    <button type="button" class="btn btn-default green-btn border-black center-block margin-bottom-6" id="submitBtn">Submit Changes</button>
                 </div>
-                <a class="fa fa-arrow-circle-o-left" id="back-to-profile"></a>
                 <!-- Back button -->
             </div>
         </div>
