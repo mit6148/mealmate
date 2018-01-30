@@ -35,6 +35,10 @@
     min-width: 200px !important;
 }
 
+.green-btn {
+    padding: 12px 22px !important;
+}
+
 #userImage, .edit-btn-div, .profile-name {
     padding-right:5%;
 }
@@ -86,7 +90,7 @@
 }
 
 @media (max-width: 1000px) {
-    #userImage {
+    #userImage, .edit-btn-div {
         padding-right:0%;
     }
 }

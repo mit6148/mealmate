@@ -58,6 +58,9 @@ table {
      top: 55%;
      transform: translateY(-40%);
 }
+#mealmates-header {
+    margin-bottom: 2%;
+}
  .modal {
     z-index: 100 !important;
 }
