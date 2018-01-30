@@ -80,7 +80,7 @@ function getMatch(user, d, ts, h) {
                 post('/api/emailSender', { data }, function () {
                     document.location.href = '/u/matches?'+user._id; // done
                 });
-                alert('Match submitted. You will get an email soon!');
+                alert('Request for a match submitted. You will get an email soon! Check your matches page.');
             }
         });
     });
