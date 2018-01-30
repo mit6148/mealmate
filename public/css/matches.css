@@ -42,7 +42,8 @@ table {
      padding-bottom: 2%;
 }
  .restrict-width {
-     width:300px;
+     max-width:500px;
+     max-height:300px;
 }
  .chewy {
      font-family: Chewy;

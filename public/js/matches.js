@@ -416,7 +416,7 @@ function renderOldRow(mUser, match) {
     
     //picture of past match
     const profileImage = document.createElement('img');
-    profileImage.className = "match-picture small-padding"
+    profileImage.className = "match-picture small-padding restrict-width"
     profileImage.src = mUser.piclink;
     profileImage.onclick = function () { // propic is link to other user's page
         document.location.href = '/u/profile?'+mUser._id;
