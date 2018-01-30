@@ -114,6 +114,9 @@ function renderUserFavs(user) {
 function generateFavBlock(favLabel, favId, favContent){
     if (favContent.replace(/\s/g, '').length){
         $('#getToKnowMeHeader').show();
+        $('#break-bw').show();
+        document.getElementById('phone-num').className = "";
+        console.log(document.getElementById('phone-num').className);
         const headerWrap = document.createElement('h4');
         $('#favDiv').append(headerWrap);
 
