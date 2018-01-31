@@ -88,6 +88,10 @@
     position: absolute;
     margin-left: -1.3em;
 }
+
+#modal-title {
+    font-size: 30px !important;
+}
 @media (max-width: 769px) {
     .edit-btn-div, .profile-name {
         padding-right: 0;
