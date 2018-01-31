@@ -35,7 +35,7 @@
     min-width: 200px !important;
 }
 
-#userImage, #editProfile, .profile-name {
+#userImage, .edit-btn-div, .profile-name {
     padding-right:5%;
 }
 

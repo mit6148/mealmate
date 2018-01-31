@@ -307,6 +307,8 @@
 }
  .match-picture {
      cursor: pointer;
+     max-width: 400px;
+     max-height: 400px;
 }
 
  #limit-text {
@@ -439,7 +441,14 @@ h4, p {
      max-width: 140px;
 }
 /* Flex box: https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
-#name-header, #ol-div {
+#name-header {
+    display: flex;
+     flex-direction: row;
+     align-items: center;
+     justify-content: center;
+}
+
+#ol-div {
     display: flex;
      flex-direction: row;
      align-items: center;
