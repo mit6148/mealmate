@@ -261,57 +261,6 @@ router.post('/addMatch/',
         });
     });
 
-router.post('/checkConfirmMatch/',
-    connect.ensureLoggedIn(),
-    function(req, res) {
-        User.findOne({_id: req.body.userid}, function(err, user) {
-            console.log("The user of the matches page: ");
-            console.log(user);
-            if (err) {
-                console.log(err);
-                res.send(err);
-                return;
-            }
-
-            // update the relevant match (date)
-            // will later fix match making to only allow 1 match per day
-            const mateIndex = findMatchByDate(user, req.body.date);
-
-            console.log("Mateindex: " + mateIndex);
-            if (mateIndex > -1) {
-                const data = user.matches[mateIndex];
-                /*const updated = {
-                    'userid': data[0].userid,
-                    'date': data[0].date,
-                    'times': data[0].times,
-                    'halls': data[0].halls,
-                    'confirmed': true,
-                }*/
-                if (data.confirmed){
-                // check if your match confirmed
-                    User.findOne({_id: req.body.matchid}, function(err, match) {
-                       if (err) {
-                            console.log(err);
-                            res.send(err);
-                            return;
-                        }
-                        const mateIndex2 = findMatchByDate(match, req.body.date);
-                        console.log("In check, Your mealmate's copy of your request");
-                        console.log(match.matches[mateIndex2]);
-                        if (mateIndex > -1 && match.matches[mateIndex2].confirmed) {
-                            res.json({message: true});
-                        } else {
-                            res.json({message: false});
-                        }
-                    });
-                }else{
-                    res.json({message: false});
-                }
-            }
-        });
-    });
-
-
 // confirm a pending match
 router.post('/confirmMatch/',
     connect.ensureLoggedIn(),

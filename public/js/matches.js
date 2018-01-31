@@ -26,35 +26,33 @@ function renderConfirmedMatches(user) {
     const today = new Date(); today.setHours(0, 0, 0, 0);
 
     let confirmedMatchesArr = countConfirmed(user);
+
     //Compare dates source: https://stackoverflow.com/questions/492994/compare-two-dates-with-javascript
-    setTimeout(function(){
-        confirmedMatchesArr.sort(function(a, b) {
-            const aDate = new Date(a.date);
-            const bDate = new Date(b.date);
-            return (aDate > bDate) - (aDate < bDate);
-        });
-
-        for (let i = confirmedMatchesArr.length-1; i >= 0; i--){
-            const mUser = confirmedMatchesArr[i].userid;
-            var carouselObj = makeCarouselObject(user, confirmedMatchesArr[i], mUser);
-            var indic = makeCarouselIndicator(i);
-            //if first carouselobj, needs to be active to display
-            if (!i){ // first carouselobj in list is active
-                carouselObj.className = "item active";
-                indic.className = "active";
-            }
-            carouselObjects.prepend(carouselObj);
-            carouselIndicators.prepend(indic);
-        }
-
-        // if there are no confirmed matches, display the "no matches" slide
-        if (confirmedMatchesArr.length === 0) {
-            console.log("No confirmed matches");
-            carouselObjects.append(makeNoMatch());
-        }
-
-    }, 250);
+    confirmedMatchesArr.sort(function(a, b) {
+        const aDate = new Date(a.date);
+        const bDate = new Date(b.date);
+        return (aDate > bDate) - (aDate < bDate);
+    });
     
+    for (let i = confirmedMatchesArr.length-1; i >= 0; i--){
+        console.log(confirmedMatchesArr[i]);
+        const mUser = confirmedMatchesArr[i].userid;
+        var carouselObj = makeCarouselObject(user, confirmedMatchesArr[i], mUser);
+        var indic = makeCarouselIndicator(i);
+        //if first carouselobj, needs to be active to display
+        if (!i){ // first carouselobj in list is active
+            carouselObj.className = "item active";
+            indic.className = "active";
+        }
+        carouselObjects.prepend(carouselObj);
+        carouselIndicators.prepend(indic);
+    }
+
+    // if there are no confirmed matches, display the "no matches" slide
+    if (confirmedMatchesArr.length === 0) {
+        console.log("No confirmed matches");
+        carouselObjects.append(makeNoMatch());
+    }
 }
 
 // make a carousel object indicating no confirmed matches
@@ -129,6 +127,12 @@ function makeCarouselObject(user, match, mUser) {
             declineMatch(user, mUser, matchDate, "[mealmate] Your mealmate cancelled...", emailText, -1);
             
             console.log(mUser.email);
+/*
+            post('/api/emailSender', { data }, function () {
+                $('#cancel-modal').hide();
+                //document.location.href = '/u/matches?'+user._id;
+            });
+*/
         });
     });
 
@@ -165,18 +169,10 @@ function countConfirmed(user) {
     let today = new Date(); today.setHours(0,0,0,0);
     for (let i = 0; i < user.matches.length; i++){
         const matchDate = new Date(user.matches[i].date);
-        const data = {
-            userid: user._id,
-            matchid: user.matches[i].userid._id,
-            date: matchDate 
+        if (user.matches[i].confirmed && matchDate >= today){
+            confirmedArr.push(user.matches[i]);
         }
-        post('/api/checkConfirmMatch', data, function(didMatchConfirm) {
-            if (didMatchConfirm.message && matchDate >= today) {
-                confirmedArr.push(user.matches[i]);
-            }
-        });
     }
-    
     return confirmedArr;
 }
 
